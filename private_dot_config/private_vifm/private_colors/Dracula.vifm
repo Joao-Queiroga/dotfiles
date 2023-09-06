@@ -1,0 +1,142 @@
+" vim: filetype=vim
+" VIFM COLORS
+" dracula
+" based on: https://github.com/istib/dotfiles/blob/master/vifm/vifm-colors
+
+" Default = -1 = None, can be used for transparency or default color
+" Black = 0
+" Red = 1
+" Green = 2
+" Yellow = 3
+" Blue = 4
+" Magenta = 5
+" Cyan = 6
+" White = 7
+
+" STYLES
+" bold
+" underline
+" reverse or inverse
+" standout
+" none
+
+
+highlight clear
+
+highlight Win             cterm=none ctermfg=default    ctermbg=none
+
+highlight TopLine         cterm=none ctermfg=blue       ctermbg=none
+highlight TopLineSel      cterm=none ctermfg=magenta    ctermbg=none
+highlight StatusLine      cterm=none ctermfg=blue       ctermbg=8 guibg=#44475a
+highlight Border          cterm=none ctermfg=blue       ctermbg=none
+
+highlight Selected        cterm=bold ctermfg=magenta    ctermbg=default
+highlight CurrLine        cterm=standout guibg=#44475a
+
+highlight WildMenu        cterm=none,reverse ctermfg=blue ctermbg=236
+highlight CmdLine         cterm=none ctermfg=none ctermbg=none
+highlight ErrorMsg        cterm=none ctermfg=red ctermbg=black
+
+highlight Directory       cterm=none ctermfg=blue ctermbg=default
+highlight Link            cterm=none ctermfg=cyan ctermbg=default
+highlight BrokenLink      cterm=none ctermfg=red ctermbg=default
+highlight Socket          cterm=none ctermfg=magenta ctermbg=black
+highlight Device          cterm=none ctermfg=red ctermbg=default
+highlight Fifo            cterm=none ctermfg=yellow ctermbg=black
+highlight Executable      cterm=none ctermfg=green ctermbg=default
+
+" software documentation
+highlight {COPYRIGHT,COPYING*,BUGS,ChangeLog*,FAQ,INSTALL*,NEWS,
+          \,AUTHORS,TODO,THANKS}
+        \ cterm=none ctermfg=187 ctermbg=default
+highlight {README,README.*} cterm=none ctermfg=160 ctermbg=default
+highlight {LICENCE,LICENSE} cterm=none ctermfg=179 ctermbg=default guifg=#d0bf41
+
+" build system files
+highlight {Makefile.am,Makefile.in,Makefile.win,*.mak,*.mk,*.m4,*.ac,
+          \configure,CMakeLists.txt,*.cmake,*.pro,*.pri,*.sln}
+        \ cterm=none ctermfg=121 ctermbg=default
+highlight {Makefile} cterm=bold,underline ctermfg=66 guifg=#6d8086
+
+" archives
+highlight {*.7z,*.ace,*.arj,*.bz2,*.cpio,*.deb,*.dz,*.gz,*.jar,*.lzh,*.lzma,
+          \*.rar,*.rpm,*.rz,*.tar,*.taz,*.tb2,*.tbz,*.tbz2,*.tgz,*.tlz,*.trz,
+          \*.txz,*.tz,*.tz2,*.xz,*.z,*.zip,*.zoo,*.apk,*.gzip}
+        \ cterm=none ctermfg=215 ctermbg=default
+
+" documents, configuration, text-based formats
+highlight {*.djvu,*.htm,*.shtml,*[^0-9].[1-9],
+          \*.mkd,*.pandoc,*.pdc,*.epub,*.fb2,*.tex,*.txt,*.xhtml,
+          \*.xml,*.pptx,*.ppt,*.doc,*.docx,*.xls,*.xlsm,*.xlsx,*.mobi,*.rtf,
+          \*.less,*.log,*.rss,*.xul,*.csv,
+          \*.plist,*.ini,*.cfg,*.rc,*.spec,*.qrc}
+        \ cterm=none ctermfg=217 ctermbg=default
+highlight {*.yaml,*.yml,*.toml,*.conf} cterm=none ctermfg=66 ctermbg=default guifg=#6d8086
+highlight {*.md,*.markdown} cterm=none ctermfg=67 ctermbg=default guifg=#519aba
+highlight {*.pdf} cterm=none ctermfg=124 ctermbg=default guifg=#b30b00
+highlight {*.desktop} cterm=none ctermfg=60 ctermbg=default guifg=#563d7c
+
+" media
+highlight {*.aac,*.anx,*.asf,*.au,*.avi,*.ts,*.axa,*.axv,*.divx,*.flac,*.m2a,
+          \*.m2v,*.m4a,*.m4p,*.m4v,*.mid,*.midi,*.mka,*.mkv,*.mov,*.mp3,*.mp4,
+          \*.flv,*.mp4v,*.mpc,*.mpeg,*.mpg,*.nuv,*.oga,*.ogg,*.ogv,*.ogx,*.pbm,
+          \*.pgm,*.qt,*.ra,*.ram,*.rm,*.spx,*.vob,*.wav,*.wma,*.wmv,*.xvid,
+          \*.ac3,*.webm,*.cue,*.ape}
+        \ cterm=none ctermfg=49 ctermbg=default
+" images
+highlight {*.bmp,*.gif,*.jpeg,*.jpg,*.ico,*.png,*.ppm,*.svg,*.svgz,*.tga,*.tif,
+          \*.tiff,*.xbm,*.xcf,*.xpm,*.xspf,*.xwd,*.ai}
+        \ cterm=none ctermfg=117 ctermbg=default
+
+" executables
+highlight {*.sh,*.bash,*.zsh,*.bat,*.btm,*.cmd,*.com,*.dll,*.exe,*.run,*.msu,
+          \*.msi,*.fish}
+        \ cterm=none ctermfg=77 ctermbg=default
+
+" source code
+highlight {*.py,*.mk,*.hs,
+          \*.asm,*.s,*.go,
+          \*.pl,*.pm,*.t,*.asp,*.dart,*.rb,*.scala,*.ts,*.coffee,
+          \*.ml,*.mli,*.qml,}
+        \ cterm=none ctermfg=193 ctermbg=default
+
+" Web
+highlight {*.css} cterm=none ctermfg=39 ctermbg=default guifg=#42a5f5
+highlight {*.scss,*.sass} cterm=none ctermfg=204 ctermbg=default guifg=#f55385
+highlight {*.html} cterm=none ctermfg=202 ctermbg=default guifg=#e44d26
+
+" JavaScript
+highlight {*.js} cterm=none ctermfg=220 ctermbg=default guifg=#cbcb41 guibg=default
+highlight {*.ts} cterm=none ctermfg=67 ctermbg=default guifg=#519aba guibg=default
+highlight {package.json} cterm=none ctermfg=185 ctermbg=default guifg=#e8274b
+highlight {package-lock.json} cterm=none ctermfg=185 ctermbg=default guifg=#7a0d21
+highlight {*.json} cterm=none ctermfg=185 ctermbg=default guifg=#cbcb41
+highlight {*.jsx,*.tsx} cterm=none ctermfg=67 ctermbg=default guifg=#519aba guibg=default
+highlight {*.vue} cterm=none ctermfg=107 ctermbg=default guifg=#8dc149 guibg=default
+
+" PHP
+highlight {*.php} cterm=none ctermfg=140 ctermbg=default guifg=#a074c4
+
+" Java
+highlight {*.java,*.class} cterm=none ctermfg=124 ctermbg=default guifg=#cc3e44 guibg=default
+
+" C/C++
+highlight {*.cpp,*.cc,*.cxx,*.c++} cterm=none ctermfg=33 ctermbg=default guifg=#519aba
+highlight {*.c} cterm=none ctermfg=33 ctermbg=default guifg=#599eff
+highlight {*.h,*.hpp} cterm=none ctermfg=98 ctermbg=default guifg=#a074c4
+
+" Rust
+highlight {*.rs} cterm=none ctermfg=180 ctermbg=default guifg=#dea584
+
+" C#
+highlight {*.cs} cterm=none ctermfg=129 ctermbg=default guifg=#596706
+
+highlight {*.org} cterm=none ctermfg=42 ctermbg=default
+highlight {*.lua} cterm=none ctermfg=74 ctermbg=default guifg=#51a0cf
+
+" Vim
+highlight {*.vim,vifm,vifmrc,vimrc,.vimrc} cterm=none ctermfg=34 ctermbg=default guifg=#019833
+
+highlight {*.el} cterm=none ctermfg=140 ctermbg=default
+highlight {*.sql,*.sqlite} cterm=none ctermfg=188 ctermbg=default guifg=#dad8d8
+highlight {*.diff,*.patch} cterm=none ctermfg=59 ctermbg=default

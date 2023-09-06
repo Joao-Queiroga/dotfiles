@@ -1,0 +1,5 @@
+if [[ ! -z ${DISPLAY+x} ]] ; then
+	TERM="$(echo $TERM | cut -d'-' -f1)-direct" command vifm "$@"
+else
+	command vifm "$@"
+fi

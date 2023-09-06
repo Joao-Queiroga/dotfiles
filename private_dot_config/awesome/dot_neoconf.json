@@ -1,0 +1,10 @@
+{
+	"lspconfig": {
+		"lua_ls": {
+			"Lua.workspace.library": [
+				"/usr/share/awesome/lib",
+				"~/.config/awesome/"
+			]
+		}
+	}
+}

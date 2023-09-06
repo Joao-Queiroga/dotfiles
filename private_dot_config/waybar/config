@@ -1,0 +1,12 @@
+// vim: filetype=jsonc
+{
+    // Choose the order of the modules
+    "modules-left": ["river/tags", "river/mode"],
+    "modules-center": ["river/window"],
+		"include": ["~/.config/waybar/config-hyprland"],
+    // Modules configuration
+     "river/tags": {
+           "num-tags": 9,
+    },
+}
+
