@@ -97,7 +97,8 @@ local leader_mappings = {
 		name = "Git",
 		l = { "<cmd>LazyGit<cr>", "Lazygit" },
 		n = { "<cmd>Neogit<cr>", "Neogit" },
-		y = { functions.ly, "Yadm LazyGit" }
+		c = { "<cmd>execute '!chezmoi re-add' | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit" },
+		y = { function () functions.float_term('lazygit -g ~/.local/share/yadm/repo.git -w ~') end, "Yadm LazyGit" }
 	},
 	t = { "<cmd>Telescope live_grep<cr>", "Live grep" },
 	o = {
@@ -107,8 +108,8 @@ local leader_mappings = {
 	},
 	C = {
 		name = "ChatGPT",
-		c = { "<cmd>ChatGPT<CR>", "ChatGPT" },
-		e = { "<cmd>ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
+		c = { ":ChatGPT<CR>", "ChatGPT" },
+		e = { ":ChatGPTEditWithInstruction<CR>", "Edit with instruction" },
 		g = { ":ChatGPTRun grammar_correction<CR>", "Grammar Correction" },
 		t = { ":ChatGPTRun translate<CR>", "Translate" },
 		k = { ":ChatGPTRun keywords<CR>", "Keywords" },

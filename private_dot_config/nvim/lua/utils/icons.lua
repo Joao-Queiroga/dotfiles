@@ -29,4 +29,34 @@ M.devIcons = {
 	TypeParameter = " ",
 }
 
+M.kind_icons = {
+	Text = "󰉿",
+	Copilot = "",
+	Method = "",
+	Function = "󰊕",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "",
+	Array = "",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "󰎠",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+} 
+
 return M
