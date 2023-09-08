@@ -97,8 +97,7 @@ local leader_mappings = {
 		name = "Git",
 		l = { "<cmd>LazyGit<cr>", "Lazygit" },
 		n = { "<cmd>Neogit<cr>", "Neogit" },
-		c = { "<cmd>execute '!chezmoi re-add' | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit" },
-		y = { function () functions.float_term('lazygit -g ~/.local/share/yadm/repo.git -w ~') end, "Yadm LazyGit" }
+		c = { "<cmd>execute '!chezmoi re-add && chezmoi add ~/.config/nvim' | Neogit cwd=~/.local/share/chezmoi", "Neogit chezmoi" },
 	},
 	t = { "<cmd>Telescope live_grep<cr>", "Live grep" },
 	o = {
