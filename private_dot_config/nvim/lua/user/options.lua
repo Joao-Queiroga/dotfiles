@@ -57,6 +57,15 @@ vim.cmd [[
     autocmd BufRead,BufNewFile ~/.config/zsh/functions/* setfiletype zsh
   augroup END
 ]]
+vim.cmd[[
+	autocmd BufWritePost ~/.config/nvim/* ! chezmoi add "%"
+]]
+vim.cmd[[
+	augroup chezmoi
+		autocmd!
+		autocmd FileType NeogitStatus autocmd BufWinLeave <buffer> if g:in_chezmoi == 1 | execute '!chezmoi apply' | let g:in_chezmoi = 0 | endif 
+	augroup END
+]]
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
