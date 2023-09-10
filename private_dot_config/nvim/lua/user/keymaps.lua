@@ -97,7 +97,7 @@ local leader_mappings = {
 		name = "Git",
 		l = { "<cmd>LazyGit<cr>", "Lazygit" },
 		n = { "<cmd>Neogit<cr>", "Neogit" },
-		c = { "<cmd>execute '!chezmoi re-add' | let g:in_chezmoi = 1 | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit chezmoi" },
+		c = { "<cmd>execute 'silent !chezmoi re-add' | let g:in_chezmoi = 1 | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit chezmoi" },
 	},
 	t = { "<cmd>Telescope live_grep<cr>", "Live grep" },
 	o = {

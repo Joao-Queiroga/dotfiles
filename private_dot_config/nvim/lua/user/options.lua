@@ -63,7 +63,7 @@ vim.cmd[[
 vim.cmd[[
 	augroup chezmoi
 		autocmd!
-		autocmd FileType NeogitStatus autocmd BufWinLeave <buffer> if g:in_chezmoi == 1 | execute '!chezmoi apply' | let g:in_chezmoi = 0 | endif 
+		autocmd FileType NeogitStatus autocmd BufWinLeave <buffer> if g:in_chezmoi == 1 | execute 'silent !chezmoi apply' | let g:in_chezmoi = 0 | endif 
 	augroup END
 ]]
 
