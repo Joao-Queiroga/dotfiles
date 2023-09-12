@@ -16,9 +16,6 @@ return {
 				topdelete = { text = "󰐊" },
 				changedelete = { text = "▎" },
 			},
-			yadm = {
-				enable = false,
-			}
 		}
 	},
 	{
