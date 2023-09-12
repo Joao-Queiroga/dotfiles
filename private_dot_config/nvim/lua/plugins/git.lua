@@ -17,7 +17,7 @@ return {
 				changedelete = { text = "▎" },
 			},
 			yadm = {
-				enable = vim.fn.executable('yadm');
+				enable = false,
 			}
 		}
 	},
