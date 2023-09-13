@@ -5,7 +5,6 @@
   # manage.
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
-	targets.genericLinux.enable = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -21,8 +20,13 @@
   home.packages = with pkgs; [
 		webcord
 		teams-for-linux
+		chezmoi
+		lazygit
+		pcmanfm
 		drawio
 		obsidian
+		pfetch
+		starship
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -67,5 +71,5 @@
   # if you don't want to manage your shell through Home Manager.
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 }
