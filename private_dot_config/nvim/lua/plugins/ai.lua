@@ -9,7 +9,7 @@ return {
 			"ChatGPTRun"
 		},
 		opts = {
-			api_key_cmd = "pass keys/chatgpt.nvim"
+			api_key_cmd = "gopass keys/chatgpt.nvim"
 		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
