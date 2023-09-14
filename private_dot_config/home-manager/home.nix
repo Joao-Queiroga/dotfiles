@@ -27,6 +27,15 @@
 		obsidian
 		pfetch
 		starship
+		gcc
+		openjdk
+		picom
+    (st.overrideAttrs (oldAttrs: rec {
+      buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
+      src = builtins.fetchTarball {
+				url = "https://gitlab.com/Joao-Queiroga/st/-/archive/main/st-main.tar.gz";
+      };
+    }))
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -46,7 +55,7 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
 
-	/* gtk = {
+	gtk = {
 		enable = true;
 		iconTheme = {
 			package = pkgs.papirus-icon-theme;
@@ -56,7 +65,7 @@
 			package = pkgs.dracula-theme;
 			name = "Dracula";
 		};
-	}; */
+	};
 	
 
   # You can also manage environment variables but you will have to manually
@@ -71,5 +80,5 @@
   # if you don't want to manage your shell through Home Manager.
 
   # Let Home Manager install and manage itself.
-  # programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 }
