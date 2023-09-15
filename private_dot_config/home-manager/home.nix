@@ -28,18 +28,18 @@
 		pfetch
 		starship
 		gcc
+		wofi
+		dex
+		bemenu
 		openjdk
 		picom
-    (st.overrideAttrs (oldAttrs: rec {
+		split-monitor-workspaces
+    /* (st.overrideAttrs (oldAttrs: rec {
       buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
       src = builtins.fetchTarball {
 				url = "https://gitlab.com/Joao-Queiroga/st/-/archive/main/st-main.tar.gz";
       };
-    }))
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
+    })) */
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -51,9 +51,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
 
 	gtk = {
 		enable = true;
