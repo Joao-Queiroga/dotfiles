@@ -18,7 +18,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-		webcord
+		discord
 		teams-for-linux
 		chezmoi
 		lazygit
@@ -28,12 +28,8 @@
 		pfetch
 		starship
 		gcc
-		wofi
-		dex
-		bemenu
 		openjdk
 		picom
-		split-monitor-workspaces
     /* (st.overrideAttrs (oldAttrs: rec {
       buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
       src = builtins.fetchTarball {
