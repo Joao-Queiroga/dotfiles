@@ -3,7 +3,8 @@
 		"lua_ls": {
 			"Lua.workspace.library": [
 				"/usr/share/awesome/lib",
-				"~/.config/awesome/"
+				"~/.config/awesome/",
+				"/nix/store/47vbnxhcdr04ff2w4dp4pl73bayfad3v-awesome-4.3/share/awesome/lib"
 			]
 		}
 	}
