@@ -1,9 +1,14 @@
 local handlers = require'plugins.lsp.handlers'
-local ensure_instaled = {
-	'lua_language_server',
-	'vim-language-server',
+local installed_servers = {
+	'lua_ls',
+	'rust_analyzer',
+	'clangd',
+	'gopls',
 	'jdtls',
-	'rust-analyzer'
+	'vimls',
+	'jsonls',
+	'yamlls',
+	'rnix'
 }
 return {
 	{
@@ -18,7 +23,7 @@ return {
 			'neovim/nvim-lspconfig',
 		},
 		opts = {
-			ensure_instaled = ensure_instaled,
+			ensure_installed = installed_servers,
 			handlers = { handlers.choose_handler }
 		}
 	},
