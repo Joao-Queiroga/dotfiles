@@ -99,7 +99,28 @@ local leader_mappings = {
 		n = { "<cmd>Neogit<cr>", "Neogit" },
 		c = { "<cmd>execute 'silent !chezmoi re-add' | let g:in_chezmoi = 1 | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit chezmoi" },
 	},
-	t = { "<cmd>Telescope live_grep<cr>", "Live grep" },
+	t = {
+		name = "Table Mode",
+		m = "Toggle",
+		t = "Tableize",
+		r = "Realign",
+		s = "Sort",
+		i = {
+			name = "Insert Column",
+			c = "After",
+			C = "Before"
+		},
+		d = {
+			name = "Delete",
+			c = "Column",
+			d = "Row",
+		},
+		f = {
+			name = "Formula",
+			a = "Add",
+			e = "Eval",
+		},
+	},
 	o = {
 		name = "Org-Mode",
 		a = "Org agenda",
