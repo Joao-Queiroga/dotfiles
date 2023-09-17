@@ -36,10 +36,45 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1694767346,
+        "narHash": "sha256-5uH27SiVFUwsTsqC5rs3kS7pBoNhtoy9QfTP9BmknGk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ace5093e36ab1e95cb9463863491bee90d5a4183",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "st": "st"
+      }
+    },
+    "st": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1694959223,
+        "narHash": "sha256-sGaO+Z+MfnjC9fuJVYteC7RCVOMEBSVaE6jJ02ObF+s=",
+        "owner": "Joao-Queiroga",
+        "repo": "st",
+        "rev": "622d8dc364ce9253447afde11ba72eff444932e1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Joao-Queiroga",
+        "repo": "st",
+        "type": "github"
       }
     }
   },

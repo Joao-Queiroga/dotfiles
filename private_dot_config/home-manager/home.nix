@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -20,16 +20,9 @@
   home.packages = with pkgs; [
 		discord
 		teams-for-linux
-		chezmoi
-		lazygit
-		pcmanfm
 		drawio
 		obsidian
-		pfetch
-		starship
-		gcc
-		openjdk
-		picom
+		inputs.st.packages.${pkgs.system}.st
     /* (st.overrideAttrs (oldAttrs: rec {
       buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
       src = builtins.fetchTarball {
