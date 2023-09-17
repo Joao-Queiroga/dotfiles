@@ -11,19 +11,6 @@ return {
 		config = handlers.setup
 	},
 	{
-		'williamboman/mason.nvim',
-		lazy = true,
-		opts = {
-			ui = {
-				icons = {
-					package_pending = " ",
-					package_installed = "󰄳 ",
-					package_uninstalled = " 󰚌",
-				}
-			}
-		},
-	},
-	{
 		'williamboman/mason-lspconfig.nvim',
 		dependencies = {
 			'williamboman/mason.nvim',
