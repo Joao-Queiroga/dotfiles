@@ -8,7 +8,8 @@ local installed_servers = {
 	'vimls',
 	'jsonls',
 	'yamlls',
-	'rnix'
+	'rnix',
+	'nil_ls'
 }
 return {
 	{
