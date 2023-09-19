@@ -55,7 +55,7 @@ configuration {
 }
 #element {
     border:  0;
-    padding: 12;
+    padding: 5;
 }
 #element.normal.normal {
     background-color: @background;
