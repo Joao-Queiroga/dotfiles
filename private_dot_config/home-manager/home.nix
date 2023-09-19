@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
 		discord
+		webcord
 		teams-for-linux
 		drawio
 		obsidian
