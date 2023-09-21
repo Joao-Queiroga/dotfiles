@@ -16,10 +16,10 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<cmd>NvimTmuxNavigateLeft<cr>", opts)
-keymap("n", "<C-j>", "<cmd>NvimTmuxNavigateDown<cr>", opts)
-keymap("n", "<C-k>", "<cmd>NvimTmuxNavigateUp<cr>", opts)
-keymap("n", "<C-l>", "<cmd>NvimTmuxNavigateRight<cr>", opts)
+keymap("n", "<C-h>", "<cmd>NavigatorLeft<cr>", opts)
+keymap("n", "<C-j>", "<cmd>NavigatorDown<cr>", opts)
+keymap("n", "<C-k>", "<cmd>NavigatorUp<cr>", opts)
+keymap("n", "<C-l>", "<cmd>NavigatorRight<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)

@@ -1,8 +1,8 @@
 return {
 	{
-		'alexghergh/nvim-tmux-navigation',
+		'numToStr/Navigator.nvim',
 		event = "VeryLazy",
-		opts = {}
+		opts = {},
 	},
 	{
 		'uga-rosa/ccc.nvim',
