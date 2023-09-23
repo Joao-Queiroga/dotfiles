@@ -11,7 +11,7 @@
 		webcord
 		teams-for-linux
 		drawio
-		obsidian
+		logseq
 		inputs.st.packages.${pkgs.system}.st
   ];
 
