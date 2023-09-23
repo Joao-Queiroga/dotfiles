@@ -12,6 +12,7 @@
 		teams-for-linux
 		drawio
 		logseq
+		beekeeper-studio
 		inputs.st.packages.${pkgs.system}.st
   ];
 
