@@ -1,3 +1,4 @@
+# vim: filetype=sh
 # interpreter for shell commands
 set shell sh
 
@@ -25,6 +26,9 @@ set cursorpreviewfmt "\033[7;2m"
 
 # use enter for shell commands
 map <enter> shell
+
+# Previews
+set previewer ~/.config/lf/pv.sh
 
 # show the result of execution of previous commands
 map ` !true
