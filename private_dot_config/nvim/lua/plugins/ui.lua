@@ -17,7 +17,19 @@ return {
 		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
 		}
+	},
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			render = 'simple',
+		},
+		config = function (_, opts)
+			local notify = require('notify')
+			notify.setup(opts)
+			vim.notify = notify
+		end
 	},
 	{
 		'lukas-reineke/indent-blankline.nvim',
