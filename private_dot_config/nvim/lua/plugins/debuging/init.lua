@@ -1,7 +1,21 @@
+local ensure_installed = {
+	'java-debug-adapter'
+}
+
 return {
 	{
 		'mfussenegger/nvim-dap',
 		event = "VeryLazy",
+	},
+	{
+    "jay-babu/mason-nvim-dap.nvim",
+		dependencies = {
+			'williamboman/mason.nvim',
+			'mfussenegger/nvim-dap',
+		},
+		opts = {
+			ensure_installed = ensure_installed
+		},
 	},
 	{
 		"rcarriga/nvim-dap-ui",
