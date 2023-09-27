@@ -17,7 +17,7 @@ autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 autocmd({ "BufWritePost" }, {
-	pattern = vim.fn.expand("~/.config/nvim/lua/**", true, true),
+	pattern = vim.fn.expand("~/.config/nvim/**", true, true),
 	callback = function()
 		os.execute('chezmoi add ' .. vim.api.nvim_buf_get_name(0))
 	end,
