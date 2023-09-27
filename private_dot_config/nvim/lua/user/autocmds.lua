@@ -16,6 +16,7 @@ autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
+-- Add neovim files to chezmoi on save
 autocmd({ "BufWritePost" }, {
 	pattern = vim.fn.expand("~/.config/nvim/**", true, true),
 	callback = function()
@@ -23,14 +24,12 @@ autocmd({ "BufWritePost" }, {
 	end,
 })
 
-autocmd({ "FileType" }, {
-	pattern = "NeogitStatus",
-	callback = function()
-		autocmd({ "BufWinLeave" }, {
-			pattern = "<buffer>",
-			callback = function()
-				os.execute("chezmoi apply")
-			end,
-		})
+-- Apply chezmoi on neogit exit
+autocmd({ "BufWinLeave" }, {
+	callback = function(opts)
+		if vim.bo[opts.buf].filetype == 'NeogitStatus' and vim.fn.getcwd() == vim.fn.expand('~/.local/share/chezmoi') then
+			os.execute("chezmoi apply")
+		end
 	end,
 })
+
