@@ -1,7 +1,6 @@
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
-local functions = require('utils.functions')
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -97,7 +96,7 @@ local leader_mappings = {
 		name = "Git",
 		l = { "<cmd>LazyGit<cr>", "Lazygit" },
 		n = { "<cmd>Neogit<cr>", "Neogit" },
-		c = { "<cmd>execute 'silent !chezmoi re-add' | let g:in_chezmoi = 1 | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit chezmoi" },
+		c = { "<cmd>execute 'silent !chezmoi re-add' | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit chezmoi" },
 	},
 	t = {
 		name = "Table Mode",
