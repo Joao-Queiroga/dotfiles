@@ -45,28 +45,6 @@ vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append('<,>,[,],h,l')
 vim.cmd[[set iskeyword-=_]]
 
--- open .h files as C instead of C++
-vim.cmd[[
-	augroup filetypedetect
-		au! BufRead,BufNewFile *.h setfiletype c
-	augroup END
-]]
-vim.cmd [[
-  augroup zsh_filetype
-    autocmd!
-    autocmd BufRead,BufNewFile ~/.config/zsh/functions/* setfiletype zsh
-  augroup END
-]]
-vim.cmd[[
-	autocmd BufWritePost ~/.config/nvim/* ! chezmoi add "%"
-]]
-vim.cmd[[
-	augroup chezmoi
-		autocmd!
-		autocmd FileType NeogitStatus autocmd BufWinLeave <buffer> if g:in_chezmoi == 1 | execute 'silent !chezmoi apply' | let g:in_chezmoi = 0 | endif 
-	augroup END
-]]
-
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
