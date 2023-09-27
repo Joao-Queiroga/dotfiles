@@ -174,7 +174,7 @@ window#waybar.chromium {
   color: #f8f8f2;
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging, #battery.plugged, #battery.full {
   color: #26A65B;
 }
 
