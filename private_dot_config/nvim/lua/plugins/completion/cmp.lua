@@ -1,7 +1,35 @@
 local cmp = require("cmp")
 local snippy = require('snippy')
 
-local kind_icons = require('utils').icons.kind_icons
+local kind_icons = {
+	Text = "󰉿",
+	Copilot = "",
+	Method = "",
+	Function = "󰊕",
+	Constructor = "",
+	Field = "",
+	Variable = "",
+	Class = "",
+	Array = "",
+	Interface = "",
+	Module = "",
+	Property = "",
+	Unit = "",
+	Value = "󰎠",
+	Enum = "",
+	Keyword = "",
+	Snippet = "",
+	Color = "",
+	File = "",
+	Reference = "",
+	Folder = "",
+	EnumMember = "",
+	Constant = "",
+	Struct = "",
+	Event = "",
+	Operator = "",
+	TypeParameter = "",
+}
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
