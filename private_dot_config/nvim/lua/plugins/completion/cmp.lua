@@ -98,7 +98,6 @@ cmp.setup {
 		{ name = "copilot" },
 		{ name = "nvim_lsp" },
 		{ name = "orgmode" },
-		{ name = "nvim_lua" },
 		{ name = "snippy" },
 		{ name = "buffer" },
 		{ name = "path" },

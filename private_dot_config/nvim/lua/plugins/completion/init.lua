@@ -6,7 +6,6 @@ return {
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
 			'dcampos/nvim-snippy',
-			'dcampos/nvim-snippy',
 			'hrsh7th/cmp-nvim-lsp',
 			'zbirenbaum/copilot-cmp',
 		},
