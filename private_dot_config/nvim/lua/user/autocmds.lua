@@ -26,8 +26,8 @@ autocmd({ "BufWritePost" }, {
 
 -- Apply chezmoi on neogit exit
 autocmd({ "BufWinLeave" }, {
-	callback = function(opts)
-		if vim.bo[opts.buf].filetype == 'NeogitStatus' and vim.fn.getcwd() == vim.fn.expand('~/.local/share/chezmoi') then
+	callback = function()
+		if vim.bo.filetype == 'NeogitStatus' and vim.fn.getcwd() == vim.fn.expand('~/.local/share/chezmoi') then
 			os.execute("chezmoi apply")
 		end
 	end,
