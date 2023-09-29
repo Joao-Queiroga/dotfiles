@@ -20,22 +20,27 @@ return {
 		}
 	},
 	{
-		'lukas-reineke/indent-blankline.nvim',
-		event = "VeryLazy",
+		"lukas-reineke/indent-blankline.nvim",
+		event = { "BufReadPost", "BufNewFile" },
 		opts = {
-			filetype_exclude = {
-				"help",
-				"terminal",
-				"dashboard",
-				"lazy",
-				"lspinfo",
-				"mason",
-				"TelescopePrompt",
-				"TelescopeResults",
-				"noice"
+			indent = { char = "│" },
+			scope = { enabled = false },
+			exclude = {
+				filetypes = {
+					"help",
+					"alpha",
+					"dashboard",
+					"neo-tree",
+					"Trouble",
+					"lazy",
+					"mason",
+					"notify",
+					"toggleterm",
+					"lazyterm",
+				},
 			},
-			show_current_context = true,
-		}
+		},
+		main = "ibl",
 	},
 	{
 		'stevearc/dressing.nvim',
