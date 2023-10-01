@@ -7,7 +7,7 @@
 	"cpu": {
 		"format": "<span font_size='11pt'>{usage}% </span>",
 		"tooltip": false,
-		"on-click": "footclient htop"
+		"on-click": "wezterm -e htop"
 	},
 	"memory": {
 		"format": "<span font_size='11pt'>{}% 󰍛</span>"
@@ -15,7 +15,7 @@
 	"wireplumber": {
 			"format": "<span font_size='11pt'>{volume}% {icon}</span>",
 			"format-muted": "<span font_size='11pt'>{volume}% 󰝟</span>",
-			"on-click": "footclient pulsemixer",
+			"on-click": "wezterm -e pulsemixer",
 			"format-icons": ["", "󰖀", "󰕾"]
 	},
 	"battery": {
