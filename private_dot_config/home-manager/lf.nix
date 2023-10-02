@@ -1,11 +1,11 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
 	programs.lf = {
 		enable = true;
 		commands = {
 			open = ''
 				''${{
-					test -L $f && f=$(readlink -f $f)
+					test -L "$f" && f=$(readlink -f $f)
 					case $(file --mime-type $f -b) in
 						text/*|application/json) $EDITOR "$f";;
 						*) xdg-open "$f";;
