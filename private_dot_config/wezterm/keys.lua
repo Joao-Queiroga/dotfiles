@@ -21,12 +21,12 @@ local keys = {
 	{
     key = '&',
     mods = 'LEADER',
-    action = action.CloseCurrentTab { confirm=true },
+    action = action.CloseCurrentTab { confirm = true },
   },
   {
     key = 'x',
     mods = 'LEADER',
-    action = action.CloseCurrentPane { confirm=true },
+    action = action.CloseCurrentPane { confirm = true },
   },
 	-- Switch Tabs with Alt+Shift+hjkl
 	{
@@ -60,11 +60,17 @@ local keys = {
 		mods = 'CTRL',
 		action = action.ActivatePaneDirection('Right')
 	}),
-  -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
+  -- Send "CTRL-L" to the terminal when pressing CTRL-B, CTRL-L
   {
-    key = 'a',
+    key = 'l',
     mods = 'LEADER|CTRL',
-    action = action.SendKey { key = 'a', mods = 'CTRL' },
+    action = action.SendKey { key = 'l', mods = 'CTRL' },
+  },
+  -- Send "CTRL-B" to the terminal when pressing CTRL-B, CTRL-B
+  {
+    key = 'b',
+    mods = 'LEADER|CTRL',
+    action = action.SendKey { key = 'b', mods = 'CTRL' },
   },
 }
 
