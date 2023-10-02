@@ -7,6 +7,8 @@ config.font_size = 12
 config.color_scheme = 'tokyonight_night'
 config.tab_and_split_indices_are_zero_based = true
 
+config.window_close_confirmation = 'NeverPrompt'
+
 config.leader = { key = "b", mods="CTRL" }
 
 config.hide_tab_bar_if_only_one_tab = true
