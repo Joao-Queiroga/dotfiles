@@ -1,14 +1,14 @@
 return {
 	{
-		'nvim-lualine/lualine.nvim',
+		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
-		dependencies = 'nvim-tree/nvim-web-devicons',
-		opts = require'plugins.config.lualine',
+		dependencies = "nvim-tree/nvim-web-devicons",
+		opts = require("plugins.config.lualine"),
 	},
 	{
-		'akinsho/bufferline.nvim',
+		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
-		opts = require'plugins.config.bufferline',
+		opts = require("plugins.config.bufferline"),
 	},
 	{
 		"folke/noice.nvim",
@@ -17,7 +17,7 @@ return {
 		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-		}
+		},
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -42,7 +42,7 @@ return {
 		main = "ibl",
 	},
 	{
-		'stevearc/dressing.nvim',
+		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 		opts = {
 			input = {
@@ -50,14 +50,13 @@ return {
 				start_in_insert = false,
 			},
 			select = {
-				backend = { 'builtin', 'nui' },
-			}
+				backend = { "builtin", "nui" },
+			},
 		},
 	},
 	{
-		'folke/which-key.nvim',
+		"folke/which-key.nvim",
 		lazy = true,
-		opts = {}
+		opts = {},
 	},
-
 }

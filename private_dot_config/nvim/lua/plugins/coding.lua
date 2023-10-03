@@ -1,30 +1,30 @@
 return {
 	{
-		'numToStr/Comment.nvim',
+		"numToStr/Comment.nvim",
 		event = "VeryLazy",
 		config = true,
 	},
 	{
-		'windwp/nvim-autopairs',
-		event="InsertEnter",
-		config = function ()
-			require'plugins.config.autopairs'
-		end
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("plugins.config.autopairs")
+		end,
 	},
 	{
-		'ahmedkhalf/project.nvim',
+		"ahmedkhalf/project.nvim",
 		event = "VeryLazy",
 		dependencies = {
-			'nvim-telescope/telescope.nvim',
+			"nvim-telescope/telescope.nvim",
 		},
-		config = function ()
-			require('project_nvim').setup()
-			require('telescope').load_extension('projects')
-		end
+		config = function()
+			require("project_nvim").setup()
+			require("telescope").load_extension("projects")
+		end,
 	},
 	{
-		'kevinhwang91/nvim-ufo',
-		dependencies = 'kevinhwang91/promise-async',
-		opts = {}
-	}
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+		opts = {},
+	},
 }
