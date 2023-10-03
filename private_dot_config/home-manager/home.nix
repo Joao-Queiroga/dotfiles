@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "joaoqueiroga";
@@ -13,7 +13,6 @@
 		drawio
 		logseq
 		beekeeper-studio
-		inputs.st.packages.${pkgs.system}.st
   ];
 
 	gtk = {

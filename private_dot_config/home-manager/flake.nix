@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -33,7 +33,7 @@
 				];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-				extraSpecialArgs = { inherit inputs; };
+				# extraSpecialArgs = { };
       };
     };
 }
