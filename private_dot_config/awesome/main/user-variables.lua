@@ -3,7 +3,7 @@ local home = os.getenv("HOME")
 local _M = {
 	modkey = "Mod4",
 
-	terminal = "st",
+	terminal = "wezterm",
 	file_manager = "pcmanfm",
 	browser = "brave",
 
