@@ -52,6 +52,7 @@ fi             # FILE
 *.rmd           
 *.org           
 *.json          
+*.lock          
 *.webmanifest   
 *.js            
 *.mjs           
