@@ -1,9 +1,9 @@
 #LS to exa aliases
-if (($+commands[lsd])); then
-	alias ls="lsd"
-	alias ll="lsd -l"
-	alias la="lsd -la"
+if (($+commands[eza])); then
+	alias ls="eza --icons"
 fi
+alias ll="ls -l"
+alias la="ls -la"
 #cat to bat aliase
 if (($+commands[bat])); then
 	alias cat="bat"
