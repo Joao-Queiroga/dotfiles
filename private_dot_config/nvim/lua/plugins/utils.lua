@@ -39,6 +39,11 @@ return {
 	{
 		"dhruvasagar/vim-table-mode",
 		event = "VeryLazy",
+		init = function()
+			vim.g.table_mode_corner = "|"
+			vim.g.table_mode_header = "-"
+			vim.g.table_mode_hl_cells = 1
+		end,
 	},
 	{
 		"lambdalisue/suda.vim",
