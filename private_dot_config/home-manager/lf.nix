@@ -7,7 +7,7 @@
 				''${{
 					test -L "$f" && f=$(readlink -f $f)
 					case $(file --mime-type $f -b) in
-						text/*|application/json) $EDITOR "$f";;
+						text/*|application/json|application/javascript|application/xml) $EDITOR "$f";;
 						*) xdg-open "$f";;
 					esac
 				}}
