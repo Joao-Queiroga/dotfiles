@@ -48,21 +48,21 @@ keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J",     ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K",     ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
-keymap("t", "<C-j>", "<cmd>NvimTmuxNavigateDown<cr>",  term_opts)
-keymap("t", "<C-h>", "<cmd>NvimTmuxNavigateLeft<cr>",  term_opts)
-keymap("t", "<C-k>", "<cmd>NvimTmuxNavigateUp<cr>",    term_opts)
+keymap("t", "<C-j>", "<cmd>NvimTmuxNavigateDown<cr>", term_opts)
+keymap("t", "<C-h>", "<cmd>NvimTmuxNavigateLeft<cr>", term_opts)
+keymap("t", "<C-k>", "<cmd>NvimTmuxNavigateUp<cr>", term_opts)
 keymap("t", "<C-l>", "<cmd>NvimTmuxNavigateRight<cr>", term_opts)
 
 -- Inc rename
 vim.keymap.set("n", "<leader>rn", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
+	return ":IncRename " .. vim.fn.expand("<cword>")
 end, opts)
 
 -- which key
@@ -77,7 +77,7 @@ local leader_mappings = {
 		name = "Files",
 		f = { "<cmd>Telescope find_files<cr>", "Find files" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-		b = { "<cmd>lua MiniFiles.open()<cr>" ,"File Browser" },
+		b = { "<cmd>lua MiniFiles.open()<cr>", "File Browser" },
 	},
 	l = {
 		name = "Lsp",
@@ -85,16 +85,45 @@ local leader_mappings = {
 		r = "Rename",
 		f = { "<cmd>Lspsaga finder<cr>", "Finder" },
 		o = { "<cmd>Lspsaga outline<cr>", "Outline" },
-		t = { function() require('trouble').toggle() end, "Trouble" },
-		w = { function() require('trouble').toggle('workspace_diagnostics') end, "Workspace Diagnostics" },
-		d = { function() require('trouble').toggle('document_diagnostics') end, "Document Diagnostics" },
-		q = { function() require('trouble').toggle('quickfix') end, "Quickfixes" },
-		l = { function() require('trouble').toggle('loclist') end, "Loclist" },
-		R = { function() require('trouble').toggle('lsp_references') end, "LSP References" },
+		t = {
+			function()
+				require("trouble").toggle()
+			end,
+			"Trouble",
+		},
+		w = {
+			function()
+				require("trouble").toggle("workspace_diagnostics")
+			end,
+			"Workspace Diagnostics",
+		},
+		d = {
+			function()
+				require("trouble").toggle("document_diagnostics")
+			end,
+			"Document Diagnostics",
+		},
+		q = {
+			function()
+				require("trouble").toggle("quickfix")
+			end,
+			"Quickfixes",
+		},
+		l = {
+			function()
+				require("trouble").toggle("loclist")
+			end,
+			"Loclist",
+		},
+		R = {
+			function()
+				require("trouble").toggle("lsp_references")
+			end,
+			"LSP References",
+		},
 	},
 	g = {
 		name = "Git",
-		l = { "<cmd>LazyGit<cr>", "Lazygit" },
 		n = { "<cmd>Neogit<cr>", "Neogit" },
 		c = { "<cmd>execute 'silent !chezmoi re-add' | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit chezmoi" },
 	},
@@ -107,7 +136,7 @@ local leader_mappings = {
 		i = {
 			name = "Insert Column",
 			c = "After",
-			C = "Before"
+			C = "Before",
 		},
 		d = {
 			name = "Delete",
@@ -123,7 +152,7 @@ local leader_mappings = {
 	o = {
 		name = "Org-Mode",
 		a = "Org agenda",
-		c = "Org capture"
+		c = "Org capture",
 	},
 	C = {
 		name = "ChatGPT",
@@ -147,7 +176,7 @@ local leader_mappings = {
 		b = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Toggle breakpoint" },
 		c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
 		r = { "<cmd>lua require('dapui').open({ reset = true })<CR>", "Reset UI" },
-	}
+	},
 }
 
-wk.register(leader_mappings, { prefix = '<leader>', mode = { 'n', 'v' } })
+wk.register(leader_mappings, { prefix = "<leader>", mode = { "n", "v" } })

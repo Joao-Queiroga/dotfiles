@@ -1,12 +1,12 @@
 return {
 	{
 		"NeogitOrg/neogit",
-		cmd =  "Neogit",
+		cmd = "Neogit",
 		dependencies = "nvim-lua/plenary.nvim",
-		opts = {}
+		opts = {},
 	},
 	{
-		'lewis6991/gitsigns.nvim',
+		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
 		opts = {
 			signs = {
@@ -16,12 +16,6 @@ return {
 				topdelete = { text = "󰐊" },
 				changedelete = { text = "▎" },
 			},
-		}
-	},
-	{
-		'kdheepak/lazygit.nvim',
-		dependencies = 'nvim-lua/plenary.nvim',
-		cmd = "LazyGit",
-		enabled = vim.fn.executable('lazygit')
+		},
 	},
 }
