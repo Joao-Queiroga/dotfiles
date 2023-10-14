@@ -1,6 +1,5 @@
 local M = {}
 
-
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -22,7 +21,7 @@ local function lsp_keymaps(bufnr)
 	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 function M.setup()
@@ -70,14 +69,16 @@ M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
+	if client.server_capabilities.inlayHintProvider then
+		vim.lsp.inlay_hint(bufnr, true)
+	end
 	lsp_keymaps(bufnr)
 end
 
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
 }
 
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -86,7 +87,7 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 function M.default_handler(server_name) -- default handler
 	local opts = {
 		capabilities = M.capabilities,
-		on_attach = M.on_attach
+		on_attach = M.on_attach,
 	}
 	local require_ok, conf_opts = pcall(require, "plugins.lsp.settings." .. server_name)
 	if require_ok then
