@@ -11,7 +11,7 @@
 		webcord
 		teams-for-linux
 		drawio
-		logseq
+		obsidian
 		beekeeper-studio
   ];
 
