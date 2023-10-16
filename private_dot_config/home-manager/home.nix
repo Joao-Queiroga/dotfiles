@@ -26,6 +26,13 @@
 			name = "Dracula";
 		};
 	};
+
+	programs = {
+		wezterm = {
+			enable = true;
+			enableZshIntegration = true;
+		};
+	};
 	
   programs.home-manager.enable = true;
 }
