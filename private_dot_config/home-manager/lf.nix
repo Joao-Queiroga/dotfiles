@@ -6,7 +6,7 @@
 			open = ''
 				''${{
 					test -L "$f" && f=$(readlink -f $f)
-					case $(file --mime-type $f -b) in
+					case $(${pkgs.file}/bin/file --mime-type $f -b) in
 						text/*|application/json|application/javascript|application/xml) $EDITOR "$f";;
 						*) xdg-open "$f";;
 					esac
