@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
 		discord
 		webcord
+		wezterm
 		teams-for-linux
 		drawio
 		obsidian
@@ -27,12 +28,5 @@
 		};
 	};
 
-	programs = {
-		wezterm = {
-			enable = true;
-			enableZshIntegration = true;
-		};
-	};
-	
   programs.home-manager.enable = true;
 }
