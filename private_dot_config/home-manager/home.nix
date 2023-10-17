@@ -28,5 +28,12 @@
 		};
 	};
 
+	programs = {
+		yazi = {
+			enable = true;
+			enableZshIntegration = true;
+		};
+	};
+
   programs.home-manager.enable = true;
 }
