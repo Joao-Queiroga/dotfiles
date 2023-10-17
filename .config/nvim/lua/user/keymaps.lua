@@ -123,7 +123,6 @@ local leader_mappings = {
 	g = {
 		name = "Git",
 		n = { "<cmd>Neogit<cr>", "Neogit" },
-		c = { "<cmd>execute 'silent !chezmoi re-add' | Neogit cwd=~/.local/share/chezmoi<cr>", "Neogit chezmoi" },
 		y = {
 			function()
 				vim.env.GIT_DIR = vim.fn.expand("~/.local/share/yadm/repo.git")
