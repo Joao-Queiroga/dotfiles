@@ -45,24 +45,6 @@ return {
 	},
 	{ import = "plugins.lsp.navic" },
 	{
-		"nvimdev/lspsaga.nvim",
-		event = "LspAttach",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-		enabled = false,
-		opts = {
-			outline = {
-				layout = "float",
-				keys = {
-					toggle_or_jump = "<Tab>",
-					jump = "l",
-				},
-			},
-		},
-	},
-	{
 		"folke/neodev.nvim",
 		lazy = true,
 	},
