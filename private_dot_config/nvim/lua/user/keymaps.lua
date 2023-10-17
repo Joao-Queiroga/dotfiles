@@ -27,7 +27,6 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<leader>c", "<cmd>bdelete<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
@@ -55,10 +54,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
-keymap("t", "<C-j>", "<cmd>NvimTmuxNavigateDown<cr>", term_opts)
-keymap("t", "<C-h>", "<cmd>NvimTmuxNavigateLeft<cr>", term_opts)
-keymap("t", "<C-k>", "<cmd>NvimTmuxNavigateUp<cr>", term_opts)
-keymap("t", "<C-l>", "<cmd>NvimTmuxNavigateRight<cr>", term_opts)
+keymap("t", "<C-j>", "<cmd>NavigatorDown<cr>", term_opts)
+keymap("t", "<C-h>", "<cmd>NavigatorLeft<cr>", term_opts)
+keymap("t", "<C-k>", "<cmd>NavigatorUp<cr>", term_opts)
+keymap("t", "<C-l>", "<cmd>NavigatorRight<cr>", term_opts)
 
 -- Inc rename
 vim.keymap.set("n", "<leader>rn", function()
@@ -71,8 +70,8 @@ local presets = require("which-key.plugins.presets")
 presets.operators["v"] = nil
 
 local leader_mappings = {
-	c = "Delete buffer",
-	e = { "<cmd>NvimTreeToggle<cr>", "Toggle FileTree" },
+	c = { "<cmd>lua MiniBufremove.delete()<cr>", "Delete buffer" },
+	e = { "<cmd>Neotree toggle<cr>", "Toggle FileTree" },
 	f = {
 		name = "Files",
 		f = { "<cmd>Telescope find_files<cr>", "Find files" },

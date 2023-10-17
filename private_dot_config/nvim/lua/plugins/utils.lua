@@ -28,6 +28,10 @@ return {
 		},
 	},
 	{
+		"echasnovski/mini.bufremove",
+		opts = {},
+	},
+	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
 		keys = { { "<C-t>", mode = { "i", "n" } } },
