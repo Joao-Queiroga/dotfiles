@@ -43,6 +43,7 @@ return {
 		cmd = { "Trouble", "TroubleToggle" },
 		opts = {},
 	},
+	{ import = "plugins.lsp.navic" },
 	{
 		"nvimdev/lspsaga.nvim",
 		event = "LspAttach",
@@ -50,6 +51,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		},
+		enabled = false,
 		opts = {
 			outline = {
 				layout = "float",

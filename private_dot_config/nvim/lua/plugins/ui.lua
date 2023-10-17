@@ -1,11 +1,5 @@
 return {
 	{
-		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		opts = require("plugins.config.lualine"),
-	},
-	{
 		"akinsho/bufferline.nvim",
 		event = "VeryLazy",
 		opts = require("plugins.config.bufferline"),
