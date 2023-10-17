@@ -31,6 +31,17 @@ return {
 			winbar = {
 				lualine_c = {
 					{
+						"filetype",
+						icon_only = true,
+						separator = "",
+						color = { bg = "none" },
+					},
+					{
+						"filename",
+						padding = 0,
+						color = "NavicText",
+					},
+					{
 						function()
 							local navic = require("nvim-navic")
 							local data = navic.get_data()
@@ -38,6 +49,9 @@ return {
 								data[i].name = "%#NavicIcons" .. context.type .. "#" .. context.name .. "%*"
 							end
 							return navic.format_data(data, { safe_output = false })
+						end,
+						fmt = function(str)
+							return str ~= "" and "%#NavicSeparator#› %*" .. str or nil
 						end,
 						cond = function()
 							return require("nvim-navic").is_available()
