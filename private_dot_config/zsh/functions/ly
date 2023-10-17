@@ -1,3 +1,0 @@
-chezmoi re-add &> /dev/null
-lazygit -p ~/.local/share/chezmoi
-chezmoi apply

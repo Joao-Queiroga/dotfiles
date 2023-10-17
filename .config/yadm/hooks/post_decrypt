@@ -1,0 +1,6 @@
+#!/bin/sh
+for key_file in ~/.gnupg/*.key; do
+    if [ -f "$key_file" ]; then
+		gpg --import "$key_file" > /dev/null
+    fi
+done
