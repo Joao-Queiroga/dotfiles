@@ -81,10 +81,9 @@ local leader_mappings = {
 	},
 	l = {
 		name = "Lsp",
-		a = { "<cmd>Lspsaga code_action<cr>", "Code actions" },
+		a = "Code actions",
 		r = "Rename",
-		f = { "<cmd>Lspsaga finder<cr>", "Finder" },
-		o = { "<cmd>Lspsaga outline<cr>", "Outline" },
+		o = { "<cmd>NavBuddy<cr>", "Outline" },
 		t = {
 			function()
 				require("trouble").toggle()
