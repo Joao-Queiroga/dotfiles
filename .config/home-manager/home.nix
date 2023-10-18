@@ -9,7 +9,6 @@
   home.packages = with pkgs; [
 		discord
 		webcord
-		wezterm
 		teams-for-linux
 		drawio
 		obsidian
