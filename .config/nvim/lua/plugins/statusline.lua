@@ -48,6 +48,14 @@ return {
 			winbar = {
 				lualine_c = {
 					{
+						function()
+							return "%#Function# %#NavicText#"
+									.. vim.fn.expand("%:p:h:t")
+									.. " %#NavicSeparator#›%*"
+						end,
+						padding = 0,
+					},
+					{
 						"filetype",
 						icon_only = true,
 						separator = "",
