@@ -1,16 +1,17 @@
 return {
 	{
-		'williamboman/mason.nvim',
+		"williamboman/mason.nvim",
 		lazy = true,
-		cmd = "Mason";
+		cmd = "Mason",
+		build = ":MasonUpdate",
 		opts = {
 			ui = {
 				icons = {
 					package_pending = " ",
 					package_installed = "󰄳 ",
 					package_uninstalled = " 󰚌",
-				}
-			}
+				},
+			},
 		},
 	},
 }
