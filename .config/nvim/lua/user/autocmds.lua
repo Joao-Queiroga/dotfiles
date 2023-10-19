@@ -17,7 +17,7 @@ autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- Add neovim files to chezmoi on save
-autocmd({ "BufWritePost" }, {
+autocmd({ "BufNewFile" }, {
 	pattern = vim.fn.expand("~/.config/nvim/**", true, true),
 	callback = function()
 		os.execute("yadm add " .. vim.api.nvim_buf_get_name(0))
