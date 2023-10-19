@@ -3,6 +3,7 @@ return {
 	{
 		"nvimtools/none-ls.nvim",
 		main = "null-ls",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"mason.nvim",

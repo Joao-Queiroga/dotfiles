@@ -14,10 +14,12 @@ local installed_servers = {
 return {
 	{
 		"neovim/nvim-lspconfig",
+		lazy = true,
 		config = handlers.setup,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"williamboman/mason.nvim",
 			"folke/neoconf.nvim",

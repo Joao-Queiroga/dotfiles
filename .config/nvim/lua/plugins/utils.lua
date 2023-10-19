@@ -6,6 +6,7 @@ return {
 	},
 	{
 		"uga-rosa/ccc.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			highlighter = {
 				auto_enable = true,
@@ -51,6 +52,7 @@ return {
 	},
 	{
 		"lambdalisue/suda.vim",
+		event = { "BufReadPre", "BufNewFile" },
 		init = function()
 			vim.g.suda_smart_edit = 1
 		end,
