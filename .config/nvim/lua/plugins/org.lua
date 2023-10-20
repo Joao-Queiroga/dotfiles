@@ -1,34 +1,35 @@
 return {
 	{
-		'nvim-orgmode/orgmode',
+		"nvim-orgmode/orgmode",
 		ft = "org",
 		keys = { "<leader>oa", "<leader>oc" },
 		build = ":TSUpdate org",
 		opts = {},
 		dependencies = {
-			'nvim-treesitter/nvim-treesitter'
+			"nvim-treesitter/nvim-treesitter",
 		},
-		config = function (_, opts)
-			require('orgmode').setup_ts_grammar()
-			require('orgmode').setup(opts)
+		config = function(_, opts)
+			require("orgmode").setup_ts_grammar()
+			require("orgmode").setup(opts)
 		end,
 	},
 	{
-		'akinsho/org-bullets.nvim',
+		"akinsho/org-bullets.nvim",
 		ft = "org",
 		dependencies = {
-			'nvim-orgmode/orgmode',
+			"nvim-orgmode/orgmode",
 		},
 		opts = {
 			concealcursor = true,
 			symbols = {
-				headlines = { "⦿", "○", "●", "○", "●", "○", "●" }
-			}
-		}
+				headlines = { "⦿", "○", "●", "○", "●", "○", "●" },
+			},
+		},
 	},
 	{
-		'lukas-reineke/headlines.nvim',
+		"lukas-reineke/headlines.nvim",
 		dependencies = "nvim-treesitter/nvim-treesitter",
+		ft = { "markdown", "org", "norg" },
 		opts = {},
-	}
+	},
 }
