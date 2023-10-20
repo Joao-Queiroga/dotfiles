@@ -41,9 +41,19 @@ return {
 			filesystem = {
 				use_libuv_file_watcher = true,
 				follow_current_file = {
-					enabled = true
-				}
-			}
+					enabled = true,
+				},
+			},
+			event_handlers = {
+				{
+					event = "file_added",
+					handler = function(file_path)
+						if string.find(file_path, vim.fn.expand("~/.config/nvim/")) then
+							os.execute("yadm add " .. file_path)
+						end
+					end,
+				},
+			},
 		},
 	},
 	{
