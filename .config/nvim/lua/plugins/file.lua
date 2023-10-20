@@ -1,6 +1,7 @@
 return {
 	{
 		"echasnovski/mini.files",
+		event = "UiEnter",
 		opts = {
 			windows = {
 				preview = true,
@@ -41,9 +42,9 @@ return {
 			filesystem = {
 				use_libuv_file_watcher = true,
 				follow_current_file = {
-					enabled = true
-				}
-			}
+					enabled = true,
+				},
+			},
 		},
 	},
 	{
