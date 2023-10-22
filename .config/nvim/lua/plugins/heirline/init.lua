@@ -4,6 +4,10 @@ return {
 		-- You can optionally lazy-load heirline on UiEnter
 		-- to make sure all required plugins and colorschemes are loaded before setup
 		event = "UiEnter",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons",
+		},
 		opts = {
 			winbar = require("plugins.heirline.winbar"),
 			opts = {
