@@ -17,7 +17,7 @@ local current_file = {
 	},
 	{
 		provider = " › ",
-		hl = "NavicSeparator"
+		hl = "NavicSeparator",
 	},
 	{
 		init = function(self)
@@ -36,35 +36,47 @@ local current_file = {
 		init = function(self)
 			self.filename = vim.fn.fnamemodify(self.filepath, ":t")
 		end,
-		provider = function (self)
+		provider = function(self)
 			return self.filename
 		end,
 		hl = "NavicText",
 	},
-	update = { "BufRead", "BufNewFile" }
+	update = { "BufRead", "BufNewFile" },
 }
 
 local navic = {
 	init = function(self)
-		local navic = require("nvim-navic")
-		local data = navic.get_data()
-		for i, context in pairs(data) do
-			data[i].name = "%#NavicIcons" .. context.type .. "#" .. context.name .. "%*"
+		local data = require("nvim-navic").get_data()
+		local children = {}
+		if #data > 0 then
+			table.insert(children, {
+				provider = " › ",
+				hl = "NavicSeparator",
+			})
 		end
-		self.navic = navic.format_data(data, { safe_output = false })
+		for i, d in ipairs(data) do
+			local child = {
+				{
+					provider = d.icon,
+				},
+				{
+					provider = d.name,
+				},
+				hl = "NavicIcons" .. d.type,
+			}
+			if #data > 1 and i < #data then
+				table.insert(child, {
+					provider = " › ",
+					hl = "NavicSeparator",
+				})
+			end
+			table.insert(children, child)
+		end
+		self.child = self:new(children, 1)
 	end,
-	{
-		provider = " › ",
-		hl = "NavicSeparator",
-		condition = function(self)
-			return #self.navic > 0
-		end,
-	},
-	{
-		provider = function(self)
-			return self.navic
-		end,
-	},
+	provider = function(self)
+		return self.child:eval()
+	end,
 	condition = function()
 		return require("nvim-navic").is_available()
 	end,
@@ -73,5 +85,5 @@ local navic = {
 
 return {
 	current_file,
-	navic
+	navic,
 }
