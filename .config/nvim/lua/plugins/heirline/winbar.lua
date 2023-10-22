@@ -83,7 +83,4 @@ local navic = {
 	update = { "CursorMoved", "LspAttach" },
 }
 
-return {
-	current_file,
-	navic,
-}
+return { current_file, navic }

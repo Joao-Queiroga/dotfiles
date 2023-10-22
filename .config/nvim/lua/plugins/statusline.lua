@@ -3,6 +3,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
 		dependencies = "nvim-tree/nvim-web-devicons",
+		enabled = false,
 		opts = {
 			options = {
 				theme = "tokyonight",
