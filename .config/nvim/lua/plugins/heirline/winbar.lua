@@ -46,7 +46,7 @@ local current_file = {
 
 local navic = {
 	init = function(self)
-		local data = require("nvim-navic").get_data()
+		local data = require("nvim-navic").get_data() or {}
 		local children = {}
 		if #data > 0 then
 			table.insert(children, {
@@ -80,7 +80,7 @@ local navic = {
 	condition = function()
 		return require("nvim-navic").is_available()
 	end,
-	update = "CursorMoved",
+	update = { "CursorMoved", "LspAttach" },
 }
 
 return {
