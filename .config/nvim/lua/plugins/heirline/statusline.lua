@@ -66,7 +66,7 @@ local vi_mode = {
 		local mode = self.mode:sub(1, 1)
 		return { fg = self.mode_colors[mode], bold = true }
 	end,
-	update = "ModeChanged"
+	update = "ModeChanged",
 }
 
 local file_name_block = {
@@ -79,20 +79,23 @@ local file_icon = {
 	init = function(self)
 		local filename = self.filename
 		local extension = vim.fn.fnamemodify(filename, ":e")
-		self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+		self.icon, self.icon_color =
+			require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 	end,
 	provider = function(self)
 		return self.icon and (self.icon .. " ")
 	end,
 	hl = function(self)
 		return { fg = self.icon_color }
-	end
+	end,
 }
 
 local file_name = {
 	provider = function(self)
-		local filename = vim.fn.fnamemodify(self.filename, ":.")
-		if filename == "" then return "[No Name]" end
+		local filename = vim.fn.fnamemodify(self.filename, ":t")
+		if filename == "" then
+			return "[No Name]"
+		end
 		if not conditions.width_percent_below(#filename, 0.25) then
 			filename = vim.fn.pathshorten(filename)
 		end
@@ -119,7 +122,8 @@ local file_flags = {
 	},
 }
 
-file_name_block = utils.insert(file_name_block,
+file_name_block = utils.insert(
+	file_name_block,
 	{ provider = " " },
 	file_icon,
 	file_name,
@@ -154,7 +158,6 @@ local diagnostics = {
 	},
 	{
 		provider = function(self)
-			-- 0 is just another output, we can decide to print it or not!
 			return self.errors > 0 and (self.error_icon .. self.errors .. " ")
 		end,
 		hl = "DiagnosticError",
@@ -184,5 +187,5 @@ return {
 	diagnostics,
 	file_name_block,
 
-	hl = { bg = "bg_dark" }
+	hl = { bg = "bg_dark" },
 }
