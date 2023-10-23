@@ -12,6 +12,7 @@
 		teams-for-linux
 		drawio
 		obsidian
+		wezterm
 		beekeeper-studio
   ];
 
