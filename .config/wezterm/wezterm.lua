@@ -4,6 +4,8 @@ local config = {}
 config.term = "wezterm"
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 12
+config.force_reverse_video_cursor = true
+config.hide_mouse_cursor_when_typing = false
 
 config.color_scheme = "tokyonight_night"
 config.tab_and_split_indices_are_zero_based = true
