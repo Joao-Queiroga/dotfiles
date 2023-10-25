@@ -22,8 +22,11 @@ widgets.memory = lain.widget.mem({
 widgets.volume = lain.widget.alsa({
 	timeout = 2,
 	settings = function()
+		if not volume_now.level then
+			return
+		end
 		local volume_icon = volume_now.status == "on" and "󰕾 " or "󰝟 "
-		widget:set_markup(markup.fontfg(font, "#50fa7b", volume_icon .. (volume_now.level or "") .. "%"))
+		widget:set_markup(markup.fontfg(font, "#50fa7b", volume_icon .. volume_now.level .. "%"))
 	end,
 })
 
