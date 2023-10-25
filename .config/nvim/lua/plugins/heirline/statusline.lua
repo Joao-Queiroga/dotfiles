@@ -1,6 +1,27 @@
 local utils = require("heirline.utils")
 local conditions = require("heirline.conditions")
 
+function exlude(args)
+	return not conditions.buffer_matches({
+		buftype = { "nofile", "prompt", "help", "quickfix" },
+		filetype = {
+			"^git.*",
+			"help",
+			"startify",
+			"dashboard",
+			"neogitstatus",
+			"NvimTree",
+			"Trouble",
+			"alpha",
+			"spectre_panel",
+			"toggleterm",
+			"neo-tree",
+			"neo-tree-popup",
+			"notify",
+		},
+	}, args.buf)
+end
+
 local vi_mode = {
 	init = function(self)
 		self.mode = vim.fn.mode(1)
@@ -188,4 +209,5 @@ return {
 	file_name_block,
 
 	hl = { bg = "bg_dark" },
+	condition = exlude,
 }
