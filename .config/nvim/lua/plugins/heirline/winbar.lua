@@ -41,7 +41,7 @@ local current_file = {
 		end,
 		hl = "NavicText",
 	},
-	update = { "BufRead", "BufNewFile" },
+	update = { "BufRead", "BufNewFile", "BufEnter" },
 }
 
 local navic = {
