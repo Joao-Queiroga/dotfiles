@@ -1,7 +1,7 @@
 local utils = require("heirline.utils")
 local conditions = require("heirline.conditions")
 
-function exlude(args)
+local function exlude(args)
 	return not conditions.buffer_matches({
 		buftype = { "nofile", "prompt", "help", "quickfix" },
 		filetype = {
