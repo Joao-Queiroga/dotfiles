@@ -28,4 +28,8 @@ return {
 		dependencies = "kevinhwang91/promise-async",
 		opts = {},
 	},
+	{
+		"elkowar/yuck.vim",
+		ft = "yuck",
+	},
 }
