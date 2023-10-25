@@ -1,6 +1,5 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-config.term = "wezterm"
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 12
 config.force_reverse_video_cursor = true
