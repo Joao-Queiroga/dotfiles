@@ -3,6 +3,7 @@
 {
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
+	targets.genericLinux.enable = true;
 
   home.stateVersion = "23.05";
 
@@ -12,7 +13,6 @@
 		teams-for-linux
 		drawio
 		obsidian
-		wezterm
 		beekeeper-studio
   ];
 
@@ -25,13 +25,6 @@
 		theme = {
 			package = pkgs.dracula-theme;
 			name = "Dracula";
-		};
-	};
-
-	programs = {
-		yazi = {
-			enable = true;
-			enableZshIntegration = true;
 		};
 	};
 
