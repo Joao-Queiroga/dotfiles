@@ -4,11 +4,11 @@ local _M = {
 	modkey = "Mod4",
 
 	terminal = "wezterm",
-	file_manager = "pcmanfm",
+	file_manager = "thunar",
 	browser = "brave",
 
 	wallpaper = home .. "/.config/.background",
-	icon_theme = "ePapirus-Dark"
+	icon_theme = "ePapirus-Dark",
 }
 
 return _M
