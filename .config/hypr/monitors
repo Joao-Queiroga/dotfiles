@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+import subprocess
+import json
+import sys
+
+args = sys.argv
+# Transforma a saída em um objeto JSON
+monitores= json.loads(subprocess.check_output("hyprctl monitors -j", shell=True).decode("utf-8"))
+
+def setup(_ = None):
+    for monitor in monitores:
+        for i in range(1, 11):
+            subprocess.call("hyprctl keyword workspace %d, monitor:{name}".format(**monitor) % (i + (monitor['id'] * 10)), shell=True)
+            subprocess.call("hyprctl dispatch moveworkspacetomonitor %d {id}".format(**monitor) % (i + (monitor['id'] * 10)), shell=True)
+
+def get_current_monitor():
+    return next(filter(lambda monitor: monitor['focused'], monitores))
+
+def workspace(workspace: int):
+    subprocess.call("hyprctl dispatch workspace %d" % ((get_current_monitor()['id'] * 10) + workspace), shell=True)
+
+def move(workspace: int):
+    subprocess.call("hyprctl dispatch movetoworkspace %d" % ((get_current_monitor()['id'] * 10) + workspace), shell=True)
+
+def movesilent(workspace: int):
+    subprocess.call("hyprctl dispatch movetoworkspacesilent %d" % ((get_current_monitor()['id'] * 10) + workspace), shell=True)
+
+if len(args) < 2:
+    print("Need arugments")
+    exit()
+
+if args[1] == "setup":
+    setup()
+    exit()
+
+funcoes = {
+    "workspace": workspace,
+    "move": move,
+    "movesilent": movesilent
+}
+
+if args[1] in funcoes:
+    funcoes[args[1]](int(args[2]))
+else:
+    print("Argumento inválido")
