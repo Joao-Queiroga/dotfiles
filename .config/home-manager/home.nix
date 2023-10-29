@@ -14,6 +14,7 @@
 		drawio
 		obsidian
 		beekeeper-studio
+		gitui
   ];
 
 	gtk = {
