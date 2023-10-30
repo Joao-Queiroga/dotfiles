@@ -123,13 +123,22 @@ local leader_mappings = {
 	g = {
 		name = "Git",
 		n = { "<cmd>Neogit<cr>", "Neogit" },
-		y = {
+	},
+	y = {
+		name = "Yadm",
+		n = {
 			function()
 				vim.env.GIT_DIR = vim.fn.expand("~/.local/share/yadm/repo.git")
 				vim.env.GIT_WORK_TREE = vim.fn.expand("~")
 				require("neogit").open()
 			end,
 			"Neogit yadm",
+		},
+		a = {
+			function()
+				os.execute("yadm add " .. vim.api.nvim_buf_get_name(0))
+			end,
+			"Add current file",
 		},
 	},
 	t = {
