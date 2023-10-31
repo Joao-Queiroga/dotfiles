@@ -4,16 +4,8 @@ import Hyprland from 'resource:///com/github/Aylur/ags/service/hyprland.js';
 import { exec } from 'resource:///com/github/Aylur/ags/utils.js';
 import Bar from './bar.js'
 
-const exampleWindow = Widget.Window({
-	name: 'example-window',
-	child: Widget.Label({
-		label: 'example-content',
-	}),
-});
-
 const scss = App.configDir + '/style.scss' 
 const css = App.configDir + '/style.css' 
-
 exec(`sassc ${scss} ${css}`);
 
 // had to use exec since Hyprland.monitors was returning a empty array
@@ -30,7 +22,6 @@ export default {
 	windows: [
 		// NOTE: the window will still render, if you don't pass it here
 		// but if you don't, the window can't be toggled through App or cli
-		exampleWindow,
 		...monitors.map((_, i) => Bar({ monitor: i })),
 	],
 };
