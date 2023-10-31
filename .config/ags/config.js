@@ -1,6 +1,4 @@
-import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import App from 'resource:///com/github/Aylur/ags/app.js';
-import Hyprland from 'resource:///com/github/Aylur/ags/service/hyprland.js';
 import { exec } from 'resource:///com/github/Aylur/ags/utils.js';
 import Bar from './bar.js'
 
@@ -22,6 +20,6 @@ export default {
 	windows: [
 		// NOTE: the window will still render, if you don't pass it here
 		// but if you don't, the window can't be toggled through App or cli
-		...monitors.map((_, i) => Bar({ monitor: i })),
+		...monitors.map((monitor) => Bar({ monitor: monitor.id })),
 	],
 };
