@@ -1,3 +1,34 @@
-.focused {
-	color: #ff5555;
+.bar {
+	font-size: 9.5pt;
+}
+
+label {
+	font-weight: bold;
+}
+
+.workspaces button,
+.media {
+	background-color: transparent;
+	padding: 0 2px;
+}
+
+.client-title {
+	margin-left: 1em;
+}
+
+.notification image {
+	margin-left: 1em;
+}
+
+.battery progressbar {
+	margin: 0 6px;
+}
+
+.clock {
+	margin: 0 6px;
+	font-size: 1.1em;
+}
+
+progress, highlight {
+	min-height: 8px;
 }
