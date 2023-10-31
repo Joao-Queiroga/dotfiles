@@ -6,7 +6,7 @@ const Workspaces = (monitor = 0) => Widget.Box({
 	className: 'workspaces',
 	connections:  [[Hyprland.active.workspace, self => {
 		// generate an array [1..10] then make buttons from the index
-		const arr = Array.from({ length: 10 }, (_, i) => i + 1);
+		const arr = Array.from({ length: 9 }, (_, i) => i + 1);
 		self.children = arr.map(i => Widget.Button({
 			onClicked: () => execAsync(`hyprctl dispatch workspace ${i + (monitor * 10)}`),
 			child: Widget.Label(`${i}`),
