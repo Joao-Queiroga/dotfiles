@@ -4,12 +4,15 @@
 
 label {
 	font-weight: bold;
+	margin: 0;
 }
 
 .workspaces button,
 .media {
 	background-color: transparent;
-	padding: 0 2px;
+	padding: 0 1px;
+	margin: 0;
+	// border: 0;
 }
 
 .client-title {
