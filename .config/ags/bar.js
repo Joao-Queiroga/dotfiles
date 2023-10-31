@@ -11,8 +11,23 @@ const Workspaces = (monitor = 0) => Widget.Box({
 			onClicked: () => execAsync(`hyprctl dispatch workspace ${i + (monitor * 10)}`),
 			child: Widget.Label(`${i}`),
 			className: Hyprland.active.workspace.id == i + (monitor * 10) ? 'focused' : '',
-		}));
+		}))
 	}]],
+})
+
+const ClientTitle = () => Widget.Label({
+	className: 'client-title',
+	binds:[
+		['label', Hyprland.active.client, 'title'],
+	]
+})
+
+const Clock = () => Widget.Label({
+	className: 'clock',
+	connections: [
+		[1000, self => execAsync(['date', '+%a %d/%m/%Y %H:%M'])
+			.then(date => self.label = date).catch(console.error)]
+	]
 })
 
 const Left = (monitor) => Widget.Box({
@@ -23,11 +38,13 @@ const Left = (monitor) => Widget.Box({
 
 const Center = () => Widget.Box({
 	children: [
+		ClientTitle()
 	]
 })
 
 const Right = () => Widget.Box({
 	children: [
+		Clock()
 	]
 })
 
