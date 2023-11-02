@@ -122,7 +122,7 @@ local file_name = {
 		end
 		return filename
 	end,
-	hl = { fg = utils.get_highlight("Directory").fg },
+	hl = "Directory",
 }
 
 local file_flags = {
@@ -155,12 +155,12 @@ file_name_block = utils.insert(
 local diagnostics = {
 	conditions = conditions.has_diagnostics,
 
-	static = {
-		error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-		warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-		info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-		hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
-	},
+	-- static = {
+	-- 	error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
+	-- 	warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
+	-- 	info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
+	-- 	hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
+	-- },
 
 	init = function(self)
 		self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
@@ -211,18 +211,18 @@ local Ruler = {
 	provider = "%7(%l/%3L%):%2c %P",
 }
 
-local ScrollBar = {
-	static = {
-		sbar = { "🭶", "🭷", "🭸", "🭹", "🭺", "🭻" },
-	},
-	provider = function(self)
-		local curr_line = vim.api.nvim_win_get_cursor(0)[1]
-		local lines = vim.api.nvim_buf_line_count(0)
-		local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
-		return string.rep(self.sbar[i], 2)
-	end,
-	hl = { fg = "blue", bg = "bg_highlight" },
-}
+-- local ScrollBar = {
+-- 	static = {
+-- 		sbar = { "🭶", "🭷", "🭸", "🭹", "🭺", "🭻" },
+-- 	},
+-- 	provider = function(self)
+-- 		local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+-- 		local lines = vim.api.nvim_buf_line_count(0)
+-- 		local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+-- 		return string.rep(self.sbar[i], 2)
+-- 	end,
+-- 	hl = { fg = "blue", bg = "bg_highlight" },
+-- }
 
 return {
 	utils.surround({ "", "" }, "bg_highlight", { vi_mode }),
@@ -230,7 +230,7 @@ return {
 	file_name_block,
 	{ provider = "%=" },
 	Ruler,
-	ScrollBar,
+	-- ScrollBar,
 
 	hl = { bg = "bg_dark" },
 	condition = exlude,

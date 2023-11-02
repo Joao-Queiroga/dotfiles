@@ -1,3 +1,22 @@
+local function setup_colors()
+	local utils = require("heirline.utils")
+	return {
+		bg_highlight = utils.get_highlight("CursorLine").bg,
+		bg_dark = utils.get_highlight("CodeBlock").bg,
+		fg_bright = utils.get_highlight("Folded").fg,
+		red = utils.get_highlight("DiagnosticError").fg,
+		dark_red = utils.get_highlight("DiffDelete").bg,
+		green = utils.get_highlight("String").fg,
+		blue = utils.get_highlight("Function").fg,
+		gray = utils.get_highlight("NonText").fg,
+		orange = utils.get_highlight("Constant").fg,
+		purple = utils.get_highlight("@keyword").fg,
+		cyan = utils.get_highlight("Keyword").fg,
+		git_del = utils.get_highlight("DiffRemoved").fg,
+		git_add = utils.get_highlight("DiffAdded").fg,
+		git_change = utils.get_highlight("DiffChanged").fg,
+	}
+end
 return {
 	{
 		"rebelot/heirline.nvim",
@@ -8,12 +27,21 @@ return {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons",
 		},
-		opts = function ()
+		init = function()
+			vim.api.nvim_create_augroup("Heirline", { clear = true })
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				callback = function()
+					require("heirline.utils").on_colorscheme(setup_colors)
+				end,
+				group = "Heirline",
+			})
+		end,
+		opts = function()
 			return {
 				winbar = require("plugins.heirline.winbar"),
 				statusline = require("plugins.heirline.statusline"),
 				opts = {
-					colors = require'tokyonight.colors'.setup(),
+					colors = setup_colors(),
 					disable_winbar_cb = function(args)
 						return require("heirline.conditions").buffer_matches({
 							buftype = { "nofile", "prompt", "help", "quickfix" },
@@ -32,7 +60,7 @@ return {
 								"neo-tree-popup",
 								"notify",
 							},
-							}, args.buf)
+						}, args.buf)
 					end,
 				},
 			}
