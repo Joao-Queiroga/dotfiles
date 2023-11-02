@@ -122,7 +122,7 @@ local file_name = {
 		end
 		return filename
 	end,
-	hl = "Directory",
+	hl = { fg = utils.get_highlight("Directory").fg },
 }
 
 local file_flags = {
@@ -155,12 +155,12 @@ file_name_block = utils.insert(
 local diagnostics = {
 	conditions = conditions.has_diagnostics,
 
-	-- static = {
-	-- 	error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-	-- 	warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-	-- 	info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-	-- 	hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
-	-- },
+	static = {
+		error_icon = " ",
+		warn_icon = " ",
+		info_icon = " ",
+		hint_icon = " ",
+	},
 
 	init = function(self)
 		self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })

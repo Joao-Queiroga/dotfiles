@@ -2,7 +2,7 @@ local function setup_colors()
 	local utils = require("heirline.utils")
 	return {
 		bg_highlight = utils.get_highlight("CursorLine").bg,
-		bg_dark = utils.get_highlight("CodeBlock").bg,
+		bg_dark = utils.get_highlight("CodeBlock").bg or "black",
 		fg_bright = utils.get_highlight("Folded").fg,
 		red = utils.get_highlight("DiagnosticError").fg,
 		dark_red = utils.get_highlight("DiffDelete").bg,
@@ -11,10 +11,11 @@ local function setup_colors()
 		gray = utils.get_highlight("NonText").fg,
 		orange = utils.get_highlight("Constant").fg,
 		purple = utils.get_highlight("@keyword").fg,
+		magenta = utils.get_highlight("Statement").fg,
 		cyan = utils.get_highlight("Keyword").fg,
-		git_del = utils.get_highlight("DiffRemoved").fg,
-		git_add = utils.get_highlight("DiffAdded").fg,
-		git_change = utils.get_highlight("DiffChanged").fg,
+		git_del = utils.get_highlight("diffRemoved").fg,
+		git_add = utils.get_highlight("diffAdded").fg,
+		git_change = utils.get_highlight("diffChanged").fg,
 	}
 end
 return {
@@ -41,7 +42,7 @@ return {
 				winbar = require("plugins.heirline.winbar"),
 				statusline = require("plugins.heirline.statusline"),
 				opts = {
-					colors = setup_colors(),
+					colors = setup_colors,
 					disable_winbar_cb = function(args)
 						return require("heirline.conditions").buffer_matches({
 							buftype = { "nofile", "prompt", "help", "quickfix" },
