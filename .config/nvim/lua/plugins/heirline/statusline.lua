@@ -122,7 +122,7 @@ local file_name = {
 		end
 		return filename
 	end,
-	hl = { fg = utils.get_highlight("Directory").fg },
+	hl = { fg = "blue" },
 }
 
 local file_flags = {
@@ -203,12 +203,13 @@ local diagnostics = {
 	},
 }
 
-local Ruler = {
+local ruler = {
 	-- %l = current line number
 	-- %L = number of lines in the buffer
 	-- %c = column number
 	-- %P = percentage through file of displayed window
 	provider = "%7(%l/%3L%):%2c %P",
+	hl = { bg = "blue", fg = "bg" },
 }
 
 -- local ScrollBar = {
@@ -229,7 +230,7 @@ return {
 	diagnostics,
 	file_name_block,
 	{ provider = "%=" },
-	Ruler,
+	utils.surround({ "" }, "blue", { ruler }),
 	-- ScrollBar,
 
 	hl = { bg = "bg" },
