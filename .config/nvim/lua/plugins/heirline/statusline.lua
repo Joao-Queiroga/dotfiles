@@ -232,6 +232,6 @@ return {
 	Ruler,
 	-- ScrollBar,
 
-	hl = { bg = "bg_dark" },
+	hl = { bg = "bg" },
 	condition = exlude,
 }

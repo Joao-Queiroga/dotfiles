@@ -2,7 +2,7 @@ local function setup_colors()
 	local utils = require("heirline.utils")
 	return {
 		bg_highlight = utils.get_highlight("CursorLine").bg,
-		bg_dark = utils.get_highlight("CodeBlock").bg or "black",
+		bg = utils.get_highlight("StatusLine").bg,
 		fg_bright = utils.get_highlight("Folded").fg,
 		red = utils.get_highlight("DiagnosticError").fg,
 		dark_red = utils.get_highlight("DiffDelete").bg,
