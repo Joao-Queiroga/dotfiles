@@ -1,7 +1,6 @@
 return {
 	{
 		"echasnovski/mini.files",
-		event = "UiEnter",
 		opts = {
 			windows = {
 				preview = true,
