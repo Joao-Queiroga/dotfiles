@@ -5,7 +5,7 @@ local _M = {
 
 	terminal = "wezterm",
 	file_manager = "thunar",
-	browser = "brave",
+	browser = "firefox",
 
 	wallpaper = home .. "/.config/.background",
 	icon_theme = "ePapirus-Dark",
