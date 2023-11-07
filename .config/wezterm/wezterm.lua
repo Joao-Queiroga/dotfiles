@@ -22,10 +22,4 @@ config.window_padding = {
 	right = 0,
 }
 
-config.unix_domains = {
-	{
-		name = "unix",
-	},
-}
-
 return config
