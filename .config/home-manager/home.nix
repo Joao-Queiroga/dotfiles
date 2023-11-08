@@ -8,7 +8,6 @@
   home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
-		discord
 		webcord
 		teams-for-linux
 		drawio
