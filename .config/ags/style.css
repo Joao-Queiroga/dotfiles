@@ -14,6 +14,10 @@ label {
 	margin: 0;
 }
 
+.focused {
+	color: red;
+}
+
 .client-title {
 	margin-left: 1em;
 }

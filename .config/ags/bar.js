@@ -1,11 +1,11 @@
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Hyprland from 'resource:///com/github/Aylur/ags/service/hyprland.js';
-import { exec, execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
+import { execAsync } from 'resource:///com/github/Aylur/ags/utils.js';
 
-const Workspaces = (monitor = 0) => Widget.Box({
+const Workspaces = (monitor) => Widget.Box({
 	className: 'workspaces',
 	connections:  [[Hyprland.active.workspace, self => {
-		// generate an array [1..10] then make buttons from the index
+		// generate an array [1..9] then make buttons from the index
 		const arr = Array.from({ length: 9 }, (_, i) => i + 1);
 		self.children = arr.map(i => Widget.Button({
 			onClicked: () => execAsync(`hyprctl dispatch workspace ${i + (monitor * 10)}`),
@@ -15,11 +15,12 @@ const Workspaces = (monitor = 0) => Widget.Box({
 	}]],
 })
 
-const ClientTitle = () => Widget.Label({
+const ClientTitle = (monitor) => Widget.Label({
 	className: 'client-title',
-	binds:[
-		['label', Hyprland.active.client, 'title'],
-	]
+	connections: [[Hyprland.active, self => {
+		let mon = Hyprland.getMonitor(monitor)
+		self.label = mon.focused? Hyprland.active.client.title : Hyprland.getWorkspace(mon.activeWorkspace.id).lastwindowtitle
+	}]]
 })
 
 const Clock = () => Widget.Label({
@@ -36,13 +37,13 @@ const Left = (monitor) => Widget.Box({
 	]
 })
 
-const Center = () => Widget.Box({
+const Center = (monitor) => Widget.Box({
 	children: [
-		ClientTitle()
+		ClientTitle(monitor)
 	]
 })
 
-const Right = () => Widget.Box({
+const Right = (monitor) => Widget.Box({
 	children: [
 		Clock()
 	]
@@ -56,7 +57,7 @@ export default ({ monitor } = {}) => Widget.Window({
 	anchor: ['top', 'left', 'right'],
 	child: Widget.CenterBox({
 		startWidget: Left(monitor),
-		centerWidget: Center(),
+		centerWidget: Center(monitor),
 		endWidget: Right(),
 	})
 })
