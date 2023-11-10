@@ -35,11 +35,6 @@ return {
 		opts = {},
 	},
 	{
-		"smjonas/inc-rename.nvim",
-		cmd = "IncRename",
-		config = true,
-	},
-	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		cmd = { "Trouble", "TroubleToggle" },
@@ -79,10 +74,6 @@ return {
 				cmp = {
 					enabled = true,
 				},
-			},
-			null_ls = {
-				enabled = true,
-				name = "crates.nvim",
 			},
 		},
 	},

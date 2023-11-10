@@ -9,15 +9,6 @@ return {
 		},
 	},
 	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		opts = require("plugins.config.nvim-tree"),
-		enabled = false,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
-	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		cmd = "Neotree",
