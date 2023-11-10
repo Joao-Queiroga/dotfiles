@@ -1,5 +1,7 @@
-.bar {
+.bar, .bar * {
 	font-size: 9.5pt;
+	background-color: #1a1b26;
+	color: #c0caf5;
 }
 
 label {
@@ -9,13 +11,13 @@ label {
 
 .workspaces button,
 .media {
-	background-color: transparent;
+	background-color: #1a1b26;
 	padding: 0 1px;
 	margin: 0;
 }
 
-.focused {
-	color: red;
+.focused label {
+	color: #7aa2f7;
 }
 
 .client-title {
