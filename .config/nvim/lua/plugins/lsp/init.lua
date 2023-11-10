@@ -50,10 +50,6 @@ return {
 		lazy = true,
 	},
 	{
-		"simrat39/rust-tools.nvim",
-		lazy = true,
-	},
-	{
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
 		dependencies = {
