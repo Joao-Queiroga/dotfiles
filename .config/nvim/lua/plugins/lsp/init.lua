@@ -14,7 +14,6 @@ local installed_servers = {
 return {
 	{
 		"neovim/nvim-lspconfig",
-		lazy = true,
 		config = handlers.setup,
 	},
 	{
@@ -29,6 +28,14 @@ return {
 			ensure_installed = installed_servers,
 			handlers = { handlers.choose_handler },
 		},
+	},
+	{
+		"RRethy/vim-illuminate",
+		event = "VeryLazy",
+		opts = {},
+		config = function(_, opts)
+			require("illuminate").configure(opts)
+		end,
 	},
 	{
 		"folke/neoconf.nvim",
