@@ -17,13 +17,13 @@ def get_current_monitor():
     return next(monitor for monitor in monitores if monitor['focused'])
 
 def workspace(workspace: int):
-    subprocess.call(f"hyprctl dispatch workspace d{(get_current_monitor()['id'] * 10) + workspace}", shell=True)
+    subprocess.call(f"hyprctl dispatch workspace {(get_current_monitor()['id'] * 10) + workspace}", shell=True)
 
 def move(workspace: int):
-    subprocess.call(f"hyprctl dispatch movetoworkspace d{(get_current_monitor()['id'] * 10) + workspace}", shell=True)
+    subprocess.call(f"hyprctl dispatch movetoworkspace {(get_current_monitor()['id'] * 10) + workspace}", shell=True)
 
 def movesilent(workspace: int):
-    subprocess.call(f"hyprctl dispatch movetoworkspacesilent d{(get_current_monitor()['id'] * 10) + workspace}", shell=True)
+    subprocess.call(f"hyprctl dispatch movetoworkspacesilent {(get_current_monitor()['id'] * 10) + workspace}", shell=True)
 
 if len(args) < 2:
     print("Need arguments")
