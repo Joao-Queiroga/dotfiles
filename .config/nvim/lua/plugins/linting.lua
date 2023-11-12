@@ -7,7 +7,6 @@ return {
 			linters_by_ft = {
 				fish = { "fish" },
 				python = { "flake8" },
-				lua = { "selene" },
 			},
 		},
 		config = function(_, opts)
