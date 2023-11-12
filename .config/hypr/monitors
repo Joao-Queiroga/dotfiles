@@ -1,29 +1,52 @@
 #!/usr/bin/env python
-import subprocess
 import json
+import subprocess
 import sys
 
 args = sys.argv
 # Transforma a saída em um objeto JSON
-monitores= json.loads(subprocess.check_output("hyprctl monitors -j", shell=True).decode("utf-8"))
+monitores = json.loads(
+    subprocess.check_output("hyprctl monitors -j", shell=True).decode("utf-8")
+)
+
 
 def setup():
     for monitor in monitores:
         for i in range(1, 11):
-            subprocess.call(f"hyprctl keyword workspace d, monitor:{monitor['name']}{i + (monitor['id'] * 10)}", shell=True)
-            subprocess.call(f"hyprctl dispatch moveworkspacetomonitor d {monitor['id']}{i + (monitor['id'] * 10)}", shell=True)
+            subprocess.call(
+                f"hyprctl keyword workspace {i + (monitor['id'] * 10)}, monitor:{monitor['name']}",
+                shell=True,
+            )
+            subprocess.call(
+                f"hyprctl dispatch moveworkspacetomonitor {monitor['id']}{i + (monitor['id'] * 10)}",
+                shell=True,
+            )
+
 
 def get_current_monitor():
-    return next(monitor for monitor in monitores if monitor['focused'])
+    return next(monitor for monitor in monitores if monitor["focused"])
+
 
 def workspace(workspace: int):
-    subprocess.call(f"hyprctl dispatch workspace {(get_current_monitor()['id'] * 10) + workspace}", shell=True)
+    subprocess.call(
+        f"hyprctl dispatch workspace {(get_current_monitor()['id'] * 10) + workspace}",
+        shell=True,
+    )
+
 
 def move(workspace: int):
-    subprocess.call(f"hyprctl dispatch movetoworkspace {(get_current_monitor()['id'] * 10) + workspace}", shell=True)
+    subprocess.call(
+        f"hyprctl dispatch movetoworkspace {(get_current_monitor()['id'] * 10) + workspace}",
+        shell=True,
+    )
+
 
 def movesilent(workspace: int):
-    subprocess.call(f"hyprctl dispatch movetoworkspacesilent {(get_current_monitor()['id'] * 10) + workspace}", shell=True)
+    subprocess.call(
+        f"hyprctl dispatch movetoworkspacesilent {(get_current_monitor()['id'] * 10) + workspace}",
+        shell=True,
+    )
+
 
 if len(args) < 2:
     print("Need arguments")
@@ -34,11 +57,7 @@ if args[1] == "setup":
     setup()
     exit()
 
-funcoes = {
-    "workspace": workspace,
-    "move": move,
-    "movesilent": movesilent
-}
+funcoes = {"workspace": workspace, "move": move, "movesilent": movesilent}
 
 if args[1] in funcoes:
     funcoes[args[1]](int(args[2]))
