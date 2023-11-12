@@ -18,7 +18,7 @@ def setup():
                 shell=True,
             )
             subprocess.call(
-                f"hyprctl dispatch moveworkspacetomonitor {monitor['id']}{i + (monitor['id'] * 10)}",
+                f"hyprctl dispatch moveworkspacetomonitor {i + (monitor['id'] * 10)} {monitor['id']}",
                 shell=True,
             )
 
