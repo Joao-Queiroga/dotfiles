@@ -1,9 +1,11 @@
 import App from "resource:///com/github/Aylur/ags/app.js";
-import { exec } from "resource:///com/github/Aylur/ags/utils.js";
+import { exec, execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 import Bar from "./bar.js";
 
 // had to use exec since Hyprland.monitors was returning a empty array
-const monitors = JSON.parse(exec("hyprctl monitors -j"));
+const monitors = execAsync("hyprctl monitors -j")
+  .then((res) => JSON.parse(res))
+  .catch((_) => undefined);
 
 const scss = App.configDir + "/style.scss";
 const css = App.configDir + "/style.css";
@@ -21,6 +23,6 @@ export default {
   windows: [
     // NOTE: the window will still render, if you don't pass it here
     // but if you don't, the window can't be toggled through App or cli
-    ...monitors.map((monitor) => Bar({ monitor: monitor.id })),
+    ...(await monitors)?.map((monitor) => Bar({ monitor: monitor.id })),
   ],
 };
