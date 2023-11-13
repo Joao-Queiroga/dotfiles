@@ -1,5 +1,6 @@
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
+import SystemTray from "resource:///com/github/Aylur/ags/service/systemtray.js";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
 const Workspaces = (monitor) =>
@@ -43,6 +44,26 @@ const ClientTitle = (monitor) =>
     ],
   });
 
+const SysTray = () =>
+  Widget.Box({
+    className: "systray",
+    connections: [
+      [
+        SystemTray,
+        (self) => {
+          self.children = SystemTray.items.map((item) =>
+            Widget.Button({
+              child: Widget.Icon({ binds: [["icon", item, "icon"]] }),
+              onPrimaryClick: (_, event) => item.activate(event),
+              onSecondaryClick: (_, event) => item.openMenu(event),
+              binds: [["tooltip-markup", item, "tooltip-markup"]],
+            }),
+          );
+        },
+      ],
+    ],
+  });
+
 const Clock = () =>
   Widget.Label({
     className: "clock",
@@ -69,7 +90,8 @@ const Center = (monitor) =>
 
 const Right = (monitor) =>
   Widget.Box({
-    children: [Clock()],
+    hpack: "end",
+    children: [SysTray(), Clock()],
   });
 
 export default ({ monitor } = {}) =>
