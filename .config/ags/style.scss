@@ -2,6 +2,8 @@ $background: #1a1b26;
 $foreground: #c0caf5;
 $blue: #7aa2f7;
 $orange: #ff9e64;
+$cyan: #7dcfff;
+$magenta: #bb9af7;
 
 .bar, .bar * {
 	font-size: 9.5pt;
@@ -22,7 +24,7 @@ label {
 }
 
 .focused label {
-	color: $blue;
+	color: $cyan;
 }
 
 .client-title {
