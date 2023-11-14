@@ -15,7 +15,6 @@ return {
 				css = { { "prettierd", "prettier" } },
 				scss = { { "prettierd", "prettier" } },
 				sass = { { "prettierd", "prettier" } },
-				json = { "jq" },
 				rust = { "rustfmt" },
 			},
 			format_on_save = {
