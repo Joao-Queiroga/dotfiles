@@ -72,7 +72,7 @@ const Clock = () =>
         1000,
         (self) =>
           execAsync(["date", "+%a %d/%m/%Y %H:%M"])
-            .then((date) => (self.label = date))
+            .then((date) => (self.label = `  ${date}`))
             .catch(console.error),
       ],
     ],
