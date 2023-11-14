@@ -4,6 +4,8 @@ local installed_servers = {
 	"rust_analyzer",
 	"clangd",
 	"gopls",
+	"emmet_language_server",
+	"cssls",
 	"jdtls",
 	"vimls",
 	"jsonls",
