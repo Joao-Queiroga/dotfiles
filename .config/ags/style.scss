@@ -5,55 +5,63 @@ $orange: #ff9e64;
 $cyan: #7dcfff;
 $magenta: #bb9af7;
 
-.bar, .bar * {
-	font-size: 9.5pt;
-	background-color: $background;
-	color: $foreground;
-	padding: 0;
+.bar {
+  &,
+  * {
+    font-size: 9.5pt;
+    background-color: $background;
+    border: 0;
+    color: $foreground;
+    padding: 0;
+  }
 }
 
 label {
-	font-weight: bold;
-	margin: 0;
+  font-weight: bold;
+  margin: 0;
 }
 
 .workspaces button,
 .media {
-	padding: 0 1px;
-	margin: 0;
+  padding: 0 1px;
+  margin: 0;
 }
 
-.focused, .focused * {
-	background-color: $magenta;
-	color: $background;
+.focused {
+  &,
+  * {
+    background-color: $magenta;
+    color: $background;
+  }
 }
 
 .client-title {
-	margin-left: 1em;
+  margin-left: 1em;
 }
 
 .notification image {
-	margin-left: 1em;
+  margin-left: 1em;
 }
 
 .battery progressbar {
-	margin: 0 6px;
+  margin: 0 6px;
 }
 
 .clock {
-	margin: 0 6px;
-	font-size: 1.1em;
-	color: $orange;
+  margin: 0 6px;
+  font-size: 1.1em;
+  color: $orange;
 }
 
 .systray button {
-	border: 0;
-	padding: 0 2px;
-	> * {
-		font-size: 1.5em;
-	}
+  border: 0;
+  padding: 0 2px;
+  > * {
+    font-size: 1.5em;
+  }
 }
 
-progress, highlight {
-	min-height: 8px;
+progress,
+highlight {
+  min-height: 8px;
 }
