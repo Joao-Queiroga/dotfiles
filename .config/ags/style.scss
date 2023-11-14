@@ -47,6 +47,10 @@ label {
 
 .systray button {
 	border: 0;
+	padding: 0 2px;
+	> * {
+		font-size: 1.5em;
+	}
 }
 
 progress, highlight {
