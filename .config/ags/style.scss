@@ -23,8 +23,9 @@ label {
 	margin: 0;
 }
 
-.focused label {
-	color: $cyan;
+.focused, .focused * {
+	background-color: $magenta;
+	color: $background;
 }
 
 .client-title {
