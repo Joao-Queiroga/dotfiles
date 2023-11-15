@@ -3,7 +3,7 @@ import { exec, execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 import Bar from "./bar.js";
 
 // had to use exec since Hyprland.monitors was returning a empty array
-const monitors = execAsync("hyprctl monitors -j")
+const monitors = execAsync(["hyprctl", "monitors", "-j"])
   .then((res) => JSON.parse(res))
   .catch((_) => undefined);
 
