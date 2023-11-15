@@ -1,4 +1,5 @@
 $background: #1a1b26;
+$bg_highlight: #292e42;
 $foreground: #c0caf5;
 $blue: #7aa2f7;
 $orange: #ff9e64;
@@ -6,11 +7,10 @@ $cyan: #7dcfff;
 $magenta: #bb9af7;
 
 .bar {
-  &,
   * {
     font-size: 9.5pt;
     background-color: $background;
-    border: 0;
+    border: none;
     color: $foreground;
     padding: 0;
   }
@@ -21,18 +21,22 @@ label {
   margin: 0;
 }
 
-.workspaces button,
+.workspaces {
+  > button {
+    label {
+      color: $bg_highlight;
+    }
+    &.focused {
+      label {
+        color: $cyan;
+      }
+    }
+  }
+}
+
 .media {
   padding: 0 1px;
   margin: 0;
-}
-
-.focused {
-  &,
-  * {
-    background-color: $magenta;
-    color: $background;
-  }
 }
 
 .client-title {

@@ -16,7 +16,7 @@ const Workspaces = (monitor) =>
             Widget.Button({
               onClicked: () =>
                 execAsync(`hyprctl dispatch workspace ${i + monitor * 10}`),
-              child: Widget.Label(`${i}`),
+              child: Widget.Label(""),
               className:
                 Hyprland.active.workspace.id == i + monitor * 10
                   ? "focused"
