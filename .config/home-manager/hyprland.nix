@@ -19,14 +19,13 @@
       ];
 
       exec-once = [
-        "wbg ~/.config/.background "
+        "${pkgs.wbg}/bin/wbg ~/.config/.background "
         "~/.config/hypr/desktop-portal.sh"
         "wl-clipboard-history -t"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "dunst"
-        "$mhandler setup"
-        "dex --autostart"
-        "ags"
+        "${pkgs.dunst}/bin/dunst"
+        "${pkgs.dex}/bin/dex --autostart"
+        "${pkgs.ags}/bin/ags"
         "hyprctl dispatch dpms off HDMI-A-1"
         "sleep 1 && hyprctl dispatch focusmonitor 0"
       ];
