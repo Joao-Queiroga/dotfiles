@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{ pkgs, inputs, ... }:
 {
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
@@ -11,6 +10,8 @@
     webcord
     drawio
     yazi
+		yadm
+		sassc
     beekeeper-studio
   ];
 
@@ -25,6 +26,8 @@
       name = "Dracula";
     };
   };
+
+	programs.ags.enable = true;
 
   programs.home-manager.enable = true;
 }
