@@ -20,7 +20,7 @@
 
       exec-once = [
         "$mhandler setup"
-        "swaybg -i ~/.config/.background "
+        "wbg ~/.config/.background "
         "~/.config/hypr/desktop-portal.sh"
         "wl-clipboard-history -t"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -52,8 +52,8 @@
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        col.active_border = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        col.inactive_border = "rgba(595959aa)";
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
 
         layout = "master";
       };
