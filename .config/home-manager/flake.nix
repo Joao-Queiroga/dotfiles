@@ -41,6 +41,7 @@
           ./lf.nix
           ./hyprland.nix
           ./zsh.nix
+          ./dir_colors.nix
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

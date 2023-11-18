@@ -32,6 +32,15 @@
       enable = true;
       enableZshIntegration = true;
     };
+    eza = {
+      enable = true;
+      enableAliases = true;
+      icons = true;
+      git = true;
+    };
+    bat = {
+      enable = true;
+    };
   };
 
   programs.home-manager.enable = true;
