@@ -9,6 +9,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     ags.url = "github:Aylur/ags";
   };
 
@@ -30,14 +36,14 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-					inputs.ags.homeManagerModules.default
+          inputs.ags.homeManagerModules.default
           ./home.nix
           ./lf.nix
           ./hyprland.nix
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-        extraSpecialArgs = {};
+        extraSpecialArgs = { inherit inputs; };
       };
     };
 }
