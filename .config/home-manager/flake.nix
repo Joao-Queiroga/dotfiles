@@ -40,6 +40,7 @@
           ./home.nix
           ./lf.nix
           ./hyprland.nix
+          ./zsh.nix
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

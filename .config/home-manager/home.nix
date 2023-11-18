@@ -2,7 +2,6 @@
 {
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
-  targets.genericLinux.enable = true;
 
   home.stateVersion = "23.05";
 
@@ -10,8 +9,8 @@
     webcord
     drawio
     yazi
-		yadm
-		sassc
+    yadm
+    sassc
     beekeeper-studio
   ];
 
@@ -27,7 +26,13 @@
     };
   };
 
-	programs.ags.enable = true;
+  programs = {
+    ags.enable = true;
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+  };
 
   programs.home-manager.enable = true;
 }
