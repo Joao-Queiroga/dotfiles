@@ -20,12 +20,11 @@
 
       exec-once = [
         "${pkgs.wbg}/bin/wbg ~/.config/.background "
-        "~/.config/hypr/desktop-portal.sh"
         "wl-clipboard-history -t"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "${pkgs.dunst}/bin/dunst"
         "${pkgs.dex}/bin/dex --autostart"
-        "${pkgs.ags}/bin/ags"
+        "ags"
         "hyprctl dispatch dpms off HDMI-A-1"
         "sleep 1 && hyprctl dispatch focusmonitor 0"
       ];
@@ -115,8 +114,8 @@
         "$mainMod_SHIFT, C, killactive, "
         "$mainMod_SHIFT, Q, exit, "
         "$mainMod, T, togglefloating, "
-        "$mainMod, R, exec, rofi -i -show drun"
-        "$mainMod, P, exec, bemenu-run --binding vim"
+        "$mainMod, R, exec, ${pkgs.rofi-wayland}/bin/rofi -i -show drun"
+        "$mainMod, P, exec, ${pkgs.bemenu}/bin/bemenu-run --binding vim"
 
         # Launch keybindings
         "$mainMod, Return, exec, $term"
@@ -186,7 +185,7 @@
         "$mainMod SHIFT, comma, movewindow, mon:l"
 
         # Open task manager
-        "CONTROL SHIFT, escape, exec, $term -e btop"
+        "CONTROL SHIFT, escape, exec, $term -e ${pkgs.btop}/bin/btop"
 
         # Disable left monitor
         "$mainMod SHIFT, o, exec, hyprctl dispatch dpms off HDMI-A-1"
@@ -200,10 +199,10 @@
         ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
 
         # Multimedia Keys
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPrev, exec, playerctl previous"
-        ", XF86audiostop, exec, playerctl stop"
+        ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+        ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
+        ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
+        ", XF86audiostop, exec, ${pkgs.playerctl}/bin/playerctl stop"
       ];
 
       binde = [
