@@ -3,6 +3,14 @@
   programs.lf = {
     enable = true;
     commands = {
+      "on-cd" = ''&{{
+				export STARSHIP_SHELL=
+				fmt="$(${pkgs.starship}/bin/starship prompt)"
+				${pkgs.lf}/bin/lf -remote "send $id set promptfmt \"$fmt\""
+			}}'';
+      "on-select" = ''&{{
+				${pkgs.lf}/bin/lf -remote "send $id set statfmt \"$(${pkgs.eza}/bin/eza -ld --color=always "$f")\""
+			}}'';
       open = ''
         				''${{
         					test -L "$f" && f=$(readlink -f $f)
