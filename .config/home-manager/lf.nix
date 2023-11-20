@@ -76,8 +76,9 @@
           			'';
       in
       ''
-        			set previewer ${previewer}/bin/pv.sh
-        			set cleaner ${cleaner}/bin/clean.sh
-        		'';
+                			set previewer ${previewer}/bin/pv.sh
+                			set cleaner ${cleaner}/bin/clean.sh
+        							on-cd
+                		'';
   };
 }
