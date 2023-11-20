@@ -3,12 +3,12 @@
   programs.lf = {
     enable = true;
     commands = {
-      "on-cd" = ''&{{
+      on-cd = ''&{{
 				export STARSHIP_SHELL=
 				fmt="$(${pkgs.starship}/bin/starship prompt)"
 				${pkgs.lf}/bin/lf -remote "send $id set promptfmt \"$fmt\""
 			}}'';
-      "on-select" = ''&{{
+      on-select = ''&{{
 				${pkgs.lf}/bin/lf -remote "send $id set statfmt \"$(${pkgs.eza}/bin/eza -ld --color=always "$f")\""
 			}}'';
       open = ''
@@ -20,7 +20,7 @@
         					esac
         				}}
         			'';
-      drag = ''& ${pkgs.xdragon}/bin/dragon -a -x "$fx"'';
+      drag = ''& ${pkgs.ripdrag}/bin/ripdrag -a -x $fx'';
       edit = ''$$EDITOR $f'';
       mkdir = ''
         			''${{
