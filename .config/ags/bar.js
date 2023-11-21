@@ -127,7 +127,7 @@ export default ({ monitor } = {}) =>
     name: `bar-${monitor}`,
     className: "bar",
     monitor,
-    exclusive: true,
+    exclusivity: "exclusive",
     anchor: ["top", "left", "right"],
     child: Widget.CenterBox({
       startWidget: Left(monitor),
