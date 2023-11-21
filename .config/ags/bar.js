@@ -1,6 +1,7 @@
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import SystemTray from "resource:///com/github/Aylur/ags/service/systemtray.js";
+import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
 const Workspaces = (monitor) =>
@@ -78,6 +79,19 @@ const Clock = () =>
     ],
   });
 
+const BatteryIcon = () =>
+  Widget.Box({
+    className: "battery",
+    children: [
+      Widget.Icon({
+        binds: [
+          ["icon", Battery, "icon-name"],
+          ["tooltip-markup", Battery, "percent", (p) => `Battery: ${p}%`],
+        ],
+      }),
+    ],
+  });
+
 const Left = (monitor) =>
   Widget.Box({
     children: [Workspaces(monitor)],
@@ -91,7 +105,7 @@ const Center = (monitor) =>
 const Right = (monitor) =>
   Widget.Box({
     hpack: "end",
-    children: [SysTray(), Clock()],
+    children: [SysTray(), BatteryIcon(), Clock()],
   });
 
 export default ({ monitor } = {}) =>
