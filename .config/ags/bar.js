@@ -83,7 +83,7 @@ const BatteryIcon = () =>
   Widget.Box({
     className: "battery",
     setup: (self) => {
-      if (!Battery.available) return;
+      if (Battery.percent < 0) return;
       self.children = [
         Widget.Icon({
           binds: [
