@@ -82,22 +82,17 @@ const Clock = () =>
 const BatteryIcon = () =>
   Widget.Box({
     className: "battery",
-    connections: [
-      [
-        Battery.available,
-        (self) => {
-          if (!Battery.available) return;
-          self.children = [
-            Widget.Icon({
-              binds: [
-                ["icon", Battery, "icon-name"],
-                ["tooltip-markup", Battery, "percent", (p) => `Battery: ${p}%`],
-              ],
-            }),
-          ];
-        },
-      ],
-    ],
+    setup: (self) => {
+      if (!Battery.available) return;
+      self.children = [
+        Widget.Icon({
+          binds: [
+            ["icon", Battery, "icon-name"],
+            ["tooltip-markup", Battery, "percent", (p) => `Battery: ${p}%`],
+          ],
+        }),
+      ];
+    },
     // children: [
     //   Widget.Icon({
     //     binds: [
