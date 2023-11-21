@@ -82,25 +82,28 @@ const Clock = () =>
 const BatteryIcon = () =>
   Widget.Box({
     className: "battery",
-    setup: (self) => {
-      if (Battery.percent < 0) return;
-      self.children = [
-        Widget.Icon({
-          binds: [
-            ["icon", Battery, "icon-name"],
-            ["tooltip-markup", Battery, "percent", (p) => `Battery: ${p}%`],
-          ],
-        }),
-      ];
-    },
-    // children: [
-    //   Widget.Icon({
-    //     binds: [
-    //       ["icon", Battery, "icon-name"],
-    //       ["tooltip-markup", Battery, "percent", (p) => `Battery: ${p}%`],
-    //     ],
-    //   }),
-    // ],
+    binds: [
+      [
+        "children",
+        Battery,
+        "available",
+        (a) => [
+          !a
+            ? null
+            : Widget.Icon({
+                binds: [
+                  ["icon", Battery, "icon-name"],
+                  [
+                    "tooltip-markup",
+                    Battery,
+                    "percent",
+                    (p) => `Battery: ${p}%`,
+                  ],
+                ],
+              }),
+        ],
+      ],
+    ],
   });
 
 const Left = (monitor) =>
