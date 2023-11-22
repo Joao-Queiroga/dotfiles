@@ -20,7 +20,6 @@
 
       exec-once = [
         "${pkgs.wbg}/bin/wbg ~/.config/.background "
-        "wl-clipboard-history -t"
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "${pkgs.dunst}/bin/dunst"
         "${pkgs.dex}/bin/dex --autostart"
@@ -171,7 +170,6 @@
         "$mainMod SHIFT, 9, split-movetoworkspacesilent, 9"
         "$mainMod SHIFT, 0, movetoworkspacesilent, special"
 
-
         # Hidden special workspace
         "$mainMod , n, movetoworkspacesilent, special:hidden"
         "$mainMod SHIFT, n, togglespecialworkspace, hidden"
@@ -194,10 +192,6 @@
         # Enable all monitors
         "$mainMod CONTROL, o,exec, hyprctl dispatch dpms on"
 
-        # Brightness Keys
-        ", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
-
         # Multimedia Keys
         ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
         ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
@@ -214,6 +208,10 @@
         "$mainMod, H, splitratio, -0.05"
         "$mainMod, L, splitratio, +0.05"
 
+        # Brightness Keys
+        ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 10%+"
+        ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 10%-"
+
         # Volume keys
         ", XF86AudioLowerVolume, exec, amixer -q sset Master 5%-"
         ", XF86AudioRaiseVolume, exec, amixer -q sset Master 5%+"
@@ -222,8 +220,8 @@
 
       bindn = [
         # Dunst
-        "CONTROL, Space, exec, dunstctl close"
-        "CONTROL SHIFT, Space, exec, dunstctl close-all"
+        "CONTROL, Space, exec, ${pkgs.dunst}/bin/dunstctl close"
+        "CONTROL SHIFT, Space, exec, ${pkgs.dunst}/bin/dunstctl close-all"
       ];
 
       bindm = [
