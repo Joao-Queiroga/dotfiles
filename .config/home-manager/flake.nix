@@ -39,6 +39,7 @@
           inputs.ags.homeManagerModules.default
           ./home.nix
           ./lf.nix
+          ./yazi.nix
           ./hyprland.nix
           ./zsh.nix
           ./dir_colors.nix

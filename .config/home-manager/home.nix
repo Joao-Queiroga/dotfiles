@@ -8,7 +8,6 @@
   home.packages = with pkgs; [
     webcord
     drawio
-    yazi
     yadm
     sassc
     beekeeper-studio
