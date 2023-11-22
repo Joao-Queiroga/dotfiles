@@ -42,6 +42,7 @@
           ./yazi.nix
           ./hyprland.nix
           ./zsh.nix
+          ./nu.nix
           ./dir_colors.nix
         ];
         # Optionally use extraSpecialArgs

@@ -30,6 +30,15 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
+      settings = {
+        add_newline = false;
+        character = {
+          success_symbol = "[➜](bold green)";
+          error_symbol = "[✗](bold red)";
+          vicmd_symbol = "[](bold green)";
+        };
+      };
     };
     eza = {
       enable = true;
