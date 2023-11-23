@@ -6,7 +6,7 @@
     antidote = {
       enable = true;
       plugins = [
-        "mattmc3/zfunctions"
+        "mattmc3/zfunctions kind:defer"
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
       ];
     };
