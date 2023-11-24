@@ -5,6 +5,7 @@ local installed_servers = {
 	"clangd",
 	"gopls",
 	"emmet_language_server",
+	"tsserver",
 	"cssls",
 	"jdtls",
 	"vimls",
@@ -57,6 +58,12 @@ return {
 	{
 		"mfussenegger/nvim-jdtls",
 		lazy = true,
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		lazy = true,
+		opts = {},
 	},
 	{
 		"saecki/crates.nvim",
