@@ -49,4 +49,19 @@
       };
     };
   };
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "JetBrains Mono Nerd Font";
+      size = 12;
+    };
+    settings = {
+      cursor = "none";
+      cursor_shape = "block";
+    };
+    # extraConfig = ''
+    #   cursor none
+    # '';
+    theme = "Tokyo Night";
+  };
 }
