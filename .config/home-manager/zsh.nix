@@ -2,6 +2,7 @@
 {
   programs.zsh = {
     enable = true;
+    enableCompletion = false;
     antidote = {
       enable = true;
       plugins = [
@@ -20,6 +21,9 @@
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
     };
+    initExtraBeforeCompInit = ''
+      ${pkgs.pfetch-rs}/bin/pfetch
+    '';
     initExtra = ''
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
       bindkey $terminfo[kcuu1] history-substring-search-up
@@ -28,7 +32,6 @@
       bindkey -M vicmd 'J' history-substring-search-down
       zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
       setopt +o nomatch
-      ${pkgs.pfetch-rs}/bin/pfetch
     '';
   };
 }
