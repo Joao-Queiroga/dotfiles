@@ -2,11 +2,12 @@
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
     antidote = {
       enable = true;
       plugins = [
-        "mattmc3/zfunctions kind:defer"
+        "mattmc3/zfunctions"
+        "zsh-users/zsh-autosuggestions"
+        "zsh-users/zsh-history-substring-search"
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
       ];
     };
@@ -16,22 +17,18 @@
       ignoreAllDups = true;
       path = "$HOME/.local/share/zsh/history";
     };
-    historySubstringSearch = {
-      enable = true;
-      searchUpKey = [
-        "$terminfo[kcuu1]"
-      ];
-      searchDownKey = [
-        "$terminfo[kcud1]"
-      ];
-    };
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
     };
     initExtra = ''
-      		zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-            		setopt +o nomatch
-            		${pkgs.pfetch-rs}/bin/pfetch
-            		'';
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+      bindkey $terminfo[kcuu1] history-substring-search-up
+      bindkey $terminfo[kcud1] history-substring-search-down
+      bindkey -M vicmd 'K' history-substring-search-up
+      bindkey -M vicmd 'J' history-substring-search-down
+      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+      setopt +o nomatch
+      ${pkgs.pfetch-rs}/bin/pfetch
+    '';
   };
 }
