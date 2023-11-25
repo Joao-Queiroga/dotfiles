@@ -44,6 +44,7 @@
           ./zsh.nix
           ./nu.nix
           ./dir_colors.nix
+          ./terminals.nix
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
