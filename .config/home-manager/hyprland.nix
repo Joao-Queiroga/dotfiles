@@ -9,8 +9,6 @@
         "HDMI-A-1,prefered, 0x0,1"
       ];
 
-      "$mhandler" = "~/.config/hypr/monitors";
-
       env = [
         "XDG_CURRENT_DESKTOP, Hyprland"
         "NIXOS_OZONE_WL, 1"
