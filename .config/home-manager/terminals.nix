@@ -56,12 +56,9 @@
       size = 12;
     };
     settings = {
+      enable_audio_bell = false;
       cursor = "none";
-      cursor_shape = "block";
     };
-    # extraConfig = ''
-    #   cursor none
-    # '';
     theme = "Tokyo Night";
   };
 }
