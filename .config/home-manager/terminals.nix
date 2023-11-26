@@ -6,7 +6,6 @@
       main = {
         font = "JetBrains Mono Nerd Font:size=12:antialias=true:autohint=true";
         box-drawings-uses-font-glyphs = true;
-        font-size-adjustment = 0;
         letter-spacing = 0;
         pad = "0x0center";
         dpi-aware = true;
@@ -46,6 +45,10 @@
         ## The remaining 256-color palette
         "16" = "ff9e64";
         "17" = "db4b4b";
+      };
+      key-bindings = {
+        scrollback-up-line = "Control+Shift+K";
+        scrollback-down-line = "Control+Shift+J";
       };
     };
   };
