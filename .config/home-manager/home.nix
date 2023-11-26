@@ -17,7 +17,7 @@
     enable = true;
     iconTheme = {
       package = pkgs.papirus-icon-theme;
-      name = "ePapirus-Dark";
+      name = "Papirus-Dark";
     };
     theme = {
       package = pkgs.dracula-theme;
