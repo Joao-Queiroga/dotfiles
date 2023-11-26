@@ -3,13 +3,19 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    st.url = "github:Joao-Queiroga/st";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
+    st = {
+      url = "github:Joao-Queiroga/st";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     split-monitor-workspaces = {
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
@@ -18,7 +24,7 @@
     ags.url = "github:Aylur/ags";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, hyprland, split-monitor-workspaces, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -36,6 +42,7 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
+          # hyprland.homeManagerModules.default
           inputs.ags.homeManagerModules.default
           ./home.nix
           ./lf.nix
@@ -48,7 +55,7 @@
         ];
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = { inherit inputs hyprland split-monitor-workspaces; };
       };
     };
 }

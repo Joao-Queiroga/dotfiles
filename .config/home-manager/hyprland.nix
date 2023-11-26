@@ -1,7 +1,8 @@
-{ pkgs, inputs, ... }:
+{ pkgs, split-monitor-workspaces, hyprland, ... }:
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = hyprland.packages.${pkgs.system}.hyprland;
     settings = {
       monitor = [
         "eDP-1,prefered, auto,1"
@@ -229,6 +230,6 @@
       ];
     };
 
-    plugins = [ inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces ];
+    plugins = [ split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces ];
   };
 }
