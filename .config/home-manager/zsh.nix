@@ -10,6 +10,7 @@
         "zsh-users/zsh-autosuggestions"
         "zsh-users/zsh-history-substring-search"
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
+        "chisui/zsh-nix-shell"
       ];
     };
     autocd = true;
