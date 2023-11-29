@@ -10,6 +10,6 @@
       modi = "run,drun";
       show-icons = true;
     };
-    theme = "dracula";
+    theme = ./rofi-theme.rasi;
   };
 }
