@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, ... }:
 {
   programs.rofi = {
     enable = true;
@@ -11,5 +11,6 @@
       show-icons = true;
     };
     theme = ./rofi-theme.rasi;
+    terminal = "${pkgs.kitty}/bin/kitty -1";
   };
 }
