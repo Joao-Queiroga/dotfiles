@@ -37,7 +37,6 @@
     {
       homeConfigurations."joaoqueiroga" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-
         modules = [
           inputs.ags.homeManagerModules.default
           ./home.nix
@@ -45,12 +44,13 @@
           ./yazi.nix
           ./hyprland.nix
           ./zsh.nix
+          ./rofi.nix
           ./nu.nix
           ./dir_colors.nix
           ./terminals.nix
         ];
 
-        extraSpecialArgs = { inherit inputs hyprland split-monitor-workspaces; };
+        extraSpecialArgs = { inherit inputs system hyprland split-monitor-workspaces; };
       };
     };
 }

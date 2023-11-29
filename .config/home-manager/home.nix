@@ -46,7 +46,11 @@
       icons = true;
       git = true;
     };
+    ripgrep.enable = true;
     bat = {
+      enable = true;
+    };
+    password-store = {
       enable = true;
     };
   };
