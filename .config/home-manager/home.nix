@@ -25,6 +25,8 @@
     };
   };
 
+  services.blueman-applet.enable = true;
+
   programs = {
     ags.enable = true;
     starship = {

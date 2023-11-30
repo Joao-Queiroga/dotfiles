@@ -21,7 +21,6 @@
         "${pkgs.wbg}/bin/wbg ~/.config/.background "
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "${pkgs.dunst}/bin/dunst"
-        "${pkgs.dex}/bin/dex --autostart"
         "ags"
         "hyprctl dispatch dpms off HDMI-A-1"
         "sleep 1 && hyprctl dispatch focusmonitor 0"
