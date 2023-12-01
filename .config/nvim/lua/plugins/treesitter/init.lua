@@ -1,11 +1,10 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event =  { "BufRead", "BufNewFile", "VeryLazy" },
+		event = { "BufRead", "BufNewFile", "VeryLazy" },
 		dependencies = {
 			"nvim-treesitter/playground",
 			"hiphish/rainbow-delimiters.nvim",
-			"JoosepAlviste/nvim-ts-context-commentstring",
 			"nvim-treesitter/nvim-treesitter-refactor",
 			"luckasRanarison/tree-sitter-hypr",
 		},
@@ -16,6 +15,12 @@ return {
 		config = function()
 			require("plugins.treesitter.config")
 		end,
+	},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		event = "BufRead",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		opts = {},
 	},
 	{
 		"windwp/nvim-ts-autotag",
