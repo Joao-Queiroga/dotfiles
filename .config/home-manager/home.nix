@@ -51,6 +51,10 @@
     ripgrep.enable = true;
     bat = {
       enable = true;
+      extraPackages = with pkgs.bat-extras; [ batdiff batman batwatch ];
+    };
+    fzf = {
+      enable = true;
     };
     password-store = {
       enable = true;
