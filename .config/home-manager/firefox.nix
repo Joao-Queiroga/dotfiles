@@ -9,6 +9,7 @@
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
+      extraConfig = builtins.readFile ./user.js;
       extensions = with inputs.firefox-addons.packages.${system};[
         ublock-origin
         darkreader
