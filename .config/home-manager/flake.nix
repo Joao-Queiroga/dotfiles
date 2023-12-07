@@ -19,6 +19,10 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ags.url = "github:Aylur/ags";
   };
@@ -48,6 +52,7 @@
           ./nu.nix
           ./dir_colors.nix
           ./terminals.nix
+          ./firefox.nix
         ];
 
         extraSpecialArgs = { inherit inputs system hyprland split-monitor-workspaces; };

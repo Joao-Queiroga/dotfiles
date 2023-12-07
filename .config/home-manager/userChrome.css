@@ -1,0 +1,107 @@
+/*===KeyFox by AlfarexGuy2019===*/
+
+/* MIN MAX CLOSE Remove */
+#TabsToolbar > .titlebar-buttonbox-container {
+  visibility: collapse !important;
+}
+
+/*Basic Settings*/
+
+:root {
+  --navbarWidth: 40vw; /* Set width of navbar. Use px for a fixed width 
+                                or vw for a percentage of your window. */
+  --animationSpeed: 0.5s;
+}
+
+#TabsToolbar {
+  margin-left: var(--navbarWidth) !important;
+}
+
+#nav-bar {
+  margin-right: calc(100vw - var(--navbarWidth)) !important;
+}
+
+#urlbar-container {
+  min-width: 0px !important;
+}
+
+:root[uidensity="compact"] #nav-bar {
+  margin-top: -37px !important;
+  height: 37px !important;
+}
+
+:root:not([uidensity="compact"]):not([uidensity="touch"]) #nav-bar {
+  margin-top: -44px !important;
+  height: 44px !important;
+}
+
+:root[uidensity="touch"] #nav-bar {
+  margin-top: -49px !important;
+  height: 49px !important;
+}
+
+/* Back Hide */
+#back-button[disabled="true"] {
+  display: none !important;
+}
+
+/* Forward Hide */
+#forward-button[disabled="true"] {
+  display: none !important;
+}
+
+/* Site information button */
+#identity-box {
+  display: none !important;
+}
+
+/* "Shield" icon */
+#tracking-protection-icon-container {
+  display: none !important;
+}
+
+/* Simplifying interface */
+
+#nav-bar {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+#navigator-toolbox {
+  border: none !important;
+}
+
+.titlebar-spacer {
+  display: none !important;
+}
+
+#urlbar-background {
+  border: none !important;
+}
+
+#urlbar:not(:hover):not([breakout][breakout-extend]) > #urlbar-background {
+  box-shadow: none !important;
+  background: none !important;
+}
+
+/* Element Hiding stuff */
+
+.urlbar-icon,
+#userContext-indicator,
+#userContext-label {
+  fill: transparent !important;
+  background: transparent !important;
+  color: transparent !important;
+}
+
+/*================== TABS BAR ==================*/
+
+#PersonalToolbar {
+  padding-bottom: 6px !important;
+  padding-top: 1px !important;
+}
+
+toolbar#nav-bar {
+  box-shadow: none !important;
+  padding-bottom: 4px !important;
+}
