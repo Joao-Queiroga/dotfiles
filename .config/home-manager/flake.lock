@@ -87,11 +87,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1701971893,
-        "narHash": "sha256-mWvKeLNml1R9hHUX2ruE445XnFrJDPSAuoWLqsvVOjw=",
+        "lastModified": 1701988578,
+        "narHash": "sha256-44jQ4XMNP5ql3fdXLN+SCEnKfZcK1aY34koIwFLWgYw=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "aa020a2a1a560bd42f7ddc8c4808fd6db396ee8b",
+        "rev": "6fb1b89b982eea26ecae75b93f1742537c4f31ae",
         "type": "github"
       },
       "original": {
@@ -180,7 +180,8 @@
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",
         "split-monitor-workspaces": "split-monitor-workspaces",
-        "st": "st"
+        "st": "st",
+        "tokyonight-gtk": "tokyonight-gtk"
       }
     },
     "split-monitor-workspaces": {
@@ -236,6 +237,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "tokyonight-gtk": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1685484819,
+        "narHash": "sha256-Q9UnvmX+GpvqSmTwdjU4hsEsYhA887wPqs5pyqbIhmc=",
+        "owner": "Fausto-Korpsvart",
+        "repo": "Tokyo-Night-GTK-Theme",
+        "rev": "e9790345a6231cd6001f1356d578883fac52233a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Fausto-Korpsvart",
+        "repo": "Tokyo-Night-GTK-Theme",
         "type": "github"
       }
     },

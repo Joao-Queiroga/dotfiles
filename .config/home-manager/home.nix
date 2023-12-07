@@ -1,4 +1,7 @@
 { pkgs, inputs, ... }:
+let
+  tokyonight = import ./tokyonight-gtk.nix { inherit pkgs inputs; };
+in
 {
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
@@ -20,8 +23,8 @@
       name = "Papirus-Dark";
     };
     theme = {
-      package = pkgs.dracula-theme;
-      name = "Dracula";
+      package = tokyonight;
+      name = "Tokyonight-Dark-BL";
     };
   };
 

@@ -23,6 +23,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tokyonight-gtk = {
+      url = "github:Fausto-Korpsvart/Tokyo-Night-GTK-Theme";
+      flake = false;
+    };
 
     ags.url = "github:Aylur/ags";
   };
