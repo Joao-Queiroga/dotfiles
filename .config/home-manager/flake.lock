@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1701806563,
-        "narHash": "sha256-HItBkG0whb7nVxBPSHm6ChD92Ua7i6YQQ9GU3skKaak=",
+        "lastModified": 1702042517,
+        "narHash": "sha256-CmmVpQXRc2E5NEV6kg9Ia4picIXKYCciTKgTQwzb6Hs=",
         "owner": "Aylur",
         "repo": "ags",
-        "rev": "909b3011de4dc9a89fe7055766d47d48f00df28c",
+        "rev": "c3305bca6f7873c6192cce7567f821d85639bc74",
         "type": "github"
       },
       "original": {
@@ -27,11 +27,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1701921769,
-        "narHash": "sha256-7yjhJkx4KL6ky1kUvxy57rm/qH1bmnawI6OZk9+sYR0=",
+        "lastModified": 1702008165,
+        "narHash": "sha256-MDJ51iCp3/1MPEiPBUWa+29L9qNxYIHgeRLyJSHn0hw=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "acfb6a9e679bb21eca5d8ad28008188d3a199777",
+        "rev": "75533ca913eed3138bbba2f32c2a6085157a307f",
         "type": "gitlab"
       },
       "original": {
@@ -87,11 +87,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1701988578,
-        "narHash": "sha256-44jQ4XMNP5ql3fdXLN+SCEnKfZcK1aY34koIwFLWgYw=",
+        "lastModified": 1702051336,
+        "narHash": "sha256-zfnvorPK5mQpbifc9rCqGH0fOeFMPaVnEsOOtm+NjH0=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "6fb1b89b982eea26ecae75b93f1742537c4f31ae",
+        "rev": "11d1c50420cdeaa5426b837a6479455f47368f29",
         "type": "github"
       },
       "original": {
@@ -243,16 +243,16 @@
     "tokyonight-gtk": {
       "flake": false,
       "locked": {
-        "lastModified": 1685484819,
-        "narHash": "sha256-Q9UnvmX+GpvqSmTwdjU4hsEsYhA887wPqs5pyqbIhmc=",
-        "owner": "Fausto-Korpsvart",
-        "repo": "Tokyo-Night-GTK-Theme",
-        "rev": "e9790345a6231cd6001f1356d578883fac52233a",
+        "lastModified": 1660212624,
+        "narHash": "sha256-z0xAgwYEsWctLwxzGGXcicMUrtXnKQYt9Huln5eav0w=",
+        "owner": "stronk-dev",
+        "repo": "Tokyo-Night-Linux",
+        "rev": "4c0d6a67d050c3045b42b21082fbac108ce11a7a",
         "type": "github"
       },
       "original": {
-        "owner": "Fausto-Korpsvart",
-        "repo": "Tokyo-Night-GTK-Theme",
+        "owner": "stronk-dev",
+        "repo": "Tokyo-Night-Linux",
         "type": "github"
       }
     },

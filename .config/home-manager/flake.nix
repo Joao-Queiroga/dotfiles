@@ -24,7 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tokyonight-gtk = {
-      url = "github:Fausto-Korpsvart/Tokyo-Night-GTK-Theme";
+      url = "github:stronk-dev/Tokyo-Night-Linux";
       flake = false;
     };
 

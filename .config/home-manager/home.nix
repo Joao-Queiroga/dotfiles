@@ -24,7 +24,7 @@ in
     };
     theme = {
       package = tokyonight;
-      name = "Tokyonight-Dark-BL";
+      name = "TokyoNight";
     };
   };
 
