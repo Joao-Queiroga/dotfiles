@@ -14,6 +14,8 @@ in
     yadm
     sassc
     beekeeper-studio
+    gradle
+    gradle-completion
   ];
 
   gtk = {
