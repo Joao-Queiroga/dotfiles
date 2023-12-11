@@ -16,7 +16,7 @@
         	test -L "$f" && f=$(readlink -f $f)
         	case $(${pkgs.file}/bin/file --mime-type $f -b) in
         		text/*|application/json|application/javascript|application/xml) $EDITOR "$f";;
-        		*) xdg-open "$f";;
+        		*) setsid xdg-open "$f";;
         	esac
         }}
       '';
