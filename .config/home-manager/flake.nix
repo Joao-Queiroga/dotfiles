@@ -49,6 +49,7 @@
           inputs.ags.homeManagerModules.default
           ./home.nix
           ./lf.nix
+          ./lazygit.nix
           ./yazi.nix
           ./hyprland.nix
           ./zsh.nix
