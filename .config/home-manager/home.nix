@@ -14,6 +14,7 @@ in
     yadm
     sassc
     beekeeper-studio
+    whatsapp-for-linux
     gradle
     gradle-completion
   ];
