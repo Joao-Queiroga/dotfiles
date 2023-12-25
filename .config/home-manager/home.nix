@@ -13,6 +13,7 @@ in
     drawio
     yadm
     sassc
+    nixfmt
     beekeeper-studio
     whatsapp-for-linux
     gradle

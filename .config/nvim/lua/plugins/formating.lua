@@ -16,6 +16,7 @@ return {
 				scss = { { "prettierd", "prettier" } },
 				sass = { { "prettierd", "prettier" } },
 				rust = { "rustfmt" },
+				nix = { "nixfmt" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
