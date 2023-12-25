@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   programs.zsh = {
     enable = true;
-    enableCompletion = false;
     antidote = {
       enable = true;
       plugins = [
@@ -19,9 +17,7 @@
       ignoreAllDups = true;
       path = "$HOME/.local/share/zsh/history";
     };
-    shellAliases = {
-      cat = "${pkgs.bat}/bin/bat";
-    };
+    shellAliases = { cat = "${pkgs.bat}/bin/bat"; };
     initExtraBeforeCompInit = ''
       ${pkgs.pfetch-rs}/bin/pfetch
     '';
