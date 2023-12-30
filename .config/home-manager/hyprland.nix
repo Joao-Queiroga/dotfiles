@@ -1,8 +1,6 @@
-{ pkgs, split-monitor-workspaces, hyprland, ... }:
-{
+{ pkgs, split-monitor-workspaces, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland.packages.${pkgs.system}.hyprland;
     settings = {
       monitor = [
         "eDP-1,prefered, auto,1"
@@ -31,9 +29,7 @@
 
         follow_mouse = 1;
 
-        touchpad = {
-          natural_scroll = false;
-        };
+        touchpad = { natural_scroll = false; };
 
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
@@ -50,14 +46,10 @@
         layout = "master";
       };
 
-      misc = {
-        vrr = true;
-      };
+      misc = { vrr = true; };
 
       decoration = {
-        blur = {
-          size = 3;
-        };
+        blur = { size = 3; };
         rounding = 5;
 
         drop_shadow = true;
@@ -144,28 +136,8 @@
         "$mainMod, F, fullscreen"
         "$mainMod_SHIFT, F, fakefullscreen"
 
-        # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, split-workspace, 1"
-        "$mainMod, 2, split-workspace, 2"
-        "$mainMod, 3, split-workspace, 3"
-        "$mainMod, 4, split-workspace, 4"
-        "$mainMod, 5, split-workspace, 5"
-        "$mainMod, 6, split-workspace, 6"
-        "$mainMod, 7, split-workspace, 7"
-        "$mainMod, 8, split-workspace, 8"
-        "$mainMod, 9, split-workspace, 9"
+        # special workspace
         "$mainMod, 0, togglespecialworkspace"
-
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, split-movetoworkspacesilent, 1"
-        "$mainMod SHIFT, 2, split-movetoworkspacesilent, 2"
-        "$mainMod SHIFT, 3, split-movetoworkspacesilent, 3"
-        "$mainMod SHIFT, 4, split-movetoworkspacesilent, 4"
-        "$mainMod SHIFT, 5, split-movetoworkspacesilent, 5"
-        "$mainMod SHIFT, 6, split-movetoworkspacesilent, 6"
-        "$mainMod SHIFT, 7, split-movetoworkspacesilent, 7"
-        "$mainMod SHIFT, 8, split-movetoworkspacesilent, 8"
-        "$mainMod SHIFT, 9, split-movetoworkspacesilent, 9"
         "$mainMod SHIFT, 0, movetoworkspacesilent, special"
 
         # Hidden special workspace
@@ -195,7 +167,17 @@
         ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
         ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
         ", XF86audiostop, exec, ${pkgs.playerctl}/bin/playerctl stop"
-      ];
+      ] ++ (
+        # workspaces
+        # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
+        builtins.concatLists (builtins.genList (x:
+          let ws = let c = (x + 1) / 9; in builtins.toString (x + 1 - (c * 9));
+          in [
+            "$mainMod, ${ws}, split-workspace, ${toString (x + 1)}"
+            "$mainMod SHIFT, ${ws}, split-movetoworkspacesilent, ${
+              toString (x + 1)
+            }"
+          ]) 9));
 
       binde = [
         # Move focus with mainMod + JK
@@ -229,6 +211,8 @@
       ];
     };
 
-    plugins = [ split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces ];
+    plugins = [
+      split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+    ];
   };
 }

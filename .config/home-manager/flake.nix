@@ -31,36 +31,38 @@
     ags.url = "github:Aylur/ags";
   };
 
-  outputs = { nixpkgs, home-manager, hyprland, split-monitor-workspaces, ... }@inputs:
+  outputs =
+    { nixpkgs, home-manager, hyprland, split-monitor-workspaces, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
 
-        config = {
-          allowUnfree = true;
-        };
+        config = { allowUnfree = true; };
       };
-    in
-    {
-      homeConfigurations."joaoqueiroga" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          inputs.ags.homeManagerModules.default
-          ./home.nix
-          ./lf.nix
-          ./lazygit.nix
-          ./yazi.nix
-          ./hyprland.nix
-          ./zsh.nix
-          ./rofi.nix
-          ./nu.nix
-          ./dir_colors.nix
-          ./terminals.nix
-          ./firefox.nix
-        ];
+    in {
+      homeConfigurations."joaoqueiroga" =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            hyprland.homeManagerModules.default
+            inputs.ags.homeManagerModules.default
+            ./home.nix
+            ./lf.nix
+            ./lazygit.nix
+            ./yazi.nix
+            ./hyprland.nix
+            ./zsh.nix
+            ./rofi.nix
+            ./nu.nix
+            ./dir_colors.nix
+            ./terminals.nix
+            ./firefox.nix
+          ];
 
-        extraSpecialArgs = { inherit inputs system hyprland split-monitor-workspaces; };
-      };
+          extraSpecialArgs = {
+            inherit inputs system split-monitor-workspaces;
+          };
+        };
     };
 }
