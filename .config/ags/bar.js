@@ -1,4 +1,5 @@
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
+import Variable from "resource:///com/github/Aylur/ags/variable.js";
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import SystemTray from "resource:///com/github/Aylur/ags/service/systemtray.js";
 import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
@@ -116,13 +117,13 @@ const Center = (monitor) =>
     children: [ClientTitle(monitor)],
   });
 
-const Right = (monitor) =>
+const Right = () =>
   Widget.Box({
     hpack: "end",
     children: [SysTray(), BatteryIcon(), Clock()],
   });
 
-export default ({ monitor } = {}) =>
+export default (monitor = 0) =>
   Widget.Window({
     name: `bar-${monitor}`,
     className: "bar",

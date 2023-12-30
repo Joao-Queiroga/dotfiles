@@ -20,9 +20,5 @@ export default {
   cacheNotificationActions: false,
   maxStreamVolume: 1.5, // float
   style: css,
-  windows: [
-    // NOTE: the window will still render, if you don't pass it here
-    // but if you don't, the window can't be toggled through App or cli
-    ...(await monitors)?.map((monitor) => Bar({ monitor: monitor.id })),
-  ],
+  windows: [...(await monitors)?.map((monitor) => Bar(monitor.id))],
 };
