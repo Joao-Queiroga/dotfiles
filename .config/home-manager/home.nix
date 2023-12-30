@@ -1,8 +1,6 @@
 { pkgs, inputs, ... }:
-let
-  tokyonight = import ./tokyonight-gtk.nix { inherit pkgs inputs; };
-in
-{
+let tokyonight = import ./tokyonight-gtk.nix { inherit pkgs inputs; };
+in {
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
 
@@ -36,6 +34,14 @@ in
 
   programs = {
     ags.enable = true;
+    bemenu = {
+      enable = true;
+      settings = {
+        ignorecase = true;
+        binding = "vim";
+        vim-esc-exits = true;
+      };
+    };
     starship = {
       enable = true;
       enableZshIntegration = true;
@@ -60,12 +66,8 @@ in
       enable = true;
       extraPackages = with pkgs.bat-extras; [ batdiff batman batwatch ];
     };
-    fzf = {
-      enable = true;
-    };
-    password-store = {
-      enable = true;
-    };
+    fzf = { enable = true; };
+    password-store = { enable = true; };
   };
 
   programs.home-manager.enable = true;
