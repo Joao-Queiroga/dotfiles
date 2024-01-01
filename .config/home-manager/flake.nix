@@ -61,6 +61,7 @@
             ./dir_colors.nix
             ./terminals.nix
             ./firefox.nix
+            ./btop.nix
           ];
 
           extraSpecialArgs = {
