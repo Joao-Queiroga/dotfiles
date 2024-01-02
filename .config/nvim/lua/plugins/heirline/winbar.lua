@@ -21,9 +21,8 @@ local current_file = {
 	},
 	{
 		init = function(self)
-			local extension = vim.fn.fnamemodify(self.filepath, ":e")
 			self.icon, self.icon_color =
-				require("nvim-web-devicons").get_icon_color(self.filepath, extension, { default = true })
+				require("nvim-web-devicons").get_icon_color_by_filetype(vim.bo.filetype, { default = true })
 		end,
 		provider = function(self)
 			return self.icon .. " "
@@ -31,6 +30,7 @@ local current_file = {
 		hl = function(self)
 			return { fg = self.icon_color }
 		end,
+		update = "Filetype",
 	},
 	{
 		init = function(self)
@@ -41,7 +41,7 @@ local current_file = {
 		end,
 		hl = "NavicText",
 	},
-	update = { "BufRead", "BufNewFile", "BufEnter" },
+	update = { "BufRead", "BufNewFile", "BufEnter", "Filetype" },
 }
 
 local navic = {
