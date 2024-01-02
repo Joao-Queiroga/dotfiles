@@ -1,9 +1,10 @@
 local cmp = require("cmp")
-local snippy = require('snippy')
+local snippy = require("snippy")
 
 local kind_icons = {
 	Text = "󰉿",
 	Copilot = "",
+	Codeium = "",
 	Method = "",
 	Function = "󰊕",
 	Constructor = "",
@@ -32,7 +33,7 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
-cmp.setup {
+cmp.setup({
 	snippet = {
 		expand = function(args)
 			snippy.expand_snippet(args.body)
@@ -45,13 +46,13 @@ cmp.setup {
 		["<C-K>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		["<C-e>"] = cmp.mapping {
+		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
-		},
+		}),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm { select = true },
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -61,8 +62,8 @@ cmp.setup {
 				fallback()
 			end
 		end, {
-				"i",
-				"s",
+			"i",
+			"s",
 		}),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
@@ -73,8 +74,8 @@ cmp.setup {
 				fallback()
 			end
 		end, {
-				"i",
-				"s",
+			"i",
+			"s",
 		}),
 	},
 	formatting = {
@@ -95,6 +96,7 @@ cmp.setup {
 		end,
 	},
 	sources = {
+		{ name = "codeium" },
 		{ name = "copilot" },
 		{ name = "nvim_lsp" },
 		{ name = "orgmode" },
@@ -112,4 +114,4 @@ cmp.setup {
 	experimental = {
 		ghost_text = true,
 	},
-}
+})
