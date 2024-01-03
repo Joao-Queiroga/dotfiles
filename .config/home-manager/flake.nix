@@ -62,6 +62,7 @@
             ./terminals.nix
             ./firefox.nix
             ./btop.nix
+            ./mpv.nix
           ];
 
           extraSpecialArgs = {
