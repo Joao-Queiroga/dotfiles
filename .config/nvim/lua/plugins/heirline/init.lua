@@ -41,6 +41,7 @@ return {
 			return {
 				winbar = require("plugins.heirline.winbar"),
 				statusline = require("plugins.heirline.statusline"),
+				tabline = require("plugins.heirline.tabline"),
 				opts = {
 					colors = setup_colors,
 					disable_winbar_cb = function(args)
