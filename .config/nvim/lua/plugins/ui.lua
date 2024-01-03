@@ -1,11 +1,5 @@
 return {
 	{
-		"akinsho/bufferline.nvim",
-		event = "VeryLazy",
-		enabled = false,
-		opts = require("plugins.config.bufferline"),
-	},
-	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
