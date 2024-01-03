@@ -19,7 +19,7 @@ local tabline_file_flags = {
 			return vim.api.nvim_buf_get_option(self.bufnr, "modified")
 		end,
 		provider = function(self)
-			return string.rep(" ", self.pad - 3) .. "[+]"
+			return "[+]" .. string.rep(" ", self.pad - 3)
 		end,
 		hl = { fg = "green" },
 	},
@@ -30,9 +30,9 @@ local tabline_file_flags = {
 		end,
 		provider = function(self)
 			if vim.api.nvim_buf_get_option(self.bufnr, "buftype") == "terminal" then
-				return string.rep(" ", self.pad - 3) .. "  "
+				return "  " .. string.rep(" ", self.pad - 3)
 			else
-				return string.rep(" ", self.pad - 1) .. ""
+				return "" .. string.rep(" ", self.pad - 1)
 			end
 		end,
 		hl = { fg = "orange" },
