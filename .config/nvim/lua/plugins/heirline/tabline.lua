@@ -165,4 +165,26 @@ local bufferline = utils.make_buflist(
 	false
 )
 
-return { TabLineOffset, bufferline }
+local tabpage = {
+	provider = function(self)
+		return "%" .. self.tabnr .. "T " .. self.tabpage .. " %T"
+	end,
+	hl = function(self)
+		if not self.is_active then
+			return "TabLine"
+		else
+			return "TabLineSel"
+		end
+	end,
+}
+
+local tab_pages = {
+	-- only show this component if there's 2 or more tabpages
+	condition = function()
+		return #vim.api.nvim_list_tabpages() >= 2
+	end,
+	{ provider = "%=" },
+	utils.make_tablist(tabpage),
+}
+
+return { TabLineOffset, bufferline, { provider = "%=" }, tab_pages }
