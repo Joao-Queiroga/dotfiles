@@ -63,6 +63,7 @@
             ./firefox.nix
             ./btop.nix
             ./mpv.nix
+            ./zathura.nix
           ];
 
           extraSpecialArgs = {
