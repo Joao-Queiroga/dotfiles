@@ -68,6 +68,10 @@ in {
     };
     fzf = { enable = true; };
     password-store = { enable = true; };
+    gradle = {
+      enable = true;
+      home = ".local/share/gradle";
+    };
   };
 
   programs.home-manager.enable = true;
