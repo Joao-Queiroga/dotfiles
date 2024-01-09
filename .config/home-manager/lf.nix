@@ -21,7 +21,7 @@
         	esac
         }}
       '';
-      drag = "& ${pkgs.ripdrag}/bin/ripdrag -a -x $fx";
+      drag = "& ${pkgs.ripdrag}/bin/ripdrag -ax $fx";
       edit = "$$EDITOR $f";
       mkdir = ''
         ''${{
@@ -42,6 +42,8 @@
       drawbox = true;
       icons = true;
       ignorecase = true;
+      filesep = ":";
+      ifs = ":";
     };
     keybindings = {
       "." = "set hidden!";
