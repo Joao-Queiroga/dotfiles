@@ -30,6 +30,12 @@
         	mkdir $DIR
         }}
       '';
+      rename = ''
+        ''${{
+        	${pkgs.vimv-rs}/bin/vimv -- $(basename -a -- $fx)
+        	lf -remote "send $id load"
+        	lf -remote "send $id unselect"
+        }}'';
       extract = ''
         &{{
         	set -f
@@ -42,8 +48,8 @@
       drawbox = true;
       icons = true;
       ignorecase = true;
-      filesep = ":";
-      ifs = ":";
+      filesep = "\n";
+      ifs = "\n";
     };
     keybindings = {
       "." = "set hidden!";
