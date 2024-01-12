@@ -16,6 +16,7 @@ in {
     whatsapp-for-linux
     gradle
     gradle-completion
+    w3m
   ];
 
   gtk = {
@@ -71,6 +72,13 @@ in {
     gradle = {
       enable = true;
       home = ".local/share/gradle";
+    };
+    neovim = {
+      enable = true;
+      withPython3 = true;
+      withNodeJs = true;
+      defaultEditor = true;
+      extraLuaPackages = ps: [ ps.magick ];
     };
   };
 
