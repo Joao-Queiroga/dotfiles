@@ -27,6 +27,10 @@
       url = "github:stronk-dev/Tokyo-Night-Linux";
       flake = false;
     };
+    tokyonight-nvim = {
+      url = "github:folke/tokyonight.nvim";
+      flake = false;
+    };
 
     ags = {
       url = "github:Aylur/ags";

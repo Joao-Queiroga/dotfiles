@@ -66,6 +66,16 @@ in {
     bat = {
       enable = true;
       extraPackages = with pkgs.bat-extras; [ batdiff batman batwatch ];
+      config = {
+        theme = "Tokyonight";
+        wrap = "never";
+      };
+      themes = {
+        Tokyonight = {
+          src = inputs.tokyonight-nvim;
+          file = "extras/sublime/tokyonight_night.tmTheme";
+        };
+      };
     };
     fzf = { enable = true; };
     password-store = { enable = true; };
