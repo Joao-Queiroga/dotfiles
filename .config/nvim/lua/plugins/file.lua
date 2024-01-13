@@ -34,6 +34,14 @@ return {
 				follow_current_file = {
 					enabled = true,
 				},
+				filtered_items = {
+					hide_by_name = {
+						"node_modules",
+						"types",
+						"tsconfig.json",
+						"package-lock.json",
+					},
+				},
 			},
 			event_handlers = {
 				{
