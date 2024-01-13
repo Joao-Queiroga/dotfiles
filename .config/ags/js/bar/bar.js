@@ -1,6 +1,6 @@
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
+import SysTray from "./buttons/systray.js";
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
-import SystemTray from "resource:///com/github/Aylur/ags/service/systemtray.js";
 import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
 import Workspaces from "./buttons/workspaces.js";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
@@ -21,26 +21,6 @@ const ClientTitle = (monitor) =>
     ],
   });
 
-const SysTray = () =>
-  Widget.Box({
-    class_name: "systray",
-    connections: [
-      [
-        SystemTray,
-        (self) => {
-          self.children = SystemTray.items.map((item) =>
-            Widget.Button({
-              child: Widget.Icon({ binds: [["icon", item, "icon"]] }),
-              onPrimaryClick: (_, event) => item.activate(event),
-              onSecondaryClick: (_, event) => item.openMenu(event),
-              binds: [["tooltip-markup", item, "tooltip-markup"]],
-            }),
-          );
-        },
-      ],
-    ],
-  });
-
 const Clock = () =>
   Widget.Label({
     class_name: "clock",
@@ -56,30 +36,10 @@ const Clock = () =>
   });
 
 const BatteryIcon = () =>
-  Widget.Box({
+  Widget.Icon({
     class_name: "battery",
-    binds: [
-      [
-        "children",
-        Battery,
-        "available",
-        (a) => [
-          !a
-            ? null
-            : Widget.Icon({
-                binds: [
-                  ["icon", Battery, "icon-name"],
-                  [
-                    "tooltip-markup",
-                    Battery,
-                    "percent",
-                    (p) => `Battery: ${p}%`,
-                  ],
-                ],
-              }),
-        ],
-      ],
-    ],
+    visible: Battery.bind("available"),
+    icon: Battery.bind("icon_name"),
   });
 
 const Left = (monitor) =>
