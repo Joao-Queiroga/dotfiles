@@ -89,9 +89,6 @@
         "workspace 6, class:^(discord)$"
         "workspace 6, class:^(WebCord)$"
         "workspace 7, class:^(teams-for-linux)$"
-        "workspace 9 silent, class:^(Minecraft .*)$"
-        "workspace 9 silent, class:^(org.prismlauncher.PrismLauncher)$"
-        "workspace 9 silent, class:^(net-technicpack-launcher-LauncherMain)$"
         "noanim, class:^(.*ueberzug.*)$"
       ];
 
