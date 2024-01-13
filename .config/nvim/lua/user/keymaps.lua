@@ -80,8 +80,8 @@ local leader_mappings = {
 	},
 	l = {
 		name = "Lsp",
-		a = "Code actions",
-		r = "Rename",
+		a = { vim.lsp.buf.code_action, "Code actions" },
+		r = { vim.lsp.buf.rename, "Rename" },
 		o = { "<cmd>NavBuddy<cr>", "Outline" },
 		t = {
 			function()
