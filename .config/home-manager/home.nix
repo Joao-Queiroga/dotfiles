@@ -11,6 +11,7 @@ in {
     drawio
     yadm
     sassc
+    typescript
     nixfmt
     beekeeper-studio
     whatsapp-for-linux

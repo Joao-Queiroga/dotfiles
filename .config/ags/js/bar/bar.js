@@ -1,38 +1,13 @@
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import Variable from "resource:///com/github/Aylur/ags/variable.js";
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import SystemTray from "resource:///com/github/Aylur/ags/service/systemtray.js";
 import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
+import Workspaces from "./buttons/workspaces.js";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
-
-const Workspaces = (monitor) =>
-  Widget.Box({
-    className: "workspaces",
-    connections: [
-      [
-        Hyprland.active.workspace,
-        (self) => {
-          // generate an array [1..9] then make buttons from the index
-          const arr = Array.from({ length: 9 }, (_, i) => i + 1);
-          self.children = arr.map((i) =>
-            Widget.Button({
-              onClicked: () =>
-                execAsync(`hyprctl dispatch workspace ${i + monitor * 10}`),
-              child: Widget.Label(""),
-              className:
-                Hyprland.active.workspace.id == i + monitor * 10
-                  ? "focused"
-                  : "",
-            }),
-          );
-        },
-      ],
-    ],
-  });
 
 const ClientTitle = (monitor) =>
   Widget.Label({
-    className: "client-title",
+    class_name: "client-title",
     connections: [
       [
         Hyprland.active,
@@ -48,7 +23,7 @@ const ClientTitle = (monitor) =>
 
 const SysTray = () =>
   Widget.Box({
-    className: "systray",
+    class_name: "systray",
     connections: [
       [
         SystemTray,
@@ -68,7 +43,7 @@ const SysTray = () =>
 
 const Clock = () =>
   Widget.Label({
-    className: "clock",
+    class_name: "clock",
     connections: [
       [
         1000,
@@ -82,7 +57,7 @@ const Clock = () =>
 
 const BatteryIcon = () =>
   Widget.Box({
-    className: "battery",
+    class_name: "battery",
     binds: [
       [
         "children",
@@ -126,13 +101,13 @@ const Right = () =>
 export default (monitor = 0) =>
   Widget.Window({
     name: `bar-${monitor}`,
-    className: "bar",
+    class_name: "bar",
     monitor,
     exclusivity: "exclusive",
     anchor: ["top", "left", "right"],
     child: Widget.CenterBox({
-      startWidget: Left(monitor),
-      centerWidget: Center(monitor),
-      endWidget: Right(),
+      start_widget: Left(monitor),
+      center_widget: Center(monitor),
+      end_widget: Right(),
     }),
   });
