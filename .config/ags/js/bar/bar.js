@@ -2,6 +2,7 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import SysTray from "./buttons/systray.js";
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
+import Volume from "./buttons/volume.js";
 import Workspaces from "./buttons/workspaces.js";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
@@ -48,7 +49,7 @@ const Center = (/** @type {number} */ monitor) =>
 const Right = () =>
   Widget.Box({
     hpack: "end",
-    children: [SysTray(), BatteryIcon(), Clock()],
+    children: [SysTray(), Volume(), BatteryIcon(), Clock()],
   });
 
 export default (monitor = 0) =>
