@@ -5,15 +5,15 @@ import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
 import Workspaces from "./buttons/workspaces.js";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
-const ClientTitle = (monitor) =>
+const ClientTitle = (/** @type {number} */ monitor) =>
   Widget.Label({
     class_name: "client-title",
     setup: (self) =>
       self.hook(Hyprland.active, () => {
         const mon = Hyprland.getMonitor(monitor);
-        self.label = Hyprland.getWorkspace(
-          mon.activeWorkspace.id,
-        ).lastwindowtitle;
+        self.label =
+          Hyprland.getWorkspace(mon?.activeWorkspace.id || 0)
+            ?.lastwindowtitle || "";
       }),
   });
 
@@ -35,12 +35,12 @@ const BatteryIcon = () =>
     icon: Battery.bind("icon_name"),
   });
 
-const Left = (monitor) =>
+const Left = (/** @type {number} */ monitor) =>
   Widget.Box({
     children: [Workspaces(monitor)],
   });
 
-const Center = (monitor) =>
+const Center = (/** @type {number} */ monitor) =>
   Widget.Box({
     children: [ClientTitle(monitor)],
   });
