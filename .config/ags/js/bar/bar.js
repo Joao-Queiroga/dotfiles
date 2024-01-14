@@ -8,31 +8,24 @@ import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 const ClientTitle = (monitor) =>
   Widget.Label({
     class_name: "client-title",
-    connections: [
-      [
-        Hyprland.active,
-        (self) => {
-          let mon = Hyprland.getMonitor(monitor);
-          self.label = mon.focused
-            ? Hyprland.active.client.title
-            : Hyprland.getWorkspace(mon.activeWorkspace.id).lastwindowtitle;
-        },
-      ],
-    ],
+    setup: (self) =>
+      self.hook(Hyprland.active, () => {
+        const mon = Hyprland.getMonitor(monitor);
+        self.label = Hyprland.getWorkspace(
+          mon.activeWorkspace.id,
+        ).lastwindowtitle;
+      }),
   });
 
 const Clock = () =>
   Widget.Label({
     class_name: "clock",
-    connections: [
-      [
-        1000,
-        (self) =>
-          execAsync(["date", "+%a %d/%m/%Y %H:%M"])
-            .then((date) => (self.label = `  ${date}`))
-            .catch(console.error),
-      ],
-    ],
+    setup: (self) =>
+      self.poll(1000, (self) =>
+        execAsync(["date", "+%a %d/%m/%Y %H:%M"]).then(
+          (date) => (self.label = `  ${date}`),
+        ),
+      ),
   });
 
 const BatteryIcon = () =>
