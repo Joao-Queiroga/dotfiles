@@ -18,13 +18,17 @@ const Workspaces = (monitor) =>
           class_name: "indicator",
           vpack: "center",
         }),
-        setup: (self) => {
-          self.toggleClassName("active", Hyprland.active.workspace.id === i);
-          self.toggleClassName(
-            "occupied",
-            (Hyprland.getWorkspace(i)?.windows || 0) > 0,
-          );
-        },
+        setup: (self) =>
+          self.hook(Hyprland, () => {
+            self.toggleClassName(
+              "active",
+              Hyprland.getMonitor(monitor)?.activeWorkspace.id === i,
+            );
+            self.toggleClassName(
+              "occupied",
+              (Hyprland.getWorkspace(i)?.windows || 0) > 0,
+            );
+          }),
       }),
     ),
   });
