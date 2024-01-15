@@ -79,7 +79,7 @@ capabilities.textDocument.foldingRange = {
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
-function M.default_handler(server_name) -- default handler
+function M.get_opts(server_name)
 	local opts = {
 		capabilities = M.capabilities,
 		on_attach = M.on_attach,
@@ -88,6 +88,11 @@ function M.default_handler(server_name) -- default handler
 	if require_ok then
 		opts = vim.tbl_deep_extend("force", conf_opts, opts)
 	end
+	return opts
+end
+
+function M.default_handler(server_name) -- default handler
+	local opts = M.get_opts(server_name)
 	require("lspconfig")[server_name].setup(opts)
 end
 

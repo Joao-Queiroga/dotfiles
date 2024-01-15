@@ -66,6 +66,17 @@ return {
 		opts = {},
 	},
 	{
+		"mrcjkb/rustaceanvim",
+		version = "^3",
+		ft = { "rust" },
+		opts = {
+			server = handlers.get_opts("rust_analyzer"),
+		},
+		config = function(_, opts)
+			vim.g.rustaceanvim = opts
+		end,
+	},
+	{
 		"saecki/crates.nvim",
 		event = { "BufRead Cargo.toml" },
 		dependencies = {
