@@ -31,6 +31,5 @@ const main = await import(`file://${outdir}/main.js`);
 
 export default {
   ...main.default,
-  ...(await import("./js/main.js")).default,
   style: css,
 };
