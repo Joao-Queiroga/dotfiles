@@ -1,5 +1,5 @@
 { pkgs, inputs, ... }:
-let tokyonight = import ./tokyonight-gtk.nix { inherit pkgs inputs; };
+let tokyonight = import ./pkgs/tokyonight-gtk.nix { inherit pkgs inputs; };
 in {
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";

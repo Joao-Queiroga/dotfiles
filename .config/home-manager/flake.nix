@@ -64,7 +64,7 @@
             ./nu.nix
             ./dir_colors.nix
             ./terminals.nix
-            ./firefox.nix
+            ./browser/firefox.nix
             ./btop.nix
             ./mpv.nix
             ./zathura.nix
