@@ -6,7 +6,7 @@ import Volume from "./buttons/volume.ts";
 import Workspaces from "./buttons/workspaces.ts";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
-const ClientTitle = (/** @type {number} */ monitor) =>
+const ClientTitle = (monitor: number) =>
   Widget.Label({
     class_name: "client-title",
     setup: (self) =>
@@ -36,12 +36,12 @@ const BatteryIcon = () =>
     icon: Battery.bind("icon_name"),
   });
 
-const Left = (/** @type {number} */ monitor) =>
+const Left = (monitor: number) =>
   Widget.Box({
     children: [Workspaces(monitor)],
   });
 
-const Center = (/** @type {number} */ monitor) =>
+const Center = (monitor: number) =>
   Widget.Box({
     children: [ClientTitle(monitor)],
   });

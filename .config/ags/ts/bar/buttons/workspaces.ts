@@ -3,10 +3,10 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 import { range } from "../../utils.js";
 
-const dispatch = (workspace) =>
+const dispatch = (workspace: number) =>
   execAsync(`hyprctl dispatch workspace ${workspace}`);
 
-const Workspaces = (monitor) =>
+const Workspaces = (monitor: number) =>
   Widget.Box({
     class_name: "workspaces",
     children: range(9, monitor * 10 + 1).map((i) =>
