@@ -1,5 +1,5 @@
-import { forMonitors } from "./utils.js";
-import Bar from "./bar/bar.js";
+import { forMonitors } from "./utils.ts";
+import Bar from "./bar/bar.ts";
 
 const Windows = [forMonitors(Bar)];
 

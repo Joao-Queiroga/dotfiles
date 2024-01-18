@@ -1,9 +1,9 @@
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import SysTray from "./buttons/systray.js";
+import SysTray from "./buttons/systray.ts";
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
-import Volume from "./buttons/volume.js";
-import Workspaces from "./buttons/workspaces.js";
+import Volume from "./buttons/volume.ts";
+import Workspaces from "./buttons/workspaces.ts";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
 const ClientTitle = (/** @type {number} */ monitor) =>

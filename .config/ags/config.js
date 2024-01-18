@@ -2,7 +2,7 @@ import App from "resource:///com/github/Aylur/ags/app.js";
 import { exec, execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 
 const scss = App.configDir + "/style/style.scss";
-const css = App.configDir + "/style.css";
+const css = "/tmp/ags/style.css";
 
 exec(`sassc ${scss} ${css}`);
 
