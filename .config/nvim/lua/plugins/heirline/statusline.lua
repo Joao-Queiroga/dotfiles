@@ -1,5 +1,11 @@
 local utils = require("heirline.utils")
 local conditions = require("heirline.conditions")
+local surround = function(delimiter, color, component)
+	return {
+		utils.surround(delimiter, color.fg or color, component),
+		hl = { bg = color.bg or nil },
+	}
+end
 
 local function exlude(args)
 	return not conditions.buffer_matches({
@@ -204,6 +210,31 @@ local diagnostics = {
 	},
 }
 
+local filetype = {
+	init = function(self)
+		self.filetype = vim.bo.filetype
+	end,
+	{
+		init = function(self)
+			self.icon, self.icon_color =
+				require("nvim-web-devicons").get_icon_color_by_filetype(self.filetype, { default = true })
+		end,
+		provider = function(self)
+			return self.icon .. " "
+		end,
+		hl = function(self)
+			return { fg = self.icon_color }
+		end,
+	},
+	{
+		provider = function(self)
+			return self.filetype .. " "
+		end,
+		hl = { fg = "blue" },
+	},
+	update = "FileType",
+}
+
 local ruler = {
 	-- %l = current line number
 	-- %L = number of lines in the buffer
@@ -213,26 +244,13 @@ local ruler = {
 	hl = { bg = "blue", fg = "bg" },
 }
 
--- local ScrollBar = {
--- 	static = {
--- 		sbar = { "🭶", "🭷", "🭸", "🭹", "🭺", "🭻" },
--- 	},
--- 	provider = function(self)
--- 		local curr_line = vim.api.nvim_win_get_cursor(0)[1]
--- 		local lines = vim.api.nvim_buf_line_count(0)
--- 		local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
--- 		return string.rep(self.sbar[i], 2)
--- 	end,
--- 	hl = { fg = "blue", bg = "bg_highlight" },
--- }
-
 return {
-	utils.surround({ "", "" }, "bg_highlight", { vi_mode }),
+	surround({ "", "" }, "bg_highlight", vi_mode),
 	diagnostics,
 	file_name_block,
 	{ provider = "%=" },
-	utils.surround({ "" }, "blue", { ruler }),
-	-- ScrollBar,
+	surround({ "" }, "bg_highlight", filetype),
+	surround({ "" }, { fg = "blue", bg = "bg_highlight" }, ruler),
 
 	hl = { bg = "bg" },
 	condition = exlude,
