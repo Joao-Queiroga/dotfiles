@@ -92,21 +92,24 @@ local vi_mode = {
 
 local file_name_block = {
 	init = function(self)
-		self.filename = vim.api.nvim_buf_get_name(0)
+		self.filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":t")
 	end,
 }
 
 local file_icon = {
 	init = function(self)
-		self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color_by_filetype(vim.bo.filetype)
+		local filename = self.filename
+		local extension = vim.fn.fnamemodify(filename, ":e")
+		self.icon, self.icon_color =
+			require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 	end,
 	provider = function(self)
-		return self.icon and (self.icon .. " ")
+		return self.icon .. " "
 	end,
 	hl = function(self)
 		return { fg = self.icon_color }
 	end,
-	update = "FileType",
+	update = "BufEnter",
 }
 
 local file_name = {

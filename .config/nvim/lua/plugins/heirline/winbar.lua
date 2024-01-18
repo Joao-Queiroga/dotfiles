@@ -1,6 +1,7 @@
 local current_file = {
 	init = function(self)
 		self.filepath = vim.api.nvim_buf_get_name(0)
+		self.filename = vim.fn.fnamemodify(self.filepath, ":t")
 	end,
 	{
 		provider = " ",
@@ -21,8 +22,10 @@ local current_file = {
 	},
 	{
 		init = function(self)
+			local filename = self.filename
+			local extension = vim.fn.fnamemodify(filename, ":e")
 			self.icon, self.icon_color =
-				require("nvim-web-devicons").get_icon_color_by_filetype(vim.bo.filetype, { default = true })
+				require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 		end,
 		provider = function(self)
 			return self.icon .. " "
@@ -30,12 +33,9 @@ local current_file = {
 		hl = function(self)
 			return { fg = self.icon_color }
 		end,
-		update = "Filetype",
+		update = "BufEnter",
 	},
 	{
-		init = function(self)
-			self.filename = vim.fn.fnamemodify(self.filepath, ":t")
-		end,
 		provider = function(self)
 			return self.filename
 		end,

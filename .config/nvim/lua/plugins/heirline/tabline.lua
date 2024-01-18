@@ -2,8 +2,7 @@ local utils = require("heirline.utils")
 local tabline_file_name = {
 	provider = function(self)
 		local filename = self.filename
-		filename = filename == "" and "[No Name]" or vim.fn.fnamemodify(filename, ":t")
-		return filename
+		return filename == "" and "[No Name]" or filename
 	end,
 	hl = function(self)
 		return { bold = self.is_active or self.is_visible, italic = true }
@@ -51,8 +50,10 @@ local tabline_file_flags = {
 
 local file_icon = {
 	init = function(self)
+		local filename = self.filename
+		local extension = vim.fn.fnamemodify(filename, ":e")
 		self.icon, self.icon_color =
-			require("nvim-web-devicons").get_icon_color_by_filetype(vim.bo[self.bufnr].filetype, { default = true })
+			require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 	end,
 	provider = function(self)
 		return self.icon .. " "
@@ -60,12 +61,12 @@ local file_icon = {
 	hl = function(self)
 		return { fg = self.icon_color }
 	end,
-	update = { "FileType", "BufEnter", "BufLeave" },
+	update = { "BufEnter", "BufLeave" },
 }
 
 local tabline_filename_block = {
 	init = function(self)
-		self.filename = vim.api.nvim_buf_get_name(self.bufnr)
+		self.filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.bufnr), ":t")
 		self.padding = (25 - (utils.count_chars(vim.fn.fnamemodify(self.filename, ":t")) + 2)) / 2
 	end,
 	hl = function(self)
