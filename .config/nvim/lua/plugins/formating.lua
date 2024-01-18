@@ -17,6 +17,9 @@ return {
 				sass = { { "prettierd", "prettier" } },
 				rust = { "rustfmt" },
 				nix = { "nixfmt" },
+				c = { "clang-format" },
+				cpp = { "clang-format" },
+				java = { "clang-format" },
 			},
 			format_on_save = {
 				timeout_ms = 500,
