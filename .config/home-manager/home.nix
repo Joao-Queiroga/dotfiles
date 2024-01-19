@@ -93,5 +93,18 @@ in {
     };
   };
 
+  home.file.".config/awesome/.neoconf.json".text = ''
+    {
+    	"lspconfig": {
+    		"lua_ls": {
+    			"Lua.workspace.library": [
+    				"~/.config/awesome/",
+    				"${pkgs.awesome}/share/awesome/lib"
+    			]
+    		}
+    	}
+    }
+    	'';
+
   programs.home-manager.enable = true;
 }
