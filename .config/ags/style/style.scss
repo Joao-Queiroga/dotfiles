@@ -15,6 +15,11 @@ $magenta: #bb9af7;
     color: $foreground;
     padding: 0;
   }
+  .icon {
+    border: 0;
+    padding: 0 2px;
+    font-size: 1.2em;
+  }
 }
 
 label {
