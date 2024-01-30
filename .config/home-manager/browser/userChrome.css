@@ -203,7 +203,7 @@ hbox.titlebar-spacer:nth-child(1) {
 /*   Hide Tab bar if Sidebery is Active   */
 
 @media (-moz-windows-default-theme) {
-  [sizemode="maximized"][titlepreface*="[S]"] #navigator-toolbox {
+  [sizemode="maximized"] #navigator-toolbox {
     margin: 8px 0 0;
   }
 
@@ -219,19 +219,15 @@ hbox.titlebar-spacer:nth-child(1) {
   }
 }
 
-[titlepreface*="[S]"] #titlebar,
-[titlepreface*="[S]"] #tabbrowser-tabs,
-[titlepreface*="[S]"] #tabContextMenu,
-[titlepreface*="[S]"] #sidebar-header,
+#titlebar,
+#tabbrowser-tabs,
+#tabContextMenu,
+#sidebar-header,
 [hidden]#sidebar-box {
   display: none;
 }
 
 /*   Dynamic sidebar   */
-
-[titlepreface*="[S]"] #sidebar-box {
-  max-width: 40px;
-}
 
 #sidebar-box {
   /* CHANGE COLLAPSED SIDEBAR HERE */
@@ -288,21 +284,17 @@ hbox.titlebar-spacer:nth-child(1) {
   background-color: var(--bg) !important;
 }
 
-[titlepreface*="[S]"] #appcontent {
-  /* margin-left: 28px; */
+#appcontent {
   margin-left: 34px;
-  /* border: 1px solid green !important; */
 }
 
 [inFullscreen] #appcontent {
   margin-left: -20px;
-  /* border: 1px solid aqua !important; */
 }
 
 @media (-moz-windows-default-theme) {
-  [titlepreface*="[S]"] #appcontent {
+  #appcontent {
     margin-left: 100px;
-    /* border: 1px solid darkmagenta !important; */
   }
 
   [inFullscreen] #appcontent {
