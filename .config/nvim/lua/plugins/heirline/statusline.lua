@@ -212,7 +212,8 @@ local diagnostics = {
 
 local filetype = {
 	init = function(self)
-		self.filetype = vim.bo.filetype
+		local filetype = vim.bo.filetype
+		self.filetype = filetype == "" and "text" or filetype
 	end,
 	{
 		init = function(self)
