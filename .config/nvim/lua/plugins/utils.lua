@@ -29,6 +29,10 @@ return {
 		},
 	},
 	{
+		"echasnovski/mini.move",
+		opts = {},
+	},
+	{
 		"echasnovski/mini.bufremove",
 		opts = {},
 	},
