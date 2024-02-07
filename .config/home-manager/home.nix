@@ -18,6 +18,7 @@ in {
     gradle
     gradle-completion
     w3m
+    brave
   ];
 
   gtk = {
