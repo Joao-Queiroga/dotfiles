@@ -1,7 +1,12 @@
 return {
 	{
 		"numToStr/Navigator.nvim",
-		event = "VeryLazy",
+		keys = {
+			{ "<C-h>", "<cmd>NavigatorLeft<cr>", mode = { "n", "t", "v", "x" }, desc = "Navigate Left" },
+			{ "<C-j>", "<cmd>NavigatorDown<cr>", mode = { "n", "t", "v", "x" }, desc = "Navigate Down" },
+			{ "<C-k>", "<cmd>NavigatorUp<cr>", mode = { "n", "t", "v", "x" }, desc = "Navigate Up" },
+			{ "<C-l>", "<cmd>NavigatorRight<cr>", mode = { "n", "t", "v", "x" }, desc = "Navigate Right" },
+		},
 		opts = {},
 	},
 	{
@@ -34,6 +39,9 @@ return {
 	},
 	{
 		"echasnovski/mini.bufremove",
+		keys = {
+			{ "<leader>c", "<cmd>lua MiniBufremove.delete()<cr>", mode = { "n", "t" }, desc = "Delete buffer" },
+		},
 		opts = {},
 	},
 	{

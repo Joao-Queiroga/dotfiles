@@ -1,8 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
--- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
 -- Modes
@@ -12,13 +9,6 @@ local keymap = vim.api.nvim_set_keymap
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
-
--- Normal --
--- Better window navigation
-keymap("n", "<C-h>", "<cmd>NavigatorLeft<cr>", opts)
-keymap("n", "<C-j>", "<cmd>NavigatorDown<cr>", opts)
-keymap("n", "<C-k>", "<cmd>NavigatorUp<cr>", opts)
-keymap("n", "<C-l>", "<cmd>NavigatorRight<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -37,31 +27,16 @@ keymap("v", ">", ">gv", opts)
 
 keymap("v", "p", '"_dP', opts)
 
--- Terminal --
--- Better terminal navigation
-keymap("t", "<C-j>", "<cmd>NavigatorDown<cr>", term_opts)
-keymap("t", "<C-h>", "<cmd>NavigatorLeft<cr>", term_opts)
-keymap("t", "<C-k>", "<cmd>NavigatorUp<cr>", term_opts)
-keymap("t", "<C-l>", "<cmd>NavigatorRight<cr>", term_opts)
-
--- Inc rename
-vim.keymap.set("n", "<leader>rn", function()
-	return ":IncRename " .. vim.fn.expand("<cword>")
-end, opts)
-
 -- which key
 local wk = require("which-key")
 local presets = require("which-key.plugins.presets")
 presets.operators["v"] = nil
 
 local leader_mappings = {
-	c = { "<cmd>lua MiniBufremove.delete()<cr>", "Delete buffer" },
-	e = { "<cmd>Neotree toggle<cr>", "Toggle FileTree" },
 	f = {
 		name = "Files",
 		f = { "<cmd>Telescope find_files<cr>", "Find files" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-		b = { "<cmd>lua MiniFiles.open()<cr>", "File Browser" },
 	},
 	l = {
 		name = "Lsp",
