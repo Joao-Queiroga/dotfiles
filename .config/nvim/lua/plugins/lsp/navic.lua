@@ -69,12 +69,15 @@ return {
 		},
 		config = function(_, opts)
 			highlight()
-			require('nvim-navic').setup(opts)
+			require("nvim-navic").setup(opts)
 		end,
 	},
 	{
 		"SmiteshP/nvim-navbuddy",
 		event = "LspAttach",
+		keys = {
+			{ "<leader>lo", "<cmd>NavBuddy<cr>", mode = { "n", "v", "x" }, desc = "Outline" },
+		},
 		dependencies = {
 			"SmiteshP/nvim-navic",
 			"MunifTanjim/nui.nvim",

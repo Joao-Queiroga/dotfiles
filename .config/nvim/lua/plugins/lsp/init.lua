@@ -46,6 +46,24 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
+		keys = {
+			{ "<leader>lt", "TroubleToggle ", mode = { "n", "v", "x" }, desc = "Trouble" },
+			{
+				"<leader>lw",
+				"TroubleToggle workspace_diagnostics",
+				mode = { "n", "v", "x" },
+				desc = "Workspace Diagnostics",
+			},
+			{
+				"<leader>ld",
+				"TroubleToggle document_diagnostics",
+				mode = { "n", "v", "x" },
+				desc = "Document Diagnostics",
+			},
+			{ "<leader>lq", "TroubleToggle quickfix", mode = { "n", "v", "x" }, desc = "Quickfixes" },
+			{ "<leader>ll", "TroubleToggle loclist", mode = { "n", "v", "x" }, desc = "Loclist" },
+			{ "<leader>lR", "TroubleToggle lsp_references", mode = { "n", "v", "x" }, desc = "LSP References" },
+		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		cmd = { "Trouble", "TroubleToggle" },
 		opts = {},

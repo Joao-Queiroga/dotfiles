@@ -42,43 +42,6 @@ local leader_mappings = {
 		name = "Lsp",
 		a = { vim.lsp.buf.code_action, "Code actions" },
 		r = { vim.lsp.buf.rename, "Rename" },
-		o = { "<cmd>NavBuddy<cr>", "Outline" },
-		t = {
-			function()
-				require("trouble").toggle()
-			end,
-			"Trouble",
-		},
-		w = {
-			function()
-				require("trouble").toggle("workspace_diagnostics")
-			end,
-			"Workspace Diagnostics",
-		},
-		d = {
-			function()
-				require("trouble").toggle("document_diagnostics")
-			end,
-			"Document Diagnostics",
-		},
-		q = {
-			function()
-				require("trouble").toggle("quickfix")
-			end,
-			"Quickfixes",
-		},
-		l = {
-			function()
-				require("trouble").toggle("loclist")
-			end,
-			"Loclist",
-		},
-		R = {
-			function()
-				require("trouble").toggle("lsp_references")
-			end,
-			"LSP References",
-		},
 	},
 	g = {
 		name = "Git",
