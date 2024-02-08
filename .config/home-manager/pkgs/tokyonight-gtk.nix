@@ -7,6 +7,6 @@ pkgs.stdenv.mkDerivation {
   dontUnpack = true;
   installPhase = ''
     mkdir -p $out/share
-    cp -r $src/usr/share/themes $out/share
+    cp -r $src/themes $out/share
   '';
 }

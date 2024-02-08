@@ -15,9 +15,6 @@ in {
     nixfmt
     beekeeper-studio
     whatsapp-for-linux
-    gradle
-    gradle-completion
-    w3m
     brave
   ];
 
@@ -29,7 +26,7 @@ in {
     };
     theme = {
       package = tokyonight;
-      name = "TokyoNight";
+      name = "Tokyonight-Dark-B";
     };
   };
 
