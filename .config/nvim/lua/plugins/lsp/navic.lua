@@ -76,7 +76,7 @@ return {
 		"SmiteshP/nvim-navbuddy",
 		event = "LspAttach",
 		keys = {
-			{ "<leader>lo", "<cmd>NavBuddy<cr>", mode = { "n", "v", "x" }, desc = "Outline" },
+			{ "<leader>lo", "<cmd>Navbuddy<cr>", mode = { "n", "v", "x" }, desc = "Outline" },
 		},
 		dependencies = {
 			"SmiteshP/nvim-navic",
