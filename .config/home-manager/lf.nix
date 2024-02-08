@@ -55,6 +55,7 @@
       "." = "set hidden!";
       V = ''''$${pkgs.bat}/bin/bat --paging=always "$f"'';
       "<c-d>" = "drag";
+      D = "delete";
     };
     extraConfig = let
       previewer = pkgs.writeShellScriptBin "pv.sh" ''
