@@ -56,6 +56,7 @@
       V = ''''$${pkgs.bat}/bin/bat --paging=always "$f"'';
       "<c-d>" = "drag";
       D = "delete";
+      S = "$ ${pkgs.zsh}/bin/zsh";
     };
     extraConfig = let
       previewer = pkgs.writeShellScriptBin "pv.sh" ''
