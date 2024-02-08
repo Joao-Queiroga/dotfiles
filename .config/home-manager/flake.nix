@@ -44,8 +44,10 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+          android_sdk.accept_license = true;
+        };
       };
     in {
       homeConfigurations."joaoqueiroga" =
@@ -54,6 +56,7 @@
           modules = [
             hyprland.homeManagerModules.default
             inputs.ags.homeManagerModules.default
+            ./flutter.nix
             ./home.nix
             ./lf.nix
             ./lazygit.nix
