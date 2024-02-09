@@ -5,6 +5,7 @@ import Volume from "./buttons/volume.ts";
 import BatteryIcon from "./buttons/battery";
 import Workspaces from "./buttons/workspaces.ts";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
+import { truncateString } from "ts/utils";
 
 const ClientTitle = (monitor: number) =>
   Widget.Label({
@@ -13,8 +14,11 @@ const ClientTitle = (monitor: number) =>
       self.hook(Hyprland.active, () => {
         const mon = Hyprland.getMonitor(monitor);
         self.label =
-          Hyprland.getWorkspace(mon?.activeWorkspace.id || 0)
-            ?.lastwindowtitle || "";
+          truncateString(
+            Hyprland.getWorkspace(mon?.activeWorkspace.id || 0)
+              ?.lastwindowtitle,
+            25,
+          ) || "";
       }),
   });
 

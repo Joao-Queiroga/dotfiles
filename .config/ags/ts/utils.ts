@@ -10,3 +10,7 @@ export function forMonitors(
   const n = Gdk.Display.get_default()?.get_n_monitors() || 1;
   return range(n, 0).map(widget).flat(1);
 }
+
+export function truncateString(str: string, maxLength: number): string {
+  return str.length <= maxLength ? str : str.slice(0, maxLength) + "...";
+}
