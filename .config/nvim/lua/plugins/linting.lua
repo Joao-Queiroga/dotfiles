@@ -7,6 +7,7 @@ return {
 			linters_by_ft = {
 				fish = { "fish" },
 				python = { "flake8" },
+				java = { "checkstyle" },
 			},
 		},
 		config = function(_, opts)
