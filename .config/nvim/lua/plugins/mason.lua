@@ -1,3 +1,12 @@
+local ensure_installed = {
+	"prettierd",
+	"clang-format",
+	"checkstyle",
+	"flake8",
+	"stylua",
+	"black",
+	"isort",
+}
 return {
 	{
 		"williamboman/mason.nvim",
@@ -12,6 +21,14 @@ return {
 					package_uninstalled = " 󰚌",
 				},
 			},
+		},
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		lazy = true,
+		dependencies = { "williamboman/mason.nvim" },
+		opts = {
+			ensure_installed = ensure_installed,
 		},
 	},
 }

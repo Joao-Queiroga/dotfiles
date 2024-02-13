@@ -2,6 +2,7 @@ return {
 	{
 		"mfussenegger/nvim-lint",
 		event = { "BufWrite", "BufRead", "InsertLeave" },
+		dependencies = { "mason-tool-installer.nvim" },
 		opts = {
 			events = { "BufWritePost", "BufReadPost", "InsertLeave" },
 			linters_by_ft = {

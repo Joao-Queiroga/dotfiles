@@ -1,7 +1,7 @@
 return {
 	{
 		"stevearc/conform.nvim",
-		dependencies = "williamboman/mason.nvim",
+		dependencies = { "williamboman/mason.nvim", "mason-tool-installer.nvim" },
 		event = "BufWritePre",
 		cmd = "ConformInfo",
 		opts = {
