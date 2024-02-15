@@ -4,6 +4,7 @@
     settings = {
       color_theme = "tokyo-night";
       vim_keys = true;
+      cpu_single_graph = true;
       update_ms = 1000;
       proc_sorting = "pid";
       proc_tree = true;
