@@ -1,0 +1,70 @@
+@use "theme" as *;
+
+.bar {
+  * {
+    font-size: 9.5pt;
+    background-color: $background;
+    border: none;
+    color: $foreground;
+    padding: 0;
+  }
+  .icon {
+    border: 0;
+    padding: 0 2px;
+    font-size: 1.2em;
+  }
+}
+
+label {
+  font-weight: bold;
+  margin: 0;
+}
+
+.workspaces {
+  > button {
+    label {
+      color: $blue;
+    }
+    &.active {
+      label {
+        color: $purple;
+      }
+    }
+  }
+}
+
+.media {
+  padding: 0 1px;
+  margin: 0;
+}
+
+.client-title {
+  margin-left: 1em;
+}
+
+.notification image {
+  margin-left: 1em;
+}
+
+.battery progressbar {
+  margin: 0 6px;
+}
+
+.clock {
+  margin: 0 6px;
+  font-size: 1.1em;
+  color: $orange;
+}
+
+.systray button {
+  border: 0;
+  padding: 0 2px;
+  > * {
+    font-size: 1.5em;
+  }
+}
+
+progress,
+highlight {
+  min-height: 8px;
+}
