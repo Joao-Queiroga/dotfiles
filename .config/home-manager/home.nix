@@ -76,8 +76,9 @@ in {
         };
       };
     };
-    fzf = { enable = true; };
-    password-store = { enable = true; };
+    fzf.enable = true;
+    password-store.enable = true;
+    browserpass.enable = true;
     gradle = {
       enable = true;
       home = ".local/share/gradle";
