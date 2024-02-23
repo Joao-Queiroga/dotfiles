@@ -40,6 +40,7 @@
           "${modkey}+Shift C" = "close";
           "${modkey}+Shift Q" = "exit";
         };
+      };
     };
   };
 }
