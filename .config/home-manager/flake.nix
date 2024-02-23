@@ -62,6 +62,7 @@
             ./lazygit.nix
             ./yazi.nix
             ./hyprland.nix
+            ./river.nix
             ./zsh.nix
             ./rofi.nix
             ./nu.nix
