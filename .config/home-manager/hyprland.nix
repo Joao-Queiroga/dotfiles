@@ -94,7 +94,7 @@
 
       "$mainMod" = "SUPER";
       "$term" = "kitty -1";
-      "$edittor" = "$term -1 nvim";
+      "$edittor" = "$term nvim";
 
       bind = [
         "$mainMod_SHIFT, C, killactive, "
