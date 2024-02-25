@@ -60,7 +60,7 @@
             ./home.nix
             ./lf.nix
             ./lazygit.nix
-            ./yazi.nix
+            ./yazi/yazi.nix
             ./hyprland.nix
             ./river.nix
             ./zsh.nix
