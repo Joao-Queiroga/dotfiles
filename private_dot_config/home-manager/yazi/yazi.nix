@@ -2,8 +2,8 @@
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
-    settings = ./settings.nix;
-    keymap = ./keymap.nix;
-    theme = ./theme.nix;
+    settings = import ./settings.nix;
+    keymap = import ./keymap.nix;
+    theme = import ./theme.nix;
   };
 }
