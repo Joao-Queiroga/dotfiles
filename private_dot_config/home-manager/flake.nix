@@ -72,6 +72,7 @@
             ./btop.nix
             ./mpv.nix
             ./zathura.nix
+            ./tmux.nix
           ];
 
           extraSpecialArgs = {
