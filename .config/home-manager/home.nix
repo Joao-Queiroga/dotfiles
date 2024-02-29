@@ -9,7 +9,7 @@ in {
   home.packages = with pkgs; [
     webcord
     drawio
-    chezmoi
+    yadm
     sassc
     typescript
     nixfmt

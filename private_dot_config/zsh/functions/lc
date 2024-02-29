@@ -1,3 +1,0 @@
-chezmoi re-add
-lazygit --path $(chezmoi source-path)
-chezmoi apply
