@@ -83,7 +83,6 @@ cmp.setup({
 		format = function(entry, vim_item)
 			-- Kind icons
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			vim_item.menu = ({
 				copilot = "[Copilot]",
 				nvim_lsp = "[LSP]",
@@ -96,13 +95,13 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "codeium" },
-		{ name = "copilot" },
 		{ name = "nvim_lsp" },
-		{ name = "orgmode" },
 		{ name = "snippy" },
+		{ name = "orgmode" },
 		{ name = "buffer" },
 		{ name = "path" },
+		{ name = "copilot" },
+		{ name = "codeium" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
