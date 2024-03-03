@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     split-monitor-workspaces = {
-      url = "github:zjeffer/split-monitor-workspaces";
+      url = "github:bivsk/split-monitor-workspaces/bivsk";
       inputs.hyprland.follows = "hyprland";
     };
     firefox-addons = {
