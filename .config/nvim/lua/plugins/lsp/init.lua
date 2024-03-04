@@ -47,22 +47,22 @@ return {
 	{
 		"folke/trouble.nvim",
 		keys = {
-			{ "<leader>lt", "TroubleToggle ", mode = { "n", "v", "x" }, desc = "Trouble" },
+			{ "<leader>lt", "<cmd>TroubleToggle<cr>", mode = { "n", "v", "x" }, desc = "Trouble" },
 			{
 				"<leader>lw",
-				"TroubleToggle workspace_diagnostics",
+				"<cmd>TroubleToggle workspace_diagnostics<cr>",
 				mode = { "n", "v", "x" },
 				desc = "Workspace Diagnostics",
 			},
 			{
 				"<leader>ld",
-				"TroubleToggle document_diagnostics",
+				"<cmd>TroubleToggle document_diagnostics<cr>",
 				mode = { "n", "v", "x" },
 				desc = "Document Diagnostics",
 			},
-			{ "<leader>lq", "TroubleToggle quickfix", mode = { "n", "v", "x" }, desc = "Quickfixes" },
-			{ "<leader>ll", "TroubleToggle loclist", mode = { "n", "v", "x" }, desc = "Loclist" },
-			{ "<leader>lR", "TroubleToggle lsp_references", mode = { "n", "v", "x" }, desc = "LSP References" },
+			{ "<leader>lq", "<cmd>roubleToggle quickfix<cr>", mode = { "n", "v", "x" }, desc = "Quickfixes" },
+			{ "<leader>ll", "<cmd>roubleToggle loclist<cr>", mode = { "n", "v", "x" }, desc = "Loclist" },
+			{ "<leader>lR", "<cmd>roubleToggle lsp_references<cr>", mode = { "n", "v", "x" }, desc = "LSP References" },
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		cmd = { "Trouble", "TroubleToggle" },
