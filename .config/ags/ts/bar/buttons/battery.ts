@@ -18,10 +18,10 @@ const makeText = (state: BatteryState) => {
       text += "Full";
       break;
     case BatteryState.CHARGING:
-      text += `Charging\n${hours}:${minutes} remaining`;
+      text += `Charging\n${hours}:${minutes.toString().padStart(2, "0")} remaining`;
       break;
     case BatteryState.DISCHARGING:
-      text += `Discharging\n${hours}:${minutes} remaining`;
+      text += `Discharging\n${hours}:${minutes.toString().padStart(2, "0")} remaining`;
       break;
   }
   return text;
@@ -29,7 +29,7 @@ const makeText = (state: BatteryState) => {
 
 const BatteryIcon = () =>
   Widget.Icon({
-    class_names: [ "battery", "icon" ],
+    class_names: ["battery", "icon"],
     visible: Battery.bind("available"),
     icon: Battery.bind("icon_name"),
   }).hook(Battery, (self) => {
