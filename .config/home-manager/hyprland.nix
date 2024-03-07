@@ -46,7 +46,11 @@
         layout = "master";
       };
 
-      misc = { vrr = true; };
+      misc = {
+        enable_swallow = true;
+        swallow_regex = "kitty";
+        vrr = true;
+      };
 
       decoration = {
         blur = { size = 3; };
