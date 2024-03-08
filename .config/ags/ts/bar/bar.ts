@@ -2,8 +2,6 @@ import SysTray from "./buttons/systray.ts";
 import Volume from "./buttons/volume.ts";
 import BatteryIcon from "./buttons/battery";
 import Workspaces from "./buttons/workspaces.ts";
-import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
-import { truncateString } from "ts/utils";
 
 const hyprland = await Service.import("hyprland");
 
@@ -18,9 +16,11 @@ const ClientTitle = (monitor: number) =>
         const workspace = hyprland.getWorkspace(monitorWorkspace?.id || 0);
         self.label =
           activeMonitor.id === monitor
-            ? truncateString(activeClient.title, 25)
-            : truncateString(workspace?.lastwindowtitle || "", 25);
+            ? activeClient.title
+            : workspace?.lastwindowtitle || "";
       }),
+    max_width_chars: 24,
+    truncate: "end",
   });
 
 const Clock = () =>
@@ -28,7 +28,7 @@ const Clock = () =>
     class_name: "clock",
     setup: (self) =>
       self.poll(1000, (self) =>
-        execAsync(["date", "+%a %d/%m/%Y %H:%M"]).then(
+        Utils.execAsync(["date", "+%a %d/%m/%Y %H:%M"]).then(
           (date) => (self.label = `  ${date}`),
         ),
       ),
