@@ -4,7 +4,7 @@ import Dashboard from "./dashboard/dashboard";
 import { exec } from "resource:///com/github/Aylur/ags/utils.js";
 import App from "resource:///com/github/Aylur/ags/app.js";
 
-const scss = `${App.configDir}/style.scss`;
+const scss = `${App.configDir}/style/style.scss`;
 const css = "/tmp/ags/style.css";
 
 exec(`sassc ${scss} ${css}`);
