@@ -1,10 +1,9 @@
 import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 import { range } from "../../utils.js";
 
 const dispatch = (workspace: number) =>
-  execAsync(`hyprctl dispatch workspace ${workspace}`);
+  Hyprland.messageAsync(`dispatch workspace ${workspace}`);
 
 const Workspaces = (monitor: number) =>
   Widget.Box({
