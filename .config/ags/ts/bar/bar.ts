@@ -12,13 +12,14 @@ const ClientTitle = (monitor: number) =>
     class_name: "client-title",
     setup: (self) =>
       self.hook(Hyprland.active, () => {
-        const mon = Hyprland.getMonitor(monitor);
+        const activeMonitor = Hyprland.active.monitor;
+        const activeClient = Hyprland.active.client;
+        const monitorWorkspace = Hyprland.getMonitor(monitor)?.activeWorkspace;
+        const workspace = Hyprland.getWorkspace(monitorWorkspace?.id || 0);
         self.label =
-          truncateString(
-            Hyprland.getWorkspace(mon?.activeWorkspace.id || 0)
-              ?.lastwindowtitle,
-            25,
-          ) || "";
+          activeMonitor.id === monitor
+            ? truncateString(activeClient.title, 25)
+            : truncateString(workspace?.lastwindowtitle || "", 25);
       }),
   });
 
