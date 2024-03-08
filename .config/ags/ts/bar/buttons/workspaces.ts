@@ -1,9 +1,9 @@
-import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import { range } from "../../utils.js";
 
+const hyprland = await Service.import("hyprland");
+
 const dispatch = (workspace: number) =>
-  Hyprland.messageAsync(`dispatch workspace ${workspace}`);
+  hyprland.messageAsync(`dispatch workspace ${workspace}`);
 
 const Workspaces = (monitor: number) =>
   Widget.Box({
@@ -18,14 +18,14 @@ const Workspaces = (monitor: number) =>
           vpack: "center",
         }),
         setup: (self) =>
-          self.hook(Hyprland, () => {
+          self.hook(hyprland, () => {
             self.toggleClassName(
               "active",
-              Hyprland.getMonitor(monitor)?.activeWorkspace.id === i,
+              hyprland.getMonitor(monitor)?.activeWorkspace.id === i,
             );
             self.toggleClassName(
               "occupied",
-              (Hyprland.getWorkspace(i)?.windows || 0) > 0,
+              (hyprland.getWorkspace(i)?.windows || 0) > 0,
             );
           }),
       }),

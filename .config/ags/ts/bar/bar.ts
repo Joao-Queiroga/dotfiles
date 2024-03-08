@@ -1,21 +1,21 @@
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
 import SysTray from "./buttons/systray.ts";
-import Hyprland from "resource:///com/github/Aylur/ags/service/hyprland.js";
 import Volume from "./buttons/volume.ts";
 import BatteryIcon from "./buttons/battery";
 import Workspaces from "./buttons/workspaces.ts";
 import { execAsync } from "resource:///com/github/Aylur/ags/utils.js";
 import { truncateString } from "ts/utils";
 
+const hyprland = await Service.import("hyprland");
+
 const ClientTitle = (monitor: number) =>
   Widget.Label({
     class_name: "client-title",
     setup: (self) =>
-      self.hook(Hyprland.active, () => {
-        const activeMonitor = Hyprland.active.monitor;
-        const activeClient = Hyprland.active.client;
-        const monitorWorkspace = Hyprland.getMonitor(monitor)?.activeWorkspace;
-        const workspace = Hyprland.getWorkspace(monitorWorkspace?.id || 0);
+      self.hook(hyprland.active, () => {
+        const activeMonitor = hyprland.active.monitor;
+        const activeClient = hyprland.active.client;
+        const monitorWorkspace = hyprland.getMonitor(monitor)?.activeWorkspace;
+        const workspace = hyprland.getWorkspace(monitorWorkspace?.id || 0);
         self.label =
           activeMonitor.id === monitor
             ? truncateString(activeClient.title, 25)

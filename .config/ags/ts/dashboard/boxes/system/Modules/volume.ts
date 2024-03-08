@@ -1,16 +1,15 @@
-import Audio from "resource:///com/github/Aylur/ags/service/audio.js";
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
+const audio = await Service.import("audio");
 
 const VolumeProgress = () =>
   Widget.CircularProgress({
     child: Widget.Icon({ class_names: ["icon"] }).hook(
-      Audio,
+      audio,
       (self) => {
-        if (!Audio.speaker) return;
-        const speaker = Audio.speaker;
+        if (!audio.speaker) return;
+        const speaker = audio.speaker;
 
         const vol = speaker.volume * 100;
-        const icon = speaker.stream.isMuted
+        const icon = speaker.stream?.isMuted
           ? "muted"
           : [
               [101, "overamplified"],
@@ -20,13 +19,13 @@ const VolumeProgress = () =>
             ].find(([threshold]) => Number(threshold) <= vol)?.[1];
 
         self.icon = `audio-volume-${icon}-symbolic`;
-        self.tooltipText = `Volume ${Math.floor(vol)}%${
-          speaker.stream.isMuted ? "M" : ""
+        self.tooltip_text = `Volume ${Math.floor(vol)}%${
+          speaker.stream?.isMuted ? "M" : ""
         }`;
       },
       "speaker-changed",
     ),
-    value: Audio.speaker?.bind("volume"),
+    value: audio.speaker?.bind("volume"),
   });
 
 export default VolumeProgress;

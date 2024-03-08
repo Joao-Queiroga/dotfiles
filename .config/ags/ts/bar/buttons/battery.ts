@@ -1,5 +1,4 @@
-import Widget from "resource:///com/github/Aylur/ags/widget.js";
-import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
+const battery = await Service.import("battery");
 
 enum BatteryState {
   FULL,
@@ -8,8 +7,8 @@ enum BatteryState {
 }
 
 const makeText = (state: BatteryState) => {
-  let text = `${Battery.percent}% `;
-  let seconds = Battery.time_remaining;
+  let text = `${battery.percent}% `;
+  let seconds = battery.time_remaining;
   let minutes = Math.floor(seconds / 60);
   let hours = Math.floor(minutes / 60);
   minutes %= 60;
@@ -30,15 +29,15 @@ const makeText = (state: BatteryState) => {
 const BatteryIcon = () =>
   Widget.Icon({
     class_names: ["battery", "icon"],
-    visible: Battery.bind("available"),
-    icon: Battery.bind("icon_name"),
-  }).hook(Battery, (self) => {
+    visible: battery.bind("available"),
+    icon: battery.bind("icon_name"),
+  }).hook(battery, (self) => {
     let state: BatteryState;
     switch (true) {
-      case Battery.charged:
+      case battery.charged:
         state = BatteryState.FULL;
         break;
-      case Battery.charging:
+      case battery.charging:
         state = BatteryState.CHARGING;
         break;
       default:
