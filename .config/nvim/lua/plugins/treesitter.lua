@@ -59,7 +59,7 @@ return {
 	},
 	{
 		"luckasRanarison/tree-sitter-hypr",
-		depends_on = "nvim-treesitter/nvim-treesitter",
+		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("nvim-treesitter.parsers").get_parser_configs().hypr = {
 				install_info = {
