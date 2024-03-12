@@ -1,4 +1,8 @@
-{ pkgs, split-monitor-workspaces, ... }: {
+{ pkgs, split-monitor-workspaces, inputs, ... }: {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+    inputs.hyprpaper.homeManagerModules.default
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -16,12 +20,10 @@
       ];
 
       exec-once = [
-        "${pkgs.wbg}/bin/wbg ~/.config/.background "
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "${pkgs.dunst}/bin/dunst"
         "ags"
         "hyprctl dispatch dpms off HDMI-A-1"
-        "sleep 1 && hyprctl dispatch focusmonitor 0"
+        "hyprctl dispatch focusmonitor 0"
       ];
 
       input = {
@@ -215,6 +217,15 @@
 
     plugins = [
       split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+    ];
+  };
+  services.hyprpaper = {
+    enable = true;
+    preloads = [ "~/.config/.background" ];
+    wallpapers = [
+      "DP-1, ~/.config/.background"
+      "eDP-1, ~/.config/.background"
+      "HDMI-A-1, ~/.config/.background"
     ];
   };
 }

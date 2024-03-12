@@ -15,6 +15,10 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprpaper = {
+      url = "github:hyprwm/Hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     split-monitor-workspaces = {
       url = "github:bivsk/split-monitor-workspaces/bivsk";
       inputs.hyprland.follows = "hyprland";
@@ -54,8 +58,6 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            hyprland.homeManagerModules.default
-            inputs.ags.homeManagerModules.default
             ./flutter.nix
             ./home.nix
             ./lf.nix

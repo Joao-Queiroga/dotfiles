@@ -5,6 +5,7 @@ in {
   home.homeDirectory = "/home/joaoqueiroga";
 
   home.stateVersion = "23.05";
+  imports = [ inputs.ags.homeManagerModules.default ];
 
   home.packages = with pkgs; [
     webcord
