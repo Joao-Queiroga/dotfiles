@@ -20,6 +20,22 @@
         "type": "github"
       }
     },
+    "devicons2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1705253331,
+        "narHash": "sha256-OMMQW/mn8J8mki41TD/7/CWaDFgp/zT7B2hfTH/m0Ug=",
+        "owner": "cdump",
+        "repo": "ranger-devicons2",
+        "rev": "f7877aa0dd8caa1d498d935f6f49e57a4fc591e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cdump",
+        "repo": "ranger-devicons2",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -292,6 +308,7 @@
     "root": {
       "inputs": {
         "ags": "ags",
+        "devicons2": "devicons2",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
