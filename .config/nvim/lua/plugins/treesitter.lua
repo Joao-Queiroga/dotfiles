@@ -6,6 +6,7 @@ return {
 			"nvim-treesitter/playground",
 			"hiphish/rainbow-delimiters.nvim",
 			"nvim-treesitter/nvim-treesitter-refactor",
+			"windwp/nvim-ts-autotag",
 		},
 		main = "nvim-treesitter.configs",
 		build = function()
@@ -36,6 +37,9 @@ return {
 						smart_rename = "grr",
 					},
 				},
+			},
+			autotag = {
+				enable = true,
 			},
 			playground = {
 				enable = true,
@@ -74,12 +78,6 @@ return {
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		event = "BufRead",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		opts = {},
-	},
-	{
-		"windwp/nvim-ts-autotag",
-		event = "InsertEnter",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		opts = {},
 	},
