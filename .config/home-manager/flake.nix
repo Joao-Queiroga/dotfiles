@@ -63,6 +63,7 @@
             ./lf.nix
             ./lazygit.nix
             ./yazi/yazi.nix
+            ./ranger/ranger.nix
             ./hyprland.nix
             ./river.nix
             ./zsh.nix
