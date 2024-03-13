@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   programs.foot = {
     enable = true;
     settings = {
@@ -69,10 +68,8 @@
     enable = true;
     settings = {
       font = {
-        normal = {
-          family = "JetBrains Mono Nerd Font";
-          size = 13;
-        };
+        size = 13;
+        normal = { family = "JetBrains Mono Nerd Font"; };
       };
       colors = {
         primary = {
@@ -104,8 +101,14 @@
           white = "#c0caf5";
         };
         indexed_colors = [
-          { index = 16; color = "#ff9e64"; }
-          { index = 17; color = "#db4b4b"; }
+          {
+            index = 16;
+            color = "#ff9e64";
+          }
+          {
+            index = 17;
+            color = "#db4b4b";
+          }
         ];
       };
     };
