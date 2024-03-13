@@ -8,11 +8,11 @@
         "zsh-users/zsh-autosuggestions"
         "zsh-users/zsh-history-substring-search"
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
+        "jeffreytse/zsh-vi-mode"
         "chisui/zsh-nix-shell"
       ];
     };
     autocd = true;
-    defaultKeymap = "viins";
     history = {
       ignoreAllDups = true;
       path = "$HOME/.local/share/zsh/history";
