@@ -1,4 +1,4 @@
-{ pkgs, split-monitor-workspaces, inputs, ... }: {
+{ pkgs, inputs, ... }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
     inputs.hyprpaper.homeManagerModules.default
@@ -216,7 +216,7 @@
     };
 
     plugins = [
-      split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+      inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
     ];
   };
   services.hyprpaper = {

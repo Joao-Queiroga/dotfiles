@@ -5,7 +5,26 @@ in {
   home.homeDirectory = "/home/joaoqueiroga";
 
   home.stateVersion = "23.05";
-  imports = [ inputs.ags.homeManagerModules.default ];
+  imports = [
+    inputs.ags.homeManagerModules.default
+    ./flutter.nix
+    ./lf.nix
+    ./lazygit.nix
+    ./yazi/yazi.nix
+    ./ranger/ranger.nix
+    ./hyprland.nix
+    ./river.nix
+    ./zsh.nix
+    ./rofi.nix
+    ./nu.nix
+    ./dir_colors.nix
+    ./terminals.nix
+    ./browser/firefox.nix
+    ./btop.nix
+    ./mpv.nix
+    ./zathura.nix
+    ./tmux.nix
+  ];
 
   home.packages = with pkgs; [
     webcord
@@ -31,7 +50,10 @@ in {
     };
   };
 
-  services.blueman-applet.enable = true;
+  services = {
+    blueman-applet.enable = true;
+    udiskie.enable = true;
+  };
 
   programs = {
     ags.enable = true;

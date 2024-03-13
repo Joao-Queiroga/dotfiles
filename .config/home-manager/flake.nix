@@ -48,8 +48,7 @@
     };
   };
 
-  outputs =
-    { nixpkgs, home-manager, hyprland, split-monitor-workspaces, ... }@inputs:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -63,30 +62,9 @@
       homeConfigurations."joaoqueiroga" =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [
-            ./flutter.nix
-            ./home.nix
-            ./lf.nix
-            ./lazygit.nix
-            ./yazi/yazi.nix
-            ./ranger/ranger.nix
-            ./hyprland.nix
-            ./river.nix
-            ./zsh.nix
-            ./rofi.nix
-            ./nu.nix
-            ./dir_colors.nix
-            ./terminals.nix
-            ./browser/firefox.nix
-            ./btop.nix
-            ./mpv.nix
-            ./zathura.nix
-            ./tmux.nix
-          ];
+          modules = [ ./home.nix ];
 
-          extraSpecialArgs = {
-            inherit inputs system split-monitor-workspaces;
-          };
+          extraSpecialArgs = { inherit inputs system; };
         };
     };
 }
