@@ -10,6 +10,7 @@
         "zdharma-continuum/fast-syntax-highlighting kind:defer"
         "jeffreytse/zsh-vi-mode"
         "chisui/zsh-nix-shell"
+        "hlissner/zsh-autopair kind:defer"
       ];
     };
     autocd = true;
