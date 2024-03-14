@@ -15,8 +15,9 @@ in {
     ./hyprland.nix
     ./river.nix
     ./zsh.nix
-    ./rofi.nix
     ./nu.nix
+    ./fish.nix
+    ./rofi.nix
     ./dir_colors.nix
     ./terminals.nix
     ./browser/firefox.nix
