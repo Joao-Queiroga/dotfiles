@@ -68,8 +68,7 @@ in {
     };
     starship = {
       enable = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
+      enableTransience = true;
       settings = {
         add_newline = false;
         character = {

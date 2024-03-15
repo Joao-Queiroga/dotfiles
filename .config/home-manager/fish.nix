@@ -8,7 +8,13 @@
       bass source ~/.profile
       bass source /etc/profile
     '';
-    functions = { fish_greeting = "${pkgs.pfetch-rs}/bin/pfetch"; };
+    functions = {
+      fish_greeting = "${pkgs.pfetch-rs}/bin/pfetch";
+      starship_transient_prompt_func =
+        "${pkgs.starship}/bin/starship module character";
+      starship_transient_rprompt_func =
+        "${pkgs.starship}/bin/starship module time";
+    };
     plugins = with pkgs.fishPlugins; [
       {
         name = "bass";
