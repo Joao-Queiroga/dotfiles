@@ -54,6 +54,10 @@ in {
   services = {
     blueman-applet.enable = true;
     udiskie.enable = true;
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
   };
 
   programs = {
