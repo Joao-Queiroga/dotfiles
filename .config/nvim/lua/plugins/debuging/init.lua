@@ -1,5 +1,6 @@
 local ensure_installed = {
 	"java-debug-adapter",
+	"java-test",
 }
 
 return {

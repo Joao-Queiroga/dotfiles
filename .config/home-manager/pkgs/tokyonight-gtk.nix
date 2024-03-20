@@ -4,7 +4,7 @@ pkgs.stdenv.mkDerivation {
 
   src = inputs.tokyonight-gtk;
 
-  buildInputs = with pkgs; [ sassc eza bat ];
+  buildInputs = with pkgs; [ sassc ];
 
   dontUnpack = true;
   buildPhase = builtins.readFile ./tokyonight_install.sh;

@@ -8,7 +8,6 @@ SRC_DIR="${REPO_DIR}/src"
 
 source "${REPO_DIR}/gtkrc.sh"
 
-ROOT_UID=0
 DEST_DIR="${PWD}/themes"
 
 ctype=
@@ -19,8 +18,6 @@ THEME_NAME=Tokyonight
 THEME_VARIANTS=('' '-Purple' '-Pink' '-Red' '-Orange' '-Yellow' '-Green' '-Teal' '-Grey')
 COLOR_VARIANTS=('-Light' '-Dark' )
 SIZE_VARIANTS=('' '-Compact')
-
-GS_VERSION="44-0"
 
 install() {
 	local dest="${1}"
@@ -146,15 +143,11 @@ if [[ "${#colors[@]}" -eq 0 ]]; then
 	colors=("${COLOR_VARIANTS[@]}")
 fi
 
-if [[ "${#lcolors[@]}" -eq 0 ]]; then
-	lcolors=("${COLOR_VARIANTS[1]}")
-fi
-
 if [[ "${#sizes[@]}" -eq 0 ]]; then
 	sizes=("${SIZE_VARIANTS[0]}")
 fi
 
-tweaks_temp() {
+create_temp() {
 	mv "${SRC_DIR}/sass/_tweaks.scss" "${SRC_DIR}/sass/_tweaks-temp.scss"
 	mv "${SRC_DIR}/sass/gnome-shell/_common.scss" "${SRC_DIR}/sass/gnome-shell/_common-temp.scss"
 }
@@ -163,17 +156,15 @@ install_theme() {
 	for theme in "${themes[@]}"; do
 		for color in "${colors[@]}"; do
 			for size in "${sizes[@]}"; do
-				install "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$theme" "$color" "$size" "$ctype"
-				make_gtkrc "${dest:-$DEST_DIR}" "${name:-$THEME_NAME}" "$theme" "$color" "$size" "$ctype"
+				install "$DEST_DIR" "$THEME_NAME" "$theme" "$color" "$size" "$ctype"
 			done
 		done
 	done
 }
 
-tweaks_temp
+create_temp
 
 install_theme
 
-eza -l $DEST_DIR
 echo
 echo Done.
