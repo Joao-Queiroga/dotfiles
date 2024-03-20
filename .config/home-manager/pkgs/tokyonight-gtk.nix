@@ -4,9 +4,12 @@ pkgs.stdenv.mkDerivation {
 
   src = inputs.tokyonight-gtk;
 
+  buildInputs = with pkgs; [ sassc eza bat ];
+
   dontUnpack = true;
+  buildPhase = builtins.readFile ./tokyonight_install.sh;
   installPhase = ''
-    mkdir -p $out/share
-    cp -r $src/themes $out/share
+    mkdir -p $out/share/
+    mv themes $out/share/
   '';
 }

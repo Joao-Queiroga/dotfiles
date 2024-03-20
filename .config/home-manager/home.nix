@@ -47,7 +47,7 @@ in {
     };
     theme = {
       package = tokyonight;
-      name = "Tokyonight-Dark-B";
+      name = "Tokyonight-Dark";
     };
   };
 
@@ -84,7 +84,6 @@ in {
     };
     eza = {
       enable = true;
-      enableAliases = true;
       icons = true;
       git = true;
     };
