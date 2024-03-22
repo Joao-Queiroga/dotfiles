@@ -1,6 +1,7 @@
 local ensure_installed = {
 	"prettierd",
 	"clang-format",
+	"google-java-format",
 	"checkstyle",
 	"flake8",
 	"stylua",
