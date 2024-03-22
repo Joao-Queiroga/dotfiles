@@ -7,6 +7,23 @@ return {
 		event = "BufWritePre",
 		cmd = "ConformInfo",
 		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "isort", "black" },
+				javascript = { { "prettierd", "prettier" } },
+				typescript = { { "prettierd", "prettier" } },
+				json = { { "prettierd", "prettier" } },
+				html = { { "prettierd", "prettier" } },
+				css = { { "prettierd", "prettier" } },
+				scss = { { "prettierd", "prettier" } },
+				sass = { { "prettierd", "prettier" } },
+				rust = { "rustfmt" },
+				nix = { "nixfmt" },
+				c = { "clang-format" },
+				go = { "gofmt" },
+				cpp = { "clang-format" },
+				java = { "google-java-format" },
+			},
 			format_on_save = function(bufnr)
 				if slow_format_filetypes[vim.bo[bufnr].filetype] then
 					return
@@ -25,23 +42,6 @@ return {
 				end
 				return { lsp_fallback = true }
 			end,
-			formatters_by_ft = {
-				lua = { "stylua" },
-				python = { "isort", "black" },
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				json = { { "prettierd", "prettier" } },
-				html = { { "prettierd", "prettier" } },
-				css = { { "prettierd", "prettier" } },
-				scss = { { "prettierd", "prettier" } },
-				sass = { { "prettierd", "prettier" } },
-				rust = { "rustfmt" },
-				nix = { "nixfmt" },
-				c = { "clang-format" },
-				go = { "gofmt" },
-				cpp = { "clang-format" },
-				java = { "google-java-format" },
-			},
 		},
 	},
 }
