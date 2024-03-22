@@ -49,8 +49,17 @@ return {
 	},
 	{
 		"zbirenbaum/copilot.lua",
-		lazy = true,
 		cmd = "Copilot",
+		opts = {},
+	},
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		event = "VeryLazy",
+		branch = "canary",
+		dependencies = {
+			"zbirenbaum/copilot.lua",
+			"nvim-lua/plenary.nvim",
+		},
 		opts = {},
 	},
 	{
