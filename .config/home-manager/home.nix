@@ -39,6 +39,11 @@ in {
     brave
   ];
 
+  qt = {
+    enable = true;
+    platformTheme = "gtk3";
+  };
+
   gtk = {
     enable = true;
     iconTheme = {
