@@ -43,7 +43,7 @@ vim.g.mapleader = " "
 
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.cmd([[set iskeyword-=_]])
+vim.opt.iskeyword:remove("_")
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
