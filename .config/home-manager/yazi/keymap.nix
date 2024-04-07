@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   manager = {
 
     keymap = [
@@ -62,16 +62,16 @@
         desc = "Move cursor down 5 lines";
       }
 
-      {
-        on = [ "<C-u>" ];
-        exec = "arrow -50%";
-        desc = "Move cursor up half page";
-      }
-      {
-        on = [ "<C-d>" ];
-        exec = "arrow 50%";
-        desc = "Move cursor down half page";
-      }
+      # {
+      #   on = [ "<C-u>" ];
+      #   exec = "arrow -50%";
+      #   desc = "Move cursor up half page";
+      # }
+      # {
+      #   on = [ "<C-d>" ];
+      #   exec = "arrow 50%";
+      #   desc = "Move cursor down half page";
+      # }
       {
         on = [ "<C-b>" ];
         exec = "arrow -100%";
@@ -546,6 +546,12 @@
         on = [ "~" ];
         exec = "help";
         desc = "Open help";
+      }
+      # Shell
+      {
+        on = [ "<C-d>" ];
+        exec = "shell '${pkgs.ripdrag}/bin/ripdrag -ax $@' --confirm";
+        desc = "Drag file";
       }
     ];
   };
