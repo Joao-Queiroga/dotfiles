@@ -40,12 +40,6 @@
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Ranger plugins
-    devicons2 = {
-      url = "github:cdump/ranger-devicons2";
-      flake = false;
-    };
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
