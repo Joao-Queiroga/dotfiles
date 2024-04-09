@@ -5,7 +5,7 @@ local current_file = {
 	end,
 	{
 		provider = " ",
-		hl = { link = "Function" },
+		hl = "Function",
 	},
 	{
 		init = function(self)
@@ -41,20 +41,18 @@ local current_file = {
 		end,
 		hl = "NavicText",
 	},
-	update = { "BufRead", "BufNewFile", "BufEnter", "Filetype" },
+	update = { "BufRead", "BufNewFile", "BufEnter" },
 }
 
 local navic = {
 	init = function(self)
 		local data = require("nvim-navic").get_data() or {}
 		local children = {}
-		if #data > 0 then
+		for _, d in ipairs(data) do
 			table.insert(children, {
 				provider = " › ",
 				hl = "NavicSeparator",
 			})
-		end
-		for i, d in ipairs(data) do
 			local child = {
 				{
 					provider = d.icon,
@@ -64,12 +62,6 @@ local navic = {
 				},
 				hl = "NavicIcons" .. d.type,
 			}
-			if #data > 1 and i < #data then
-				table.insert(child, {
-					provider = " › ",
-					hl = "NavicSeparator",
-				})
-			end
 			table.insert(children, child)
 		end
 		self.child = self:new(children, 1)
