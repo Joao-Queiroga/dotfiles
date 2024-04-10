@@ -10,15 +10,12 @@ local tabline_file_name = {
 }
 
 local tabline_file_flags = {
-	init = function(self)
-		self.pad = math.ceil(self.padding)
-	end,
 	{
 		condition = function(self)
 			return vim.api.nvim_buf_get_option(self.bufnr, "modified")
 		end,
 		provider = function(self)
-			return "[+]" .. string.rep(" ", self.pad - 3)
+			return "[+]"
 		end,
 		hl = { fg = "green" },
 	},
@@ -28,23 +25,9 @@ local tabline_file_flags = {
 				or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
 		end,
 		provider = function(self)
-			if vim.api.nvim_buf_get_option(self.bufnr, "buftype") == "terminal" then
-				return "  " .. string.rep(" ", self.pad - 3)
-			else
-				return "" .. string.rep(" ", self.pad - 1)
-			end
+			return vim.api.nvim_buf_get_option(self.bufnr, "buftype") == "terminal" and " " or " "
 		end,
 		hl = { fg = "orange" },
-	},
-	{
-		condition = function(self)
-			return vim.api.nvim_buf_get_option(self.bufnr, "modifiable")
-				and not vim.api.nvim_buf_get_option(self.bufnr, "readonly")
-				and not vim.api.nvim_buf_get_option(self.bufnr, "modified")
-		end,
-		provider = function(self)
-			return string.rep(" ", self.pad)
-		end,
 	},
 }
 
@@ -70,11 +53,7 @@ local tabline_filename_block = {
 		self.padding = (25 - (utils.count_chars(vim.fn.fnamemodify(self.filename, ":t")) + 2)) / 2
 	end,
 	hl = function(self)
-		if self.is_active then
-			return "Normal"
-		else
-			return "TabLine"
-		end
+		return self.is_active and "Normal" or "TabLine"
 	end,
 	on_click = {
 		callback = function(_, minwid, _, button)
@@ -93,13 +72,26 @@ local tabline_filename_block = {
 	},
 	{
 		provider = function(self)
-			return (self.is_active and "▎" or " ") .. string.rep(" ", math.floor(self.padding) - 1)
+			return "%-" .. math.ceil(self.padding) .. "("
+		end,
+	},
+	{
+		provider = "▎",
+		condition = function(self)
+			return self.is_active
 		end,
 		hl = { fg = utils.get_highlight("TabLineSel").bg },
 	},
+	{ provider = "%)" },
 	file_icon,
 	tabline_file_name,
+	{
+		provider = function(self)
+			return "%" .. math.ceil(self.padding) .. "("
+		end,
+	},
 	tabline_file_flags,
+	{ provider = "%)" },
 }
 
 local get_bufs = function()
@@ -159,7 +151,6 @@ local bufferline = utils.make_buflist(
 	},
 	{ provider = "", hl = { fg = "gray" } }, -- left truncation, optional (defaults to "<")
 	{ provider = "", hl = { fg = "gray" } }, -- right trunctation, also optional (defaults to ...... yep, ">")
-	-- by the way, open a lot of buffers and try clicking them ;)
 	function()
 		return buflist_cache
 	end,
@@ -171,11 +162,7 @@ local tabpage = {
 		return "%" .. self.tabnr .. "T " .. self.tabpage .. " %T"
 	end,
 	hl = function(self)
-		if not self.is_active then
-			return "TabLine"
-		else
-			return "TabLineSel"
-		end
+		return self.is_active and "TabLineSel" or "TabLine"
 	end,
 }
 
