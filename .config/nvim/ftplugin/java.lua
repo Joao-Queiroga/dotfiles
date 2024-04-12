@@ -1,18 +1,45 @@
-local jdtls = require("jdtls")
+local status_ok, jdtls = pcall(require, "jdtls")
+if not status_ok then
+	return
+end
+
 local handlers = require("plugins.lsp.handlers")
+local mason_path = vim.fn.stdpath("data") .. "/mason/packages/"
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/workspace/" .. project_name
 
 local config = {
-	-- The command that starts the language server
-	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
-	cmd = { "jdtls" },
-	-- 💀
-	-- This is the default if not provided, you can remove it. Or adjust as needed.
-	-- One dedicated LSP server & client will be started per unique root_dir
+	cmd = {
+
+		-- 💀
+		"java",
+
+		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
+		"-Dosgi.bundles.defaultStartLevel=4",
+		"-Declipse.product=org.eclipse.jdt.ls.core.product",
+		"-Dlog.protocol=true",
+		"-Dlog.level=ALL",
+		"-Xmx1g",
+		"--add-modules=ALL-SYSTEM",
+		"--add-opens",
+		"java.base/java.util=ALL-UNNAMED",
+		"--add-opens",
+		"java.base/java.lang=ALL-UNNAMED",
+
+		-- 💀
+		"-jar",
+		vim.fn.expand(mason_path .. "jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
+
+		-- 💀
+		"-configuration",
+		mason_path .. "jdtls/config_linux",
+
+		"-data",
+		workspace_dir,
+	},
+
 	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
 
-	-- Here you can configure eclipse.jdt.ls specific settings
-	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-	-- for a list of options
 	settings = {
 		java = {},
 	},
@@ -24,19 +51,10 @@ local config = {
 	end,
 	capabilities = handlers.capabilities,
 
-	-- Language server `initializationOptions`
-	-- You need to extend the `bundles` with paths to jar files
-	-- if you want to use additional eclipse.jdt.ls plugins.
-	--
-	-- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
-	--
-	-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+	-- add java dap to list of bundles
 	init_options = {
 		bundles = {
-			vim.fn.glob(
-				vim.fn.stdpath("data")
-					.. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"
-			),
+			vim.fn.expand(mason_path .. "java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"),
 		},
 	},
 }
@@ -44,7 +62,7 @@ local config = {
 -- Add java-test to the list of bundles
 vim.list_extend(
 	config.init_options.bundles,
-	vim.split(vim.fn.glob(vim.fn.stdpath("data") .. "/mason/packages/java-test/extension/server/*.jar", 1), "\n")
+	vim.split(vim.fn.glob(mason_path .. "java-test/extension/server/*.jar", 1), "\n")
 )
 
 jdtls.start_or_attach(config)
