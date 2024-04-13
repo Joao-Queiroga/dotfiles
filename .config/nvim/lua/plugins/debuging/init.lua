@@ -6,6 +6,20 @@ local ensure_installed = {
 return {
 	{
 		"mfussenegger/nvim-dap",
+		keys = {
+			{
+				"<leader>db",
+				"<cmd>DapToggleBreakpoint<CR>",
+				mode = { "n", "v", "x" },
+				desc = "Toggle breakpoint",
+			},
+			{
+				"<leader>dc",
+				"<cmd>DapContinue<CR>",
+				mode = { "n", "v", "x" },
+				desc = "Continue",
+			},
+		},
 		event = "VeryLazy",
 	},
 	{
@@ -20,13 +34,27 @@ return {
 	},
 	{
 		"rcarriga/nvim-dap-ui",
+		keys = {
+			{
+				"<leader>dt",
+				"<cmd>lua require('dapui').toggle()<CR>",
+				mode = { "n", "v", "x" },
+				desc = "Toggle UI",
+			},
+			{
+				"<leader>dr",
+				"<cmd>lua require('dapui').open({ reset = true })<CR>",
+				mode = { "n", "v", "x" },
+				desc = "Reset UI",
+			},
+		},
 		event = "VeryLazy",
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
 		},
 		opts = {},
-		config = function(opts)
+		config = function(_, opts)
 			local dap, dapui = require("dap"), require("dapui")
 			dap.listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open()

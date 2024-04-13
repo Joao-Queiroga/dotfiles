@@ -38,11 +38,7 @@ local leader_mappings = {
 		f = { "<cmd>Telescope find_files<cr>", "Find files" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
 	},
-	l = {
-		name = "Lsp",
-		a = { vim.lsp.buf.code_action, "Code actions" },
-		r = { vim.lsp.buf.rename, "Rename" },
-	},
+	l = "Lsp",
 	g = {
 		name = "Git",
 		n = { "<cmd>Neogit<cr>", "Neogit" },
@@ -91,16 +87,8 @@ local leader_mappings = {
 		a = "Org agenda",
 		c = "Org capture",
 	},
-	C = {
-		name = "ChatGPT",
-	},
-	d = {
-		name = "Debug",
-		t = { "<cmd>lua require('dapui').toggle()<CR>", "Toggle UI" },
-		b = { "<cmd>lua require('dap').toggle_breakpoint()<CR>", "Toggle breakpoint" },
-		c = { "<cmd>lua require('dap').continue()<CR>", "Continue" },
-		r = { "<cmd>lua require('dapui').open({ reset = true })<CR>", "Reset UI" },
-	},
+	C = "ChatGPT",
+	d = "Debug",
 }
 
 wk.register(leader_mappings, { prefix = "<leader>", mode = { "n", "v" } })
