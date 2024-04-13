@@ -8,7 +8,7 @@ local function lsp_keymaps()
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts())
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts())
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts())
-	-- vim.keymap.set( "n", "<C-k>"     , vim.lsp.buf.signature_help, desc())
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts())
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts())
 	-- vim.keymap.set( "n", "<leader>f" , vim.diagnostic.open_float , desc())
 	vim.keymap.set("n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts())
@@ -17,7 +17,6 @@ local function lsp_keymaps()
 	vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts())
 	vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts("Code Actions"))
 	vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts("Rename"))
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 function M.setup()
@@ -61,11 +60,11 @@ function M.setup()
 	})
 end
 
-M.on_attach = function(client, bufnr)
+M.on_attach = function(client, _)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
-	lsp_keymaps(bufnr)
+	lsp_keymaps()
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
