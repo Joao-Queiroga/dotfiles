@@ -74,6 +74,7 @@ in {
         vim-esc-exits = true;
       };
     };
+    imv.enable = true;
     starship = {
       enable = true;
       enableTransience = true;
