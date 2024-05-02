@@ -35,7 +35,6 @@
       url = "github:folke/tokyonight.nvim";
       flake = false;
     };
-
     ags = {
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";

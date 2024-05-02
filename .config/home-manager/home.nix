@@ -108,8 +108,13 @@ in {
       };
     };
     fzf.enable = true;
-    password-store.enable = true;
-    browserpass.enable = true;
+    rbw = {
+      enable = true;
+      settings = {
+        email = "queiroga.joaofcsol@gmail.com";
+        pinentry = pkgs.pinentry-gnome3;
+      };
+    };
     gradle = {
       enable = true;
       home = ".local/share/gradle";

@@ -14,7 +14,7 @@
         surfingkeys
         sidebery
         videospeed
-        gopass-bridge
+        bitwarden
       ];
     };
   };
