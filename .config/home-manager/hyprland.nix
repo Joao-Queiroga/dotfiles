@@ -91,7 +91,7 @@
       };
 
       windowrulev2 = [
-        "workspace 2 silent, class:^(brave-browser)$"
+        "workspace 2 silent, class:^(firefox)$"
         "workspace 6, class:^(discord)$"
         "workspace 6, class:^(WebCord)$"
         "workspace 7, class:^(teams-for-linux)$"
@@ -112,7 +112,7 @@
         # Launch keybindings
         "$mainMod, Return, exec, $term"
         "$mainMod_SHIFT, Return, exec, thunar"
-        "$mainMod, B, exec, brave"
+        "$mainMod, B, exec, firefox"
 
         # Open settings
         "$mainMod, S, exec, $edittor $HOME/.config/hypr/hyprland.conf"
