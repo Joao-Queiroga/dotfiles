@@ -77,6 +77,7 @@ return {
 	},
 	{
 		"3rd/image.nvim",
+		event = { "BufRead", "BufNewFile", "VeryLazy" },
 		opts = {},
 	},
 	{
