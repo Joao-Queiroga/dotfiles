@@ -10,17 +10,10 @@ in {
     ./flutter.nix
     ./lf.nix
     ./lazygit.nix
-    ./yazi/yazi.nix
     ./hyprland.nix
-    ./river.nix
-    ./nu.nix
     ./rofi.nix
     ./dir_colors.nix
     ./browser/firefox.nix
-    ./btop.nix
-    ./mpv.nix
-    ./zathura.nix
-    ./tmux.nix
   ];
 
   home.packages = with pkgs; [
@@ -124,19 +117,6 @@ in {
       extraLuaPackages = ps: [ ps.magick ];
     };
   };
-
-  home.file.".config/awesome/.neoconf.json".text = ''
-    {
-    	"lspconfig": {
-    		"lua_ls": {
-    			"Lua.workspace.library": [
-    				"~/.config/awesome/",
-    				"${pkgs.awesome}/share/awesome/lib"
-    			]
-    		}
-    	}
-    }
-    	'';
 
   programs.home-manager.enable = true;
 }
