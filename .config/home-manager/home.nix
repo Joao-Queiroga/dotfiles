@@ -18,7 +18,6 @@ in {
     ./fish.nix
     ./rofi.nix
     ./dir_colors.nix
-    ./terminals.nix
     ./browser/firefox.nix
     ./btop.nix
     ./mpv.nix
