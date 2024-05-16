@@ -15,7 +15,6 @@ in {
     ./river.nix
     ./zsh.nix
     ./nu.nix
-    ./fish.nix
     ./rofi.nix
     ./dir_colors.nix
     ./browser/firefox.nix
