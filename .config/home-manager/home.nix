@@ -9,7 +9,6 @@ in {
     inputs.ags.homeManagerModules.default
     ./flutter.nix
     ./lf.nix
-    ./lazygit.nix
     ./hyprland.nix
     ./rofi.nix
     ./dir_colors.nix
