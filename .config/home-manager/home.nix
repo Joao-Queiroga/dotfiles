@@ -13,7 +13,6 @@ in {
     ./yazi/yazi.nix
     ./hyprland.nix
     ./river.nix
-    ./zsh.nix
     ./nu.nix
     ./rofi.nix
     ./dir_colors.nix
