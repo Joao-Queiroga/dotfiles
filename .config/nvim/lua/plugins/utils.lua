@@ -97,4 +97,11 @@ return {
 		"gentoo/gentoo-syntax",
 		event = "BufReadPre",
 	},
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000,
+		opts = {
+			rocks = { "magick" },
+		},
+	},
 }
