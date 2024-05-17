@@ -67,7 +67,7 @@ function _M.get(clientkeys, clientbuttons)
 		-- { rule = { class = "Firefox" },
 		--   properties = { screen = 1, tag = "2" } },
 		{
-			rule = { class = "Firefox" },
+			rule = { class = "firefox" },
 			properties = { screen = 1, tag = "www" },
 		},
 		{
