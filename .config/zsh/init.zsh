@@ -1,22 +1,16 @@
 # ${ZDOTDIR:-~}/.zshrc
 
-# Set the root name of the plugins files (.txt and .zsh) antidote will use.
-zsh_plugins=${ZSH}/zsh_plugins
+source $ZSH/.antidote/antidote.zsh
 
 # Ensure the .zsh_plugins.txt file exists so you can add plugins.
-[[ -f ${zsh_plugins} ]] || touch ${zsh_plugins}
+[[ -f ${ZSH}/zsh_plugins ]] || touch ${ZSH}/zsh_plugins
 
-# Lazy-load antidote from its functions directory.
-fpath=($ZSH/.antidote/functions $fpath)
-autoload -Uz antidote
+zstyle ':antidote:bundle' file ${ZSH}/zsh_plugins
+zstyle ':antidote:static' file ~/.cache/antidote/static_file.zsh
+zstyle ':antidote:bundle:*' zcompile 'yes'
+zstyle ':antidote:static' zcompile 'yes'
 
-# Generate a new static file whenever .zsh_plugins.txt is updated.
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins} ]]; then
-  antidote bundle <${zsh_plugins} >|${zsh_plugins}.zsh
-fi
-
-# Source your static plugins file.
-source ${zsh_plugins}.zsh
+antidote load
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 bindkey '^[[A' history-substring-search-up
@@ -27,6 +21,8 @@ bindkey -M vicmd 'K' history-substring-search-up
 bindkey -M vicmd 'J' history-substring-search-down
 zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 setopt +o nomatch
+
+unsetopt HIST_VERIFY
 
 eval "$(starship init zsh)"
 
