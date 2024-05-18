@@ -12,6 +12,10 @@ zstyle ':antidote:static' zcompile 'yes'
 
 antidote load
 
+for script in $ZSH/scripts/*; do
+    source $script
+done
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
