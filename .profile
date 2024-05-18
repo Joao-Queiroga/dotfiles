@@ -1,0 +1,7 @@
+export PATH="$HOME/.local/bin:$PATH"
+. "$HOME/.cargo/env"
+export CHROME_EXECUTABLE="brave"
+export GOPATH="${HOME}/.go"
+export GOBIN="${GOPATH}/bin"
+export PATH="${PATH}:${GOBIN}"
+export PF_INFO="ascii title os host kernel uptime pkgs wm memory palette"
