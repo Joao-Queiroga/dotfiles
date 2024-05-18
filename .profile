@@ -1,5 +1,5 @@
 export PATH="$HOME/.local/bin:$PATH"
-. "$HOME/.cargo/env"
+. "$HOME/.cargo/env" 2> /dev/null
 export CHROME_EXECUTABLE="brave"
 export GOPATH="${HOME}/.go"
 export GOBIN="${GOPATH}/bin"
