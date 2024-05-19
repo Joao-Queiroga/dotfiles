@@ -1,5 +1,5 @@
 # eza alias
-alias ls='eza --icons'
+alias ls='eza --icons=auto'
 
 # ls aliases
 alias ll='ls -l'
