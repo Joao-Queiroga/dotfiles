@@ -1,0 +1,63 @@
+# vim:ft=sh
+set shell sh
+set shellopts '-eu'
+
+set preview
+set nohidden
+set drawbox
+set icons
+set ignorecase
+set filesep "\n"
+set ifs "\n"
+
+set previewer ~/.config/lf/pv.sh
+set cleaner ~/.config/lf/clean.sh
+
+cmd open ${{
+  test -L "$f" && f=$(readlink -f $f)
+  case $(file --mime-type $f -b) in
+    text/*|application/json|application/javascript|application/xml|inode/x-empty) $EDITOR "$f";;
+    *) setsid xdg-open "$f";;
+  esac
+}}
+
+cmd drag &ripdrag -ax $fx
+
+cmd edit $$EDITOR $f
+
+cmd mkdir ${{
+  printf "Enter directory name: "
+  read DIR
+  mkdir $DIR
+}}
+
+cmd rename ${{
+  vimv -- $(basename -a -- $fx)
+  lf -remote "send $id load"
+  lf -remote "send $id unselect"
+}}
+
+cmd extract &{{
+	set -f
+	atool -x $f
+}}
+
+cmd on_cd &{{
+  export STARSHIP_SHELL=
+  fmt="$(starship prompt)"
+  lf -remote "send $id set promptfmt \"$fmt\""
+}}
+
+cmd on_select &{{
+  lf -remote "send $id set statfmt \"$(eza -ld --color=always "$f")\""
+}}
+
+
+map . set hidden!
+map V $bat --paging=always "$f"
+map <c-d> drag;
+map D delete;
+map S $zsh;
+
+on_cd
+on_select
