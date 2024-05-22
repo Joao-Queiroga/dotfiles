@@ -93,10 +93,7 @@ return {
 			vim.g.startuptime_tries = 10
 		end,
 	},
-	{
-		"gentoo/gentoo-syntax",
-		event = "BufReadPre",
-	},
+	"gentoo/gentoo-syntax",
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1000,
