@@ -60,7 +60,7 @@ function _M.get()
 			awful.spawn(terminal)
 		end, { description = "open a terminal", group = "launcher" }),
 		awful.key({ "Control", "Shift" }, "Escape", function()
-			awful.spawn(terminal .. " -e htop")
+			awful.spawn(terminal .. " -e btop")
 		end, { description = "open htop", group = "launcher" }),
 		awful.key({ modkey, "Shift" }, "Return", function()
 			awful.spawn(file_manager)
