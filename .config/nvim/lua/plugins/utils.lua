@@ -101,4 +101,18 @@ return {
 			rocks = { "magick" },
 		},
 	},
+	{
+		"https://gitlab.com/itaranto/plantuml.nvim",
+		version = "*",
+		opts = {
+			renderer = {
+				type = "imv",
+				options = {
+					dark_mode = true,
+					format = "svg", -- Allowed values: nil, 'png', 'svg'.
+				},
+			},
+		},
+	},
+	"aklt/plantuml-syntax",
 }
