@@ -42,13 +42,12 @@ cmd extract &{{
 	atool -x $f
 }}
 
-cmd on_cd &{{
+cmd on-cd &{{
   export STARSHIP_SHELL=
-  fmt="$(starship prompt)"
-  lf -remote "send $id set promptfmt \"$fmt\""
+  lf -remote "send $id set promptfmt \"$(starship prompt)\""
 }}
 
-cmd on_select &{{
+cmd on-select &{{
   lf -remote "send $id set statfmt \"$(eza -ld --color=always "$f")\""
 }}
 
@@ -59,5 +58,5 @@ map <c-d> drag;
 map D delete;
 map S $zsh;
 
-on_cd
-on_select
+on-cd
+on-select
