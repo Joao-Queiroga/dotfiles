@@ -103,6 +103,7 @@ return {
 	},
 	{
 		"https://gitlab.com/itaranto/plantuml.nvim",
+		ft = "plantuml",
 		version = "*",
 		opts = {
 			renderer = {
