@@ -78,6 +78,13 @@ return {
 	{
 		"3rd/image.nvim",
 		event = { "BufRead", "BufNewFile", "VeryLazy" },
+		enabled = vim.fn.executable("magick"),
+		build = function()
+			local ok, luarocks = pcall(require, "luarocks-nvim.rocks")
+			assert(ok, "Unable to install neorg: required dependency `vhyrro/luarocks.nvim` not found!")
+
+			luarocks.ensure("magick")
+		end,
 		opts = {},
 	},
 	{
@@ -97,9 +104,7 @@ return {
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1000,
-		opts = {
-			rocks = { "magick" },
-		},
+		opts = {},
 	},
 	{
 		"https://gitlab.com/itaranto/plantuml.nvim",
