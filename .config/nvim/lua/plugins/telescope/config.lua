@@ -1,8 +1,8 @@
-local telescope = require"telescope"
+local telescope = require("telescope")
 
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 
-telescope.setup {
+telescope.setup({
 	defaults = {
 
 		prompt_prefix = " ",
@@ -81,12 +81,12 @@ telescope.setup {
 		-- Default configuration for builtin pickers goes here:
 		find_files = {
 			theme = "dropdown",
-			previewer = false
+			previewer = false,
 		},
 		oldfiles = {
 			theme = "dropdown",
-			previewer = false
-		}
+			previewer = false,
+		},
 		-- picker_name = {
 		--   picker_config_key = value,
 		--   ...
@@ -95,11 +95,18 @@ telescope.setup {
 		-- builtin picker
 	},
 	extensions = {
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case",
+		},
 		media_files = {
 			-- filetypes whitelist
 			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-			filetypes = {"png", "webp", "jpg", "jpeg"},
+			filetypes = { "png", "webp", "jpg", "jpeg" },
 			find_cmd = "rg", -- find command (defaults to `fd`)
 		},
 	},
-}
+})
+telescope.load_extension("fzf")
