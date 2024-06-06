@@ -79,11 +79,9 @@ return {
 		"3rd/image.nvim",
 		event = { "BufRead", "BufNewFile", "VeryLazy" },
 		enabled = vim.fn.executable("magick"),
+		dependencies = { "vhyrro/luarocks.nvim" },
 		build = function()
-			local ok, luarocks = pcall(require, "luarocks-nvim.rocks")
-			assert(ok, "Unable to install neorg: required dependency `vhyrro/luarocks.nvim` not found!")
-
-			luarocks.ensure("magick")
+			require("luarocks-nvim.rocks").ensure("magick")
 		end,
 		opts = {},
 	},
