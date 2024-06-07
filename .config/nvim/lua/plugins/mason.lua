@@ -4,6 +4,7 @@ local ensure_installed = {
 	"google-java-format",
 	"checkstyle",
 	"flake8",
+	"luacheck",
 	"stylua",
 	"black",
 	"isort",
