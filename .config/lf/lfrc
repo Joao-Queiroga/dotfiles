@@ -10,8 +10,10 @@ set ignorecase
 set filesep "\n"
 set ifs "\n"
 
-set previewer ~/.config/lf/pv.sh
-set cleaner ~/.config/lf/clean.sh
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
 
 cmd open ${{
   test -L "$f" && f=$(readlink -f $f)
