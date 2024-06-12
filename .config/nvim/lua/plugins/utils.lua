@@ -81,7 +81,7 @@ return {
 		enabled = vim.fn.executable("magick"),
 		dependencies = { "vhyrro/luarocks.nvim" },
 		build = function()
-			require("luarocks-nvim.rocks").ensure("magick")
+			require("luarocks-nvim.rocks").ensure({ "magick" })
 		end,
 		opts = {},
 	},
