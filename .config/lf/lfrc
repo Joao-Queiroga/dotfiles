@@ -27,7 +27,7 @@ cmd drag &ripdrag -ax $fx
 
 cmd edit $$EDITOR $f
 
-cmd mkdir ${{
+cmd mkdir %{{
   printf "Enter directory name: "
   read DIR
   mkdir $DIR
@@ -58,7 +58,7 @@ map . set hidden!
 map V $bat --paging=always "$f"
 map <c-d> drag;
 map D delete;
-map S $zsh;
+map S $$SHELL;
 
 on-cd
 on-select
