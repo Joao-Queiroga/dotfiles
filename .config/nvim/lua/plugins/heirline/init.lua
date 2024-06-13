@@ -54,6 +54,7 @@ return {
 								"dashboard",
 								"neogitstatus",
 								"NvimTree",
+								"yazi",
 								"Trouble",
 								"alpha",
 								"spectre_panel",
