@@ -55,12 +55,12 @@ syntect_theme = ""
 [status]
 separator_open = ""
 separator_close = ""
-separator_style = { fg = "gray", bg = "gray" }
+separator_style = { fg = "darkgray", bg = "darkgray" }
 
 # Mode
-mode_normal = { bg = "blue", bold = true }
-mode_select = { bg = "red", bold = true }
-mode_unset = { bg = "red", bold = true }
+mode_normal = { fg = "darkgray", bg = "blue", bold = true }
+mode_select = { fg = "darkgray", bg = "red", bold = true }
+mode_unset = { fg = "darkgray", bg = "red", bold = true }
 
 # Progress
 progress_label = { bold = true }
@@ -170,17 +170,24 @@ icon_error = ""
 
 rules = [
   # Images
-  { mime = "image/*", fg = "cyan" },
+  { mime = "image/*", fg = "yellow" },
 
   # Media
-  { mime = "{audio,video}/*", fg = "yellow" },
+  { mime = "{audio,video}/*", fg = "magenta" },
 
   # Archives
-  { mime = "application/*zip", fg = "magenta" },
-  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "magenta" },
+  { mime = "application/{,g}zip", fg = "red" },
+  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "red" },
 
   # Documents
-  { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "green" },
+  { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "cyan" },
+
+  # Empty files
+  # { mime = "inode/x-empty", fg = "red" },
+
+  # Special files
+  { name = "*", is = "orphan", bg = "red" },
+  { name = "*", is = "exec", fg = "green" },
 
   # Fallback
   # { name = "*", fg = "white" },
@@ -188,25 +195,22 @@ rules = [
 ]
 
 [icon]
-prepend_rules = [
-  # Text
-  { name = "*.org", text = "", fg = "#77aa99" },
 
-  # Named files
-  { name = "*COPYING", text = "󰿃", fg = "#cbcb41" },
-  { name = "*Containerfile", text = "󰡨", fg = "#458ee6" },
-  { name = "*Dockerfile", text = "󰡨", fg = "#458ee6" },
-  { name = "*LICENSE", text = "󰿃", fg = "#d0bf41" },
-
-  # xdg-dirs
-  { name = "*Área De Trabalho/", text = "" },
-  { name = "*Development/", text = "" },
-  { name = "*Documentos/", text = "" },
-  { name = "*Downloads/", text = "" },
-  { name = "*Musicas/", text = "" },
-  { name = "*Imagens/", text = "" },
-  { name = "*Público/", text = "" },
-  { name = "*Vídeos/", text = "" },
+globs = []
+append_dirs = [
+  { name = "Área De Trabalho", text = "" },
+  { name = "Development", text = "" },
+  { name = "Documentos", text = "" },
+  { name = "Biblioteca", text = "" },
+  { name = "Movies", text = "" },
+  { name = "Músicas", text = "" },
+  { name = "Imagens", text = "" },
+  { name = "Público", text = "" },
+  { name = "Vídeos", text = "" },
 ]
+prepend_files = []
+prepend_exts = []
+prepend_conds = []
+
 
 # : }}}
