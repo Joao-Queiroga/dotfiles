@@ -40,6 +40,7 @@ local options = {
 
 --set leader key
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")

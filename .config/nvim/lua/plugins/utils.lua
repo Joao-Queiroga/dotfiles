@@ -76,13 +76,9 @@ return {
 		end,
 	},
 	{
-		"3rd/image.nvim",
+		"kevinm6/image.nvim",
 		event = { "BufRead", "BufNewFile", "VeryLazy" },
 		enabled = vim.fn.executable("magick"),
-		dependencies = { "vhyrro/luarocks.nvim" },
-		build = function()
-			require("luarocks-nvim.rocks").ensure({ "magick" })
-		end,
 		opts = {},
 	},
 	{
@@ -98,12 +94,6 @@ return {
 			vim.g.startuptime_tries = 10
 		end,
 	},
-	"gentoo/gentoo-syntax",
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000,
-		opts = {},
-	},
 	{
 		"https://gitlab.com/itaranto/plantuml.nvim",
 		ft = "plantuml",
@@ -118,5 +108,4 @@ return {
 			},
 		},
 	},
-	"aklt/plantuml-syntax",
 }
