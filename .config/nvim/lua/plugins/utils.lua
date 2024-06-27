@@ -76,7 +76,7 @@ return {
 		end,
 	},
 	{
-		"kevinm6/image.nvim",
+		"3rd/image.nvim",
 		event = { "BufRead", "BufNewFile", "VeryLazy" },
 		enabled = vim.fn.executable("magick"),
 		opts = {},
