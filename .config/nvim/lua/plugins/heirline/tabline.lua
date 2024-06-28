@@ -50,7 +50,8 @@ local file_icon = {
 local tabline_filename_block = {
 	init = function(self)
 		self.filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.bufnr), ":t")
-		self.padding = (25 - (utils.count_chars(vim.fn.fnamemodify(self.filename, ":t")) + 2)) / 2
+		local filechars = utils.count_chars(self.filename)
+		self.padding = filechars < 23 and (23 - filechars) / 2 or 1
 	end,
 	hl = function(self)
 		return self.is_active and "Normal" or "TabLine"
