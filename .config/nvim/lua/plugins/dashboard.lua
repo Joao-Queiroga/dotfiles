@@ -1,36 +1,70 @@
 return {
 	"nvimdev/dashboard-nvim",
-	event = "VimEnter",
+	lazy = false,
 	opts = {
-		theme = "hyper",
+		theme = "doom",
 		config = {
 			week_header = {
 				enable = true,
 			},
-			shortcut = {
-				{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
+			center = {
 				{
-					icon = " ",
-					icon_hl = "@variable",
-					desc = "Files",
-					group = "Label",
 					action = "Telescope find_files",
+					desc = " Find File",
+					icon = " ",
 					key = "f",
 				},
 				{
-					desc = " Apps",
-					group = "DiagnosticHint",
-					action = "Telescope app",
-					key = "a",
+					action = "ene | startinsert",
+					desc = " New File",
+					icon = " ",
+					key = "n",
 				},
 				{
-					desc = " dotfiles",
-					group = "Number",
-					action = "Telescope dotfiles",
-					key = "d",
+					action = "Telescope oldfiles",
+					desc = " Recent Files",
+					icon = " ",
+					key = "r",
+				},
+				{
+					action = "Telescope live_grep",
+					desc = " Find Text",
+					icon = " ",
+					key = "g",
+				},
+				{
+					action = "e " .. vim.fn.stdpath("config") .. "/init.lua",
+					desc = " Config",
+					icon = " ",
+					key = "c",
+				},
+				{
+					action = 'lua require("persistence").load()',
+					desc = " Restore Session",
+					icon = " ",
+					key = "s",
+				},
+				{
+					action = "LazyExtras",
+					desc = " Lazy Extras",
+					icon = " ",
+					key = "x",
+				},
+				{
+					action = "Lazy",
+					desc = " Lazy",
+					icon = "󰒲 ",
+					key = "l",
+				},
+				{
+					action = function()
+						vim.api.nvim_input("<cmd>qa<cr>")
+					end,
+					desc = " Quit",
+					icon = " ",
+					key = "q",
 				},
 			},
 		},
 	},
-	dependencies = { { "nvim-tree/nvim-web-devicons" } },
 }
