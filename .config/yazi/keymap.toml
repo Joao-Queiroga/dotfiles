@@ -200,6 +200,11 @@ keymap = [
   ], run = '''
     shell --confirm 'export IFS=","; ripdrag -ax $(echo "$@" | sed "s/ \//,\//g")'
 ''', desc = "Drag files" },
+  { on = [
+    "<C-e>",
+  ], run = '''
+    shell --confirm 'export IFS=","; atool -x $(echo "$@" | sed "s/ \//,\//g")'
+''', desc = "Extract" },
 
   # Linemode
   { on = [
