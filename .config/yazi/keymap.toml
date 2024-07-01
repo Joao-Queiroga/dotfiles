@@ -40,12 +40,6 @@ keymap = [
   ], run = "arrow 5", desc = "Move cursor down 5 lines" },
 
   { on = [
-    "<C-u>",
-  ], run = "arrow -50%", desc = "Move cursor up half page" },
-  { on = [
-    "<C-d>",
-  ], run = "arrow 50%", desc = "Move cursor down half page" },
-  { on = [
     "<C-b>",
   ], run = "arrow -100%", desc = "Move cursor up one page" },
   { on = [
@@ -199,6 +193,13 @@ keymap = [
   { on = [
     "Z",
   ], run = "plugin fzf", desc = "Jump to a directory, or reveal a file using fzf" },
+
+  # Utils
+  { on = [
+    "<C-d>",
+  ], run = '''
+    shell --confirm 'export IFS=","; ripdrag -ax $(echo "$@" | sed "s/ \//,\//g")'
+''', desc = "Drag files" },
 
   # Linemode
   { on = [
