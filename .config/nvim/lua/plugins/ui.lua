@@ -72,6 +72,11 @@ return {
 		end,
 	},
 	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 		opts = {
