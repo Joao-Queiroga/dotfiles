@@ -88,6 +88,12 @@ return {
 		opts = {},
 	},
 	{
+		"m4xshen/hardtime.nvim",
+		event = "VeryLazy",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+	{
 		"mistricky/codesnap.nvim",
 		build = "make build_generator && mkdir -p ~/Imagens/CodeSnap/",
 		cmd = { "CodeSnap", "CodeSnapSave" },
