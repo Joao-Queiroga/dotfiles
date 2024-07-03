@@ -2,16 +2,15 @@ return {
 	{
 		"nvim-orgmode/orgmode",
 		ft = "org",
-		keys = { "<leader>oa", "<leader>oc" },
-		build = ":TSUpdate org",
+		keys = {
+			{ "<leader>o", "", desc = "Org Mode" },
+			{ "<leader>oa", desc = "Org Agenda" },
+			{ "<leader>oc", desc = "Org Capture" },
+		},
 		opts = {},
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
-		config = function(_, opts)
-			require("orgmode").setup_ts_grammar()
-			require("orgmode").setup(opts)
-		end,
 	},
 	{
 		"akinsho/org-bullets.nvim",

@@ -2,6 +2,7 @@ return {
 	{
 		"jackMort/ChatGPT.nvim",
 		keys = {
+			{ "<leader>C", "", mode = { "n", "v", "x" }, desc = "GPT" },
 			{ "<leader>Cc", ":ChatGPT<CR>", mode = { "n", "v", "x" }, desc = "ChatGPT" },
 			{
 				"<leader>Ce",
@@ -69,7 +70,7 @@ return {
 			vim.g.codeium_disable_bindings = 1
 		end,
 		config = function()
-			vim.keymap.set("i", "<C-Tab>", function()
+			vim.keymap.set("i", "<c-g>", function()
 				return vim.fn["codeium#Accept"]()
 			end, { expr = true, silent = true })
 			vim.keymap.set("i", "<c-;>", function()

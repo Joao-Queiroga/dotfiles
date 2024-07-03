@@ -82,13 +82,6 @@ local leader_mappings = {
 			e = "Eval",
 		},
 	},
-	o = {
-		name = "Org-Mode",
-		a = "Org agenda",
-		c = "Org capture",
-	},
-	C = "ChatGPT",
-	d = "Debug",
 }
 
 wk.register(leader_mappings, { prefix = "<leader>", mode = { "n", "v" } })
