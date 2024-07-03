@@ -15,6 +15,7 @@ return {
 		end,
 		opts = {
 			ensure_installed = "all",
+			ignore_install = { "org" },
 			sync_install = false,
 			auto_install = true,
 			highlight = {
