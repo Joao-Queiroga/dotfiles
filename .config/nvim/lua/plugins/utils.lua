@@ -88,6 +88,14 @@ return {
 		opts = {},
 	},
 	{
+		"mistricky/codesnap.nvim",
+		build = "make build_generator && mkdir -p ~/Imagens/CodeSnap/",
+		cmd = { "CodeSnap", "CodeSnapSave" },
+		opts = {
+			save_path = "~/Imagens/CodeSnap/",
+		},
+	},
+	{
 		"dstein64/vim-startuptime",
 		cmd = "StartupTime",
 		config = function()
