@@ -1,9 +1,6 @@
 return {
 	{
-		"NeogitOrg/neogit",
-		cmd = "Neogit",
-		dependencies = "nvim-lua/plenary.nvim",
-		opts = {},
+		"Joao-Queiroga/lazygit-nvim",
 	},
 	{
 		"lewis6991/gitsigns.nvim",

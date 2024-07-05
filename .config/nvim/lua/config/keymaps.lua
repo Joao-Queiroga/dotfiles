@@ -41,17 +41,13 @@ local leader_mappings = {
 	l = "Lsp",
 	g = {
 		name = "Git",
-		n = { "<cmd>Neogit<cr>", "Neogit" },
+		l = { "<cmd>LazyGit<cr>", "Lazygit" },
 	},
 	y = {
 		name = "Yadm",
-		n = {
-			function()
-				vim.env.GIT_DIR = vim.fn.expand("~/.local/share/yadm/repo.git")
-				vim.env.GIT_WORK_TREE = vim.fn.expand("~")
-				require("neogit").open()
-			end,
-			"Neogit yadm",
+		l = {
+			"<cmd>LazyGit work-tree=~ git-dir=~/.local/share/yadm/repo.git<cr>",
+			"Lazygit yadm",
 		},
 		a = {
 			function()
