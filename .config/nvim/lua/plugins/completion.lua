@@ -39,7 +39,6 @@ return {
 		},
 		opts = function()
 			local cmp = require("cmp")
-			local defaults = require("cmp.config.default")()
 			return {
 				mapping = {
 					["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -47,24 +46,22 @@ return {
 					["<C-J>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 					["<C-K>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 					["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-					["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+					["<C-y>"] = cmp.config.disable,
 					["<C-e>"] = cmp.mapping({
 						i = cmp.mapping.abort(),
 						c = cmp.mapping.close(),
 					}),
-					-- Accept currently selected item. If none selected, `select` first item.
-					-- Set `select` to `false` to only confirm explicitly selected items.
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 				},
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, vim_item)
-						-- Kind icons
-						vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+						vim_item.kind = kind_icons[vim_item.kind]
 						vim_item.menu = ({
-							copilot = "[Copilot]",
+							lazydev = "[Lazydev]",
 							nvim_lsp = "[LSP]",
-							nvim_lua = "[Nvim_Lua]",
+							copilot = "[Copilot]",
+							codeium = "[Codeium]",
 							luasnip = "[Snippet]",
 							buffer = "[Buffer]",
 							path = "[Path]",
