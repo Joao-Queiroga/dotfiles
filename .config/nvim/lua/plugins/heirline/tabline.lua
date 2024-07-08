@@ -1,8 +1,7 @@
 local utils = require("heirline.utils")
 local tabline_file_name = {
 	provider = function(self)
-		local filename = self.filename
-		return filename == "" and "[No Name]" or filename
+		return self.filename == "" and "[No Name]" or self.filename
 	end,
 	hl = function(self)
 		return { bold = self.is_active or self.is_visible, italic = true }
@@ -12,20 +11,20 @@ local tabline_file_name = {
 local tabline_file_flags = {
 	{
 		condition = function(self)
-			return vim.api.nvim_buf_get_option(self.bufnr, "modified")
+			return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
 		end,
-		provider = function(self)
+		provider = function()
 			return "[+]"
 		end,
 		hl = { fg = "green" },
 	},
 	{
 		condition = function(self)
-			return not vim.api.nvim_buf_get_option(self.bufnr, "modifiable")
-				or vim.api.nvim_buf_get_option(self.bufnr, "readonly")
+			return vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
+				or not vim.api.nvim_get_option_value("modifiable", { buf = self.bufnr })
 		end,
 		provider = function(self)
-			return vim.api.nvim_buf_get_option(self.bufnr, "buftype") == "terminal" and " " or " "
+			return vim.api.nvim_get_option_value("buftype", { buf = self.bufnr }) == "terminal" and " " or " "
 		end,
 		hl = { fg = "orange" },
 	},
@@ -97,7 +96,7 @@ local tabline_filename_block = {
 
 local get_bufs = function()
 	return vim.tbl_filter(function(bufnr)
-		return vim.api.nvim_buf_get_option(bufnr, "buflisted")
+		return vim.api.nvim_get_option_value("buflisted", { buf = bufnr })
 	end, vim.api.nvim_list_bufs())
 end
 
