@@ -85,6 +85,7 @@ return {
 	{
 		"3rd/image.nvim",
 		event = { "BufRead", "BufNewFile", "VeryLazy" },
+		commit = "deb158d",
 		enabled = vim.fn.executable("magick"),
 		opts = {},
 	},
