@@ -43,8 +43,8 @@ return {
 				mapping = {
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<C-j>"] = cmp.mapping.select_next_item(),
-					["<C-J>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-					["<C-K>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+					["<M-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+					["<M-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 					["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 					["<C-y>"] = cmp.config.disable,
 					["<C-e>"] = cmp.mapping({
@@ -83,6 +83,17 @@ return {
 				},
 				window = {
 					documentation = cmp.config.window.bordered(),
+				},
+				sorting = {
+					comparators = {
+						cmp.config.compare.score,
+						cmp.config.compare.exact,
+						cmp.config.compare.kind,
+						cmp.config.compare.offset,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
 				},
 				experimental = {
 					ghost_text = true,
