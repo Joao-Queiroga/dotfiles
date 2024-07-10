@@ -13,7 +13,7 @@ const Workspaces = (monitor: number) =>
         attribute: i,
         on_clicked: () => dispatch(i),
         child: Widget.Label({
-          label: "",
+          label: `${i}`,
           class_name: "indicator",
           vpack: "center",
         }),

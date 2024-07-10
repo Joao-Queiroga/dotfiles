@@ -18,17 +18,29 @@ label {
   margin: 0;
 }
 
-.workspaces {
-  > button {
-    label {
-      color: $blue;
-      font-size: 9pt;
-    }
-    &.active {
-      label {
-        color: $purple;
-      }
-    }
+.workspaces button {
+  all: unset;
+
+  .indicator {
+    font-size: 0;
+    min-width: 10px;
+    min-height: 10px;
+    border-radius: 5px;
+    margin: 0 2px;
+    transition: 200ms;
+    background-color: transparentize($blue, 0.4);
+  }
+
+  &.occupied .indicator {
+    background-color: $blue;
+  }
+
+  &.active .indicator {
+    background-color: $purple;
+  }
+
+  &.active .indicator {
+    min-width: 18px;
   }
 }
 
