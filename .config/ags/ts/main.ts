@@ -8,4 +8,4 @@ App.config({
   windows: [...forMonitors(Bar), applauncher],
 });
 
-Utils.monitorFile(`${App.configDir}/style`, () => reapplyCss());
+Utils.monitorFile(`${App.configDir}/style`, reapplyCss);
