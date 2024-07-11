@@ -28,6 +28,8 @@ setopt +o nomatch
 
 unsetopt HIST_VERIFY
 
-eval "$(starship init zsh)"
+eval "$(starship init zsh)" 2> /dev/null
+
+eval "$(zoxide init zsh)" 2> /dev/null
 
 pfetch
