@@ -1,6 +1,11 @@
 return {
 	{
 		"Joao-Queiroga/lazygit-nvim",
+		cmd = "LazyGit",
+		keys = {
+			{ "<leader>gl", "<cmd>LazyGit<cr>", desc = "Lazygit" },
+			{ "<leader>yl", "<cmd>LazyGit<cr>", desc = "Lazygit yadm" },
+		},
 	},
 	{
 		"seanbreckenridge/gitsigns-yadm.nvim",

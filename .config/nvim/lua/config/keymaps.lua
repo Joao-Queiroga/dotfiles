@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- Modes
 --   normal_mode = "n",
@@ -27,57 +27,7 @@ keymap("v", ">", ">gv", opts)
 
 keymap("v", "p", '"_dP', opts)
 
--- which key
-local wk = require("which-key")
-local presets = require("which-key.plugins.presets")
-presets.operators["v"] = nil
-
-local leader_mappings = {
-	f = {
-		name = "Files",
-		f = { "<cmd>Telescope find_files<cr>", "Find files" },
-		r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-	},
-	l = "Lsp",
-	g = {
-		name = "Git",
-		l = { "<cmd>LazyGit<cr>", "Lazygit" },
-	},
-	y = {
-		name = "Yadm",
-		l = {
-			"<cmd>LazyGit work-tree=~ git-dir=~/.local/share/yadm/repo.git<cr>",
-			"Lazygit yadm",
-		},
-		a = {
-			function()
-				os.execute("yadm add " .. vim.api.nvim_buf_get_name(0))
-			end,
-			"Add current file",
-		},
-	},
-	t = {
-		name = "Table Mode",
-		m = "Toggle",
-		t = "Tableize",
-		r = "Realign",
-		s = "Sort",
-		i = {
-			name = "Insert Column",
-			c = "After",
-			C = "Before",
-		},
-		d = {
-			name = "Delete",
-			c = "Column",
-			d = "Row",
-		},
-		f = {
-			name = "Formula",
-			a = "Add",
-			e = "Eval",
-		},
-	},
-}
-
-wk.register(leader_mappings, { prefix = "<leader>", mode = { "n", "v" } })
+-- Yadm
+keymap("n", "<leader>ya", function()
+	os.execute("yadm add " .. vim.api.nvim_buf_get_name(0))
+end, { desc = "Add current file" })

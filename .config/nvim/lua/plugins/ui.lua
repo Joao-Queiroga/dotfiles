@@ -91,7 +91,22 @@ return {
 	},
 	{
 		"folke/which-key.nvim",
-		lazy = true,
-		opts = {},
+		event = "VeryLazy",
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
+		opts = {
+			spec = {
+				{ "<leader>g", group = "Git" },
+				{ "<leader>y", group = "Yadm" },
+				{ "<leader>q", hidden = true },
+			},
+		},
 	},
 }

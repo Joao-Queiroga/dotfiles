@@ -2,6 +2,7 @@ return {
 	{
 		"echasnovski/mini.files",
 		keys = {
+			{ "<leader>f", "", desc = "Files", mode = { "n", "v" } },
 			{ "<leader>fb", "<cmd>lua MiniFiles.open()<cr>", desc = "File Browser", mode = { "n", "v" } },
 		},
 		lazy = false,
@@ -20,21 +21,12 @@ return {
 		event = "VeryLazy",
 		enabled = vim.fn.executable("yazi"),
 		keys = {
-			-- 👇 in this section, choose your own keymappings!
 			{
-				"<leader>-",
+				"<leader>fm",
 				function()
 					require("yazi").yazi()
 				end,
 				desc = "Open the file manager",
-			},
-			{
-				-- Open in the current working directory
-				"<leader>cw",
-				function()
-					require("yazi").yazi(nil, vim.fn.getcwd())
-				end,
-				desc = "Open the file manager in nvim's working directory",
 			},
 		},
 		---@type YaziConfig

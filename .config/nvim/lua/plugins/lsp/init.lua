@@ -16,6 +16,8 @@ local installed_servers = {
 return {
 	{
 		"neovim/nvim-lspconfig",
+		keys = { { "<leader>l", "", desc = "LSP", mode = { "n", "v", "x" } } },
+		lazy = false,
 		config = handlers.setup,
 	},
 	{

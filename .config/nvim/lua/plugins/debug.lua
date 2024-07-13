@@ -7,7 +7,7 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		keys = {
-			{ "<leader>d", desc = "Debug" },
+			{ "<leader>d", "", desc = "Debug" },
 			{
 				"<leader>db",
 				"<cmd>DapToggleBreakpoint<CR>",
