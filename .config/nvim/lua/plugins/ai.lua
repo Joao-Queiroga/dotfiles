@@ -57,11 +57,26 @@ return {
 		"CopilotC-Nvim/CopilotChat.nvim",
 		event = "VeryLazy",
 		branch = "canary",
+		cmd = {
+			"CopilotChat",
+			"CopilotChatOpen",
+			"CopilotChatExplain",
+			"CopilotChatReview",
+			"CopilotChatFix",
+			"CopilotChatOptimize",
+			"CopilotChatDocs",
+			"CopilotChatTests",
+			"CopilotChatFixDiagnostic",
+			"CopilotChatCommit",
+			"CopilotChatCommitStaged",
+		},
 		dependencies = {
 			"zbirenbaum/copilot.lua",
 			"nvim-lua/plenary.nvim",
 		},
-		opts = {},
+		opts = {
+			context = "buffers",
+		},
 	},
 	{
 		"Exafunction/codeium.vim",
