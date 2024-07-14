@@ -45,12 +45,6 @@ return {
 					key = "s",
 				},
 				{
-					action = "LazyExtras",
-					desc = " Lazy Extras",
-					icon = " ",
-					key = "x",
-				},
-				{
 					action = "Lazy",
 					desc = " Lazy",
 					icon = "󰒲 ",
