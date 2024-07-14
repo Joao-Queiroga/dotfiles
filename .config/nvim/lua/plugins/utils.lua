@@ -46,7 +46,7 @@ return {
 	{
 		"echasnovski/mini.bufremove",
 		keys = {
-			{ "<leader>c", "<cmd>lua MiniBufremove.delete()<cr>", mode = { "n", "t" }, desc = "Delete buffer" },
+			{ "<leader>c", "<cmd>lua MiniBufremove.delete()<cr>", mode = { "n", "v" }, desc = "Delete buffer" },
 		},
 		opts = {},
 	},
