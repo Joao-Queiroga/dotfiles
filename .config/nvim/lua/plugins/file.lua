@@ -2,8 +2,7 @@ return {
 	{
 		"echasnovski/mini.files",
 		keys = {
-			{ "<leader>f", "", desc = "Files", mode = { "n", "v" } },
-			{ "<leader>fb", "<cmd>lua MiniFiles.open()<cr>", desc = "File Browser", mode = { "n", "v" } },
+			{ "<leader>fm", "<cmd>lua MiniFiles.open()<cr>", desc = "File Browser", mode = { "n", "v" } },
 		},
 		lazy = false,
 		opts = {
@@ -22,7 +21,7 @@ return {
 		enabled = vim.fn.executable("yazi"),
 		keys = {
 			{
-				"<leader>fm",
+				"<leader>fM",
 				function()
 					require("yazi").yazi()
 				end,

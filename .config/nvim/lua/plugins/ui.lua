@@ -105,7 +105,10 @@ return {
 			spec = {
 				{ "<leader>g", group = "Git" },
 				{ "<leader>y", group = "Yadm" },
+				{ "<leader>f", group = "Find/File" },
+				{ "<leader>s", group = "Search" },
 				{ "<leader>q", hidden = true },
+				{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
 			},
 		},
 	},
