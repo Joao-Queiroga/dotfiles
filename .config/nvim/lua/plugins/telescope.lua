@@ -59,6 +59,16 @@ return {
 				selection_caret = " ",
 				path_display = { "smart" },
 				initial_mode = "normal",
+				mappings = {
+					n = {
+						q = "close",
+					},
+					i = {
+						["<C-c>"] = "close",
+						["<C-j>"] = "move_selection_next",
+						["<C-k>"] = "move_selection_previous",
+					},
+				},
 			},
 			pickers = {
 				find_files = {
