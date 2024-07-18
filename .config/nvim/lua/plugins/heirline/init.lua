@@ -1,21 +1,21 @@
 local function setup_colors()
 	local utils = require("heirline.utils")
 	return {
-		bg_highlight = utils.get_highlight("CursorLine").bg,
-		bg = utils.get_highlight("StatusLine").bg,
-		fg_bright = utils.get_highlight("Folded").fg,
-		red = utils.get_highlight("DiagnosticError").fg,
-		dark_red = utils.get_highlight("DiffDelete").bg,
-		green = utils.get_highlight("String").fg,
-		blue = utils.get_highlight("Function").fg,
-		gray = utils.get_highlight("NonText").fg,
-		orange = utils.get_highlight("Constant").fg,
-		purple = utils.get_highlight("@keyword").fg,
-		magenta = utils.get_highlight("Statement").fg,
-		cyan = utils.get_highlight("Keyword").fg,
-		git_del = utils.get_highlight("diffRemoved").fg,
-		git_add = utils.get_highlight("diffAdded").fg,
-		git_change = utils.get_highlight("diffChanged").fg,
+		bg_highlight = utils.get_highlight("CursorLine").bg or "#000000",
+		bg = utils.get_highlight("StatusLine").bg or "#000000",
+		fg_bright = utils.get_highlight("Folded").fg or "#FFFFFF",
+		red = utils.get_highlight("DiagnosticError").fg or "#FF0000",
+		dark_red = utils.get_highlight("DiffDelete").bg or "#8B0000",
+		green = utils.get_highlight("String").fg or "#008000",
+		blue = utils.get_highlight("Function").fg or "#0000FF",
+		gray = utils.get_highlight("NonText").fg or "#808080",
+		orange = utils.get_highlight("Constant").fg or "#FFA500",
+		purple = utils.get_highlight("@keyword").fg or "#800080",
+		magenta = utils.get_highlight("Statement").fg or "#FF00FF",
+		cyan = utils.get_highlight("Keyword").fg or "#00FFFF",
+		git_del = utils.get_highlight("diffRemoved").fg or "#FF0000",
+		git_add = utils.get_highlight("diffAdded").fg or "#008000",
+		git_change = utils.get_highlight("diffChanged").fg or "#0000FF",
 	}
 end
 return {
