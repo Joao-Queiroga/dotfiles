@@ -79,47 +79,13 @@ return {
 		},
 	},
 	{
-		"Exafunction/codeium.vim",
-		event = "BufEnter",
-		init = function()
-			vim.g.codeium_disable_bindings = 1
-		end,
-		keys = {
+		"nvim-cmp",
+		dependencies = {
 			{
-				"<c-g>",
-				function()
-					return vim.fn["codeium#Accept"]()
-				end,
-				mode = "i",
-				expr = true,
-				silent = true,
-			},
-			{
-				"<c-;>",
-				function()
-					return vim.fn["codeium#CycleCompletions"](1)
-				end,
-				mode = "i",
-				expr = true,
-				silent = true,
-			},
-			{
-				"<c-,>",
-				function()
-					return vim.fn["codeium#CycleCompletions"](-1)
-				end,
-				mode = "i",
-				expr = true,
-				silent = true,
-			},
-			{
-				"<c-x>",
-				function()
-					return vim.fn["codeium#Clear"]()
-				end,
-				mode = "i",
-				expr = true,
-				silent = true,
+				"Exafunction/codeium.nvim",
+				cmd = "Codeium",
+				build = ":Codeium Auth",
+				opts = {},
 			},
 		},
 	},
