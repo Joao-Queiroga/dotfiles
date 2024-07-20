@@ -50,6 +50,7 @@ play = [
   { run = 'mpv "%1"', orphan = true, for = "windows" },
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
 ]
+jar = [{ run = 'java -jar "$1"', orphan = true, desc = "Open jar file" }]
 
 [open]
 rules = [
@@ -57,6 +58,9 @@ rules = [
     "edit",
     "open",
     "reveal",
+  ] },
+  { name = "*.jar", use = [
+    "jar",
   ] },
 
   { mime = "text/*", use = [
