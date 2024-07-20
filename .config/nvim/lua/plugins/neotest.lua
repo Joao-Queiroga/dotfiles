@@ -1,10 +1,11 @@
 return {
 	{
 		"rcasia/neotest-java",
+		lazy = true,
 	},
 	{
 		"nvim-neotest/neotest",
-
+		cmd = "Neotest",
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
