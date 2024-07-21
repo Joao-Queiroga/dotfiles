@@ -34,7 +34,7 @@ See the above repository for updates as well as full license text. */
 /* The border controlling sidebar width will be removed so you'll need to modify these values to change width */
 
 #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] {
-  --uc-sidebar-width: 48px !important;
+  --uc-sidebar-width: 40px !important;
   --uc-sidebar-hover-width: 250px;
   --uc-autohide-sidebar-delay: 300ms; /* Wait 0.3s before hiding sidebar */
   position: relative;
@@ -45,7 +45,8 @@ See the above repository for updates as well as full license text. */
 }
 
 #sidebar-splitter {
-  width: 1px !important;
+  width: 0.1px !important;
+  opacity: 0.2 !important;
 }
 
 #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]
