@@ -1,13 +1,13 @@
 return {
 	{
-		"numToStr/Navigator.nvim",
+		"christoomey/vim-tmux-navigator",
 		keys = {
-			{ "<C-h>", "<cmd>NavigatorLeft<cr>", mode = { "n", "t", "v", "x" }, desc = "Navigate Left" },
-			{ "<C-j>", "<cmd>NavigatorDown<cr>", mode = { "n", "t", "v", "x" }, desc = "Navigate Down" },
-			{ "<C-k>", "<cmd>NavigatorUp<cr>", mode = { "n", "t", "v", "x" }, desc = "Navigate Up" },
-			{ "<C-l>", "<cmd>NavigatorRight<cr>", mode = { "n", "t", "v", "x" }, desc = "Navigate Right" },
+			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
 		},
-		opts = {},
 	},
 	{
 		"uga-rosa/ccc.nvim",
