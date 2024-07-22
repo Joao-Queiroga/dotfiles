@@ -45,8 +45,9 @@ See the above repository for updates as well as full license text. */
 }
 
 #sidebar-splitter {
-  width: 0.1px !important;
-  opacity: 0.2 !important;
+  width: 1px !important;
+  border-left: 0.2px solid var(--sidebar-border-color);
+  box-sizing: border-box;
 }
 
 #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]
