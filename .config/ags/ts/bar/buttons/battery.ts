@@ -6,24 +6,22 @@ enum BatteryState {
   DISCHARGING,
 }
 
+const formatTime = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  return `${hours}:${(minutes % 60).toString().padStart(2, "0")}`;
+};
+
+const batteryStateTexts: Record<BatteryState, (seconds: number) => string> = {
+  [BatteryState.FULL]: () => "Full",
+  [BatteryState.CHARGING]: (seconds) =>
+    `Charging\n${formatTime(seconds)} remaining`,
+  [BatteryState.DISCHARGING]: (seconds) =>
+    `Discharging\n${formatTime(seconds)} remaining`,
+};
+
 const makeText = (state: BatteryState) => {
-  let text = `${battery.percent}% `;
-  let seconds = battery.time_remaining;
-  let minutes = Math.floor(seconds / 60);
-  let hours = Math.floor(minutes / 60);
-  minutes %= 60;
-  switch (state) {
-    case BatteryState.FULL:
-      text += "Full";
-      break;
-    case BatteryState.CHARGING:
-      text += `Charging\n${hours}:${minutes.toString().padStart(2, "0")} remaining`;
-      break;
-    case BatteryState.DISCHARGING:
-      text += `Discharging\n${hours}:${minutes.toString().padStart(2, "0")} remaining`;
-      break;
-  }
-  return text;
+  return `${battery.percent}% ${batteryStateTexts[state](battery.time_remaining)}`;
 };
 
 const BatteryIcon = () =>
