@@ -8,7 +8,7 @@ const volumeIndicator = () =>
     },
     class_name: "volume-indicator",
 
-    child: Widget.Icon({ class_names: ["icon"] }).hook(
+    child: Widget.Icon().hook(
       audio,
       (self) => {
         if (!audio.speaker) return;

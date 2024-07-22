@@ -1,0 +1,71 @@
+$icon-size: 68px;
+$icon-font-size: 58px;
+$icon-margin: 5px;
+$notification-min-width: 350px;
+$notification-border-radius: 11px;
+$notification-padding: 1em;
+$notification-margin: 0.5em;
+$action-button-margin: 0.4em;
+$action-button-margin-top: 0.8em;
+
+window.notification-popups {
+  box.notifications {
+    padding: 0.5em;
+  }
+}
+
+.icon {
+  min-width: $icon-size;
+  min-height: $icon-size;
+  margin-right: 1em;
+
+  image {
+    font-size: $icon-font-size;
+    /* to center the icon */
+    margin: $icon-margin;
+    color: $foreground;
+  }
+
+  box {
+    min-width: $icon-size;
+    min-height: $icon-size;
+    border-radius: 7px;
+  }
+}
+
+.notification {
+  min-width: $notification-min-width;
+  border-radius: $notification-border-radius;
+  padding: $notification-padding;
+  margin: $notification-margin;
+  border: 1px solid $bg_highlight;
+  background-color: $background;
+
+  &.critical {
+    border: 1px solid lightcoral;
+  }
+}
+
+.title {
+  color: $foreground;
+  font-size: 1.4em;
+}
+
+.body {
+  color: $foreground;
+}
+
+.actions {
+  .action-button {
+    margin: $action-button-margin $action-button-margin
+      $action-button-margin-top;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

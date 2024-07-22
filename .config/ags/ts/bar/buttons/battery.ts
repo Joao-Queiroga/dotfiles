@@ -28,7 +28,7 @@ const makeText = (state: BatteryState) => {
 
 const BatteryIcon = () =>
   Widget.Icon({
-    class_names: ["battery", "icon"],
+    class_name: "battery",
     visible: battery.bind("available"),
     icon: battery.bind("icon_name"),
   }).hook(battery, (self) => {
