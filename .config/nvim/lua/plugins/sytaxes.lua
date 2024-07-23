@@ -1,4 +1,4 @@
 return {
-	{ "aklt/plantuml-syntax", event = "BufReadPre" },
-	{ "gentoo/gentoo-syntax", event = "BufReadPre" },
+	{ "aklt/plantuml-syntax" },
+	{ "gentoo/gentoo-syntax" },
 }
