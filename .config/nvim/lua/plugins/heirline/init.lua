@@ -23,12 +23,12 @@ return {
 		"rebelot/heirline.nvim",
 		-- You can optionally lazy-load heirline on UiEnter
 		-- to make sure all required plugins and colorschemes are loaded before setup
-		event = "UiEnter",
+		event = "VeryLazy",
 		dependencies = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons",
 		},
-		init = function()
+		config = function(_, opts)
 			vim.api.nvim_create_augroup("Heirline", { clear = true })
 			vim.api.nvim_create_autocmd("ColorScheme", {
 				callback = function()
@@ -36,6 +36,7 @@ return {
 				end,
 				group = "Heirline",
 			})
+			require("heirline").setup(opts)
 		end,
 		opts = function()
 			return {
