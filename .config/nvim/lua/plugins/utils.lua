@@ -122,7 +122,7 @@ return {
 	},
 	{
 		"mistricky/codesnap.nvim",
-		build = "make build_generator && mkdir -p ~/Imagens/CodeSnap/",
+		build = "make && mkdir -p ~/Imagens/CodeSnap/",
 		cmd = { "CodeSnap", "CodeSnapSave" },
 		opts = {
 			save_path = "~/Imagens/CodeSnap/",
