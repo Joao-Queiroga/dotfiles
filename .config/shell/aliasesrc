@@ -1,6 +1,7 @@
 #!/bin/sh
+
 # eza alias
-if (( $+commands[eza] )); then
+if command -v eza > /dev/null 2>&1; then
   alias ls='eza --icons=auto'
 fi
 
@@ -10,10 +11,10 @@ alias la='ls -a'
 alias lla='ls -la'
 
 # cat alias
-if (( $+commands[bat] )); then
+if command -v bat > /dev/null 2>&1; then
   alias cat='bat'
 fi
 
-if type z > /dev/null 2>&1; then
+if command -v z > /dev/null 2>&1; then
   alias cd='z'
 fi
