@@ -1,6 +1,6 @@
 import { Application } from "resource:///com/github/Aylur/ags/service/applications.js";
 
-const { query } = await Service.import("applications");
+const { query, reload } = await Service.import("applications");
 const WINDOW_NAME = "applauncher";
 
 const AppItem = (app: Application) =>
@@ -37,6 +37,7 @@ const AppLauncher = ({ width = 500, height = 500, spacing = 12 }) => {
   });
 
   function repopulate() {
+    reload();
     applications = query("").map(AppItem);
     list.children = applications;
   }
