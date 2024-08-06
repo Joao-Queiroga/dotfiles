@@ -4,5 +4,6 @@ if status is-login
 end
 if status is-interactive
   fish_vi_key_bindings
+  bass source ~/.config/shell/aliasesrc
   starship init fish | source
 end
