@@ -1,10 +1,5 @@
 #!/bin/sh
-
-# Verifica se o script já foi executado antes
-if [ -n "$PROFILE_LOADED" ]; then
-    return
-fi
-
+export PF_INFO="ascii title os host kernel uptime pkgs wm memory palette"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -27,7 +22,5 @@ export BUN_INSTALL="${XDG_DATA_HOME}/bun"
 
 export W3M_DIR="${XDG_CONFIG_HOME}/w3m"
 
-export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
-
-# Marca o script como carregado
-export PROFILE_LOADED=1
+# Check if PATH has already been modified by this script
+echo $PATH | grep -q "$HOME/.local/bin" || export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
