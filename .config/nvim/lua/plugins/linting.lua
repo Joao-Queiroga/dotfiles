@@ -2,14 +2,13 @@ return {
 	{
 		"mfussenegger/nvim-lint",
 		event = { "BufWrite", "BufRead", "InsertLeave" },
-		dependencies = { "mason-tool-installer.nvim" },
 		opts = {
 			events = { "BufWritePost", "BufReadPost", "InsertLeave" },
 			linters_by_ft = {
 				fish = { "fish" },
 				python = { "flake8" },
-				lua = { "luacheck" },
-				-- java = { "checkstyle" },
+				lua = { "selene" },
+				java = { "checkstyle" },
 			},
 		},
 		config = function(_, opts)
@@ -21,5 +20,11 @@ return {
 				end,
 			})
 		end,
+	},
+	{
+		"rshkarin/mason-nvim-lint",
+		event = { "BufWrite", "BufRead", "InsertLeave" },
+		dependencies = { "mfussenegger/nvim-lint", "williamboman/mason.nvim" },
+		opts = { quiet_mode = true },
 	},
 }
