@@ -21,9 +21,7 @@ end
 return {
 	{
 		"rebelot/heirline.nvim",
-		-- You can optionally lazy-load heirline on UiEnter
-		-- to make sure all required plugins and colorschemes are loaded before setup
-		event = "VeryLazy",
+		event = "UiEnter",
 		dependencies = {
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons",
