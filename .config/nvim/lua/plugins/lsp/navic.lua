@@ -58,12 +58,9 @@ end
 return {
 	{
 		"SmiteshP/nvim-navic",
-		event = "LspAttach",
+		lazy = true,
 		opts = {
 			icons = symbols,
-			lsp = {
-				auto_attach = true,
-			},
 			highlight = true,
 			separator = " › ",
 		},
@@ -74,7 +71,7 @@ return {
 	},
 	{
 		"SmiteshP/nvim-navbuddy",
-		event = "LspAttach",
+		lazy = true,
 		keys = {
 			{ "<leader>lo", "<cmd>Navbuddy<cr>", mode = { "n", "v", "x" }, desc = "Outline" },
 		},
@@ -84,9 +81,6 @@ return {
 		},
 		opts = {
 			icons = symbols,
-			lsp = {
-				auto_attach = true,
-			},
 		},
 	},
 }

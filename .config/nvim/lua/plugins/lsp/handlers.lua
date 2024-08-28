@@ -62,9 +62,10 @@ function M.setup()
 	})
 end
 
-M.on_attach = function(client, _)
-	if client.name == "tsserver" then
-		client.server_capabilities.documentFormattingProvider = false
+M.on_attach = function(client, bufnr)
+	if client.server_capabilities.documentSymbolProvider then
+		require("nvim-navic").attach(client, bufnr)
+		require("nvim-navbuddy").attach(client, bufnr)
 	end
 	lsp_keymaps()
 end
