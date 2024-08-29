@@ -46,6 +46,15 @@ return {
 		opts = {},
 	},
 	{
+		"kosayoda/nvim-lightbulb",
+		event = "LspAttach",
+		opts = {
+			autocmd = {
+				enabled = true,
+			},
+		},
+	},
+	{
 		"folke/trouble.nvim",
 		keys = {
 			{
