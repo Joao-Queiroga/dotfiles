@@ -1,11 +1,24 @@
 return {
 	{
-		"Joao-Queiroga/lazygit-nvim",
-		cmd = "LazyGit",
-    --stylua: ignore
+		"kdheepak/lazygit.nvim",
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
 		keys = {
-			{ "<leader>gl", "<cmd>LazyGit<cr>", desc = "Lazygit" },
-			{ "<leader>yl", "<cmd>LazyGit work-tree=~ git-dir=~/.local/share/yadm/repo.git<cr>", desc = "Lazygit yadm" },
+			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "Lazygit" },
+			{
+				"<leader>yl",
+				function()
+					vim.env.GIT_DIR = vim.fn.expand("~/.local/share/yadm/repo.git")
+					vim.env.WORK_TREE = os.getenv("HOME")
+					vim.cmd([[LazyGit]])
+				end,
+				desc = "Lazygit yadm",
+			},
 		},
 	},
 	{
