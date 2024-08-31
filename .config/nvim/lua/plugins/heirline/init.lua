@@ -61,6 +61,7 @@ return {
 								"neo-tree",
 								"neo-tree-popup",
 								"notify",
+								"lazygit",
 							},
 						}, args.buf)
 					end,
