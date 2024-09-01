@@ -3,20 +3,20 @@ local slow_format_filetypes = { "java" }
 return {
 	{
 		"stevearc/conform.nvim",
-		dependencies = { "williamboman/mason.nvim", "mason-tool-installer.nvim" },
+		dependencies = { "williamboman/mason.nvim" },
 		event = "BufWritePre",
 		cmd = "ConformInfo",
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				javascript = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				json = { { "prettierd", "prettier" } },
-				html = { { "prettierd", "prettier" } },
-				css = { { "prettierd", "prettier" } },
-				scss = { { "prettierd", "prettier" } },
-				sass = { { "prettierd", "prettier" } },
+				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				json = { "prettierd" },
+				html = { "prettierd" },
+				css = { "prettierd" },
+				scss = { "prettierd" },
+				sass = { "prettierd" },
 				rust = { "rustfmt" },
 				nix = { "nixfmt" },
 				c = { "clang-format" },
@@ -43,5 +43,11 @@ return {
 				return { lsp_fallback = true }
 			end,
 		},
+	},
+	{
+		"zapling/mason-conform.nvim",
+		event = "VeryLazy",
+		dependencies = { "stevearc/conform.nvim" },
+		opts = {},
 	},
 }
