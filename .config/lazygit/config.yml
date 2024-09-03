@@ -1,5 +1,5 @@
 gui:
   nerdFontsVersion: "3"
 os:
-  editPreset: "nvim-remote"
+  editPreset: "nvim"
 promptToReturnFromSubprocess: false
