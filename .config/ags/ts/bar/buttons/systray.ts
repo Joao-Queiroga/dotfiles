@@ -1,6 +1,8 @@
+import { TrayItem } from "types/service/systemtray";
+
 const systray = await Service.import("systemtray");
 
-const SysTrayItem = (item: import("types/service/systemtray").TrayItem) =>
+const SysTrayItem = (item: TrayItem) =>
   Widget.Button({
     child: Widget.Icon().bind("icon", item, "icon"),
     tooltip_markup: item.bind("tooltip_markup"),

@@ -1,4 +1,3 @@
-import { Widget } from "resource:///com/github/Aylur/ags/widget.js";
 import System from "./boxes/system/system";
 
 const widgets = () =>

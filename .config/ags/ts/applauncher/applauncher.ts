@@ -1,4 +1,4 @@
-import { Application } from "resource:///com/github/Aylur/ags/service/applications.js";
+import { Application } from "types/service/applications";
 
 const { query, reload } = await Service.import("applications");
 const WINDOW_NAME = "applauncher";
