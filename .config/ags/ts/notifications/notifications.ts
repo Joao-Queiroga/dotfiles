@@ -1,4 +1,4 @@
-import { Notification } from "resource:///com/github/Aylur/ags/service/notifications.js";
+import { Notification } from "types/service/notifications";
 
 const notifications = await Service.import("notifications");
 
@@ -77,6 +77,14 @@ const notification = (n: Notification) => {
       actions,
     ),
   );
+};
+
+globalThis.clearAllNotifications = () => {
+  notifications.popups.forEach((n: Notification) => n.dismiss());
+};
+
+globalThis.clearLastNotification = () => {
+  notifications.popups[0]?.dismiss();
 };
 
 export function NotificationPopups(monitor = 0) {
