@@ -55,6 +55,7 @@ local function highlight()
 	vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Operator" })
 end
 
+---@type LazySpec[]
 return {
 	{
 		"SmiteshP/nvim-navic",

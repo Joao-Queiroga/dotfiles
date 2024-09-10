@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
 	{
 		"christoomey/vim-tmux-navigator",
@@ -105,7 +106,7 @@ return {
 		"3rd/image.nvim",
 		event = { "BufRead", "BufNewFile", "VeryLazy" },
 		commit = "deb158d",
-		enabled = vim.fn.executable("magick"),
+		enabled = vim.fn.executable("magick") == 1,
 		opts = {},
 	},
 	{

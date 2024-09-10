@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
 	{
 		"echasnovski/mini.files",
@@ -18,7 +19,7 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		event = "VeryLazy",
-		enabled = vim.fn.executable("yazi"),
+		enabled = vim.fn.executable("yazi") == 1,
 		keys = {
 			{
 				"<leader>fM",

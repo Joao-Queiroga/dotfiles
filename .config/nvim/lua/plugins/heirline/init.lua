@@ -18,6 +18,7 @@ local function setup_colors()
 		git_change = utils.get_highlight("diffChanged").fg or "#0000FF",
 	}
 end
+---@type LazySpec[]
 return {
 	{
 		"rebelot/heirline.nvim",

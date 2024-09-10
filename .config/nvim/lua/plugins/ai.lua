@@ -1,3 +1,4 @@
+---@type LazySpec[]
 return {
 	{
 		"jackMort/ChatGPT.nvim",

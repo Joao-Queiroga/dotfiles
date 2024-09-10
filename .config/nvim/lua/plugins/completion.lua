@@ -28,6 +28,7 @@ local kind_icons = {
 	Operator = "",
 	TypeParameter = "",
 }
+---@type LazySpec[]
 return {
 	{
 		"hrsh7th/nvim-cmp",

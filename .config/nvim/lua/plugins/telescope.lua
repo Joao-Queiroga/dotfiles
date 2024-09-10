@@ -3,6 +3,7 @@ local function extension(ext)
 		return require("telescope").load_extension(ext)
 	end
 end
+---@type LazySpec[]
 return {
 	{
 		"nvim-telescope/telescope.nvim",

@@ -13,6 +13,7 @@ local installed_servers = {
 	"rnix",
 	"nil_ls",
 }
+---@type LazySpec[]
 return {
 	{
 		"neovim/nvim-lspconfig",

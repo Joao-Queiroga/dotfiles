@@ -1,5 +1,6 @@
 local handlers = require("plugins.lsp.handlers")
 
+---@type LazySpec[]
 return {
 	{
 		"folke/lazydev.nvim",

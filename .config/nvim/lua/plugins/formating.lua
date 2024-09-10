@@ -1,5 +1,6 @@
 local slow_format_filetypes = { "java" }
 
+---@type LazySpec[]
 return {
 	{
 		"stevearc/conform.nvim",
