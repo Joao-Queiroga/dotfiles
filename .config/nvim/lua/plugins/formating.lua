@@ -24,6 +24,7 @@ return {
 				go = { "gofmt" },
 				cpp = { "clang-format" },
 				java = { "google-java-format" },
+				toml = { "taplo" },
 			},
 			format_on_save = function(bufnr)
 				if slow_format_filetypes[vim.bo[bufnr].filetype] then
