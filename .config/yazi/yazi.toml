@@ -1,5 +1,3 @@
-# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
-# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [manager]
@@ -55,60 +53,9 @@ play = [
 jar = [{ run = 'java -jar "$1"', orphan = true, desc = "Open jar file" }]
 
 [open]
-rules = [
-  # Folder
-  { name = "*/", use = [
-    "edit",
-    "open",
-    "reveal",
-  ] },
-  # Text
-  { mime = "text/*", use = [
-    "edit",
-    "reveal",
-  ] },
-  # Image
-  { mime = "image/*", use = [
-    "open",
-    "reveal",
-  ] },
-  # Media
-  { mime = "{audio,video}/*", use = [
-    "play",
-    "reveal",
-  ] },
-  # Archive
-  { mime = "application/{,g}zip", use = [
-    "extract",
-    "reveal",
-  ] },
-  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", use = [
-    "extract",
-    "reveal",
-  ] },
-  # JSON
-  { mime = "application/{json,x-ndjson}", use = [
-    "edit",
-    "reveal",
-  ] },
-  { mime = "*/javascript", use = [
-    "edit",
-    "reveal",
-  ] },
+prepend_rules = [
   # Jar Files
-  { name = "*.jar", use = [
-    "jar",
-  ] },
-  # Empty file
-  { mime = "inode/x-empty", use = [
-    "edit",
-    "reveal",
-  ] },
-  # Fallback
-  { name = "*", use = [
-    "open",
-    "reveal",
-  ] },
+  { name = "*.jar", use = ["jar"] },
 ]
 
 [tasks]
@@ -121,45 +68,12 @@ suppress_preload = false
 
 [plugin]
 
-fetchers = [
-  # Mimetype
-  { id = "mime", name = "*", run = "mime", if = "!mime", prio = "high" },
+prepend_fetchers = [
+  { id = "git", name = "*", run = "git" },
+  { id = "git", name = "*/", run = "git" },
 ]
-preloaders = [
-  # Image
-  { mime = "image/{avif,heic,jxl,svg+xml}", run = "magick" },
-  { mime = "image/*", run = "image" },
-  # Video
-  { mime = "video/*", run = "video" },
-  # PDF
-  { mime = "application/pdf", run = "pdf" },
-  # Font
-  { mime = "font/*", run = "font" },
-  { mime = "application/vnd.ms-opentype", run = "font" },
-]
-previewers = [
-  { name = "*/", run = "folder", sync = true },
-  # Code
-  { mime = "text/*", run = "code" },
-  { mime = "*/{xml,javascript,x-wine-extension-ini}", run = "code" },
-  # JSON
-  { mime = "application/{json,x-ndjson}", run = "json" },
-  # Image
-  { mime = "image/{avif,heic,jxl,svg+xml}", run = "magick" },
-  { mime = "image/*", run = "image" },
-  # Video
-  { mime = "video/*", run = "video" },
-  # PDF
-  { mime = "application/pdf", run = "pdf" },
-  # Archive
-  { mime = "application/{,g}zip", run = "archive" },
-  { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar,iso9660-image}", run = "archive" },
-  # Font
-  { mime = "font/*", run = "font" },
-  { mime = "application/vnd.ms-opentype", run = "font" },
-  # Fallback
-  { name = "*", run = "file" },
-]
+prepend_preloaders = []
+prepend_previewers = []
 
 [input]
 cursor_blink = false
