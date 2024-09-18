@@ -19,13 +19,12 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		event = "VeryLazy",
+		cmd = "Yazi",
 		enabled = vim.fn.executable("yazi") == 1,
 		keys = {
 			{
 				"<leader>fM",
-				function()
-					require("yazi").yazi()
-				end,
+				":Yazi<CR>",
 				desc = "Open the file manager",
 			},
 		},
