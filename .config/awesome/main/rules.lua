@@ -71,6 +71,10 @@ function _M.get(clientkeys, clientbuttons)
 			properties = { screen = 1, tag = "www" },
 		},
 		{
+			rule = { class = "zen-browser" },
+			properties = { screen = 1, tag = "www" },
+		},
+		{
 			rule = { class = "discord" },
 			properties = { screen = 1, tag = "chat" },
 		},

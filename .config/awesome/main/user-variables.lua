@@ -5,7 +5,7 @@ local _M = {
 
 	terminal = "kitty -1",
 	file_manager = "thunar",
-	browser = "firefox",
+	browser = "zen-browser",
 
 	wallpaper = home .. "/.config/.background",
 	icon_theme = "ePapirus-Dark",
