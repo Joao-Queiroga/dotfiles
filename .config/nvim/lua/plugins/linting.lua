@@ -10,6 +10,7 @@ return {
 				python = { "flake8" },
 				lua = { "selene" },
 				java = { "checkstyle" },
+				rust = { "clippy" },
 			},
 		},
 		config = function(_, opts)
