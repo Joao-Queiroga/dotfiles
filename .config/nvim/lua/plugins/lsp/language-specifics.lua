@@ -47,8 +47,7 @@ return {
 	},
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^3",
-		ft = { "rust" },
+		version = "^5",
 		opts = {
 			server = handlers.get_opts("rust_analyzer"),
 		},
