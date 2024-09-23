@@ -5,7 +5,7 @@ local installed_servers = {
 	"clangd",
 	"gopls",
 	"emmet_language_server",
-	"tsserver",
+	"ts_ls",
 	"cssls",
 	"vimls",
 	"jsonls",
