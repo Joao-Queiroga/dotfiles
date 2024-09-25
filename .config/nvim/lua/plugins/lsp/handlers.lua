@@ -10,7 +10,6 @@ local function lsp_keymaps()
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts())
 	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts())
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts())
-	-- vim.keymap.set( "n", "<leader>f" , vim.diagnostic.open_float , desc())
 	vim.keymap.set("n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts())
 	vim.keymap.set("n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "rounded" })<CR>', opts())
 	vim.keymap.set("n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts())
@@ -62,7 +61,7 @@ function M.setup()
 	})
 end
 
-M.on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
 	if client.server_capabilities.documentSymbolProvider then
 		require("nvim-navic").attach(client, bufnr)
 		require("nvim-navbuddy").attach(client, bufnr)
@@ -70,7 +69,11 @@ M.on_attach = function(client, bufnr)
 	lsp_keymaps()
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = vim.tbl_deep_extend(
+	"force",
+	vim.lsp.protocol.make_client_capabilities(),
+	require("cmp_nvim_lsp").default_capabilities()
+)
 capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
@@ -81,13 +84,15 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 function M.get_opts(server_name)
 	local opts = {
-		capabilities = M.capabilities,
-		on_attach = M.on_attach,
+		capabilities = capabilities,
+		on_attach = on_attach,
 	}
+
 	local require_ok, conf_opts = pcall(require, "plugins.lsp.settings." .. server_name)
 	if require_ok then
-		opts = vim.tbl_deep_extend("force", conf_opts, opts)
+		return vim.tbl_deep_extend("force", opts, conf_opts)
 	end
+
 	return opts
 end
 
