@@ -3,9 +3,6 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		-- Noice currently causes issues on exit, waiting for fix:
-		-- https://github.com/folke/noice.nvim/issues/921
-		version = "v4.4.7",
 		opts = {
 			lsp = {
 				override = {
