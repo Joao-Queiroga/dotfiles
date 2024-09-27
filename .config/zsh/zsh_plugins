@@ -1,7 +1,3 @@
-# zsh-utils
-belak/zsh-utils path:history
-belak/zsh-utils path:completion
-
 # fish-like plugins
 mattmc3/zfunctions
 zsh-users/zsh-autosuggestions
@@ -11,3 +7,4 @@ zsh-users/zsh-history-substring-search kind:defer
 # other plugins
 hlissner/zsh-autopair kind:defer
 jeffreytse/zsh-vi-mode
+BronzeDeer/zsh-completion-sync kind:defer
