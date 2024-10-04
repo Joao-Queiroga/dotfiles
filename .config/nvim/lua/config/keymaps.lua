@@ -10,6 +10,10 @@ local keymap = vim.keymap.set
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Navigate in visual lines
+keymap({ "n", "v", "x" }, "j", "gj", opts)
+keymap({ "n", "v", "x" }, "k", "gk", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
