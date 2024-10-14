@@ -31,7 +31,7 @@ edit = [
   { run = 'code -w %*', block = true, desc = "code (block)", for = "windows" },
 ]
 open = [
-  { run = 'xdg-open "$1"', desc = "Open", for = "linux" },
+  { run = 'xdg-open "$1"', desc = "Open", orphan = true, for = "linux" },
   { run = 'open "$@"', desc = "Open", for = "macos" },
   { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
 ]
@@ -67,7 +67,6 @@ image_bound = [0, 0]
 suppress_preload = false
 
 [plugin]
-
 prepend_fetchers = [
   { id = "git", name = "*", run = "git" },
   { id = "git", name = "*/", run = "git" },
