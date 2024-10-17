@@ -31,7 +31,8 @@ local kind_icons = {
 ---@type LazySpec[]
 return {
 	{
-		"hrsh7th/nvim-cmp",
+		"iguanacucumber/magazine.nvim",
+		name = "nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-buffer",
