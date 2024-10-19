@@ -46,6 +46,9 @@ return {
 				select_next = "<Tab>",
 				select_prev = "<S-Tab>",
 			},
+			highlight = {
+				use_nvim_cmp_as_default = true,
+			},
 			-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- adjusts spacing to ensure icons are aligned
 			nerd_font_variant = "normal",

@@ -6,6 +6,11 @@ return {
 		priority = 1000,
 		opts = {
 			style = "night",
+
+			plugins = {
+				cmp = true,
+			},
+
 			on_highlights = function(hl, c)
 				local prompt = "#2d3149"
 				hl.TelescopeNormal = {
