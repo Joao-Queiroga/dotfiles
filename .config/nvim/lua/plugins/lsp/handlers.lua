@@ -69,18 +69,13 @@ local on_attach = function(client, bufnr)
 	lsp_keymaps()
 end
 
-local capabilities = vim.tbl_deep_extend(
-	"force",
-	vim.lsp.protocol.make_client_capabilities(),
-	require("cmp_nvim_lsp").default_capabilities()
-)
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
 
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
-M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+M.capabilities = capabilities
 
 function M.get_opts(server_name)
 	local opts = {
