@@ -1,3 +1,3 @@
 function fish_greeting
-  nerdfetch 2> /dev/null
+  pfetch 2> /dev/null
 end

@@ -21,4 +21,4 @@ eval "$(zoxide init zsh)" 2> /dev/null
 
 source <(fzf --zsh) 2> /dev/null
 
-nerdfetch
+pfetch 2> /dev/null
