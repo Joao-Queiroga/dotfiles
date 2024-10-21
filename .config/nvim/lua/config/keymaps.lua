@@ -35,3 +35,19 @@ keymap("v", "p", '"_dP', opts)
 keymap("n", "<leader>ya", function()
 	os.execute("yadm add " .. vim.api.nvim_buf_get_name(0))
 end, { desc = "Add current file" })
+
+-- Snippets
+keymap({ "i", "s" }, "<Tab>", function()
+	if vim.snippet.active({ direction = 1 }) then
+		return "<cmd>lua vim.snippet.jump(1)<cr>"
+	else
+		return "<Tab>"
+	end
+end, { expr = true })
+keymap({ "i", "s" }, "<S-Tab>", function()
+	if vim.snippet.active({ direction = -1 }) then
+		return "<cmd>lua vim.snippet.jump(-1)<cr>"
+	else
+		return "<S-Tab>"
+	end
+end, { expr = true })
