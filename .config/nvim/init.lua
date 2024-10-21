@@ -1,4 +1,5 @@
 vim.loader.enable()
+require("config.settings")
 require("config.options")
 require("config.autocmds")
 require("config.lazy")

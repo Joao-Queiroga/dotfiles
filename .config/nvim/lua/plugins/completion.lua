@@ -1,33 +1,3 @@
-local kind_icons = {
-	Text = "󰉿",
-	Copilot = "",
-	Codeium = "",
-	Method = "",
-	Function = "󰊕",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "",
-	Array = "",
-	Interface = "",
-	Module = "",
-	Property = "",
-	Unit = "",
-	Value = "󰎠",
-	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "",
-	Event = "",
-	Operator = "",
-	TypeParameter = "",
-}
 ---@type LazySpec[]
 return {
 	{
@@ -58,7 +28,7 @@ return {
 
 			-- experimental signature help support
 			trigger = { signature_help = { enabled = true } },
-			kind_icons = kind_icons,
+			kind_icons = vim.g.kind_icons,
 		},
 	},
 }

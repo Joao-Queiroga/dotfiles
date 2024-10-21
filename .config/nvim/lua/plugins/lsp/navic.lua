@@ -1,32 +1,3 @@
-local symbols = {
-	File = " ",
-	Module = " ",
-	Namespace = " ",
-	Package = " ",
-	Class = " ",
-	Method = " ",
-	Property = " ",
-	Field = " ",
-	Constructor = " ",
-	Enum = " ",
-	Interface = " ",
-	Function = "󰡱 ",
-	Variable = " ",
-	Constant = " ",
-	String = "󰅳 ",
-	Number = "󰎠 ",
-	Boolean = " ",
-	Array = "󰅨 ",
-	Object = " ",
-	Key = " ",
-	Null = "󰟢 ",
-	EnumMember = " ",
-	Struct = " ",
-	Event = " ",
-	Operator = " ",
-	TypeParameter = " ",
-}
-
 local function highlight()
 	vim.api.nvim_set_hl(0, "NavicIconsFile", { link = "Tag" })
 	vim.api.nvim_set_hl(0, "NavicIconsModule", { link = "Exception" })
@@ -81,7 +52,7 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		opts = {
-			icons = symbols,
+			icons = vim.g.kind_icons,
 		},
 	},
 }
