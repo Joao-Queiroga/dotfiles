@@ -15,21 +15,18 @@ return {
 	},
 	{
 		"mikavilpas/yazi.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		event = "VeryLazy",
-		cmd = "Yazi",
-		enabled = vim.fn.executable("yazi") == 1,
 		keys = {
 			{
 				"<leader>fM",
-				":Yazi<CR>",
+				function()
+					require("yazi").yazi()
+				end,
 				desc = "Open the file manager",
 			},
 		},
 		---@type YaziConfig
 		opts = {
+			-- if you want to open yazi instead of netrw, see below for more info
 			open_for_directories = false,
 		},
 	},
