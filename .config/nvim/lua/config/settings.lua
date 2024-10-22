@@ -29,4 +29,14 @@ vim.g.kind_icons = {
 	Event = "󱐋",
 	Operator = "󰪚",
 	TypeParameter = "󰬛",
+
+	Namespace = " ",
+	Package = " ",
+	String = "󰅳 ",
+	Number = "󰎠 ",
+	Boolean = " ",
+	Array = "󰅨 ",
+	Object = " ",
+	Key = " ",
+	Null = "󰟢 ",
 }
