@@ -282,3 +282,4 @@ user_pref("mousewheel.default.delta_multiplier_y", 300); // 250-400; adjust this
 /****************************************************************************
  * END: BETTERFOX                                                           *
  ****************************************************************************/
+user_pref("browser.tabs.closeWindowWithLastTab", false);
