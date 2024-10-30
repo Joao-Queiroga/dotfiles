@@ -169,17 +169,21 @@ return {
 		end,
 	},
 	{
-		"https://gitlab.com/itaranto/plantuml.nvim",
-		ft = "plantuml",
+		"https://gitlab.com/itaranto/preview.nvim",
 		version = "*",
+		cmd = "PreviewFile",
 		opts = {
-			renderer = {
-				type = "imv",
-				options = {
-					dark_mode = true,
-					format = "svg", -- Allowed values: nil, 'png', 'svg'.
+			previewers_by_ft = {
+				markdown = {
+					name = "pandoc_wkhtmltopdf",
+					renderer = { type = "command", opts = { cmd = { "zathura" } } },
+				},
+				plantuml = {
+					name = "plantuml_svg",
+					renderer = { type = "imv" },
 				},
 			},
+			render_on_write = true,
 		},
 	},
 }
