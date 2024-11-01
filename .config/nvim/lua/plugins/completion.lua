@@ -12,9 +12,9 @@ return {
 		---@type blink.cmp.Config
 		opts = {
 			keymap = {
-				accept = "<CR>",
-				select_next = "<Tab>",
-				select_prev = "<S-Tab>",
+				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+				["<S-Tab>"] = { "select_next", "snippet_backward", "fallback" },
+				["<CR>"] = { "accept", "fallback" },
 			},
 			highlight = {
 				use_nvim_cmp_as_default = true,
