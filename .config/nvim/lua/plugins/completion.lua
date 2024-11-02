@@ -14,6 +14,10 @@ return {
 			keymap = {
 				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
 				["<S-Tab>"] = { "select_next", "snippet_backward", "fallback" },
+				["<C-e>"] = { "hide", "fallback" },
+				["<C-E>"] = { "hide_documentation", "fallback" },
+				["<C-j>"] = { "scroll_documentation_down", "fallback" },
+				["<C-k>"] = { "scroll_documentation_up", "fallback" },
 				["<CR>"] = { "accept", "fallback" },
 			},
 			highlight = {
