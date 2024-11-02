@@ -29,7 +29,7 @@ return {
 		},
 	},
 	{
-		"seanbreckenridge/gitsigns-yadm.nvim",
+		"purarue/gitsigns-yadm.nvim",
 		lazy = true,
 		dependencies = {
 			"lewis6991/gitsigns.nvim",
