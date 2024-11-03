@@ -12,8 +12,9 @@ return {
 		---@type blink.cmp.Config
 		opts = {
 			keymap = {
+				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 				["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-				["<S-Tab>"] = { "select_next", "snippet_backward", "fallback" },
+				["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 				["<C-e>"] = { "hide", "fallback" },
 				["<C-E>"] = { "hide_documentation", "fallback" },
 				["<C-j>"] = { "scroll_documentation_down", "fallback" },
@@ -22,6 +23,9 @@ return {
 			},
 			highlight = {
 				use_nvim_cmp_as_default = true,
+			},
+			windows = {
+				documentation = { auto_show = true },
 			},
 			-- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- adjusts spacing to ensure icons are aligned
