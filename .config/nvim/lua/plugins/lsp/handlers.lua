@@ -75,11 +75,11 @@ capabilities.textDocument.foldingRange = {
 	lineFoldingOnly = true,
 }
 
-M.capabilities = capabilities
+M.capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 function M.get_opts(server_name)
 	local opts = {
-		capabilities = capabilities,
+		capabilities = M.capabilities,
 		on_attach = on_attach,
 	}
 
