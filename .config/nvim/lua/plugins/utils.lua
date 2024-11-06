@@ -45,15 +45,6 @@ return {
 		opts = {},
 	},
 	{
-		"akinsho/toggleterm.nvim",
-		version = "*",
-		keys = { { "<C-t>", mode = { "i", "n" } } },
-		opts = {
-			size = 14,
-			open_mapping = [[<c-t>]],
-		},
-	},
-	{
 		"dhruvasagar/vim-table-mode",
 		cmd = {
 			"TableModeToggle",

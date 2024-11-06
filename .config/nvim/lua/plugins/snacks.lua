@@ -29,11 +29,33 @@ return {
 				}
 				vim.env.GIT_DIR = vim.fn.expand("~/.local/share/yadm/repo.git")
 				vim.env.WORK_TREE = os.getenv("HOME")
-				vim.cmd([[LazyGit]])
+				Snacks.lazygit()
 				vim.env.GIT_DIR = original_env.GIT_DIR
 				vim.env.WORK_TREE = original_env.WORK_TREE
 			end,
 			desc = "Lazygit",
+		},
+		{
+			"<c-t>",
+			function()
+				Snacks.terminal()
+			end,
+			mode = { "i", "n", "t" },
+			desc = "Toggle Terminal",
+		},
+		{
+			"<leader>fn",
+			function()
+				Snacks.rename()
+			end,
+			desc = "Rename File",
+		},
+		{
+			"<leader>un",
+			function()
+				Snacks.notifier.hide()
+			end,
+			desc = "Dismiss All Notifications",
 		},
 	},
 }

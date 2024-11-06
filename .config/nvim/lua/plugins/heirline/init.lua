@@ -49,6 +49,7 @@ return {
 							buftype = { "nofile", "prompt", "help", "quickfix" },
 							filetype = {
 								"^git.*",
+								"snacks_terminal",
 								"help",
 								"startify",
 								"dashboard",
