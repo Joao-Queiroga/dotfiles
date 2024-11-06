@@ -45,13 +45,6 @@ return {
 		opts = {},
 	},
 	{
-		"echasnovski/mini.bufremove",
-		keys = {
-			{ "<leader>c", "<cmd>lua MiniBufremove.delete()<cr>", mode = { "n", "v" }, desc = "Delete buffer" },
-		},
-		opts = {},
-	},
-	{
 		"akinsho/toggleterm.nvim",
 		version = "*",
 		keys = { { "<C-t>", mode = { "i", "n" } } },
