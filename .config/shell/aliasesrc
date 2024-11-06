@@ -19,5 +19,10 @@ if command -v z > /dev/null 2>&1; then
   alias cd='z'
 fi
 
+# ripgrep alias
+if command -v rg > /dev/null 2>&1; then
+  alias grep="rg"
+fi
+
 # Pandoc alias
 alias pandoc='pandoc --pdf-engine wkhtmltopdf'
