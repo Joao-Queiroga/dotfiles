@@ -4,7 +4,9 @@ return {
   priority = 1000,
   lazy = false,
   ---@type snacks.Config
-  opts = {},
+  opts = {
+    statuscolumn = { enabled = false },
+  },
   keys = {
     {
       "<leader>c",
