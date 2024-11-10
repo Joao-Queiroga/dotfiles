@@ -6,4 +6,5 @@ zsh-users/zsh-history-substring-search kind:defer
 
 # other plugins
 hlissner/zsh-autopair kind:defer
+se-jaeger/zsh-activate-py-environment kind:defer
 jeffreytse/zsh-vi-mode
