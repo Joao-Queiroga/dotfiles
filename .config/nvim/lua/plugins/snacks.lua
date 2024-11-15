@@ -5,7 +5,10 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    statuscolumn = { enabled = false },
+    bigfile = { enabled = true },
+    notifier = { enabled = true },
+    quickfile = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     {
