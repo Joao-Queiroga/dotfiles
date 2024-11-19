@@ -3,12 +3,13 @@ import { GLib, Variable, bind } from "astal"
 import Tray from "gi://AstalTray"
 import Battery from "gi://AstalBattery";
 import Hyprland from "gi://AstalHyprland";
+import Wp from "gi://AstalWp";
 
 
 function SysTray() {
   const tray = Tray.get_default();
 
-  return <box>
+  return <box className="systray">
     {bind(tray, "items").as(items => items.map(item => {
       if (item.iconThemePath)
         App.add_icons(item.iconThemePath)
@@ -30,24 +31,30 @@ function SysTray() {
 function Workspaces() {
   const hypr = Hyprland.get_default()
 
-  return <box className="Workspaces">
+  return <box className="workspaces">
     {Array.from({ length: 9 }, (_, i) => i + 1).map(i => {
       return <button
-        className={bind(hypr, "clients").as(_ => {
-          const classes: string[] = []
-          if (hypr.get_focused_workspace().get_id() == i) {
-            classes.push("active")
-          }
-          if ((hypr.get_workspace(i)?.get_clients().length || 0) > 0) {
-            classes.push("occupied")
-          }
-          return classes.join(" ")
-        })}
-        onClicked={() => hypr.dispatch("workspace", i.toString())}>
+        onClicked={() => hypr.dispatch("workspace", i.toString())}
+        setup={self => {
+          self.hook(hypr, "event", () => {
+            self.toggleClassName("occupied", (hypr.get_workspace(i)?.get_clients().length || 0) > 0)
+            self.toggleClassName("active", hypr.get_focused_workspace().get_id() === i)
+          })
+        }}
+      >
         <label className="indicator" halign={Gtk.Align.CENTER} label={i.toString()} />
       </button>
     })}
   </box >
+}
+
+function Volume() {
+  const speaker = Wp.get_default()?.audio.defaultSpeaker!
+  return <button className="volume"
+    tooltipMarkup={bind(speaker, "volume").as(vol => `${Math.floor(vol * 100)}%`)}
+    onClick={() => speaker.set_mute(!speaker.get_mute)} >
+    <icon icon={bind(speaker, "volumeIcon")} />
+  </button>
 }
 
 function BatteryLevel() {
@@ -57,27 +64,19 @@ function BatteryLevel() {
     icon={bind(bat, "batteryIconName")}
     tooltipMarkup={bind(bat, "percentage").as(percent => {
       const formatTime = (seconds: number) => {
-        const minutes = Math.floor(seconds / 60);
-        const hours = Math.floor(minutes / 60);
-        return `${hours}:${(minutes % 60).toString().padStart(2, "0")}`;
+        const minutes = Math.floor(seconds / 60) % 60;
+        const hours = Math.floor(seconds / 3600);
+        return `${hours}:${minutes.toString().padStart(2, "0")}`;
       };
 
-      const state = bat.get_state()
-      let text = `${bat.get_percentage()}% `;
-      switch (state) {
-        case Battery.State.FULLY_CHARGED:
-          text += "Full"
-          break;
-        case Battery.State.CHARGING:
-          text += `Charging\n${formatTime(bat.get_time_to_full())} remaining`
-          break;
-        case Battery.State.DISCHARGING:
-          text += `Discharging\n${formatTime(bat.get_time_to_empty())} remaining`
-          break;
-        default:
-          break;
-      }
-      return text
+      const state = bat.get_state();
+      const stateText = {
+        [Battery.State.FULLY_CHARGED]: "Full",
+        [Battery.State.CHARGING]: `Charging\n${formatTime(bat.get_time_to_full())} remaining`,
+        [Battery.State.DISCHARGING]: `Discharging\n${formatTime(bat.get_time_to_empty())} remaining`,
+      }[state] || "";
+
+      return `${Math.floor(percent * 100)}% ${stateText}`;
     })}
   />
 }
@@ -86,13 +85,13 @@ function Time({ format = "  %a %d/%m/%Y %H:%M" }) {
   const time = Variable("").poll(1000, () =>
     GLib.DateTime.new_now_local().format(format)!);
 
-  return <label className="Time"
+  return <label className="time"
     onDestroy={() => time.drop()} label={time()} />
 }
 
 export default function Bar(monitor: Gdk.Monitor) {
   return <window
-    className="Bar"
+    className="bar"
     gdkmonitor={monitor}
     exclusivity={Astal.Exclusivity.EXCLUSIVE}
     anchor={Astal.WindowAnchor.TOP
@@ -106,6 +105,7 @@ export default function Bar(monitor: Gdk.Monitor) {
       <box></box>
       <box hexpand halign={Gtk.Align.END} >
         <SysTray />
+        <Volume />
         <BatteryLevel />
         <Time />
       </box>

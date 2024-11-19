@@ -1,6 +1,6 @@
 @use "theme" as *;
 
-window.Bar {
+window.bar {
   * {
     font-size: 9.5pt;
     background-color: $background;
@@ -8,10 +8,16 @@ window.Bar {
     color: $foreground;
     padding: 0;
   }
+
   image {
     border: 0;
     padding: 0 2px;
-    font-size: 1.2em;
+    font-size: 1.5em;
+  }
+
+  label {
+    font-weight: bold;
+    margin: 0;
   }
 
   .workspaces button {
@@ -22,9 +28,9 @@ window.Bar {
       min-width: 10px;
       min-height: 10px;
       border-radius: 5px;
-      margin: 0 2px;
+      margin: 7px 2px;
       transition: 200ms;
-      background-color: transparentize($blue, 0.4);
+      background-color: adjust-color($color: $blue, $alpha: -0.4);
     }
 
     &.occupied .indicator {
@@ -38,5 +44,27 @@ window.Bar {
     &.active .indicator {
       min-width: 18px;
     }
+  }
+
+  button.volume {
+    border: 0;
+    padding: 0 2px;
+    > * {
+      font-size: 1.3em;
+    }
+  }
+
+  .systray button {
+    border: 0;
+    padding: 0 2px;
+    > * {
+      font-size: 1.5em;
+    }
+  }
+
+  .time {
+    margin: 0 6px;
+    font-size: 1.1em;
+    color: $orange;
   }
 }
