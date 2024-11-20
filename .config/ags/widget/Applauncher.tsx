@@ -43,6 +43,13 @@ export default function Applauncher() {
     hide()
   }
 
+  const Entry = <entry
+    placeholderText="Search"
+    text={text()}
+    onChanged={self => text.set(self.text)}
+    onActivate={onEnter}
+  />
+
   return <window
     name="launcher"
     visible={false}
@@ -50,7 +57,7 @@ export default function Applauncher() {
     exclusivity={Astal.Exclusivity.IGNORE}
     keymode={Astal.Keymode.EXCLUSIVE}
     application={App}
-    onShow={() => text.set("")}
+    onShow={() => { text.set(""); Entry.grab_focus() }}
     onKeyPressEvent={function(self, event: Gdk.Event) {
       if (event.get_keyval()[1] === Gdk.KEY_Escape)
         self.hide()
@@ -60,12 +67,7 @@ export default function Applauncher() {
       <box hexpand={false} vertical>
         <eventbox heightRequest={100} onClick={hide} />
         <box widthRequest={500} className="Applauncher" vertical>
-          <entry
-            placeholderText="Search"
-            text={text()}
-            onChanged={self => text.set(self.text)}
-            onActivate={onEnter}
-          />
+          {Entry}
           <box spacing={6} vertical>
             {list.as(list => list.map(app => (
               <AppButton app={app} />
