@@ -37,7 +37,7 @@ function Workspaces() {
         onClicked={() => hypr.dispatch("workspace", i.toString())}
         setup={self => {
           self.hook(hypr, "event", () => {
-            self.toggleClassName("occupied", (hypr.get_workspace(i)?.get_clients().length || 0) > 0)
+            // self.toggleClassName("occupied", (hypr.get_workspace(i)?.get_clients().length || 0) > 0)
             self.toggleClassName("active", hypr.get_focused_workspace().get_id() === i)
           })
         }}
