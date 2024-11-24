@@ -33,7 +33,7 @@ function AppButton({ app }: { app: Apps.Application }) {
 }
 
 export default function Applauncher() {
-  const { CENTER } = Gtk.Align
+  const { TOP, BOTTOM } = Astal.WindowAnchor
   const apps = new Apps.Apps()
 
   const text = Variable("")
@@ -53,7 +53,7 @@ export default function Applauncher() {
   return <window
     name="launcher"
     visible={false}
-    anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM}
+    anchor={TOP | BOTTOM}
     exclusivity={Astal.Exclusivity.IGNORE}
     keymode={Astal.Keymode.EXCLUSIVE}
     application={App}
@@ -74,7 +74,7 @@ export default function Applauncher() {
             )))}
           </box>
           <box
-            halign={CENTER}
+            halign={Gtk.Align.CENTER}
             className="not-found"
             vertical
             visible={list.as(l => l.length === 0)}>
