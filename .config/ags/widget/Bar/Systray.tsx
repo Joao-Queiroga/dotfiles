@@ -18,7 +18,7 @@ export default function SysTray() {
         onClickRelease={self => {
           menu?.popup_at_widget(self, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null)
         }}>
-        <icon icon={bind(item, "iconName")} />
+        <icon gIcon={bind(item, "gicon")} />
       </button>
     }))}
   </box>
