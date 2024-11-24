@@ -7,8 +7,8 @@ const Workspace = ({ id }: { id: number }) => {
 
   const setup = (self: any) => {
     self.hook(hypr, "event", () => {
-      // const workspace = hypr.get_workspace(id);
-      // self.toggleClassName("occupied", (workspace?.get_clients().length || 0) > 0);
+      const workspace = hypr.get_workspace(id);
+      self.toggleClassName("occupied", (workspace?.get_clients().length || 0) > 0);
       self.toggleClassName("active", hypr.get_focused_workspace().get_id() === id);
     });
   };
