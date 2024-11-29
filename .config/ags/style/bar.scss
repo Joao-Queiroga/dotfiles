@@ -9,10 +9,10 @@ window.bar {
     padding: 0;
   }
 
-  image {
+  icon {
     border: 0;
     padding: 0 2px;
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 
   label {
@@ -49,9 +49,6 @@ window.bar {
   button.volume {
     border: 0;
     padding: 0 2px;
-    > * {
-      font-size: 1.3em;
-    }
   }
 
   .systray button {
