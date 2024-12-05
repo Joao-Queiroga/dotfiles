@@ -57,8 +57,8 @@ export default function Applauncher() {
     exclusivity={Astal.Exclusivity.IGNORE}
     keymode={Astal.Keymode.EXCLUSIVE}
     application={App}
-    onShow={() => { text.set(""); Entry.grab_focus() }}
-    onKeyPressEvent={function(self, event: Gdk.Event) {
+    onShow={() => { apps.reload(); text.set(""); Entry.grab_focus() }}
+    onKeyPressEvent={function (self, event: Gdk.Event) {
       if (event.get_keyval()[1] === Gdk.KEY_Escape)
         self.hide()
     }}>
