@@ -25,4 +25,4 @@ if command -v rg > /dev/null 2>&1; then
 fi
 
 # Pandoc alias
-alias pandoc='pandoc --pdf-engine wkhtmltopdf'
+alias pandoc='pandoc --pdf-engine weasyprint --css ~/.config/pandoc/style.css'
