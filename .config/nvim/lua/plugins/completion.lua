@@ -4,23 +4,19 @@ return {
     "saghen/blink.cmp",
     lazy = false,
     dependencies = "rafamadriz/friendly-snippets",
-
-    -- use a release tag to download pre-built binaries
-    version = "v0.*",
+    version = "*",
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
       keymap = {
-        presets = "enter",
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        preset = "enter",
         ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
         ["<C-e>"] = { "hide", "fallback" },
         ["<C-E>"] = { "hide_documentation", "fallback" },
         ["<C-j>"] = { "scroll_documentation_down", "fallback" },
         ["<C-k>"] = { "scroll_documentation_up", "fallback" },
-        ["<CR>"] = { "accept", "fallback" },
       },
       windows = {
         documentation = { auto_show = true },
@@ -31,6 +27,7 @@ return {
 
       -- experimental auto-brackets support
       accept = { auto_brackets = { enabled = true } },
+      ghost_text = { enabled = true },
 
       -- experimental signature help support
       trigger = { signature_help = { enabled = true } },
