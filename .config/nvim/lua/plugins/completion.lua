@@ -18,20 +18,11 @@ return {
         ["<C-j>"] = { "scroll_documentation_down", "fallback" },
         ["<C-k>"] = { "scroll_documentation_up", "fallback" },
       },
-      windows = {
-        documentation = { auto_show = true },
+      signature = { enabled = true },
+      appearance = {
+        nerd_font_variant = "normal",
+        kind_icons = vim.g.kind_icons,
       },
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = "normal",
-
-      -- experimental auto-brackets support
-      accept = { auto_brackets = { enabled = true } },
-      ghost_text = { enabled = true },
-
-      -- experimental signature help support
-      trigger = { signature_help = { enabled = true } },
-      kind_icons = vim.g.kind_icons,
     },
   },
 }
