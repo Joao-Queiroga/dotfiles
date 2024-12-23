@@ -23,6 +23,11 @@ return {
         nerd_font_variant = "normal",
         kind_icons = vim.g.kind_icons,
       },
+      completion = {
+        list = {
+          selection = "manual",
+        },
+      },
     },
   },
 }
