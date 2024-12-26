@@ -60,7 +60,9 @@ export default function Applauncher() {
     }}>
     <box widthRequest={500} heightRequest={500} className="Applauncher" vertical>
       {Entry}
-      <scrollable vexpand vscrollbarPolicy={Gtk.PolicyType.EXTERNAL}>
+      <scrollable
+        visible={list.as(l => l.length > 0)}
+        vexpand vscrollbarPolicy={Gtk.PolicyType.EXTERNAL}>
         <box className="AppList" spacing={6} vertical>
           {list.as(list => list.map(app => (
             <AppButton app={app} />
