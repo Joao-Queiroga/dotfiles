@@ -2,8 +2,6 @@ import Apps from "gi://AstalApps"
 import { App, Astal, Gdk, Gtk } from "astal/gtk3"
 import { Variable } from "astal"
 
-const MAX_ITEMS = 8
-
 function hide() {
   App.get_window("launcher")!.hide()
 }
@@ -33,11 +31,10 @@ function AppButton({ app }: { app: Apps.Application }) {
 }
 
 export default function Applauncher() {
-  const { TOP, BOTTOM } = Astal.WindowAnchor
   const apps = new Apps.Apps()
 
   const text = Variable("")
-  const list = text(text => apps.fuzzy_query(text).slice(0, MAX_ITEMS))
+  const list = text(text => apps.fuzzy_query(text))
   const onEnter = () => {
     apps.fuzzy_query(text.get())?.[0].launch()
     hide()
@@ -53,7 +50,6 @@ export default function Applauncher() {
   return <window
     name="launcher"
     visible={false}
-    anchor={TOP | BOTTOM}
     exclusivity={Astal.Exclusivity.IGNORE}
     keymode={Astal.Keymode.EXCLUSIVE}
     application={App}
@@ -62,29 +58,23 @@ export default function Applauncher() {
       if (event.get_keyval()[1] === Gdk.KEY_Escape)
         self.hide()
     }}>
-    <box>
-      <eventbox widthRequest={4000} expand onClick={hide} />
-      <box hexpand={false} vertical>
-        <eventbox heightRequest={100} onClick={hide} />
-        <box widthRequest={500} className="Applauncher" vertical>
-          {Entry}
-          <box spacing={6} vertical>
-            {list.as(list => list.map(app => (
-              <AppButton app={app} />
-            )))}
-          </box>
-          <box
-            halign={Gtk.Align.CENTER}
-            className="not-found"
-            vertical
-            visible={list.as(l => l.length === 0)}>
-            <icon icon="system-search-symbolic" />
-            <label label="No match found" />
-          </box>
+    <box widthRequest={500} heightRequest={500} className="Applauncher" vertical>
+      {Entry}
+      <scrollable vexpand vscrollbarPolicy={Gtk.PolicyType.EXTERNAL}>
+        <box className="AppList" spacing={6} vertical>
+          {list.as(list => list.map(app => (
+            <AppButton app={app} />
+          )))}
         </box>
-        <eventbox expand onClick={hide} />
+      </scrollable>
+      <box
+        halign={Gtk.Align.CENTER}
+        className="not-found"
+        vertical
+        visible={list.as(l => l.length === 0)}>
+        <icon icon="system-search-symbolic" />
+        <label label="No match found" />
       </box>
-      <eventbox widthRequest={4000} expand onClick={hide} />
     </box>
   </window>
 }
