@@ -2,7 +2,7 @@ import { App, Astal, Gtk, Gdk } from "astal/gtk3"
 import Workspaces from "./Workspaces";
 import SysTray from "./Systray";
 import Battery from "./Battery";
-import Time from "../../variables/Time";
+import { Time } from "../../lib/variables";
 import Volume from "./Volume";
 
 export default function Bar(monitor: Gdk.Monitor) {

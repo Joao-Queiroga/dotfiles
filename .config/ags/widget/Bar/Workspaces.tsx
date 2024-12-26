@@ -1,5 +1,6 @@
 import Hyprland from "gi://AstalHyprland";
 import { Gtk } from "astal/gtk3";
+import { range } from "../../lib/util";
 
 const Workspace = ({ id }: { id: number }) => {
   const hypr = Hyprland.get_default();
@@ -20,8 +21,8 @@ const Workspace = ({ id }: { id: number }) => {
 
 export default function Workspaces() {
   return <box className="workspaces">
-    {Array.from({ length: 9 }, (_, i) => (
-      <Workspace id={i + 1} />
+    {range(9).map(i => (
+      <Workspace id={i} />
     ))}
   </box>
 }
