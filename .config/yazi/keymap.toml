@@ -12,15 +12,11 @@ prepend_keymap = [
   { on = "$", run = "shell --block --confirm zsh", desc = "Drag files" },
 
   # Utils
-  { on = "<C-d>", run = '''shell --confirm 'export IFS=";;"; ripdrag -ax $(echo "$@" | sed "s/ \//;;\//g")'''', desc = "Drag files" },
+  { on = "<C-d>", run = "plugin ripdrag", desc = "Drag files" },
   { on = "T", run = "plugin --sync max-preview", desc = "Maximize or restore preview" },
 ]
 
 [tasks]
-
-prepend_keymap = []
-
-[select]
 
 prepend_keymap = []
 
