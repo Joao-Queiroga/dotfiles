@@ -1,5 +1,5 @@
 [plugin]
-deps = [{ use = "yazi-rs/plugins:full-border", rev = "7afba3a" }, { use = "Rolv-Apneseth/starship", rev = "247f49d" }, { use = "yazi-rs/plugins:max-preview", rev = "7afba3a" }, { use = "AnirudhG07/archivemount", rev = "2d78ae4" }, { use = "yazi-rs/plugins:git", rev = "7afba3a" }, { use = "hankertrix/augment-command", rev = "369f992" }]
+deps = [{ use = "yazi-rs/plugins:full-border", rev = "7afba3a" }, { use = "Rolv-Apneseth/starship", rev = "247f49d" }, { use = "yazi-rs/plugins:max-preview", rev = "7afba3a" }, { use = "AnirudhG07/archivemount", rev = "2d78ae4" }, { use = "yazi-rs/plugins:git", rev = "7afba3a" }, { use = "hankertrix/augment-command", rev = "369f992" }, { use = "Joao-Queiroga/drag", rev = "7d8800a" }]
 
 [flavor]
 deps = [{ use = "BennyOe/tokyo-night", rev = "024fb09" }]
