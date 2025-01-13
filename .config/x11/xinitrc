@@ -5,5 +5,5 @@ setxkbmap -layout br
 xrdb ~/.Xresources
 xset r rate 190 28
 gentoo-pipewire-launcher &
-exec dbus-launch --sh-syntax --exit-with-session awesome
+exec dbus-run-session awesome
 # exec dbus-launch --sh-syntax --exit-with-session dwm
