@@ -24,9 +24,7 @@ return {
         kind_icons = vim.g.kind_icons,
       },
       completion = {
-        list = {
-          selection = "manual",
-        },
+        list = { selection = { preselect = false, auto_insert = true } },
       },
     },
   },
