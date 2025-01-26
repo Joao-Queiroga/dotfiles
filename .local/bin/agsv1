@@ -1,2 +1,0 @@
-#!/bin/sh
-/usr/bin/agsv1 --config $HOME/.config/agsv1/config.js $@
