@@ -1,4 +1,3 @@
-import { App, Gdk } from "astal/gtk3";
 import { bind } from "astal";
 import Tray from "gi://AstalTray"
 
@@ -10,8 +9,8 @@ export default function SysTray() {
       <menubutton
         tooltipMarkup={bind(item, "tooltipMarkup")}
         usePopover={false}
-        actionGroup={bind(item, "action-group").as(ag => ["dbusmenu", ag])}
-        menuModel={bind(item, "menu-model")}>
+        menuModel={bind(item, "menuModel")}
+        actionGroup={bind(item, "actionGroup").as(ag => ["dbusmenu", ag])}>
         <icon gicon={bind(item, "gicon")} />
       </menubutton>
     )))}
