@@ -3,7 +3,7 @@ if status is-login
   bass source /etc/profile
 end
 if status is-interactive
-  type -q starship; and starship init fish | source
+  type -q starship; and starship init fish | source; enable_transience
   type -q zoxide; and zoxide init fish | source
   type -q atuin; and atuin init fish | source
   type -q fzf; and fzf --fish | source
