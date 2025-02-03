@@ -20,6 +20,10 @@ export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
 export BUN_INSTALL="${XDG_DATA_HOME}/bun"
 export WINEPREFIX="$XDG_DATA_HOME"/wine
 
+export CARAPACE_HIDDEN=1
+export CARAPACE_LENIENT=1
+export CARAPACE_MATCH=1
+
 export W3M_DIR="${XDG_CONFIG_HOME}/w3m"
 
 export EDITOR="nvim"
