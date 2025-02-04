@@ -9,7 +9,6 @@ return {
           win = {
             list = {
               keys = {
-                ["l"] = { { "pick_win", "confirm" } },
                 ["s"] = { { "pick_win", "edit_split" } },
                 ["v"] = { { "pick_win", "edit_vsplit" } },
               },
