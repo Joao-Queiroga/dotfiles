@@ -9,6 +9,7 @@ return {
     notifier = { enabled = true },
     quickfile = { enabled = true },
     words = { enabled = true },
+    indent = { char = "│" },
   },
   keys = {
     {
