@@ -3,14 +3,16 @@
 window.bar {
   * {
     font-size: 9.5pt;
+    background-color: $background;
     border: none;
+    color: $foreground;
     padding: 0;
   }
 
-  image {
+  icon {
     border: 0;
     padding: 0 2px;
-    -gtk-icon-size: 20px;
+    font-size: 1.25em;
   }
 
   label {
@@ -19,6 +21,8 @@ window.bar {
   }
 
   .workspaces button {
+    all: unset;
+
     .indicator {
       font-size: 0;
       min-width: 10px;
@@ -47,9 +51,12 @@ window.bar {
     padding: 0 2px;
   }
 
-  .systray menubutton {
+  .systray button {
     border: 0;
     padding: 0 2px;
+    > * {
+      font-size: 1.5em;
+    }
   }
 
   .time {
