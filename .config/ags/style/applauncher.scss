@@ -8,7 +8,9 @@
 window#launcher {
   all: unset;
 
-  box.Applauncher {
+  box.AppLauncher {
+    border: 1px solid $bg_highlight;
+    border-radius: 20px;
     background-color: $background;
     border-radius: 11px;
     margin: 1rem;
@@ -16,16 +18,17 @@ window#launcher {
     box-shadow: 2px 3px 8px 0 gtkalpha(black, 0.4);
 
     entry {
-      margin-bottom: 0.8rem;
-
-      &:focus {
-        border: 2px solid $blue;
+      &,
+      * {
+        background-color: $bg_highlight;
       }
+      margin-bottom: 0.8rem;
     }
 
-    scrollable {
-      > * {
-        border: none;
+    box {
+      &,
+      * {
+        background-color: transparent;
       }
     }
 
@@ -39,8 +42,8 @@ window#launcher {
         border: 2px solid $blue;
       }
 
-      icon {
-        font-size: 3em;
+      image {
+        -gtk-icon-size: 3em;
         margin-right: 0.3rem;
       }
 
@@ -57,8 +60,8 @@ window#launcher {
     box.not-found {
       padding: 1rem;
 
-      icon {
-        font-size: 6em;
+      image {
+        -gtk-icon-size: 6em;
         color: gtkalpha($foreground, 0.7);
       }
 
