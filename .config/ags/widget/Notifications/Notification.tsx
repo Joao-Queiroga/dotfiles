@@ -1,15 +1,18 @@
-import { GLib } from "astal";
+import { GLib, timeout } from "astal";
 import { Gdk, Gtk } from "astal/gtk4";
 import AstalNotifd from "gi://AstalNotifd";
 import Pango from 'gi://Pango';
 const { START, CENTER, END } = Gtk.Align
+
+const TIMEOUT_DELAY = 5000
 
 const time = (time: number, format = "%H:%M") => GLib.DateTime
   .new_from_unix_local(time)
   .format(format)
 
 export const Notification = (n: AstalNotifd.Notification) =>
-  <box vertical cssClasses={["notification"]}>
+  <box vertical cssClasses={["notification"]}
+    setup={() => timeout(TIMEOUT_DELAY, () => n.dismiss())}>
     <box cssClasses={["header"]}>
       {(n.appIcon || n.desktopEntry) && <image
         cssClasses={["app-icon"]}
