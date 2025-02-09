@@ -45,8 +45,8 @@ return {
             GIT_DIR = vim.env.GIT_DIR,
             WORK_TREE = vim.env.WORK_TREE,
           }
-          vim.env.GIT_DIR = vim.fn.expand("~/.local/share/yadm/repo.git")
-          vim.env.WORK_TREE = os.getenv("HOME")
+          vim.env.GIT_DIR = vim.fn.expand("~/.local/share/chezmoi/.git")
+          vim.env.WORK_TREE = vim.fn.expand("~/.local/share/chezmoi")
           Snacks.lazygit()
           vim.env.GIT_DIR = original_env.GIT_DIR
           vim.env.WORK_TREE = original_env.WORK_TREE
@@ -54,19 +54,6 @@ return {
         desc = "Lazygit",
       },
     },
-  },
-  {
-    "purarue/gitsigns-yadm.nvim",
-    lazy = true,
-    dependencies = {
-      "lewis6991/gitsigns.nvim",
-      opts = {
-        _on_attach_pre = function(_, callback)
-          require("gitsigns-yadm").yadm_signs(callback)
-        end,
-      },
-    },
-    enabled = vim.fn.executable("yadm") == 1,
   },
   {
     "lewis6991/gitsigns.nvim",

@@ -54,7 +54,7 @@ return {
     opts = {
       spec = {
         { "<leader>g", group = "Git" },
-        { "<leader>y", group = "Yadm" },
+        { "<leader>y", group = "Chezmoi" },
         { "<leader>f", group = "Find/File" },
         { "<leader>s", group = "Search" },
         { "<leader>q", hidden = true },
