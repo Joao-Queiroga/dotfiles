@@ -1,3 +1,3 @@
-chezmoi re-add --exclude encrypted
+chezmoi re-add --exclude=encrypted
 lazygit --path $HOME/.local/share/chezmoi
-chezmoi apply
+chezmoi apply --exclude=encrypted
