@@ -46,15 +46,6 @@ return {
     opts = {},
   },
   {
-    "kosayoda/nvim-lightbulb",
-    event = "LspAttach",
-    opts = {
-      autocmd = {
-        enabled = true,
-      },
-    },
-  },
-  {
     "folke/trouble.nvim",
     keys = {
       {
@@ -76,6 +67,5 @@ return {
     cmd = "Trouble",
     opts = {},
   },
-  { import = "plugins.lsp.navic" },
   { import = "plugins.lsp.language-specifics" },
 }
