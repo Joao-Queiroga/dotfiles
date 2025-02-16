@@ -43,13 +43,15 @@ return {
         function()
           local original_env = {
             GIT_DIR = vim.env.GIT_DIR,
-            WORK_TREE = vim.env.WORK_TREE,
+            GIT_WORK_TREE = vim.env.GIT_WORK_TREE,
           }
           vim.env.GIT_DIR = vim.fn.expand("~/.local/share/chezmoi/.git")
-          vim.env.WORK_TREE = vim.fn.expand("~/.local/share/chezmoi")
+          vim.env.GIT_WORK_TREE = vim.fn.expand("~/.local/share/chezmoi")
+          vim.cmd([[!chezmoi re-add]])
           Snacks.lazygit()
+          vim.cmd([[!chezmoi apply --force]])
           vim.env.GIT_DIR = original_env.GIT_DIR
-          vim.env.WORK_TREE = original_env.WORK_TREE
+          vim.env.GIT_WORK_TREE = original_env.GIT_WORK_TREE
         end,
         desc = "Lazygit",
       },
