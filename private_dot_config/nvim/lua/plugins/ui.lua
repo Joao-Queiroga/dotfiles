@@ -22,6 +22,33 @@ return {
     },
   },
   {
+    "Bekaboo/dropbar.nvim",
+    lazy = false,
+    keys = {
+      {
+        "<leader>lo",
+        function()
+          require("dropbar.api").pick()
+        end,
+        desc = "Pick symbols in winbar",
+      },
+    },
+    ---@type dropbar_configs_t
+    opts = {
+      icons = {
+        kinds = vim.g.kind_icons,
+        ui = {
+          bar = {
+            separator = " › ",
+          },
+          menu = {
+            separator = " › ",
+          },
+        },
+      },
+    },
+  },
+  {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
     opts = {},
