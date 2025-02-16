@@ -30,6 +30,7 @@ export CARAPACE_MATCH=1
 export W3M_DIR="${XDG_CONFIG_HOME}/w3m"
 
 export EDITOR="nvim"
+export MANPAGER="nvim +Man!"
 
 # Check if PATH has already been modified by this script
 echo $PATH | grep -q "$HOME/.local/bin" || export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PATH"
