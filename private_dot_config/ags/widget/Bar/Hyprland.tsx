@@ -28,5 +28,11 @@ export const Workspaces = () => {
   </box>
 }
 
-export const FocusedClient = () =>
-  <label visible={bind(hypr, 'focused_client').as(Boolean)} label={bind(hypr, 'focused_client').as(c => c && c.title)} />
+export const FocusedClient = () => {
+  const focused = bind(hypr, 'focused_client')
+  return <box visible={focused.as(Boolean)}>
+    {focused.as(client => (
+      <label label={bind(client, "title")} />
+    ))}
+  </box>
+}
