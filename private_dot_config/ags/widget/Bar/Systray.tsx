@@ -8,7 +8,7 @@ export const Systray = () => {
   return <box cssClasses={['systray']}>
     {bind(tray, 'items').as(items => items.map(item => (
       <menubutton tooltip_markup={bind(item, 'tooltip_markup')}
-        tooltipText={bind(item, 'tooltip_markup')}
+        tooltipMarkup={bind(item, 'tooltip_markup')}
         menuModel={bind(item, 'menuModel')}
         setup={self => hook(self, item, "notify::action-group", () => self.insert_action_group("dbusmenu", item.action_group))}>
         <image gicon={bind(item, 'gicon')} />
