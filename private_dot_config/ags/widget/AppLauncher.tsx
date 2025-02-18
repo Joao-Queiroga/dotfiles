@@ -4,12 +4,19 @@ import AstalApps from "gi://AstalApps";
 
 const hide = () => App.get_window("launcher")!.hide()
 
+const isIcon = (icon: string) => {
+  const iconTheme = new Gtk.IconTheme();
+  return iconTheme.has_icon(icon);
+};
+
 const AppButton = ({ app }: { app: AstalApps.Application }) => (
   <button
     cssClasses={['AppButton']}
     onClicked={() => { hide(); app.launch() }}>
     <box>
-      <image icon_name={app.icon_name} />
+      {isIcon(app.icon_name) &&
+        <image icon_name={app.icon_name} /> ||
+        <image file={app.icon_name} />}
       <box valign={Gtk.Align.CENTER} vertical>
         <label
           cssClasses={['name']}
