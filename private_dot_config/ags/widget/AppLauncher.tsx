@@ -1,22 +1,20 @@
-import { Variable } from "astal";
+import { GLib, Variable } from "astal";
 import { App, Astal, Gdk, Gtk } from "astal/gtk4";
 import AstalApps from "gi://AstalApps";
 
 const hide = () => App.get_window("launcher")!.hide()
 
-const isIcon = (icon: string) => {
-  const iconTheme = new Gtk.IconTheme();
-  return iconTheme.has_icon(icon);
-};
+const fileExists = (path: string) =>
+  GLib.file_test(path, GLib.FileTest.EXISTS)
 
 const AppButton = ({ app }: { app: AstalApps.Application }) => (
   <button
     cssClasses={['AppButton']}
     onClicked={() => { hide(); app.launch() }}>
     <box>
-      {isIcon(app.icon_name) &&
-        <image icon_name={app.icon_name} /> ||
-        <image file={app.icon_name} />}
+      {fileExists(app.icon_name) &&
+        <image file={app.icon_name} /> ||
+        <image icon_name={app.icon_name} />}
       <box valign={Gtk.Align.CENTER} vertical>
         <label
           cssClasses={['name']}
@@ -25,7 +23,6 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
         />
         {app.description && <label
           cssClasses={['description']}
-          wrap
           xalign={0}
           label={app.description}
         />}
