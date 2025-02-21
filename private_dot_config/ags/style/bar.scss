@@ -10,7 +10,7 @@ window.bar {
   image {
     border: 0;
     padding: 0 2px;
-    -gtk-icon-size: 20px;
+    -gtk-icon-size: 1.25em;
   }
 
   label {
@@ -48,8 +48,17 @@ window.bar {
   }
 
   .systray menubutton {
+    image {
+      -gtk-icon-size: 1.4em;
+    }
     border: 0;
     padding: 0 2px;
+    popover {
+      border-radius: 15px;
+      box {
+        padding: 2px;
+      }
+    }
   }
 
   .time {
