@@ -87,12 +87,6 @@ return {
     end,
   },
   {
-    "3rd/image.nvim",
-    event = { "BufRead", "BufNewFile", "VeryLazy" },
-    enabled = vim.fn.executable("magick") == 1,
-    opts = {},
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     version = "*",
