@@ -47,17 +47,18 @@ window.bar {
     padding: 0 2px;
   }
 
-  .systray menubutton {
+  .systray button {
     image {
       -gtk-icon-size: 1.4em;
     }
     border: 0;
     padding: 0 2px;
-    popover {
-      border-radius: 15px;
-      box {
-        padding: 2px;
-      }
+  }
+
+  popover {
+    border-radius: 15px;
+    box {
+      padding: 2px;
     }
   }
 
