@@ -7,10 +7,26 @@ return {
   },
   {
     "olimorris/codecompanion.nvim",
+    cmd = {
+      "CodeCompanion",
+      "CodeCompanionChat",
+      "CodeCompanionCmd",
+      "CodeCompanionActions",
+    },
     dependencies = {
+      "zbirenbaum/copilot.lua",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {},
+    opts = {
+      strategies = {
+        chat = {
+          adapter = "copilot",
+        },
+        inline = {
+          adapter = "copilot",
+        },
+      },
+    },
   },
 }
