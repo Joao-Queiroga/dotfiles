@@ -22,6 +22,7 @@ return {
         nerd_font_variant = "normal",
         kind_icons = vim.g.kind_icons,
       },
+      cmdline = { enabled = false },
       completion = {
         accept = {
           -- experimental auto-brackets support
