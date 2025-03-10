@@ -153,12 +153,32 @@ return {
     opts = {
       previewers_by_ft = {
         markdown = {
-          name = "pandoc_wkhtmltopdf",
+          name = "pandoc_weasyprint",
           renderer = { type = "command", opts = { cmd = { "zathura" } } },
         },
         plantuml = {
           name = "plantuml_svg",
           renderer = { type = "imv" },
+        },
+      },
+      previewers = {
+        ---@type preview.Previewer
+        pandoc_weasyprint = {
+          command = "pandoc",
+          args = {
+            "--pdf-engine",
+            "weasyprint",
+            "--css",
+            vim.fn.expand("~/.config/pandoc/style.css"),
+            "-f",
+            "markdown",
+            "-t",
+            "pdf",
+            "-o",
+            "-",
+          },
+          stdin = true,
+          stdout = true,
         },
       },
       render_on_write = true,
