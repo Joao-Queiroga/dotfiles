@@ -6,7 +6,7 @@
 
 prepend_keymap = [
   # Smart-enter
-  { on = "l", run = "plugin augment-command --args='enter'", desc = "Enter a directory and skip directories with only a single subdirectory" },
+  { on = "l", run = "plugin augment-command enter", desc = "Enter a directory and skip directories with only a single subdirectory" },
 
   # Shell
   { on = "$", run = "shell --block --confirm zsh", desc = "Drag files" },
@@ -21,10 +21,6 @@ prepend_keymap = [
 prepend_keymap = []
 
 [input]
-
-prepend_keymap = []
-
-[completion]
 
 prepend_keymap = []
 
