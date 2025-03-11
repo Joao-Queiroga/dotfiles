@@ -23,6 +23,8 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
         />
         {app.description && <label
           cssClasses={['description']}
+          maxWidthChars={50}
+          wrap
           xalign={0}
           label={app.description}
         />}
