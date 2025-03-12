@@ -15,7 +15,7 @@ export const Systray = () => {
   return <box cssClasses={['systray']}>
     {bind(tray, 'items').as(items => items.map(item => {
       const menu = createMenu(item)
-      return <><button tooltip_markup={bind(item, 'tooltip_markup')}
+      return <box><button tooltip_markup={bind(item, 'tooltip_markup')}
         tooltipMarkup={bind(item, 'tooltip_markup')}
         onButtonPressed={(_, event) => {
           const button = event.get_button()
@@ -31,7 +31,7 @@ export const Systray = () => {
         <image gicon={bind(item, 'gicon')} />
       </button>
         {menu}
-      </>
+      </box>
     }))}
   </box >
 }
