@@ -1,4 +1,4 @@
-import { execAsync, GLib, Variable } from "astal";
+import { GLib, Variable } from "astal";
 import { App, Astal, Gdk, Gtk } from "astal/gtk4";
 import AstalApps from "gi://AstalApps";
 
@@ -10,10 +10,7 @@ const fileExists = (path: string) =>
 const AppButton = ({ app }: { app: AstalApps.Application }) => (
   <button
     cssClasses={['AppButton']}
-    onClicked={() => {
-      hide()
-      execAsync(["uwsm", "app", "--", app.get_entry()])
-    }}>
+    onClicked={() => { hide(); app.launch() }}>
     <box>
       {fileExists(app.icon_name) &&
         <image file={app.icon_name} /> ||
@@ -42,7 +39,7 @@ export default function AppLauncher() {
   const text = Variable("")
   const list = text(text => apps.fuzzy_query(text).slice(0, 8))
   const onEnter = () => {
-    execAsync(["uwsm", "app", "--", apps.fuzzy_query(text.get())?.[0].get_entry()])
+    apps.fuzzy_query(text.get())?.[0].launch()
     hide();
   }
 
