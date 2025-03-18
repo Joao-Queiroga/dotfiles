@@ -33,6 +33,11 @@ use = "Joao-Queiroga/drag"
 rev = "98e0e48"
 hash = "ff47dae1e9616c04d5e7a924ec25ae3a"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "79193b3"
+hash = "dd97eede8e20e59cd2604e8006e470e2"
+
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
 rev = "695dac6"
