@@ -47,12 +47,22 @@ window.bar {
     padding: 0 2px;
   }
 
-  .systray button {
-    image {
-      -gtk-icon-size: 1.4em;
+  .systray {
+    .tray-item {
+      popover {
+        background-color: transparent;
+        > * {
+          border: solid 1px $bg_highlight;
+        }
+      }
+      button {
+        image {
+          -gtk-icon-size: 1.4em;
+        }
+        border: 0;
+        padding: 0 2px;
+      }
     }
-    border: 0;
-    padding: 0 2px;
   }
 
   popover {
