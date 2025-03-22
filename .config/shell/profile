@@ -32,5 +32,7 @@ export W3M_DIR="${XDG_CONFIG_HOME}/w3m"
 export EDITOR="nvim"
 export MANPAGER="nvim +Man!"
 
+export QT_QPA_PLATAFORMTHEME="gtk3"
+
 # Check if PATH has already been modified by this script
 echo $PATH | grep -q "$HOME/.local/bin" || export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$GOPATH/bin:$PATH"
