@@ -1,3 +1,1 @@
-chezmoi re-add --exclude=encrypted
-lazygit --path $HOME/.local/share/chezmoi
-chezmoi apply --exclude=encrypted
+lazygit --git-dir $HOME/.local/share/yadm/repo.git --work-tree $HOME
