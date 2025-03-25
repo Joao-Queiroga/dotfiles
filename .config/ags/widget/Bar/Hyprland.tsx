@@ -1,7 +1,6 @@
 import { bind } from "astal"
-import { hook } from "astal/gtk4"
+import { Gtk, hook } from "astal/gtk4"
 import AstalHyprland from "gi://AstalHyprland"
-import Gtk from "gi://Gtk"
 import { range } from "../../lib/util"
 
 const hypr = AstalHyprland.get_default()
@@ -16,7 +15,7 @@ const Workspace = ({ id }: { id: number }) => {
     const occupied = !!workspace
     self.cssClasses = [active && 'active', occupied && 'occupied'].filter(Boolean) as string[]
   })}>
-    <label cssClasses={['indicator']} halign={Gtk.Align.CENTER} label={id.toString()} />
+    <label cssClasses={['indicator']} label={id.toString()} halign={Gtk.Align.CENTER} valign={Gtk.Align.CENTER} />
   </button>
 }
 
