@@ -10,9 +10,7 @@ export class NotifiationMap implements Subscribable {
   constructor() {
     const notifd = Notifd.get_default();
 
-    notifd.connect("notified", (_, id) =>
-      this.set(id, notifd.get_notification(id)!),
-    );
+    notifd.connect("notified", (_, id) => this.set(id, notifd.get_notification(id)!));
 
     notifd.connect("resolved", (_, id) => this.delete(id));
   }
@@ -29,14 +27,13 @@ export class NotifiationMap implements Subscribable {
 
   public get = () => this.var.get();
 
-  public subscribe = (callback: (list: Array<Notifd.Notification>) => void) =>
-    this.var.subscribe(callback);
+  public subscribe = (callback: (list: Array<Notifd.Notification>) => void) => this.var.subscribe(callback);
 
   public dismissLastNotification = () => {
     this.get()[0].dismiss();
   };
 
   public dismissAllNotifications = () => {
-    this.get().forEach((n) => n.dismiss());
+    this.get().forEach(n => n.dismiss());
   };
 }
