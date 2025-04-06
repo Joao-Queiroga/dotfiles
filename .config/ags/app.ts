@@ -2,20 +2,12 @@ import { App } from "astal/gtk4";
 import style from "./style/style.scss";
 import Bar from "./widget/Bar";
 import AppLauncher from "./widget/AppLauncher";
-import Notifications, { allNotifications } from "./widget/Notifications";
+import Notifications from "./widget/Notifications";
+import { requestHandler } from "./lib/messageHandler";
 
 App.start({
   css: style,
-  requestHandler(request, res) {
-    if (request == "clearLastNotification") {
-      allNotifications.dismissLastNotification();
-      res("ok");
-    }
-    if (request == "clearAllNotifications") {
-      allNotifications.dismissAllNotifications();
-      res("ok");
-    }
-  },
+  requestHandler: requestHandler,
   main() {
     App.get_monitors().map(Bar);
     App.get_monitors().map(Notifications);
