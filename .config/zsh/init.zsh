@@ -16,7 +16,6 @@ for script in $ZSH/scripts/*; do
 done
 
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
 
 eval "$(starship init zsh)" 2> /dev/null
 
