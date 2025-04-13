@@ -1,4 +1,4 @@
-local handlers = require("plugins.lsp.handlers")
+local handlers = require("lsp")
 local installed_servers = {
   "lua_ls",
   "rust_analyzer",
@@ -18,7 +18,6 @@ return {
     "neovim/nvim-lspconfig",
     keys = { { "<leader>l", "", desc = "LSP", mode = { "n", "v", "x" } } },
     lazy = false,
-    config = handlers.setup,
   },
   {
     "williamboman/mason-lspconfig.nvim",

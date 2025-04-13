@@ -1,4 +1,4 @@
-local handlers = require("plugins.lsp.handlers")
+local handlers = require("lsp")
 
 ---@type LazySpec[]
 return {
@@ -7,8 +7,6 @@ return {
     ft = "lua", -- only load on lua files
     opts = {
       library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
         "lazy.nvim",
         { path = "luvit-meta/library", words = { "vim%.uv" } },
       },
@@ -21,7 +19,6 @@ return {
     lazy = true,
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {
-      on_attach = handlers.on_attach,
       settings = {
         expose_as_code_action = "all",
         tsserver_locale = "pt-br",
@@ -45,10 +42,8 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = "^5",
-    opts = {
-      server = handlers.get_opts("rust_analyzer"),
-    },
+    version = "^6",
+    opts = {},
     config = function(_, opts)
       vim.g.rustaceanvim = opts
     end,
@@ -62,7 +57,6 @@ return {
     opts = {
       lsp = {
         enabled = true,
-        on_attach = handlers.on_attach,
         actions = true,
         completion = true,
         hover = true,
