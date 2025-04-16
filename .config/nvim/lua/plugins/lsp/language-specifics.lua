@@ -16,7 +16,7 @@ return {
   { "justinsgithub/wezterm-types", lazy = true },
   {
     "pmizio/typescript-tools.nvim",
-    lazy = true,
+    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {
       settings = {
