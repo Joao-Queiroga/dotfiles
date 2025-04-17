@@ -17,6 +17,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     keys = { { "<leader>l", "", desc = "LSP", mode = { "n", "v", "x" } } },
+    dependencies = {
+      "folke/neoconf.nvim",
+    },
     lazy = false,
   },
   {
@@ -42,6 +45,8 @@ return {
   },
   {
     "folke/neoconf.nvim",
+    lazy = false,
+    priority = 1,
     opts = {},
   },
   {
