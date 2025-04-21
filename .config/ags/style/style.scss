@@ -5,8 +5,8 @@
 @use "notifications";
 
 * {
-  background-color: $background;
-  color: $foreground;
+  background-color: $bg;
+  color: $fg;
   box-shadow: none;
   outline: none;
 }

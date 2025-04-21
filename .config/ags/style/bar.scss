@@ -18,7 +18,11 @@ window.bar {
     margin: 0;
   }
 
-  .workspaces button {
+  .client {
+    margin: 0 5px;
+  }
+
+  .workspaces > button {
     .indicator {
       font-size: 0;
       min-width: 10px;
@@ -48,17 +52,28 @@ window.bar {
   }
 
   .systray {
-    .tray-item {
+    &,
+    > .tray-item,
+    > .tray-item > button,
+    > .tray-item > button > image {
+      border-radius: 7px;
+      background-color: $blue7;
+    }
+
+    box.tray-item {
       popover {
         background-color: transparent;
+
         > * {
           border: solid 1px $bg_highlight;
         }
       }
+
       button {
         image {
           -gtk-icon-size: 1.4em;
         }
+
         border: 0;
         padding: 0 2px;
       }

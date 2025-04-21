@@ -11,7 +11,7 @@ window#launcher {
   box.AppLauncher {
     border: 1px solid $bg_highlight;
     border-radius: 20px;
-    background-color: $background;
+    background-color: $bg;
     border-radius: 11px;
     margin: 1rem;
     padding: 0.8rem;
@@ -53,7 +53,7 @@ window#launcher {
       }
 
       label.description {
-        color: gtkalpha($foreground, 0.8);
+        color: gtkalpha($fg, 0.8);
       }
     }
 
@@ -62,11 +62,11 @@ window#launcher {
 
       image {
         -gtk-icon-size: 6em;
-        color: gtkalpha($foreground, 0.7);
+        color: gtkalpha($fg, 0.7);
       }
 
       label {
-        color: gtkalpha($foreground, 0.9);
+        color: gtkalpha($fg, 0.9);
         font-size: 1.2em;
       }
     }

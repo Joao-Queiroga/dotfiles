@@ -4,6 +4,9 @@ import { Time } from "../../lib/variables";
 import { Systray } from "./Systray";
 import { Volume } from "./Volume";
 import { Battery } from "./Battery";
+import { exec, GLib } from "astal";
+
+const systemd = GLib.find_program_in_path("systemctl") !== null;
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -20,18 +23,37 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
       <centerbox>
         <box>
           <Workspaces />
+          <FocusedClient />
         </box>
         <box>
-          <FocusedClient />
+          <menubutton>
+            <Time format="  %a %d/%m/%Y %H:%M" />
+            <popover>
+              <Gtk.Calendar />
+            </popover>
+          </menubutton>
         </box>
         <box>
           <Systray />
           <Volume />
           <Battery />
           <menubutton>
-            <Time format="  %a %d/%m/%Y %H:%M" />
+            <image iconName="system-shutdown-symbolic" />
             <popover>
-              <Gtk.Calendar />
+              <box>
+                <button onClicked={() => exec(systemd ? "poweroff" : ["loginctl", "poweroff"])}>
+                  <image iconName="system-shutdown-symbolic" />
+                </button>
+                <button onClicked={() => exec(systemd ? "reboot" : ["loginctl", "reboot"])}>
+                  <image iconName="system-reboot-symbolic" />
+                </button>
+                <button onClicked={() => exec([systemd ? "systemctl" : "loginctl", "suspend"])}>
+                  <image iconName="system-suspend-symbolic" />
+                </button>
+                <button onClicked={() => exec([systemd ? "systemctl" : "loginctl", "hibernate"])}>
+                  <image iconName="system-hibernate-symbolic" />
+                </button>
+              </box>
             </popover>
           </menubutton>
         </box>

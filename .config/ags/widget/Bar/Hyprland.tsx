@@ -39,7 +39,7 @@ export const Workspaces = () => {
 export const FocusedClient = () => {
   const focused = bind(hypr, "focused_client");
   return (
-    <box visible={focused.as(Boolean)}>
+    <box visible={focused.as(Boolean)} cssClasses={["client"]}>
       {focused.as(
         client => client && <label maxWidthChars={50} overflow={Gtk.Overflow.HIDDEN} label={bind(client, "title")} />,
       )}
