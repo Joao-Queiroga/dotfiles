@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "folke/snacks.nvim",
+  ---@type snacks.Config
   opts = {
     picker = {
       enable = true,
@@ -9,10 +10,18 @@ return {
           win = {
             list = {
               keys = {
-                ["s"] = { { "pick_win", "edit_split" } },
-                ["v"] = { { "pick_win", "edit_vsplit" } },
+                ["l"] = { { "window_pick", "confirm" } },
+                ["s"] = { { "window_pick", "edit_split" } },
+                ["v"] = { { "window_pick", "edit_vsplit" } },
               },
             },
+          },
+          actions = {
+            window_pick = function(picker, item, action)
+              if not item.dir then
+                Snacks.picker.actions.pick_win(picker, item, action)
+              end
+            end,
           },
         },
       },
