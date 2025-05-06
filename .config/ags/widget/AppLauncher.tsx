@@ -1,6 +1,7 @@
 import { GLib, Variable } from "astal";
 import { App, Astal, Gdk, Gtk } from "astal/gtk4";
 import AstalApps from "gi://AstalApps";
+import { ScrolledWindow } from "../lib/customWidgets/scrollable";
 
 const hide = () => App.get_window("launcher")!.hide();
 
@@ -30,7 +31,7 @@ export default function AppLauncher() {
   const apps = new AstalApps.Apps();
 
   const text = Variable("");
-  const list = text(text => apps.fuzzy_query(text).slice(0, 8));
+  const list = text(text => apps.fuzzy_query(text));
   const onEnter = () => {
     apps.fuzzy_query(text.get())?.[0].launch();
     hide();
@@ -66,9 +67,11 @@ export default function AppLauncher() {
             })
           }
         />
-        <box cssClasses={["AppList"]} spacing={6} vertical visible={list.as(l => l.length > 0)}>
-          {list.as(list => list.map(app => <AppButton app={app} />))}
-        </box>
+        <ScrolledWindow cssClasses={["AppList"]} vexpand overflow={Gtk.Overflow.VISIBLE}>
+          <box spacing={6} vertical visible={list.as(l => l.length > 0)}>
+            {list.as(list => list.map(app => <AppButton app={app} />))}
+          </box>
+        </ScrolledWindow>
         <box halign={Gtk.Align.CENTER} cssClasses={["not-found"]} vertical visible={list.as(l => l.length === 0)}>
           <image icon_name="system-search-symbolic" />
           <label label="No match found" />
