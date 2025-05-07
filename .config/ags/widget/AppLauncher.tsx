@@ -67,15 +67,15 @@ export default function AppLauncher() {
             })
           }
         />
-        <ScrolledWindow cssClasses={["AppList"]} vexpand overflow={Gtk.Overflow.VISIBLE}>
-          <box spacing={6} vertical visible={list.as(l => l.length > 0)}>
-            {list.as(list => list.map(app => <AppButton app={app} />))}
-          </box>
-        </ScrolledWindow>
         <box halign={Gtk.Align.CENTER} cssClasses={["not-found"]} vertical visible={list.as(l => l.length === 0)}>
           <image icon_name="system-search-symbolic" />
           <label label="No match found" />
         </box>
+        <ScrolledWindow cssClasses={["AppList"]} vexpand>
+          <box spacing={6} vertical visible={list.as(l => l.length > 0)}>
+            {list.as(list => list.map(app => <AppButton app={app} />))}
+          </box>
+        </ScrolledWindow>
       </box>
     </window>
   );

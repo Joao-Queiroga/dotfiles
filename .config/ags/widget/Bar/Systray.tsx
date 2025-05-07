@@ -22,12 +22,15 @@ export const Systray = () => {
           return (
             <box cssClasses={["tray-item"]}>
               <button
-                tooltip_markup={bind(item, "tooltip_markup")}
                 tooltipMarkup={bind(item, "tooltip_markup")}
                 onButtonPressed={(_, event) => {
-                  const button = event.get_button();
-                  if (button == Gdk.BUTTON_PRIMARY) item.activate(0, 0);
-                  else if (button == Gdk.BUTTON_SECONDARY) menu.popup();
+                  switch (event.get_button()) {
+                    case Gdk.BUTTON_PRIMARY:
+                      item.activate(0, 0);
+                      break;
+                    case Gdk.BUTTON_SECONDARY:
+                      menu.popup();
+                  }
                 }}
               >
                 <image gicon={bind(item, "gicon")} />
