@@ -1,5 +1,3 @@
-local handlers = require("lsp")
-
 ---@type LazySpec[]
 return {
   {
@@ -28,15 +26,6 @@ return {
         jsx_close_tag = {
           enabled = true,
         },
-      },
-    },
-  },
-  {
-    "nvim-java/nvim-java",
-    lazy = true,
-    opts = {
-      jdk = {
-        auto_install = false,
       },
     },
   },

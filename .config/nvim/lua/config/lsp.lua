@@ -1,5 +1,3 @@
-local M = {}
-
 local function lsp_keymaps(buf)
   local function opts(desc)
     return { noremap = true, silent = true, buffer = buf, desc = desc }
@@ -57,23 +55,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
     lsp_keymaps(args.buf)
   end,
 })
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
-
-function M.default_handler(server_name) -- default handler
-  vim.lsp.enable(server_name)
-end
-
--- check if there is a custom handler if there is, use it, if not use the default one
-function M.choose_handler(server_name)
-  local handler_ok, _ = pcall(require, "lsp.custom_handlers." .. server_name)
-  if not handler_ok then
-    M.default_handler(server_name)
-  end
-end
-
-return M

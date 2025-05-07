@@ -1,4 +1,3 @@
-local handlers = require("lsp")
 local installed_servers = {
   "lua_ls",
   "rust_analyzer",
@@ -32,7 +31,12 @@ return {
     },
     opts = {
       ensure_installed = installed_servers,
-      handlers = { handlers.choose_handler },
+      automatic_enable = {
+        exclude = {
+          "rust_analyzer",
+          "ts_ls",
+        },
+      },
     },
   },
   {
