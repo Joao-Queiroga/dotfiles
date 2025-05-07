@@ -30,6 +30,10 @@ return {
     },
   },
   {
+    "mfussenegger/nvim-jdtls",
+    lazy = true,
+  },
+  {
     "mrcjkb/rustaceanvim",
     version = "^6",
     opts = {},

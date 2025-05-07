@@ -3,13 +3,12 @@ local installed_servers = {
   "rust_analyzer",
   "clangd",
   "gopls",
+  "jdtls",
   "emmet_language_server",
   "ts_ls",
   "cssls",
-  "vimls",
   "jsonls",
   "yamlls",
-  "rnix",
 }
 ---@type LazySpec[]
 return {
@@ -35,6 +34,7 @@ return {
         exclude = {
           "rust_analyzer",
           "ts_ls",
+          "jdtls",
         },
       },
     },
