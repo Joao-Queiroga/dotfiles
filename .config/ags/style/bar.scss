@@ -53,11 +53,12 @@ window.bar {
   }
 
   .systray {
+    padding: 0 7px;
+    border-radius: 10px;
     &,
     > .tray-item,
     > .tray-item > button,
     > .tray-item > button > image {
-      border-radius: 7px;
       background-color: $blue7;
     }
 
