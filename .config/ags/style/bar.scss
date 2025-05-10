@@ -57,27 +57,19 @@ window.bar {
     border-radius: 10px;
     &,
     > .tray-item,
-    > .tray-item > button,
-    > .tray-item > button > image {
+    > .tray-item image.tray-icon {
       background-color: $blue7;
     }
 
-    box.tray-item {
+    .tray-item {
+      border: 0;
+      padding: 0 2px;
       popover {
         background-color: transparent;
 
         > * {
           border: solid 1px $bg_highlight;
         }
-      }
-
-      button {
-        image {
-          -gtk-icon-size: 1.4em;
-        }
-
-        border: 0;
-        padding: 0 2px;
       }
     }
   }
