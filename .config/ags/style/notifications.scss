@@ -2,10 +2,14 @@
 @use "theme" as *;
 
 window#notifications {
+  &,
+  > box {
+    background-color: transparent;
+  }
   .notification {
     margin: 0.4rem;
     border-radius: 4px;
-    border: 1px solid $bg_highlight;
+    border: 1.5px solid $comment;
     padding: 0;
     min-width: 15rem;
 
@@ -32,6 +36,7 @@ window#notifications {
     .content {
       margin-top: 0;
       padding: 0.7rem;
+      border-radius: 0 0 4px 4px;
     }
 
     .summary {
