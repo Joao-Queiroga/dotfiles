@@ -1,4 +1,9 @@
 require("starship"):setup()
 require("full-border"):setup()
-require("git"):setup()
-require("augment-command"):setup()
+require("augment-command"):setup({
+	default_item_group_for_prompt = "selected",
+	preserve_file_permissions = true,
+	smooth_scrolling = true,
+})
+-- Causing errors
+-- require("git"):setup()
