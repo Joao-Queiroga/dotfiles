@@ -5,5 +5,4 @@ require("augment-command"):setup({
 	preserve_file_permissions = true,
 	smooth_scrolling = true,
 })
--- Causing errors
--- require("git"):setup()
+require("git"):setup()
