@@ -2,20 +2,12 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufRead", "BufNewFile", "VeryLazy" },
-    main = "nvim-treesitter.configs",
+    lazy = false,
+    branch = "main",
     build = ":TSUpdate",
-    opts = {
-      ensure_installed = "all",
-      ignore_install = { "org" },
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { "org" },
-      },
-      indent = {
-        enable = true,
-      },
-    },
+    config = function()
+      require("nvim-treesitter").install("stable")
+    end,
   },
   {
     "hiphish/rainbow-delimiters.nvim",
