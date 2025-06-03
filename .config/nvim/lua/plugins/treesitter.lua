@@ -5,9 +5,6 @@ return {
     lazy = false,
     branch = "main",
     build = ":TSUpdate",
-    config = function()
-      require("nvim-treesitter").install("stable")
-    end,
   },
   {
     "hiphish/rainbow-delimiters.nvim",
