@@ -4,7 +4,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
     branch = "main",
-    build = ":TSUpdate",
+    build = function()
+      require("nvim-treesitter").install("all")
+      vim.cmd(":TSUpdate")
+    end,
   },
   {
     "hiphish/rainbow-delimiters.nvim",
