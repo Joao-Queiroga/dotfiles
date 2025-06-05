@@ -2,6 +2,7 @@ import { GLib, Variable } from "astal";
 import { App, Astal, Gdk, Gtk } from "astal/gtk4";
 import AstalApps from "gi://AstalApps";
 import { ScrolledWindow } from "../lib/customWidgets/scrollable";
+import Pango from "gi://Pango?version=1.0";
 
 const hide = () => App.get_window("launcher")!.hide();
 
@@ -20,7 +21,13 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
       <box valign={Gtk.Align.CENTER} vertical>
         <label cssClasses={["name"]} xalign={0} label={app.name} />
         {app.description && (
-          <label cssClasses={["description"]} maxWidthChars={50} wrap xalign={0} label={app.description} />
+          <label
+            cssClasses={["description"]}
+            maxWidthChars={50}
+            wrap
+            xalign={0}
+            label={app.description.length > 101 ? app.description.substring(0, 101) + "..." : app.description}
+          />
         )}
       </box>
     </box>
