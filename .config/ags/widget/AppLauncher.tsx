@@ -2,7 +2,6 @@ import { GLib, Variable } from "astal";
 import { App, Astal, Gdk, Gtk } from "astal/gtk4";
 import AstalApps from "gi://AstalApps";
 import { ScrolledWindow } from "../lib/customWidgets/scrollable";
-import Pango from "gi://Pango?version=1.0";
 
 const hide = () => App.get_window("launcher")!.hide();
 
