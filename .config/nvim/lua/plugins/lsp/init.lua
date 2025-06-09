@@ -1,4 +1,4 @@
-local installed_servers = {
+local install_servers = {
   "lua_ls",
   "rust_analyzer",
   "clangd",
@@ -10,6 +10,7 @@ local installed_servers = {
   "jsonls",
   "yamlls",
 }
+vim.lsp.enable({ "qmlls" })
 ---@type LazySpec[]
 return {
   {
@@ -18,7 +19,11 @@ return {
     dependencies = {
       "folke/neoconf.nvim",
     },
-    lazy = false,
+    lazy = true,
+    init = function()
+      local lspConfigPath = require("lazy.core.config").options.root .. "/nvim-lspconfig"
+      vim.opt.runtimepath:prepend(lspConfigPath)
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -29,7 +34,7 @@ return {
       "neovim/nvim-lspconfig",
     },
     opts = {
-      ensure_installed = installed_servers,
+      ensure_installed = install_servers,
       automatic_enable = {
         exclude = {
           "rust_analyzer",
