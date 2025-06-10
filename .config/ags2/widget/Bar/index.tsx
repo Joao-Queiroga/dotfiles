@@ -4,6 +4,7 @@ import { Time } from "../../lib/variables";
 import { Systray } from "./Systray";
 import { Volume } from "./Volume";
 import { Battery } from "./Battery";
+import Menu from "./Menu";
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -37,6 +38,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           <button onClicked={() => App.get_window("powermenu")!.show()}>
             <image iconName="system-shutdown-symbolic" />
           </button>
+          <Menu />
         </box>
       </centerbox>
     </window>

@@ -3,6 +3,8 @@
 
 window#launcher {
   all: unset;
+  background-color: transparent;
+  padding: 0;
 
   box.AppLauncher {
     border: 1px solid $bg_highlight;

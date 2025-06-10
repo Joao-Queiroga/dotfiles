@@ -75,7 +75,8 @@ window.bar {
   }
 
   popover {
-    border-radius: 15px;
+    border: solid 1px $bg_highlight;
+    border-radius: 10px;
     box {
       padding: 2px;
     }
