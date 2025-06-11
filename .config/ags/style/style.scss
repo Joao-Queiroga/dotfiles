@@ -1,0 +1,37 @@
+@use "theme" as *;
+
+@use "applauncher";
+@use "bar";
+@use "notifications";
+@use "controlmenu";
+@use "powermenu";
+
+* {
+  box-shadow: none;
+  outline: none;
+}
+
+window,
+button {
+  background-color: $bg;
+  color: $fg;
+}
+
+popover {
+  background-color: transparent;
+  > contents,
+  > arrow {
+    background-color: $bg;
+    border: solid 2px $bg_highlight;
+  }
+}
+calendar {
+  background-color: $bg;
+  label.today {
+    color: $blue;
+  }
+  label:selected {
+    background-color: $blue;
+    color: white;
+  }
+}

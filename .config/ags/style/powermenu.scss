@@ -1,0 +1,21 @@
+@use "theme" as *;
+@use "sass:color";
+
+window#powermenu {
+  background-color: color.adjust($color: $magenta, $alpha: -0.99);
+  box {
+    background-color: transparent;
+    button {
+      margin: 20px;
+      padding: 20px;
+      background-color: color.adjust($color: $bg, $alpha: -0.5);
+      image {
+        -gtk-icon-size: 13em;
+        border-radius: 50%;
+      }
+      * {
+        background-color: transparent;
+      }
+    }
+  }
+}
