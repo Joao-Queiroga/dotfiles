@@ -1,5 +1,6 @@
 import { Gtk, With } from "ags/gtk4";
 import { bind, hook } from "ags/state";
+import AstalApps from "gi://AstalApps?version=0.1";
 import AstalHyprland from "gi://AstalHyprland";
 import { range } from "../../lib/utils";
 
@@ -35,12 +36,24 @@ export const Workspaces = () => (
   </box>
 );
 
+const icon = (client: AstalHyprland.Client) => {
+  const apps = new AstalApps.Apps();
+  return apps.get_list().find(app => app.wmClass === client.class)?.iconName;
+};
+
 export const Client = () => {
   const focused = bind(hypr, "focusedClient");
   return (
     <box visible={focused.as(Boolean)} class="client">
       <With value={focused} cleanup={label => label.run_dispose()}>
-        {client => client && <label label={bind(client, "title")} />}
+        {client =>
+          client && (
+            <box spacing={4}>
+              <image iconName={client.class} />
+              <label label={bind(client, "title")} />
+            </box>
+          )
+        }
       </With>
     </box>
   );
