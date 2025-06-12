@@ -24,5 +24,15 @@ if command -v rg > /dev/null 2>&1; then
   alias grep="rg"
 fi
 
+# dust alias
+if command -v dust > /dev/null 2>&1; then
+  alias du='dust'
+fi
+
+# dust alias
+if command -v fd > /dev/null 2>&1; then
+  alias find='fd'
+fi
+
 # Pandoc alias
 alias pandoc='pandoc --pdf-engine weasyprint --css ~/.config/pandoc/style.css'

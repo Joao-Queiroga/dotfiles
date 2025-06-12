@@ -17,6 +17,7 @@ export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
 export BUN_INSTALL="${XDG_DATA_HOME}/bun"
 export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME"/npm/config/npm-init.js
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
