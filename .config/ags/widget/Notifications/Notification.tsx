@@ -10,7 +10,7 @@ const TIMEOUT_DELAY = 5000;
 const time = (time: number, format = "%H:%M") => GLib.DateTime.new_from_unix_local(time).format(format);
 
 export const Notification = ({ notification: n }: { notification: AstalNotifd.Notification }) => (
-  <box orientation={Gtk.Orientation.VERTICAL} class="notification" $={() => timeout(TIMEOUT_DELAY, n.dismiss)}>
+  <box orientation={Gtk.Orientation.VERTICAL} class="notification" $={() => timeout(TIMEOUT_DELAY, () => n.dismiss())}>
     <box class="header">
       {(n.app_icon || n.desktop_entry) && <image class="app-icon" iconName={n.app_icon || n.desktop_entry} />}
       <label class="app-name" halign={START} ellipsize={Pango.EllipsizeMode.END} label={n.app_name || "Unkwnow"} />
