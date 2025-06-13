@@ -3,7 +3,7 @@ import { timeout } from "ags/time";
 import AstalNotifd from "gi://AstalNotifd";
 import GLib from "gi://GLib";
 import Pango from "gi://Pango?version=1.0";
-const { START, CENTER, END } = Gtk.Align;
+const { START, END } = Gtk.Align;
 
 const TIMEOUT_DELAY = 5000;
 

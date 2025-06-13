@@ -10,8 +10,8 @@ app.start({
   css: style,
   requestHandler: requestHandler,
   main() {
-    app.get_monitors().map(Bar);
-    app.get_monitors().map(Notifications);
+    Bar();
+    Notifications();
     AppLauncher();
     Powermenu();
   },

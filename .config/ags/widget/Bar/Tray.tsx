@@ -1,9 +1,10 @@
-import { For, Gdk, Gtk } from "ags/gtk4";
-import { bind } from "ags/state";
+import { createBinding, For, onCleanup } from "ags";
+import { Gdk, Gtk } from "ags/gtk4";
 import AstalTray from "gi://AstalTray";
+import Gio from "gi://Gio?version=2.0";
 
 const TrayItem = ({ item }: { item: AstalTray.TrayItem }) => (
-  <menubutton class="tray-item" tooltip_markup={bind(item, "tooltipMarkup")}>
+  <menubutton class="tray-item" tooltip_markup={createBinding(item, "tooltipMarkup")}>
     <Gtk.EventControllerLegacy
       propagationPhase={Gtk.PropagationPhase.CAPTURE}
       $event={(self, event: Gdk.ButtonEvent) => {
@@ -35,12 +36,18 @@ const TrayItem = ({ item }: { item: AstalTray.TrayItem }) => (
         return true;
       }}
     />
-    <image class="tray-icon" gicon={bind(item, "gicon")} />
+    <image class="tray-icon" gicon={createBinding(item, "gicon")} />
     <Gtk.PopoverMenu
       flags={Gtk.PopoverMenuFlags.NESTED}
-      menu_model={bind(item, "menuModel")}
+      menu_model={createBinding(item, "menuModel")}
       has_arrow={false}
-      $={self => bind(item, "actionGroup").subscribe(self, ag => self.insert_action_group("dbusmenu", ag))}
+      $={self => {
+        self.insert_action_group("dbusmenu", item.actionGroup);
+        const ag = item.actionGroup.connect("notify", (ag: Gio.ActionGroup) =>
+          self.insert_action_group("dbusmenu", ag),
+        );
+        onCleanup(() => item.disconnect(ag));
+      }}
     />
   </menubutton>
 );
@@ -50,7 +57,7 @@ export const Tray = () => {
 
   return (
     <box class="systray">
-      <For each={bind(tray, "items")}>{item => <TrayItem item={item} />}</For>
+      <For each={createBinding(tray, "items")}>{(item: AstalTray.TrayItem) => <TrayItem item={item} />}</For>
     </box>
   );
 };

@@ -1,13 +1,16 @@
-import { bind } from "ags/state";
+import { createBinding } from "ags";
 import AstalBattery from "gi://AstalBattery";
 
 export const Battery = () => {
   const bat = AstalBattery.get_default();
   return (
     <image
-      visible={bind(bat, "is_present")}
-      icon_name={bind(bat, "battery_icon_name")}
-      tooltip_markup={bind(bat, "percentage").as(percent => {
+      visible={createBinding(bat, "is_present")}
+      icon_name={createBinding(bat, "battery_icon_name")}
+      tooltip_markup={createBinding(
+        bat,
+        "percentage",
+      )(percent => {
         const formatTime = (seconds: number) => {
           const minutes = Math.floor(seconds / 60) % 60;
           const hours = Math.floor(seconds / 3600);

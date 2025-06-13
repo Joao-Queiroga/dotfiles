@@ -1,6 +1,5 @@
-import { Gtk, With } from "ags/gtk4";
-import { bind, hook } from "ags/state";
-import AstalApps from "gi://AstalApps?version=0.1";
+import { createBinding, onCleanup, With } from "ags";
+import { Gtk } from "ags/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
 import { range } from "../../lib/utils";
 
@@ -10,7 +9,7 @@ const Workspace = ({ id }: { id: number }) => (
   <button
     $clicked={() => hypr.dispatch("workspace", id.toString())}
     $={self => {
-      hook(self, hypr, "event", () => {
+      const events = hypr.connect("event", () => {
         const workspace = hypr.get_workspace(id);
         const active = hypr.get_focused_workspace().get_id() === id;
         const occupied = !!workspace;
@@ -19,8 +18,10 @@ const Workspace = ({ id }: { id: number }) => (
           self.remove_css_class("urgent");
         }
       });
-      hook(self, hypr, "urgent", (_, client: AstalHyprland.Client) => {
-        client.workspace.id === id && self.add_css_class("urgent");
+      const urgent = hypr.connect("urgent", (_, client) => client.workspace.id === id && self.add_css_class("urgent"));
+      onCleanup(() => {
+        hypr.disconnect(events);
+        hypr.disconnect(urgent);
       });
     }}
   >
@@ -36,21 +37,16 @@ export const Workspaces = () => (
   </box>
 );
 
-const icon = (client: AstalHyprland.Client) => {
-  const apps = new AstalApps.Apps();
-  return apps.get_list().find(app => app.wmClass === client.class)?.iconName;
-};
-
 export const Client = () => {
-  const focused = bind(hypr, "focusedClient");
+  const focused = createBinding(hypr, "focusedClient");
   return (
-    <box visible={focused.as(Boolean)} class="client">
+    <box visible={focused(Boolean)} class="client">
       <With value={focused} cleanup={label => label.run_dispose()}>
-        {client =>
+        {(client: AstalHyprland.Client) =>
           client && (
             <box spacing={4}>
               <image iconName={client.class} />
-              <label label={bind(client, "title")} />
+              <label label={createBinding(client, "title")} />
             </box>
           )
         }

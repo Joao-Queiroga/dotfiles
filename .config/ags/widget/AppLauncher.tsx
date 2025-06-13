@@ -1,8 +1,8 @@
-import { Astal, For, Gdk, Gtk, With } from "ags/gtk4";
+import { Astal, Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
-import { bind, hook, State, sync } from "ags/state";
 import AstalApps from "gi://AstalApps";
 import GLib from "gi://GLib";
+import { For, createState } from "ags";
 
 const hide = () => app.get_window("launcher")!.hide();
 
@@ -37,7 +37,7 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
 export default function AppLauncher() {
   const apps = new AstalApps.Apps();
 
-  const text = new State("");
+  const [text, setText] = createState("");
   const list = text(text => apps.fuzzy_query(text));
   const onEnter = () => {
     apps.fuzzy_query(text.get())?.[0].launch();
@@ -53,7 +53,7 @@ export default function AppLauncher() {
       application={app}
       $show={() => {
         apps.reload();
-        text.set("");
+        setText("");
       }}
     >
       <Gtk.EventControllerKey
@@ -68,7 +68,7 @@ export default function AppLauncher() {
           placeholderText="Search"
           $activate={onEnter}
           primaryIconName="system-search-symbolic"
-          $$text={self => text.set(self.text)}
+          $$text={self => setText(self.text)}
           $={self =>
             app.connect("window-toggled", () => {
               if (app.get_window("launcher")?.visible) {
@@ -82,13 +82,13 @@ export default function AppLauncher() {
           halign={Gtk.Align.CENTER}
           orientation={Gtk.Orientation.VERTICAL}
           class="not-found"
-          visible={list.as(l => l.length === 0)}
+          visible={list(l => l.length === 0)}
         >
           <image icon_name="system-search-symbolic" />
           <label label="No match found" />
         </box>
         <Gtk.ScrolledWindow class="AppList" vexpand>
-          <box orientation={Gtk.Orientation.VERTICAL} spacing={6} visible={list.as(l => l.length > 0)}>
+          <box orientation={Gtk.Orientation.VERTICAL} spacing={6} visible={list(l => l.length > 0)}>
             <For each={list}>{app => <AppButton app={app} />}</For>
           </box>
         </Gtk.ScrolledWindow>
