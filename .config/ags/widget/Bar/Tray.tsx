@@ -57,7 +57,9 @@ export const Tray = () => {
 
   return (
     <box class="systray">
-      <For each={createBinding(tray, "items")}>{(item: AstalTray.TrayItem) => <TrayItem item={item} />}</For>
+      <For each={createBinding(tray, "items")} cleanup={item => (item as Gtk.MenuButton).run_dispose()}>
+        {(item: AstalTray.TrayItem) => <TrayItem item={item} />}
+      </For>
     </box>
   );
 };
