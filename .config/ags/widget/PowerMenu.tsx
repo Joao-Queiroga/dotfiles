@@ -3,7 +3,7 @@ import app from "ags/gtk4/app";
 import { exec } from "ags/process";
 import GLib from "gi://GLib";
 
-const systemd = GLib.find_program_in_path("systemctl") !== null;
+const systemd = GLib.file_test("/run/systemd/system", GLib.FileTest.EXISTS);
 
 const hide = () => app.get_window("powermenu")!.hide();
 
@@ -20,32 +20,32 @@ export default function Powermenu() {
       layer={Astal.Layer.OVERLAY}
     >
       <Gtk.EventControllerKey
-        $keyPressed={({ widget }, keyval) => {
+        onKeyPressed={({ widget }, keyval) => {
           if (keyval === Gdk.KEY_Escape) {
             widget.hide();
           }
         }}
       />
       <box valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER} hexpand vexpand>
-        <button $clicked={() => exec(systemd ? "poweroff" : ["loginctl", "poweroff"])}>
+        <button onClicked={() => exec(systemd ? "poweroff" : ["loginctl", "poweroff"])}>
           <box orientation={Gtk.Orientation.VERTICAL}>
             <image iconName="system-shutdown-symbolic" />
             <label label="PowerOff" />
           </box>
         </button>
-        <button $clicked={() => exec(systemd ? "reboot" : ["loginctl", "reboot"])}>
+        <button onClicked={() => exec(systemd ? "reboot" : ["loginctl", "reboot"])}>
           <box orientation={Gtk.Orientation.VERTICAL}>
             <image iconName="system-reboot-symbolic" />
             <label label="Reboot" />
           </box>
         </button>
-        <button $clicked={() => exec([systemd ? "systemctl" : "loginctl", "suspend"]) && hide()}>
+        <button onClicked={() => exec([systemd ? "systemctl" : "loginctl", "suspend"]) && hide()}>
           <box orientation={Gtk.Orientation.VERTICAL}>
             <image iconName="system-suspend-symbolic" />
             <label label="Suspend" />
           </box>
         </button>
-        <button $clicked={() => exec([systemd ? "systemctl" : "loginctl", "hibernate"]) && hide()}>
+        <button onClicked={() => exec([systemd ? "systemctl" : "loginctl", "hibernate"]) && hide()}>
           <box orientation={Gtk.Orientation.VERTICAL}>
             <image iconName="system-hibernate-symbolic" />
             <label label="Hibernate" />

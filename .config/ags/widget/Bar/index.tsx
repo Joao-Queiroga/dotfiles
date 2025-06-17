@@ -14,7 +14,7 @@ export default function Bar() {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
 
   return (
-    <For each={createBinding(app, "monitors")}>
+    <For each={createBinding(app, "monitors")} cleanup={bar => (bar as Gtk.Window).destroy()}>
       {(monitor: Gdk.Monitor) => (
         <window
           visible
@@ -26,21 +26,21 @@ export default function Bar() {
           application={app}
         >
           <centerbox cssName="centerbox">
-            <box _type="start">
+            <box $type="start">
               <Workspaces />
               <Client />
             </box>
-            <menubutton _type="center" hexpand halign={Gtk.Align.CENTER}>
+            <menubutton $type="center" hexpand halign={Gtk.Align.CENTER}>
               <label class="time" label={time(t => t.format("  %a %d/%m/%Y %H:%M")!)} />
               <popover>
                 <Gtk.Calendar />
               </popover>
             </menubutton>
-            <box _type="end">
+            <box $type="end">
               <Tray />
               <Volume />
               <Battery />
-              <button $clicked={() => app.get_window("powermenu")!.show()}>
+              <button onClicked={() => app.get_window("powermenu")!.show()}>
                 <image iconName="system-shutdown-symbolic" />
               </button>
             </box>

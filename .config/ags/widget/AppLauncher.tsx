@@ -11,7 +11,7 @@ const fileExists = (path: string) => GLib.file_test(path, GLib.FileTest.EXISTS);
 const AppButton = ({ app }: { app: AstalApps.Application }) => (
   <button
     class="AppButton"
-    $clicked={() => {
+    onClicked={() => {
       hide();
       app.launch();
     }}
@@ -36,6 +36,7 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
 
 export default function AppLauncher() {
   const apps = new AstalApps.Apps();
+  let contentBox: Gtk.Box;
 
   const [text, setText] = createState("");
   const list = text(text => apps.fuzzy_query(text));
@@ -49,26 +50,33 @@ export default function AppLauncher() {
       name="launcher"
       exclusivity={Astal.Exclusivity.IGNORE}
       visible={false}
-      keymode={Astal.Keymode.EXCLUSIVE}
+      keymode={Astal.Keymode.ON_DEMAND}
       application={app}
-      $show={() => {
+      onShow={() => {
         apps.reload();
         setText("");
       }}
     >
+      <Gtk.EventControllerFocus onLeave={() => hide()} />
       <Gtk.EventControllerKey
-        $keyPressed={({ widget }, keyval) => {
+        onKeyPressed={({ widget }, keyval) => {
           if (keyval === Gdk.KEY_Escape) {
             widget.hide();
           }
         }}
       />
-      <box widthRequest={500} heightRequest={500} class="AppLauncher" orientation={Gtk.Orientation.VERTICAL}>
+      <box
+        $={ref => (contentBox = ref)}
+        widthRequest={500}
+        heightRequest={500}
+        class="AppLauncher"
+        orientation={Gtk.Orientation.VERTICAL}
+      >
         <entry
           placeholderText="Search"
-          $activate={onEnter}
+          onActivate={onEnter}
           primaryIconName="system-search-symbolic"
-          $$text={self => setText(self.text)}
+          onNotifyText={self => setText(self.text)}
           $={self =>
             app.connect("window-toggled", () => {
               if (app.get_window("launcher")?.visible) {

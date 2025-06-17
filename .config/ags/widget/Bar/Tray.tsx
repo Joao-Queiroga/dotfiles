@@ -7,7 +7,7 @@ const TrayItem = ({ item }: { item: AstalTray.TrayItem }) => (
   <menubutton class="tray-item" tooltip_markup={createBinding(item, "tooltipMarkup")}>
     <Gtk.EventControllerLegacy
       propagationPhase={Gtk.PropagationPhase.CAPTURE}
-      $event={(self, event: Gdk.ButtonEvent) => {
+      onEvent={(self, event) => {
         const menubutton = self.get_widget() as Gtk.MenuButton;
 
         const type = event.get_event_type();
@@ -57,10 +57,7 @@ export const Tray = () => {
 
   return (
     <box class="systray">
-      <For each={createBinding(tray, "items")} cleanup={item => (item as Gtk.MenuButton).run_dispose()}>
-        {(item: AstalTray.TrayItem) => <TrayItem item={item} />}
-      </For>
+      <For each={createBinding(tray, "items")}>{(item: AstalTray.TrayItem) => <TrayItem item={item} />}</For>
     </box>
   );
 };
-Gdk.BUTTON_PRIMARY;

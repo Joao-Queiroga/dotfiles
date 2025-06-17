@@ -1,4 +1,4 @@
-import { createBinding, onCleanup, With } from "ags";
+import { createBinding, createComputed, onCleanup, With } from "ags";
 import { Gtk } from "ags/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
 import { range } from "../../lib/utils";
@@ -7,7 +7,7 @@ const hypr = AstalHyprland.get_default();
 
 const Workspace = ({ id }: { id: number }) => (
   <button
-    $clicked={() => hypr.dispatch("workspace", id.toString())}
+    onClicked={() => hypr.dispatch("workspace", id.toString())}
     $={self => {
       const events = hypr.connect("event", () => {
         const workspace = hypr.get_workspace(id);
@@ -41,12 +41,12 @@ export const Client = () => {
   const focused = createBinding(hypr, "focusedClient");
   return (
     <box visible={focused(Boolean)} class="client">
-      <With value={focused} cleanup={label => label.run_dispose()}>
+      <With value={focused}>
         {(client: AstalHyprland.Client) =>
           client && (
             <box spacing={4}>
               <image iconName={client.class} />
-              <label label={createBinding(client, "title")} />
+              <label label={createBinding(client, "title")} max_width_chars={50} />
             </box>
           )
         }

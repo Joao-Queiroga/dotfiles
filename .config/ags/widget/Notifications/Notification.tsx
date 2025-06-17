@@ -15,7 +15,7 @@ export const Notification = ({ notification: n }: { notification: AstalNotifd.No
       {(n.app_icon || n.desktop_entry) && <image class="app-icon" iconName={n.app_icon || n.desktop_entry} />}
       <label class="app-name" halign={START} ellipsize={Pango.EllipsizeMode.END} label={n.app_name || "Unkwnow"} />
       <label class="time" hexpand halign={END} label={time(n.time)!} />
-      <button $clicked={() => n.dismiss()} icon_name="window-close-symbolic" />
+      <button onClicked={() => n.dismiss()} icon_name="window-close-symbolic" />
     </box>
     <box class="content" orientation={Gtk.Orientation.VERTICAL}>
       <label class="summary" halign={START} wrap xalign={0} label={n.summary} maxWidthChars={1} />
@@ -27,7 +27,7 @@ export const Notification = ({ notification: n }: { notification: AstalNotifd.No
             <button
               hexpand
               cursor={Gdk.Cursor.new_from_name("pointer")}
-              $clicked={() => {
+              onClicked={() => {
                 n.invoke(id);
                 n.dismiss();
               }}
