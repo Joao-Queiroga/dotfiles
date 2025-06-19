@@ -46,7 +46,7 @@ export const Client = () => {
           client && (
             <box spacing={4}>
               <image iconName={client.class} />
-              <label label={createBinding(client, "title")} max_width_chars={50} />
+              <label label={createBinding(client, "title")(t => (t.length > 50 ? t.substring(0, 51) + "..." : t))} />
             </box>
           )
         }
