@@ -14,7 +14,7 @@
 # session_path = "~/.session"
 
 ## date format used, either "us" or "uk"
-# dialect = "us"
+dialect = "uk"
 
 ## default timezone to use when displaying time
 ## either "l", "local" to use the system's current local timezone, or an offset
@@ -148,7 +148,7 @@ keymap_mode = "vim-normal"
 ## Cursor style in each keymap mode.  If specified, the cursor style is changed
 ## in entering the cursor shape.  Available values are "default" and
 ## "{blink,steady}-{block,underline,bar}".
-# keymap_cursor = { emacs = "blink-block", vim_insert = "blink-block", vim_normal = "steady-block" }
+keymap_cursor = { emacs = "blink-block", vim_insert = "steady-bar", vim_normal = "steady-block" }
 
 # network_connect_timeout = 5
 # network_timeout = 5
@@ -202,7 +202,7 @@ keymap_mode = "vim-normal"
 # Enable sync v2 by default
 # This ensures that sync v2 is enabled for new installs only
 # In a later release it will become the default across the board
-records = true
+#records = true
 
 [preview]
 ## which preview strategy to use to calculate the preview height (respects max_preview_height).
