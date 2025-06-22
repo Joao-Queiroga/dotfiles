@@ -6,3 +6,6 @@ require("augment-command"):setup({
 	smooth_scrolling = true,
 })
 require("git"):setup()
+require("zoxide"):setup({
+	update_db = true,
+})
