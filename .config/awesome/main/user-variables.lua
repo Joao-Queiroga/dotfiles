@@ -5,10 +5,10 @@ local _M = {
 
 	terminal = "kitty -1",
 	file_manager = "thunar",
-	browser = "zen-browser",
+	browser = "brave",
 
 	wallpaper = home .. "/.config/.background",
-	icon_theme = "ePapirus-Dark",
+	icon_theme = "Papirus-Dark",
 }
 
 return _M
