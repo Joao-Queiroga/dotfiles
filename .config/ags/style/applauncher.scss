@@ -2,11 +2,11 @@
 @use "theme" as *;
 
 window#launcher {
-  border: 1px solid $bg_highlight;
-  border-radius: 11px;
-
+  background-color: transparent;
   box.AppLauncher {
-    background-color: transparent;
+    border: 2px solid $bg_highlight;
+    border-radius: 11px;
+    background-color: $bg;
     padding: 1em;
     entry {
       margin-bottom: 0.8rem;

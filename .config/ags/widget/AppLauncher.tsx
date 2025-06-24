@@ -3,6 +3,7 @@ import app from "ags/gtk4/app";
 import AstalApps from "gi://AstalApps";
 import GLib from "gi://GLib";
 import { For, createState } from "ags";
+import Graphene from "gi://Graphene";
 
 const hide = () => app.get_window("launcher")!.hide();
 
@@ -36,7 +37,9 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
 
 export default function AppLauncher() {
   const apps = new AstalApps.Apps();
+  let entry: Gtk.Entry;
   let contentBox: Gtk.Box;
+  const { TOP, LEFT, RIGHT, BOTTOM } = Astal.WindowAnchor;
 
   const [text, setText] = createState("");
   const list = text(text => apps.fuzzy_query(text));
@@ -50,14 +53,26 @@ export default function AppLauncher() {
       name="launcher"
       exclusivity={Astal.Exclusivity.IGNORE}
       visible={false}
-      keymode={Astal.Keymode.ON_DEMAND}
+      anchor={TOP | LEFT | RIGHT | BOTTOM}
+      keymode={Astal.Keymode.EXCLUSIVE}
       application={app}
       onShow={() => {
         apps.reload();
-        setText("");
+        entry.grab_focus();
+        entry.set_text("");
       }}
     >
-      <Gtk.EventControllerFocus onLeave={() => hide()} />
+      <Gtk.GestureClick
+        onPressed={(source: Gtk.GestureClick, _: number, x: number, y: number) => {
+          const win = source.widget as Gtk.Window;
+          const [, rect] = contentBox.compute_bounds(win);
+          const position = new Graphene.Point({ x, y });
+
+          if (!rect.contains_point(position)) {
+            hide();
+          }
+        }}
+      />
       <Gtk.EventControllerKey
         onKeyPressed={({ widget }, keyval) => {
           if (keyval === Gdk.KEY_Escape) {
@@ -66,25 +81,20 @@ export default function AppLauncher() {
         }}
       />
       <box
-        $={ref => (contentBox = ref)}
         widthRequest={500}
         heightRequest={500}
+        halign={Gtk.Align.CENTER}
+        valign={Gtk.Align.CENTER}
         class="AppLauncher"
         orientation={Gtk.Orientation.VERTICAL}
+        $={ref => (contentBox = ref)}
       >
         <entry
           placeholderText="Search"
           onActivate={onEnter}
           primaryIconName="system-search-symbolic"
           onNotifyText={self => setText(self.text)}
-          $={self =>
-            app.connect("window-toggled", () => {
-              if (app.get_window("launcher")?.visible) {
-                self.grab_focus();
-                self.text = "";
-              }
-            })
-          }
+          $={ref => (entry = ref)}
         />
         <box
           halign={Gtk.Align.CENTER}
@@ -95,11 +105,11 @@ export default function AppLauncher() {
           <image icon_name="system-search-symbolic" />
           <label label="No match found" />
         </box>
-        <Gtk.ScrolledWindow class="AppList" vexpand>
+        <scrolledwindow class="AppList" vexpand>
           <box orientation={Gtk.Orientation.VERTICAL} spacing={6} visible={list(l => l.length > 0)}>
             <For each={list}>{app => <AppButton app={app} />}</For>
           </box>
-        </Gtk.ScrolledWindow>
+        </scrolledwindow>
       </box>
     </window>
   );
