@@ -3,6 +3,7 @@ local install_servers = {
   "rust_analyzer",
   "clangd",
   "gopls",
+  "bacon_ls",
   "jdtls",
   "emmet_language_server",
   "ts_ls",
