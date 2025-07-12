@@ -1,39 +1,39 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "63f9650"
+rev = "b886025"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "Rolv-Apneseth/starship"
-rev = "428d43a"
-hash = "73b1c5d91575dea1a49c66302860797"
+rev = "a63550b"
+hash = "c2021386289a0cbb3e152a052f67c177"
 
 [[plugin.deps]]
 use = "AnirudhG07/archivemount"
-rev = "a179608"
-hash = "201dfd510ebdaa283f63374b0eae6a8b"
+rev = "3d353c4"
+hash = "28caf2541e627582e75add7a9f98a32a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "63f9650"
-hash = "bf6f074cd41ee33c3360341d168f9733"
+rev = "b886025"
+hash = "63b6c222bf2103b3023389dde5e2ecfe"
 
 [[plugin.deps]]
 use = "hankertrix/augment-command"
-rev = "ac4a651"
-hash = "7b6b0b8c260c9c5e557287bf9b370f7c"
+rev = "d939163"
+hash = "e32ba0947f8ba9bc53aacfd96bd50884"
 
 [[plugin.deps]]
 use = "Joao-Queiroga/drag"
-rev = "6b4bc40"
-hash = "efb404d68fdd43fd3dcc2fd0153a2c95"
+rev = "65414ea"
+hash = "f8e58779135ee1cdd298812bfae846c1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "63f9650"
-hash = "c0b6cd7dc830b96e77e5c8a71eec7926"
+rev = "b886025"
+hash = "f10a14e823382d90fab5b3ee54cb38fe"
 
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
-rev = "b3950bf"
-hash = "319ce574cdb2865baf4323db90456504"
+rev = "5f56364"
+hash = "c0bf69ad2c44005892d586e9693993c6"
