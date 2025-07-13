@@ -6,7 +6,7 @@ return {
     branch = "main",
     build = function()
       require("nvim-treesitter").install("all")
-      vim.cmd(":TSUpdate")
+      require("nvim-treesitter").update()
     end,
   },
   {
