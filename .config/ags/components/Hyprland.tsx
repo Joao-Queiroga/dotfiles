@@ -29,9 +29,9 @@ const Workspace = ({ id }: { id: number }) => (
   </button>
 );
 
-export const Workspaces = () => (
+export const Workspaces = ({ monitor = 0 }) => (
   <box class="workspaces">
-    {range(9).map(i => (
+    {range(monitor * 10 + 1, 9).map(i => (
       <Workspace id={i} />
     ))}
   </box>
