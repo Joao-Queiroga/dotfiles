@@ -2,11 +2,11 @@ import { Astal, Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import { createPoll } from "ags/time";
 import GLib from "gi://GLib";
-import { Battery } from "./Battery";
-import { Client, Workspaces } from "./Hyprland";
-import { Tray } from "./Tray";
-import { Volume } from "./Volume";
+import { Client, Workspaces } from "../../components/Hyprland";
 import { createBinding, For } from "ags";
+import { BatteryIcon } from "../../components/Battery";
+import { Tray } from "../../components/Tray";
+import { VolumeIcon } from "../../components/Volume";
 
 const time = createPoll(GLib.DateTime.new_now_local(), 1000, () => GLib.DateTime.new_now_local());
 
@@ -38,11 +38,8 @@ export default function Bar() {
             </menubutton>
             <box $type="end">
               <Tray />
-              <Volume />
-              <Battery />
-              <button onClicked={() => app.get_window("powermenu")!.show()}>
-                <image iconName="system-shutdown-symbolic" />
-              </button>
+              <VolumeIcon />
+              <BatteryIcon />
             </box>
           </centerbox>
         </window>
