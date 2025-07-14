@@ -1,7 +1,7 @@
 @use "sass:color";
 @use "theme" as *;
 
-popover.control-menu {
+window.bar popover.control-menu {
   min-width: 400px;
   border-radius: 15px;
   box {

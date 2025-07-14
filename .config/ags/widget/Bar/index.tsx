@@ -7,6 +7,7 @@ import { createBinding, For } from "ags";
 import { BatteryIcon } from "../../components/Battery";
 import { Tray } from "../../components/Tray";
 import { VolumeIcon } from "../../components/Volume";
+import ControlMenu from "../ControlMenu";
 
 const time = createPoll(GLib.DateTime.new_now_local(), 1000, () => GLib.DateTime.new_now_local());
 
@@ -40,6 +41,9 @@ export default function Bar() {
               <Tray />
               <VolumeIcon />
               <BatteryIcon />
+              <menubutton>
+                <ControlMenu />
+              </menubutton>
             </box>
           </centerbox>
         </window>
