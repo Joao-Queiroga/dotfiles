@@ -16,10 +16,28 @@ export default class Backlight extends GObject.Object {
   #brightness = Number(readFile(`/sys/class/backlight/${screen}/brightness`)) / this.#maxBrightness;
   #lock = false;
   #pendingBrightness = this.#brightness;
+  #brightnessIcon = "display-brightness-off-symbolic";
 
   @getter(Number)
   get brightness() {
     return this.#brightness;
+  }
+
+  @getter(String)
+  get brightnessIcon() {
+    return this.#brightnessIcon;
+  }
+
+  private updateIcon() {
+    if (this.#brightness <= 0) {
+      this.#brightnessIcon = "display-brightness-off-symbolic";
+    } else if (this.#brightness <= 0.33) {
+      this.#brightnessIcon = "display-brightness-low-symbolic";
+    } else if (this.#brightness <= 0.66) {
+      this.#brightnessIcon = "display-brightness-medium-symbolic";
+    } else {
+      this.#brightnessIcon = "display-brightness-high-symbolic";
+    }
   }
 
   @setter(Number)
@@ -42,6 +60,8 @@ export default class Backlight extends GObject.Object {
 
       this.#brightness = current;
       this.notify("brightness");
+      this.updateIcon();
+      this.notify("brightness_icon");
       this.#lock = false;
       if (this.#pendingBrightness !== current) apply();
     };
@@ -54,11 +74,14 @@ export default class Backlight extends GObject.Object {
     monitorFile(`/sys/class/backlight/${screen}/brightness`, async f => {
       if (this.#lock) return;
       const v = readFileAsync(f);
-      const newBrightness = Number(v) / this.#maxBrightness;
+      const newBrightness = Number(await v) / this.#maxBrightness;
       if (newBrightness !== this.#brightness) {
         this.#brightness = newBrightness;
         this.notify("brightness");
+        this.updateIcon();
+        this.notify("brightness_icon");
       }
     });
+    this.updateIcon();
   }
 }

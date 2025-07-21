@@ -3,7 +3,7 @@ import Backlight from "../lib/services/backlight";
 
 const screen = Backlight.get_default();
 
-export const BrightnessIcon = () => <image icon_name="display-brightness" />;
+export const BrightnessIcon = () => <image icon_name={createBinding(screen, "brightnessIcon")} />;
 
 export const BrightnessSlider = () => (
   <box>
