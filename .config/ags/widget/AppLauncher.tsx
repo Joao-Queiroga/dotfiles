@@ -4,6 +4,7 @@ import AstalApps from "gi://AstalApps";
 import GLib from "gi://GLib";
 import { For, createState } from "ags";
 import Graphene from "gi://Graphene";
+import { execAsync } from "ags/process";
 
 const hide = () => app.get_window("launcher")!.hide();
 
@@ -14,7 +15,7 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
     class="AppButton"
     onClicked={() => {
       hide();
-      app.launch();
+      execAsync(["uwsm", "app", app.entry]);
     }}
   >
     <box>
@@ -44,7 +45,8 @@ export default function AppLauncher() {
   const [text, setText] = createState("");
   const list = text(text => apps.fuzzy_query(text));
   const onEnter = () => {
-    apps.fuzzy_query(text.get())?.[0].launch();
+    const app = apps.fuzzy_query(text.get())?.[0];
+    execAsync(["uwsm", "app", app.entry]);
     hide();
   };
 

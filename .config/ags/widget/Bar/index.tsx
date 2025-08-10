@@ -1,13 +1,13 @@
+import { createBinding, For } from "ags";
 import { Astal, Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import { createPoll } from "ags/time";
 import GLib from "gi://GLib";
-import { Client, Workspaces } from "../../components/Hyprland";
-import { createBinding, For } from "ags";
 import { BatteryIcon } from "../../components/Battery";
+import { Client, Workspaces } from "../../components/Hyprland";
 import { Tray } from "../../components/Tray";
 import { VolumeIcon } from "../../components/Volume";
-import ControlMenu from "../ControlMenu";
+import { ControlMenu } from "../ControlMenu";
 
 const time = createPoll(GLib.DateTime.new_now_local(), 1000, () => GLib.DateTime.new_now_local());
 

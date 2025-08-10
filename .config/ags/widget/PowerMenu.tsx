@@ -7,8 +7,9 @@ const systemd = GLib.file_test("/run/systemd/system", GLib.FileTest.EXISTS);
 
 const hide = () => app.get_window("powermenu")!.hide();
 
+const { TOP, LEFT, RIGHT, BOTTOM } = Astal.WindowAnchor;
+
 export default function Powermenu() {
-  const { TOP, LEFT, RIGHT, BOTTOM } = Astal.WindowAnchor;
   return (
     <window
       name="powermenu"
@@ -27,13 +28,13 @@ export default function Powermenu() {
         }}
       />
       <box valign={Gtk.Align.CENTER} halign={Gtk.Align.CENTER} hexpand vexpand>
-        <button onClicked={() => exec(systemd ? "poweroff" : ["loginctl", "poweroff"])}>
+        <button onClicked={() => exec([systemd ? "systemctl" : "loginctl", "poweroff"])}>
           <box orientation={Gtk.Orientation.VERTICAL}>
             <image iconName="system-shutdown-symbolic" />
             <label label="PowerOff" />
           </box>
         </button>
-        <button onClicked={() => exec(systemd ? "reboot" : ["loginctl", "reboot"])}>
+        <button onClicked={() => exec([systemd ? "systemctl" : "loginctl", "reboot"])}>
           <box orientation={Gtk.Orientation.VERTICAL}>
             <image iconName="system-reboot-symbolic" />
             <label label="Reboot" />
