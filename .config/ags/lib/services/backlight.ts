@@ -46,35 +46,36 @@ export default class Backlight extends GObject.Object {
     if (percent > 1) percent = 1;
 
     this.#pendingBrightness = percent;
-    if (this.#lock) return;
-    // this.#lock = true;
+    const apply = async () => {
+      if (this.#lock) return;
+      this.#lock = true;
 
-    const current = this.#pendingBrightness;
-    execAsync(`brightnessctl set ${percent * 100}%`)
-      .catch(e => print("erro ao alterar brilho:", e))
-      .then(() => {
-        this.#brightness = current;
-        this.notify("brightness");
-        this.updateIcon();
-        this.notify("brightness_icon");
-        this.#lock = false;
-        if (this.#pendingBrightness !== current) apply();
-      });
+      const current = this.#pendingBrightness;
+      await execAsync(`brightnessctl set ${current * 100}%`).catch(e => print("erro ao alterar brilho:", e));
+
+      this.#brightness = current;
+      this.notify("brightness");
+      this.updateIcon();
+      this.notify("brightness_icon");
+      this.#lock = false;
+      if (this.#pendingBrightness !== current) apply();
+    };
+
+    apply();
   }
 
   constructor() {
     super();
-    monitorFile(`/sys/class/backlight/${screen}/brightness`, f => {
+    monitorFile(`/sys/class/backlight/${screen}/brightness`, async f => {
       if (this.#lock) return;
-      readFileAsync(f).then(v => {
-        const newBrightness = Number(v) / this.#maxBrightness;
-        if (newBrightness !== this.#brightness) {
-          this.#brightness = newBrightness;
-          this.notify("brightness");
-          this.updateIcon();
-          this.notify("brightness_icon");
-        }
-      });
+      const v = readFileAsync(f);
+      const newBrightness = Number(await v) / this.#maxBrightness;
+      if (newBrightness !== this.#brightness) {
+        this.#brightness = newBrightness;
+        this.notify("brightness");
+        this.updateIcon();
+        this.notify("brightness_icon");
+      }
     });
     this.updateIcon();
   }
