@@ -21,4 +21,15 @@ window.bar popover.control-menu {
       padding: 0.1em;
     }
   }
+  button {
+    image {
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      padding: 5px;
+      margin: 0;
+    }
+    &.active {
+      background-color: $blue0;
+    }
+  }
 }
