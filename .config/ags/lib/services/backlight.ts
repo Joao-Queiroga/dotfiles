@@ -1,8 +1,8 @@
+import { monitorFile, readFile } from "ags/file";
 import GObject, { getter, register, setter } from "ags/gobject";
-import { exec, execAsync } from "ags/process";
-import { readFile, readFileAsync, writeFileAsync, monitorFile } from "ags/file";
+import { exec } from "ags/process";
 
-const screen = exec(`sh -c "ls -w1 /sys/class/backlight | head -1"`);
+const screen = exec('sh -c "ls -w1 /sys/class/backlight | head -1"');
 
 @register({ GTypeName: "Backlight" })
 export default class Backlight extends GObject.Object {
@@ -14,8 +14,6 @@ export default class Backlight extends GObject.Object {
 
   #maxBrightness = Number(readFile(`/sys/class/backlight/${screen}/max_brightness`));
   #brightness = Number(readFile(`/sys/class/backlight/${screen}/brightness`)) / this.#maxBrightness;
-  #lock = false;
-  #pendingBrightness = this.#brightness;
   #brightnessIcon = "display-brightness-off-symbolic";
 
   @getter(Number)
@@ -44,38 +42,21 @@ export default class Backlight extends GObject.Object {
   set brightness(percent: number) {
     if (percent < 0) percent = 0;
     if (percent > 1) percent = 1;
-
-    this.#pendingBrightness = percent;
-    const apply = async () => {
-      if (this.#lock) return;
-      this.#lock = true;
-
-      const current = this.#pendingBrightness;
-      await execAsync(`brightnessctl set ${current * 100}%`).catch(e => print("erro ao alterar brilho:", e));
-
-      this.#brightness = current;
-      this.notify("brightness");
-      this.updateIcon();
-      this.notify("brightness_icon");
-      this.#lock = false;
-      if (this.#pendingBrightness !== current) apply();
-    };
-
-    apply();
+    exec(`brightnessctl set ${percent * 100}%`);
+    this.#brightness = percent;
+    this.notify("brightness");
+    this.updateIcon();
+    this.notify("brightness_icon");
   }
 
   constructor() {
     super();
-    monitorFile(`/sys/class/backlight/${screen}/brightness`, async f => {
-      if (this.#lock) return;
-      const v = readFileAsync(f);
-      const newBrightness = Number(await v) / this.#maxBrightness;
-      if (newBrightness !== this.#brightness) {
-        this.#brightness = newBrightness;
-        this.notify("brightness");
-        this.updateIcon();
-        this.notify("brightness_icon");
-      }
+    monitorFile(`/sys/class/backlight/${screen}/brightness`, f => {
+      const newBrightness = Number(readFile(f)) / this.#maxBrightness;
+      this.#brightness = newBrightness;
+      this.notify("brightness");
+      this.updateIcon();
+      this.notify("brightness_icon");
     });
     this.updateIcon();
   }
