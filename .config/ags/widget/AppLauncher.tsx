@@ -8,7 +8,7 @@ import { execAsync } from "ags/process";
 
 const hide = () => app.get_window("launcher")!.hide();
 
-const fileExists = (path: string) => GLib.file_test(path, GLib.FileTest.EXISTS);
+const fileExists = (path: string | null) => GLib.file_test(path || "", GLib.FileTest.EXISTS);
 
 const AppButton = ({ app }: { app: AstalApps.Application }) => (
   <button
