@@ -35,7 +35,6 @@
     hyprlock
     wluma
     rose-pine-hyprcursor
-    prismlauncher
     nodePackages.nodejs
     rustup
     go
