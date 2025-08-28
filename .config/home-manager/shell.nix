@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   programs.fish = {
     enable = true;
+    functions = { fish_greeting.body = "${pkgs.pfetch}/bin/pfetch"; };
     shellInitLast = ''
       set -U fish_color_command cyan
       fish_vi_key_bindings
@@ -18,12 +19,10 @@
         };
       };
     };
-    bat = {
+    bat = { enable = true; };
+    eza = {
       enable = true;
-      # config = {
-      #   theme = "Tokyonight";
-      # };
+      icons = "auto";
     };
-    eza.enable = true;
   };
 }
