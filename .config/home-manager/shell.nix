@@ -28,11 +28,22 @@
       enable = true;
       escapeTime = 0;
       keyMode = "vi";
+      extraConfig = ''
+        set -gq allow-passthrough on
+
+        bind -n M-H previous-window
+        bind -n M-L next-window
+
+        bind C-l send-keys 'C-l'
+      '';
       plugins = with pkgs.tmuxPlugins; [
         yank
         vim-tmux-navigator
         sensible
-        tokyo-night-tmux
+        {
+          plugin = tokyo-night-tmux;
+          extraConfig = "set -g @tokyo-night-tmux_window_id_style none";
+        }
       ];
     };
   };
