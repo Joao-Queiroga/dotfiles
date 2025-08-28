@@ -24,5 +24,16 @@
       enable = true;
       icons = "auto";
     };
+    tmux = {
+      enable = true;
+      escapeTime = 0;
+      keyMode = "vi";
+      plugins = with pkgs.tmuxPlugins; [
+        yank
+        vim-tmux-navigator
+        sensible
+        tokyo-night-tmux
+      ];
+    };
   };
 }
