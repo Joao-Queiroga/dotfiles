@@ -6,6 +6,11 @@ window.bar popover.control-menu {
   border-radius: 15px;
   box {
     padding: 2px;
+    > image,
+    button,
+    button > image {
+      padding: 0;
+    }
     trough {
       background-color: color.adjust($fg, $alpha: -0.8);
       margin-right: 1em;
