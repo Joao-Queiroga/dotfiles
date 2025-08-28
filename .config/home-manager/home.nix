@@ -80,6 +80,7 @@
     base16Scheme =
       "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
     override = {
+      base05 = "#c0caf5";
       base09 = "#faba4a";
       base0B = "#9ece6a";
     };
