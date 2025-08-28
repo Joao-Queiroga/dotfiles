@@ -1,7 +1,10 @@
-{ config, pkgs, ... }:
-{
+{ config, pkgs, ... }: {
   programs.fish = {
     enable = true;
+    shellInitLast = ''
+      set -U fish_color_command cyan
+      fish_vi_key_bindings
+    '';
   };
   programs = {
     starship = {
