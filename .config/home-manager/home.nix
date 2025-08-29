@@ -98,6 +98,7 @@
       };
     };
     targets.kitty.variant256Colors = true;
+    targets.zen-browser.enable = false;
   };
 
   gtk.enable = true;
