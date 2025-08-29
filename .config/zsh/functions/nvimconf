@@ -1,3 +1,0 @@
-cd ~/.config/nvim
-nvim init.lua
-cd - > /dev/null

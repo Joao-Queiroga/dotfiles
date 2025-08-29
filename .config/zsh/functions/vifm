@@ -1,5 +1,0 @@
-if [[ ! -z ${DISPLAY+x} ]] ; then
-	TERM="xterm-direct" command vifm "$@"
-else
-	command vifm "$@"
-fi

@@ -1,9 +1,0 @@
-# fish-like plugins
-mattmc3/zfunctions
-zsh-users/zsh-autosuggestions
-zdharma-continuum/fast-syntax-highlighting kind:defer
-
-# other plugins
-hlissner/zsh-autopair kind:defer
-se-jaeger/zsh-activate-py-environment kind:defer
-jeffreytse/zsh-vi-mode

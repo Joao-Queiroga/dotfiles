@@ -1,11 +1,45 @@
 { config, pkgs, ... }: {
+  home.shellAliases = {
+    ly = "lazygit --git-dir $HOME/.local/share/yadm/repo.git --work-tree $HOME";
+    cat = "${pkgs.bat}/bin/bat";
+    tree = "eza --tree";
+    cd = "z";
+    grep = "${pkgs.ripgrep}/bin/rg";
+  };
+
   programs.fish = {
     enable = true;
-    functions = { fish_greeting.body = "${pkgs.pfetch}/bin/pfetch"; };
+    functions = { fish_greeting.body = "${pkgs.pfetch-rs}/bin/pfetch"; };
     shellInitLast = ''
       set -U fish_color_command cyan
       fish_vi_key_bindings
     '';
+  };
+  programs.zsh = {
+    enable = true;
+    autocd = true;
+    autosuggestion = { enable = true; };
+    dotDir = "${config.xdg.configHome}/zsh";
+    historySubstringSearch.enable = true;
+    initContent = "${pkgs.pfetch-rs}/bin/pfetch";
+    profileExtra = ". ~/.config/shell/profile";
+    plugins = [
+      {
+        name = "fast-syntax-highlighting";
+        src = pkgs.zsh-fast-syntax-highlighting;
+        file = "share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh";
+      }
+      {
+        name = "zsh-autopair";
+        src = pkgs.zsh-autopair;
+        file = "share/zsh/zsh-autopair/autopair.zsh";
+      }
+      {
+        name = "zsh-vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
+    ];
   };
   programs = {
     starship = {
@@ -23,6 +57,20 @@
     eza = {
       enable = true;
       icons = "auto";
+    };
+    zoxide.enable = true;
+    atuin = {
+      enable = true;
+      settings = {
+        dialect = "uk";
+        enter_accept = true;
+        keymap_mode = "vim-normal";
+        keymap_cursor = {
+          emacs = "blink-block";
+          vim_insert = "steady-bar";
+          vim_normal = "steady-block";
+        };
+      };
     };
     tmux = {
       enable = true;
