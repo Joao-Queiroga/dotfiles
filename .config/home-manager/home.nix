@@ -12,20 +12,16 @@
 
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-    atuin
     fzf
     dust
     pfetch
-    tmux
     lazygit
+    ripdrag
     yazi
     uwsm
     git
     alejandra
     nixd
-    hyprpaper
-    hypridle
-    hyprlock
     wluma
     rose-pine-hyprcursor
     nodePackages.nodejs
