@@ -1,5 +1,6 @@
 { config, pkgs, ... }: {
   home.shellAliases = {
+    nvimconf = "nvim ~/.config/nvim/init.lua";
     ly = "lazygit --git-dir $HOME/.local/share/yadm/repo.git --work-tree $HOME";
     cat = "${pkgs.bat}/bin/bat";
     tree = "eza --tree";

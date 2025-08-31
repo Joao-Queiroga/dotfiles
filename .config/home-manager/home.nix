@@ -20,7 +20,8 @@
     yazi
     uwsm
     git
-    nil
+    alejandra
+    nixd
     hyprpaper
     hypridle
     hyprlock
@@ -95,6 +96,11 @@
   gtk.enable = true;
   gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   qt.enable = true;
+
+  xdg.terminal-exec = {
+    enable = true;
+    settings = { default = [ "kitty.desktop" ]; };
+  };
 
   programs.kitty = {
     enable = true;
