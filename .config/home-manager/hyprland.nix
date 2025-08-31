@@ -8,7 +8,11 @@
         "HDMI-A-1, preferred, auto-right, 1"
         ", highrr, auto, 1"
       ];
-      exec-once = [ "uwsm app -- ags run" "systemctl --user start wluma" ];
+      exec-once = [
+        "uwsm app -- ags run"
+        "systemctl --user start wluma"
+        "uwsm app -- kitty --single-instance --start-as=hidden"
+      ];
       input = {
         kb_layout = "br";
         follow_mouse = 1;
