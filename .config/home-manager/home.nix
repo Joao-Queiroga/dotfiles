@@ -3,6 +3,7 @@
     inputs.zen-browser.homeModules.beta
     inputs.ags.homeManagerModules.default
     ./shell.nix
+    ./hyprland.nix
   ];
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
@@ -114,6 +115,9 @@
   };
 
   home.sessionVariables = { EDITOR = "nvim"; };
+
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 
   programs.home-manager.enable = true;
 }
