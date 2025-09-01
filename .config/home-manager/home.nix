@@ -12,7 +12,6 @@
 
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-    fzf
     dust
     pfetch
     lazygit
@@ -79,6 +78,11 @@
       dark = "Papirus-Dark";
       light = "Papirus-Light";
       package = pkgs.papirus-icon-theme;
+    };
+    cursor = {
+      name = "BreezeX-RosePine-Linux";
+      package = pkgs.rose-pine-cursor;
+      size = 27;
     };
     fonts = {
       monospace = {
