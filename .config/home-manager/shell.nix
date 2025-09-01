@@ -13,11 +13,9 @@
     functions = { fish_greeting.body = "${pkgs.pfetch-rs}/bin/pfetch"; };
     shellInitLast = ''
       set -U fish_color_command cyan
-      set -U async_prompt_functions fish_prompt
       fish_vi_key_bindings
       bind -M insert enter expand-abbr execute
       bind -M default enter expand-abbr execute
-      ${pkgs.starship}/bin/starship init fish | source
     '';
     plugins = with pkgs.fishPlugins; [
       {
@@ -27,10 +25,6 @@
       {
         name = "autopair";
         src = autopair.src;
-      }
-      {
-        name = "async-prompt";
-        src = async-prompt.src;
       }
     ];
   };
@@ -71,7 +65,6 @@
     };
     starship = {
       enable = true;
-      enableFishIntegration = false;
       settings = {
         add_newline = false;
         character = {
