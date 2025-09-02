@@ -6,6 +6,7 @@
     tree = "eza --tree";
     cd = "z";
     grep = "${pkgs.ripgrep}/bin/rg";
+    du = "${pkgs.dust}/bin/dust";
   };
 
   programs.fish = {

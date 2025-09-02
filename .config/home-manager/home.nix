@@ -19,9 +19,11 @@
     yazi
     uwsm
     git
+    p7zip
     alejandra
     nixd
     wluma
+    filezilla
     rose-pine-hyprcursor
     nodePackages.nodejs
     rustup
@@ -53,6 +55,7 @@
   };
 
   services = {
+    udiskie.enable = true;
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
     kdeconnect = {
@@ -97,6 +100,7 @@
   gtk.enable = true;
   gtk.gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
   qt.enable = true;
+  qt.platformTheme.name = "gtk3";
 
   xdg.terminal-exec = {
     enable = true;
