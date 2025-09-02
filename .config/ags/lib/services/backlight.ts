@@ -12,8 +12,8 @@ export default class Backlight extends GObject.Object {
     return this.instance;
   }
 
-  #maxBrightness = Number(readFile(`/sys/class/backlight/${screen}/max_brightness`));
-  #brightness = Number(readFile(`/sys/class/backlight/${screen}/brightness`)) / this.#maxBrightness;
+  #maxBrightness = Number(exec(["brightnessctl", "m"]));
+  #brightness = Number(exec(["brightnessctl", "g"])) / this.#maxBrightness;
   #brightnessIcon = "display-brightness-off-symbolic";
 
   @getter(Number)
