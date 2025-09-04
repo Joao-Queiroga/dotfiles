@@ -4,6 +4,7 @@
     inputs.ags.homeManagerModules.default
     ./shell.nix
     ./hyprland.nix
+    ./dir_colors.nix
   ];
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
