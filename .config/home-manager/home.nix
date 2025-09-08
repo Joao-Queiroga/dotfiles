@@ -68,6 +68,7 @@
         recolor = true;
       };
     };
+    imv.enable = true;
   };
 
   services = {
