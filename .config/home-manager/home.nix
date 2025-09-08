@@ -62,7 +62,11 @@
   };
 
   services = {
-    udiskie.enable = true;
+    udiskie = {
+      enable = true;
+      tray = "auto";
+      settings = { program_options = { terminal = "kitty -1"; }; };
+    };
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
     kdeconnect = {
