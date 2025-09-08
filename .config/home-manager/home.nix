@@ -41,6 +41,7 @@
     gcc
     tree-sitter
     gnumake
+    python313Packages.weasyprint
   ];
 
   programs = {
