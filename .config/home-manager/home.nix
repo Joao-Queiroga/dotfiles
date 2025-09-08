@@ -59,6 +59,15 @@
         wireplumber
       ];
     };
+    zathura = {
+      enable = true;
+      options = {
+        adjust-open = "width";
+        selection-clipboard = "clipboard";
+        window-title-basename = true;
+        recolor = true;
+      };
+    };
   };
 
   services = {
