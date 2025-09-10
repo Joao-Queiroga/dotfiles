@@ -50,6 +50,9 @@ api.unmap("s");
 api.unmap("d");
 api.unmap("D");
 
+api.iunmap("Ctrl-a");
+api.iunmap("Ctrl-e");
+
 switchKey(";u", ";U");
 
 // set theme
