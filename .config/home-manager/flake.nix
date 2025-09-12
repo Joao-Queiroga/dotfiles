@@ -26,34 +26,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.astal.follows = "astal";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-    in
-    {
-      homeConfigurations."joaoqueiroga" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+    in {
+      homeConfigurations."joaoqueiroga" =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-          inputs.stylix.homeModules.stylix
-          ./home.nix
-        ];
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [ inputs.stylix.homeModules.stylix ./home.nix ];
 
-        extraSpecialArgs = {
-          inherit inputs;
+          extraSpecialArgs = { inherit inputs; };
+
+          # Optionally use extraSpecialArgs
+          # to pass through arguments to home.nix
         };
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
     };
 }
