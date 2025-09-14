@@ -90,6 +90,7 @@
         };
       };
     };
+    nix-your-shell.enable = true;
     tmux = {
       enable = true;
       escapeTime = 0;
