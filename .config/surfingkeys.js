@@ -50,8 +50,8 @@ api.unmap("s");
 api.unmap("d");
 api.unmap("D");
 
-api.iunmap("Ctrl-a");
-api.iunmap("Ctrl-e");
+api.iunmap("<ctrl-a>");
+api.iunmap("<ctrl-e>");
 
 switchKey(";u", ";U");
 
