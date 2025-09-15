@@ -1,7 +1,7 @@
 import { createBinding, onCleanup, With } from "ags";
 import { Gtk } from "ags/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
-import { range } from "../lib/utils";
+import { guessIcon, range } from "../lib/utils";
 
 const hypr = AstalHyprland.get_default();
 
@@ -45,7 +45,7 @@ export const Client = () => {
         {(client: AstalHyprland.Client) =>
           client && (
             <box spacing={4}>
-              <image icon_name={client.class} />
+              <image icon_name={createBinding(client, "class").as(guessIcon)} />
               <label label={createBinding(client, "title")(t => (t.length > 50 ? t.substring(0, 51) + "..." : t))} />
             </box>
           )
