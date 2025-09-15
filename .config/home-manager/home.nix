@@ -36,6 +36,7 @@
     rustup
     go
     brightnessctl
+    qbittorrent
     hyprprop
     wl-clipboard
     gcc
@@ -70,6 +71,7 @@
       };
     };
     imv.enable = true;
+    mpv.enable = true;
   };
 
   services = {
