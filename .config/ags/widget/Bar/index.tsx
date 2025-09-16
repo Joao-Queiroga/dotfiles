@@ -1,4 +1,4 @@
-import { createBinding, For } from "ags";
+import { createBinding, For, onCleanup } from "ags";
 import { Astal, Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
 import { createPoll } from "ags/time";
@@ -25,6 +25,7 @@ export default function Bar() {
           exclusivity={Astal.Exclusivity.EXCLUSIVE}
           anchor={TOP | LEFT | RIGHT}
           application={app}
+          $={self => onCleanup(() => self.destroy())}
         >
           <centerbox cssName="centerbox">
             <box $type="start">

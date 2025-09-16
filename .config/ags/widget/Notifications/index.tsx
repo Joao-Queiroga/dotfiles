@@ -36,6 +36,7 @@ export default function Notifications() {
           anchor={TOP | RIGHT}
           application={app}
           visible={notifications(n => n.length > 0)}
+          $={self => onCleanup(() => self.destroy())}
         >
           <box orientation={Gtk.Orientation.VERTICAL}>
             <For each={notifications}>{n => <Notification notification={n} />}</For>
