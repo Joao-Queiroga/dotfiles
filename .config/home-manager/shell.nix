@@ -2,10 +2,10 @@
   home.shellAliases = {
     nvimconf = "nvim ~/.config/nvim/init.lua";
     ly = "lazygit --git-dir $HOME/.local/share/yadm/repo.git --work-tree $HOME";
-    cat = "${pkgs.bat}/bin/bat";
+    cat = "bat";
     tree = "eza --tree";
     cd = "z";
-    grep = "${pkgs.ripgrep}/bin/rg";
+    grep = "rg";
     du = "${pkgs.dust}/bin/dust";
     pandoc =
       "${pkgs.pandoc}/bin/pandoc --pdf-engine weasyprint --css ~/.config/pandoc/style.css";
@@ -60,6 +60,10 @@
   programs = {
     zoxide.enable = true;
     bat.enable = true;
+    ripgrep = {
+      enable = true;
+      arguments = [ "--hidden" "--smart-case" ];
+    };
     carapace.enable = true;
     fzf.enable = true;
     eza = {
