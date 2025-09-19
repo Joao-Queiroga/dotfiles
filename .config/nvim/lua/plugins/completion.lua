@@ -32,10 +32,11 @@ return {
         nerd_font_variant = "normal",
         kind_icons = vim.g.kind_icons,
       },
-      cmdline = { keymap = { preset = "inherit" }, completion = { menu = { auto_show = true } } },
+      cmdline = {
+        keymap = { ["<CR>"] = { "fallback" } },
+      },
       completion = {
         accept = {
-          -- experimental auto-brackets support
           auto_brackets = {
             enabled = true,
           },
