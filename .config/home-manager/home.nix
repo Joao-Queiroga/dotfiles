@@ -72,6 +72,11 @@
     };
     imv.enable = true;
     mpv.enable = true;
+    nh = {
+      enable = true;
+      flake = "${config.home.homeDirectory}/Projects/nixos";
+      homeFlake = "${config.home.homeDirectory}/.config/home-manager";
+    };
   };
 
   services = {
