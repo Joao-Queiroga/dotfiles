@@ -11,7 +11,7 @@ local install_servers = {
   "jsonls",
   "yamlls",
 }
-vim.lsp.enable({ "qmlls", "nixd" })
+vim.lsp.enable({ "qmlls", "nil_ls" })
 ---@type LazySpec[]
 return {
   {

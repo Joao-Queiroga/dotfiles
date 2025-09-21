@@ -28,7 +28,7 @@
     git
     p7zip
     alejandra
-    nixd
+    nil
     wluma
     filezilla
     rose-pine-hyprcursor
