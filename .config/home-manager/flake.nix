@@ -28,6 +28,12 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+
+    # Yazi plugin
+    drag = {
+      url = "github:Joao-Queiroga/drag.yazi";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:

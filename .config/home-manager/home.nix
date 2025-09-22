@@ -5,6 +5,7 @@
     ./shell.nix
     ./hyprland.nix
     ./dir_colors.nix
+    ./yazi.nix
   ];
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
@@ -23,7 +24,6 @@
     pfetch
     lazygit
     ripdrag
-    yazi
     uwsm
     git
     p7zip

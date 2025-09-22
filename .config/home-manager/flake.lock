@@ -143,6 +143,22 @@
         "type": "github"
       }
     },
+    "drag": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756476256,
+        "narHash": "sha256-ITkZjpwWXni4tQpDhUiVvtPrEkAo6RISgCH594NgpYE=",
+        "owner": "Joao-Queiroga",
+        "repo": "drag.yazi",
+        "rev": "27606689cb82c56a19c052a7b7935cd9b1466bab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Joao-Queiroga",
+        "repo": "drag.yazi",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -635,6 +651,7 @@
       "inputs": {
         "ags": "ags",
         "astal": "astal",
+        "drag": "drag",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",
