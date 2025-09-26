@@ -49,6 +49,10 @@
   programs = {
     zen-browser.enable = true;
     bemenu.enable = true;
+    helix = {
+      enable = true;
+      package = pkgs.evil-helix;
+    };
     ags = {
       enable = true;
       extraPackages = with pkgs // inputs.astal.packages.${pkgs.system}; [
