@@ -6,6 +6,7 @@
     ./hyprland.nix
     ./dir_colors.nix
     ./yazi.nix
+    ./nvim
   ];
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
@@ -189,3 +190,4 @@
 
   programs.home-manager.enable = true;
 }
+
