@@ -47,4 +47,9 @@ return {
       }
     end,
   },
+  {
+    'nvim-jdtls',
+    lazy = true,
+    on_require = "jdtls",
+  }
 }
