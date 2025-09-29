@@ -36,7 +36,7 @@ local options = {
   foldlevel = 99,
   foldlevelstart = 99,
   foldenable = true,
-};
+}
 
 --set leader key
 vim.g.mapleader = " "
@@ -44,6 +44,6 @@ vim.g.maplocalleader = "\\"
 
 vim.opt.iskeyword:remove("_")
 
-for k,v in pairs(options) do
-	vim.opt[k] = v
+for k, v in pairs(options) do
+  vim.opt[k] = v
 end

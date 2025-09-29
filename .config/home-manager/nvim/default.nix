@@ -21,6 +21,18 @@
       {
         lspsAndRuntimeDeps = {
           general = with pkgs; [ lazygit ];
+          lsp = with pkgs; [
+            rust-analyzer
+            gopls
+            bacon-ls
+            jdt-language-server
+            clang-tools
+            emmet-language-server
+            typescript-language-server
+            vscode-json-languageserver
+            vscode-css-languageserver
+            yaml-language-server
+          ];
           lua = with pkgs; [
             lua-language-server
             stylua
@@ -54,7 +66,16 @@
             trouble-nvim
             vim-illuminate
           ];
-          lua = with pkgs.vimPlugins; [ lazydev-nvim ];
+          lsp = with pkgs.vimPlugins; [
+            nvim-jdtls
+            typescript-tools-nvim
+            rustaceanvim
+            crates-nvim
+          ];
+          lua = with pkgs.vimPlugins; [
+            lazydev-nvim
+            luvit-meta
+          ];
         };
       }
     );
@@ -71,6 +92,7 @@
           };
           categories = {
             general = true;
+            lsp = true;
             lua = true;
           };
         };

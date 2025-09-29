@@ -1,10 +1,11 @@
+vim.lsp.enable({ "lua_ls", "nil_ls", "gopls", "bacon_ls", "emmet_language_server", "cssls", "jsonls", "yamlls" })
 ---@type lze.PluginSpec[]
 return {
   {
-    'nvim-lspconfig',
+    "nvim-lspconfig",
     lazy = true,
     beforeAll = function()
-      local lspConfigPath = require('nixCats').vimPackDir .. '/pack/myNeovimPackages/opt/nvim-lspconfig/'
+      local lspConfigPath = require("nixCats").vimPackDir .. "/pack/myNeovimPackages/opt/nvim-lspconfig/"
       vim.opt.runtimepath:prepend(lspConfigPath)
     end,
   },
@@ -35,15 +36,8 @@ return {
     },
     cmd = "Trouble",
     after = function()
-      require('trouble').setup()
-    end
-  },
-  {
-    "lazydev.nvim",
-    ft = "lua",
-    after = function()
-      require('lazydev').setup()
+      require("trouble").setup()
     end,
-    on_require = { "lazydev" }
-  }
+  },
+  { import = "plugins.lsp.language-specific" },
 }

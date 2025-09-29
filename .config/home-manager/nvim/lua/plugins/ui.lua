@@ -1,15 +1,15 @@
 ---@type lze.PluginSpec[]
 return {
   {
-    'lualine.nvim',
+    "lualine.nvim",
     after = function()
-      require('lualine').setup()
-    end
+      require("lualine").setup()
+    end,
   },
   {
-    'noice.nvim',
+    "noice.nvim",
     after = function()
-      require('noice').setup({
+      require("noice").setup({
         lsp = {
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -23,20 +23,20 @@ return {
           long_message_to_split = true,
         },
       })
-    end
+    end,
   },
   {
-    'bufferline.nvim',
+    "bufferline.nvim",
     after = function()
-      require('bufferline').setup({
+      require("bufferline").setup({
         options = {
-          diagnostics = 'nvim_lsp',
+          diagnostics = "nvim_lsp",
           diagnostics_indicator = function(count, level, diagnostics_dict, context)
             local icon = level:match("error") and " " or " "
             return " " .. icon .. count
-          end
-        }
+          end,
+        },
       })
-    end
-  }
+    end,
+  },
 }

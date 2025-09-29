@@ -1,10 +1,10 @@
 ---@type lze.PluginSpec[]
 return {
   {
-    'blink.cmp',
+    "blink.cmp",
     lazy = false,
     after = function()
-      require('blink.cmp').setup({
+      require("blink.cmp").setup({
         sources = {
           default = { "lazydev", "lsp", "path", "snippets", "buffer" },
           providers = {
@@ -65,11 +65,11 @@ return {
     end,
   },
   {
-    'colorful-menu.nvim',
-    dep_of = 'blink.cmp'
+    "colorful-menu.nvim",
+    dep_of = "blink.cmp",
   },
   {
-    'friendly-snippets',
-    dep_of = 'blink.cmp'
+    "friendly-snippets",
+    dep_of = "blink.cmp",
   },
 }

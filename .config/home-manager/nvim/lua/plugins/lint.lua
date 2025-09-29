@@ -5,7 +5,7 @@ return {
     event = { "BufWrite", "BufRead", "InsertLeave" },
     after = function(plug)
       local events = { "BufWritePost", "BufReadPost", "InsertLeave" }
-      local lint = require('lint')
+      local lint = require("lint")
       lint.linters_by_ft = {
         fish = { "fish" },
         python = { "flake8" },
@@ -18,6 +18,6 @@ return {
           lint.try_lint()
         end,
       })
-    end
-  }
+    end,
+  },
 }
