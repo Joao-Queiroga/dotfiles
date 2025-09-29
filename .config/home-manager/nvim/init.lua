@@ -1,7 +1,6 @@
 if vim.env.PROF then
   require("snacks.profiler").startup({
     startup = {
-      -- event = "VimEnter", -- stop profiler on this event. Defaults to `VimEnter`
       event = "UIEnter",
     },
   })
