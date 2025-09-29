@@ -1,14 +1,31 @@
-{ config, pkgs, lib, inputs, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
   imports = [ inputs.nixCats.homeModule ];
   nixCats = {
     enable = true;
     luaPath = ./.;
     packageNames = [ "nvim" ];
-    categoryDefinitions.replace =
-      ({ pkgs, settings, categories, ... }@packagDef: {
+    categoryDefinitions.replace = (
+      {
+        pkgs,
+        settings,
+        categories,
+        ...
+      }@packageDef:
+      {
         lspsAndRuntimeDeps = {
           general = with pkgs; [ lazygit ];
-          lua = with pkgs; [ lua-language-server stylua selene ];
+          lua = with pkgs; [
+            lua-language-server
+            stylua
+            selene
+          ];
         };
         startupPlugins = {
           general = with pkgs.vimPlugins; [
@@ -16,7 +33,6 @@
             lzextras
             snacks-nvim
             tokyonight-nvim
-            mini-nvim
           ];
         };
         optionalPlugins = {
@@ -30,20 +46,34 @@
             conform-nvim
             nvim-lint
             vim-startuptime
+            lualine-nvim
+            bufferline-nvim
+            noice-nvim
+            dropbar-nvim
+            mini-nvim
+            trouble-nvim
+            vim-illuminate
           ];
           lua = with pkgs.vimPlugins; [ lazydev-nvim ];
         };
-      });
+      }
+    );
     packageDefinitions.replace = {
-      nvim = { pkgs, name, ... }: {
-        settings = {
-          wrapRc = true;
-          aliases = [ "vim" "vi" ];
+      nvim =
+        { pkgs, name, ... }:
+        {
+          settings = {
+            wrapRc = true;
+            aliases = [
+              "vim"
+              "vi"
+            ];
+          };
+          categories = {
+            general = true;
+            lua = true;
+          };
         };
-        categories = { general = true;
-          lua = true;
-        };
-      };
     };
   };
 }

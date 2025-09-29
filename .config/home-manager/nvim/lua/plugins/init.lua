@@ -15,4 +15,6 @@ require('lze').load({
   { import = 'plugins.formating' },
   { import = 'plugins.lint' },
   { import = 'plugins.utils' },
+  { import = 'plugins.ui' },
+  { import = 'plugins.mini' },
 })
