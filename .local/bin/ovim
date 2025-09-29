@@ -1,0 +1,2 @@
+#!/bin/sh
+NVIM_APPNAME="oldnvim" exec /run/current-system/sw/bin/nvim $@
