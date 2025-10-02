@@ -9,23 +9,6 @@ return {
     on_require = { "lazydev" },
   },
   {
-    "typescript-tools.nvim",
-    after = function()
-      require("typescript-tools").setup({
-        settings = {
-          expose_as_code_action = "all",
-          tsserver_locale = "pt-br",
-          tsserver_file_preferences = {
-            importModuleSpecifierPreference = "shortest",
-          },
-          jsx_close_tag = {
-            enabled = true,
-          },
-        },
-      })
-    end,
-  },
-  {
     "rustaceanvim",
     before = function()
       vim.g.rustaceanvim = {

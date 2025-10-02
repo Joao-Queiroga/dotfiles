@@ -1,4 +1,4 @@
-vim.lsp.enable({ "lua_ls", "nil_ls", "gopls", "bacon_ls", "emmet_language_server", "cssls", "jsonls", "yamlls" })
+vim.lsp.enable({ "lua_ls", "nil_ls", "vtsls", "gopls", "bacon_ls", "emmet_language_server", "cssls", "jsonls", "yamlls" })
 ---@type lze.PluginSpec[]
 return {
   {

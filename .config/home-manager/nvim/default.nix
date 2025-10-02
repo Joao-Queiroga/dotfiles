@@ -28,7 +28,7 @@
             jdt-language-server
             clang-tools
             emmet-language-server
-            typescript-language-server
+            vtsls
             vscode-json-languageserver
             vscode-css-languageserver
             yaml-language-server
@@ -69,7 +69,6 @@
           ];
           lsp = with pkgs.vimPlugins; [
             nvim-jdtls
-            typescript-tools-nvim
             rustaceanvim
             crates-nvim
           ];
