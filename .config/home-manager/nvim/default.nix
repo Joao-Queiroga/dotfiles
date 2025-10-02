@@ -28,7 +28,7 @@
             jdt-language-server
             clang-tools
             emmet-language-server
-            vtsls
+            typescript
             vscode-json-languageserver
             vscode-css-languageserver
             yaml-language-server
@@ -71,6 +71,7 @@
             nvim-jdtls
             rustaceanvim
             crates-nvim
+            typescript-tools-nvim
           ];
           lua = with pkgs.vimPlugins; [
             lazydev-nvim
