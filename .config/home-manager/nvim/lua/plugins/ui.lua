@@ -2,12 +2,14 @@
 return {
   {
     "lualine.nvim",
+    event = "DeferredUIEnter",
     after = function()
       require("lualine").setup()
     end,
   },
   {
     "noice.nvim",
+    event = "DeferredUIEnter",
     after = function()
       require("noice").setup({
         lsp = {
@@ -27,6 +29,7 @@ return {
   },
   {
     "bufferline.nvim",
+    event = "DeferredUIEnter",
     after = function()
       require("bufferline").setup({
         options = {
