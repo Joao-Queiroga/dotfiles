@@ -10,6 +10,7 @@ vim.loader.enable()
 
 vim.cmd.colorscheme("tokyonight-night")
 require("config.options")
+require("config.lsp")
 require("config.keybindings")
 require("config.autocmd")
 require("plugins")
