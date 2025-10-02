@@ -43,6 +43,7 @@
           general = with pkgs.vimPlugins; [
             lze
             lzextras
+            nvim-treesitter.withAllGrammars
             snacks-nvim
             tokyonight-nvim
           ];

@@ -15,3 +15,11 @@ autocmd({ "BufRead", "BufNewFile" }, {
     vim.cmd("cd " .. vim.fn.expand("%:p:h"))
   end,
 })
+
+autocmd("Filetype",
+  {
+    callback = function(args)
+      pcall(vim.treesitter.start, args.buf)
+    end
+  }
+)
