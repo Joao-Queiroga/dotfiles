@@ -66,6 +66,7 @@
             mini-nvim
             trouble-nvim
             vim-illuminate
+            rainbow-delimiters-nvim
           ];
           lsp = with pkgs.vimPlugins; [
             nvim-jdtls
