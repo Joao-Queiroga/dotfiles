@@ -5,9 +5,6 @@ local keymap = vim.keymap.set
 keymap("n", "<leader>e", function()
   Snacks.explorer()
 end, opts)
-keymap("n", "<leader>c", function()
-  Snacks.bufdelete()
-end, opts)
 
 -- Navigate in visual lines
 keymap({ "n", "v", "x" }, "j", "gj", opts)
