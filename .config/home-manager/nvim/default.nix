@@ -67,6 +67,7 @@
             trouble-nvim
             vim-illuminate
             rainbow-delimiters-nvim
+            which-key-nvim
           ];
           lsp = with pkgs.vimPlugins; [
             nvim-jdtls

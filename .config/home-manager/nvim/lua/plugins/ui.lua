@@ -42,4 +42,30 @@ return {
       })
     end,
   },
+  {
+    "which-key.nvim",
+    event = "DeferredUIEnter",
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+    after = function()
+      require('which-key').setup({
+        spec = {
+          { "<leader>g", group = "Git" },
+          { "<leader>y", group = "Yadm" },
+          { "<leader>f", group = "Find/File" },
+          { "<leader>s", group = "Search" },
+          { "<leader>q", hidden = true },
+          { "<leader>l", group = "lsp", },
+          { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+        },
+      })
+    end
+  }
 }
