@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   home.shellAliases = {
     nvimconf = "nvim ~/.config/nvim/init.lua";
     ly = "lazygit --git-dir $HOME/.local/share/yadm/repo.git --work-tree $HOME";
@@ -7,16 +8,21 @@
     cd = "z";
     grep = "rg";
     du = "${pkgs.dust}/bin/dust";
-    pandoc =
-      "${pkgs.pandoc}/bin/pandoc --pdf-engine weasyprint --css ~/.config/pandoc/style.css";
+    pandoc = "${pkgs.pandoc}/bin/pandoc --pdf-engine weasyprint --css ~/.config/pandoc/style.css";
   };
 
   programs.fish = {
     enable = true;
-    functions = { fish_greeting.body = "${pkgs.pfetch-rs}/bin/pfetch"; };
+    functions = {
+      fish_greeting.body = "${pkgs.pfetch-rs}/bin/pfetch";
+    };
     shellInitLast = ''
       set -U fish_color_command cyan
       fish_vi_key_bindings
+      bind -M insert up _atuin_bind_up
+      bind -M default up _atuin_bind_up
+      bind -M insert ctrl-k _atuin_bind_up
+      bind -M default ctrl-k _atuin_bind_up
       bind -M insert enter expand-abbr execute
       bind -M default enter expand-abbr execute
     '';
@@ -34,7 +40,9 @@
   programs.zsh = {
     enable = true;
     autocd = true;
-    autosuggestion = { enable = true; };
+    autosuggestion = {
+      enable = true;
+    };
     dotDir = "${config.xdg.configHome}/zsh";
     historySubstringSearch.enable = true;
     initContent = "${pkgs.pfetch-rs}/bin/pfetch";
@@ -62,7 +70,10 @@
     bat.enable = true;
     ripgrep = {
       enable = true;
-      arguments = [ "--hidden" "--smart-case" ];
+      arguments = [
+        "--hidden"
+        "--smart-case"
+      ];
     };
     carapace.enable = true;
     fzf.enable = true;
@@ -83,6 +94,9 @@
     };
     atuin = {
       enable = true;
+      flags = [
+        "--disable-up-arrow"
+      ];
       settings = {
         dialect = "uk";
         enter_accept = true;
