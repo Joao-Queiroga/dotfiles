@@ -44,7 +44,6 @@
             lze
             lzextras
             nvim-treesitter.withAllGrammars
-            snacks-nvim
             tokyonight-nvim
           ];
         };
@@ -64,6 +63,7 @@
             noice-nvim
             dropbar-nvim
             mini-nvim
+            snacks-nvim
             trouble-nvim
             vim-illuminate
             rainbow-delimiters-nvim

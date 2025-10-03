@@ -17,6 +17,7 @@ require("lze").load({
   { import = "plugins.utils" },
   { import = "plugins.ui" },
   { import = "plugins.mini" },
+  { import = "plugins.snacks" },
   { import = "plugins.treesitter" },
   { import = "plugins.lib" },
 })
