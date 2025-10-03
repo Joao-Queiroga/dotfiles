@@ -4,9 +4,20 @@ return {
     "mini.nvim",
     lazy = false,
     keys = {
-      { "<leader>c", function()
-        require('mini.bufremove').delete()
-      end }
+      {
+        "<leader>c",
+        function()
+          require('mini.bufremove').delete()
+        end
+      },
+      {
+        "<leader>fm",
+        function()
+          require('mini.files').open()
+        end,
+        desc = "File Browser",
+        mode = { "n", "v" }
+      },
     },
     beforeAll = function()
       package.preload["nvim-web-devicons"] = function()
@@ -19,6 +30,12 @@ return {
         mappings = {
           start_with_preview = "ga",
           start = "gA",
+        },
+      })
+      require('mini.files').setup({
+        windows = {
+          preview = true,
+          width_preview = 40,
         },
       })
       require('mini.move').setup()
