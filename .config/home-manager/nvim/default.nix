@@ -1,7 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -31,6 +28,21 @@
             vscode-json-languageserver
             vscode-css-languageserver
             yaml-language-server
+          ];
+          format = with pkgs; [
+            stylua
+            alejandra
+            prettierd
+            google-java-format
+            go
+            taplo
+          ];
+          lint = with pkgs; [
+            ruff
+            selene
+            clippy
+            eslint
+            checkstyle
           ];
           lua = with pkgs; [
             lua-language-server
@@ -66,6 +78,7 @@
             trouble-nvim
             vim-illuminate
             rainbow-delimiters-nvim
+            nvim-ts-autotag
             which-key-nvim
           ];
           lsp = with pkgs.vimPlugins; [
@@ -96,6 +109,8 @@
             general = true;
             lsp = true;
             lua = true;
+            format = true;
+            lint = true;
           };
         };
     };

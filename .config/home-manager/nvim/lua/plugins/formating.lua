@@ -8,7 +8,7 @@ return {
       require("conform").setup({
         formaters_by_ft = {
           lua = { "stylua" },
-          python = { "isort", "black" },
+          python = { "ruff_format" },
           javascript = { "prettierd" },
           javascriptreact = { "prettierd" },
           typescript = { "prettierd" },
@@ -19,7 +19,7 @@ return {
           scss = { "prettierd" },
           sass = { "prettierd" },
           rust = { "rustfmt" },
-          nix = { "nixfmt" },
+          nix = { "alejandra" },
           c = { "clang-format" },
           go = { "gofmt" },
           cpp = { "clang-format" },

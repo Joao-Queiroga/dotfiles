@@ -3,12 +3,12 @@ return {
   {
     "nvim-lint",
     event = { "BufWrite", "BufRead", "InsertLeave" },
-    after = function(plug)
+    after = function()
       local events = { "BufWritePost", "BufReadPost", "InsertLeave" }
       local lint = require("lint")
       lint.linters_by_ft = {
         fish = { "fish" },
-        python = { "flake8" },
+        python = { "ruff" },
         lua = { "selene" },
         java = { "checkstyle" },
         rust = { "clippy" },
