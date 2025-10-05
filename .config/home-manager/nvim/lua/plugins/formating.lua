@@ -25,6 +25,7 @@ return {
           cpp = { "clang-format" },
           java = { "google-java-format" },
           toml = { "taplo" },
+          ["_"] = { "trim_whitespace", "trim_newlines" },
         },
         format_on_save = {
           timeout_ms = 3000,
