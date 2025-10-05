@@ -24,7 +24,6 @@
           lsp = with pkgs; [
             rust-analyzer
             gopls
-            bacon-ls
             jdt-language-server
             clang-tools
             emmet-language-server
