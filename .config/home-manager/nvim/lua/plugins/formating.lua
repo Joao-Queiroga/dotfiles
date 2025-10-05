@@ -6,7 +6,7 @@ return {
     cmd = "ConformInfo",
     after = function()
       require("conform").setup({
-        formaters_by_ft = {
+        formatters_by_ft = {
           lua = { "stylua" },
           python = { "ruff_format" },
           javascript = { "prettierd" },
