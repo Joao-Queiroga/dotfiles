@@ -1,5 +1,5 @@
 if vim.env.PROF then
-  vim.cmd.packadd('snacks.nvim')
+  vim.cmd.packadd("snacks.nvim")
   require("snacks.profiler").startup({
     startup = {
       event = "UIEnter",

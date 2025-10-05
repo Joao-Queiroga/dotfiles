@@ -16,10 +16,8 @@ autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-autocmd("Filetype",
-  {
-    callback = function(args)
-      pcall(vim.treesitter.start, args.buf)
-    end
-  }
-)
+autocmd("Filetype", {
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})

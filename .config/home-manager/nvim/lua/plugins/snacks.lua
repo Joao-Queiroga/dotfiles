@@ -3,7 +3,7 @@ return {
   "snacks.nvim",
   lazy = false,
   after = function()
-    require('snacks').setup({
+    require("snacks").setup({
       bigfile = { enabled = true },
       notifier = { enabled = true },
       quickfile = { enabled = true },

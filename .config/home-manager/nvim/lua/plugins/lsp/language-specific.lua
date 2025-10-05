@@ -47,8 +47,8 @@ return {
     end,
   },
   {
-    'nvim-jdtls',
+    "nvim-jdtls",
     lazy = true,
     on_require = "jdtls",
-  }
+  },
 }

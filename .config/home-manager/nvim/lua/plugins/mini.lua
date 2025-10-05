@@ -7,16 +7,16 @@ return {
       {
         "<leader>c",
         function()
-          require('mini.bufremove').delete()
-        end
+          require("mini.bufremove").delete()
+        end,
       },
       {
         "<leader>fm",
         function()
-          require('mini.files').open()
+          require("mini.files").open()
         end,
         desc = "File Browser",
-        mode = { "n", "v" }
+        mode = { "n", "v" },
       },
     },
     beforeAll = function()
@@ -26,19 +26,19 @@ return {
       end
     end,
     after = function()
-      require('mini.align').setup({
+      require("mini.align").setup({
         mappings = {
           start_with_preview = "ga",
           start = "gA",
         },
       })
-      require('mini.files').setup({
+      require("mini.files").setup({
         windows = {
           preview = true,
           width_preview = 40,
         },
       })
-      require('mini.move').setup()
-    end
+      require("mini.move").setup()
+    end,
   },
 }

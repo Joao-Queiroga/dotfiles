@@ -26,7 +26,7 @@ return {
         desc = "Document Diagnostics",
       },
       { "<leader>lq", "<cmd>Trouble quickfix toggle<cr>", mode = { "n", "v", "x" }, desc = "Quickfixes" },
-      { "<leader>ll", "<cmd>Trouble loclist toggle<cr>",  mode = { "n", "v", "x" }, desc = "Loclist" },
+      { "<leader>ll", "<cmd>Trouble loclist toggle<cr>", mode = { "n", "v", "x" }, desc = "Loclist" },
       {
         "<leader>lR",
         "<cmd>Trouble lsp_references toggle<cr>",

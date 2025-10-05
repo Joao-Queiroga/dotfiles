@@ -55,17 +55,17 @@ return {
       },
     },
     after = function()
-      require('which-key').setup({
+      require("which-key").setup({
         spec = {
           { "<leader>g", group = "Git" },
           { "<leader>y", group = "Yadm" },
           { "<leader>f", group = "Find/File" },
           { "<leader>s", group = "Search" },
           { "<leader>q", hidden = true },
-          { "<leader>l", group = "lsp", },
+          { "<leader>l", group = "lsp" },
           { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
         },
       })
-    end
-  }
+    end,
+  },
 }

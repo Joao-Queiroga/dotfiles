@@ -2,7 +2,7 @@
 return {
   {
     "nui.nvim",
-    on_plugin = { 'noice.nvim' },
+    on_plugin = { "noice.nvim" },
   },
   {
     "plenary.nvim",
@@ -17,5 +17,5 @@ return {
       "plenary.filetype",
       "plenary.strings",
     },
-  }
+  },
 }
