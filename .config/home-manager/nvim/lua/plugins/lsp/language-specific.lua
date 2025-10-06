@@ -18,9 +18,6 @@ return {
           tsserver_file_preferences = {
             importModuleSpecifierPreference = "shortest",
           },
-          jsx_close_tag = {
-            enabled = true,
-          },
         },
       })
     end,

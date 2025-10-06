@@ -1,23 +1,18 @@
-{
-  inputs,
-  ...
-}:
-{
-  imports = [ inputs.nixCats.homeModule ];
+{inputs, ...}: {
+  imports = [inputs.nixCats.homeModule];
   nixCats = {
     enable = true;
     luaPath = ./.;
-    packageNames = [ "nvim" ];
+    packageNames = ["nvim"];
     categoryDefinitions.replace = (
       {
         pkgs,
         settings,
         categories,
         ...
-      }@packageDef:
-      {
+      } @ packageDef: {
         lspsAndRuntimeDeps = {
-          general = with pkgs; [ lazygit ];
+          general = with pkgs; [lazygit];
           lsp = with pkgs; [
             rust-analyzer
             gopls
@@ -79,6 +74,7 @@
             vim-illuminate
             rainbow-delimiters-nvim
             nvim-ts-autotag
+            nvim-ts-context-commentstring
             which-key-nvim
           ];
           lsp = with pkgs.vimPlugins; [
@@ -95,24 +91,26 @@
       }
     );
     packageDefinitions.replace = {
-      nvim =
-        { pkgs, name, ... }:
-        {
-          settings = {
-            wrapRc = true;
-            aliases = [
-              "vim"
-              "vi"
-            ];
-          };
-          categories = {
-            general = true;
-            lsp = true;
-            lua = true;
-            format = true;
-            lint = true;
-          };
+      nvim = {
+        pkgs,
+        name,
+        ...
+      }: {
+        settings = {
+          wrapRc = true;
+          aliases = [
+            "vim"
+            "vi"
+          ];
         };
+        categories = {
+          general = true;
+          lsp = true;
+          lua = true;
+          format = true;
+          lint = true;
+        };
+      };
     };
   };
 }
