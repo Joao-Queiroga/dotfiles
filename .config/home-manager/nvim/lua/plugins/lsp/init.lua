@@ -1,5 +1,5 @@
 vim.lsp.enable({ "lua_ls", "nil_ls", "gopls", "emmet_language_server", "cssls", "jsonls", "yamlls" })
----@type lze.PluginSpec[]
+---@type PluginList
 return {
   {
     "nvim-lspconfig",

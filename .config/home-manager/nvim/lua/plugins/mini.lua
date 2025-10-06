@@ -1,4 +1,4 @@
----@type lze.PluginSpec[]
+---@type PluginList
 return {
   {
     "mini.nvim",
@@ -39,6 +39,7 @@ return {
         },
       })
       require("mini.move").setup()
+      require("mini.icons").setup()
     end,
   },
 }

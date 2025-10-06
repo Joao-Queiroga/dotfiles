@@ -1,4 +1,4 @@
----@type lze.PluginSpec[]
+---@type PluginList
 return {
   {
     "conform.nvim",

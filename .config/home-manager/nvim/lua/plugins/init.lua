@@ -1,3 +1,8 @@
+---@module 'lze'
+---@alias PluginSpec lze.PluginSpec
+---@alias SpecImport lze.SpecImport
+---@alias PluginList (PluginSpec | SpecImport)[]
+---@type PluginList
 require("lze").load({
   {
     "vim-tmux-navigator",
