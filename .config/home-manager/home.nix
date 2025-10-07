@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.zen-browser.homeModules.beta
     inputs.ags.homeManagerModules.default
@@ -83,13 +88,21 @@
       flake = "${config.home.homeDirectory}/Projects/nixos";
       homeFlake = "${config.home.homeDirectory}/.config/home-manager";
     };
+    lazygit = {
+      enable = true;
+      settings = {
+        gui.nerdFontsVersion = 3;
+        os.editPreset = "nvim";
+        promptToReturnFromSubprocess = false;
+      };
+    };
   };
 
   services = {
     udiskie = {
       enable = true;
       tray = "auto";
-      settings = { program_options = { terminal = "kitty -1"; }; };
+      settings = {program_options = {terminal = "kitty -1";};};
     };
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
@@ -99,12 +112,11 @@
     };
   };
 
-  home.file = { };
+  home.file = {};
 
   stylix = {
     enable = true;
-    base16Scheme =
-      "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
     override = {
       base05 = "#c0caf5";
       base09 = "#faba4a";
@@ -139,7 +151,7 @@
 
   xdg.terminal-exec = {
     enable = true;
-    settings = { default = [ "kitty.desktop" ]; };
+    settings = {default = ["kitty.desktop"];};
   };
 
   programs.kitty = {
@@ -185,9 +197,7 @@
     MANPAGER = "nvim +Man!";
   };
 
-  xdg.configFile."uwsm/env".source =
-    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+  xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 
   programs.home-manager.enable = true;
 }
-
