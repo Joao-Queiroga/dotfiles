@@ -33,8 +33,6 @@
     uwsm
     git
     p7zip
-    alejandra
-    nil
     wluma
     filezilla
     rose-pine-hyprcursor

@@ -23,6 +23,7 @@
             vscode-json-languageserver
             vscode-css-languageserver
             yaml-language-server
+            nil
           ];
           format = with pkgs; [
             stylua
