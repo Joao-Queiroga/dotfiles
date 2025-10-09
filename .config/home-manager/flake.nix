@@ -35,26 +35,32 @@
       url = "github:Joao-Queiroga/drag.yazi";
       flake = false;
     };
+    my-packages.url = "path:./pkgs";
+    my-packages.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    { nixpkgs, home-manager, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    in
-    {
-      homeConfigurations."joaoqueiroga" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          inputs.stylix.homeModules.stylix
-          ./home.nix
-        ];
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+  in {
+    homeConfigurations."joaoqueiroga" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        inputs.stylix.homeModules.stylix
+        ./home.nix
+      ];
 
-        extraSpecialArgs = { inherit inputs; };
+      extraSpecialArgs = {
+        inherit inputs;
+        inherit system;
       };
     };
+  };
 }

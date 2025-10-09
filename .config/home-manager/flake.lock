@@ -567,6 +567,24 @@
         "type": "github"
       }
     },
+    "my-packages": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "spring-boot-nvim": "spring-boot-nvim",
+        "spring-boot-tools": "spring-boot-tools"
+      },
+      "locked": {
+        "path": "./pkgs",
+        "type": "path"
+      },
+      "original": {
+        "path": "./pkgs",
+        "type": "path"
+      },
+      "parent": []
+    },
     "nixCats": {
       "locked": {
         "lastModified": 1758545673,
@@ -599,6 +617,38 @@
       }
     },
     "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1759831965,
+        "narHash": "sha256-vgPm2xjOmKdZ0xKA6yLXPJpjOtQPHfaZDRtH+47XEBo=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c9b6fb798541223bbb396d287d16f43520250518",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1759831965,
+        "narHash": "sha256-vgPm2xjOmKdZ0xKA6yLXPJpjOtQPHfaZDRtH+47XEBo=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c9b6fb798541223bbb396d287d16f43520250518",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1759381078,
         "narHash": "sha256-gTrEEp5gEspIcCOx9PD8kMaF1iEmfBcTbO0Jag2QhQs=",
@@ -669,10 +719,73 @@
         "drag": "drag",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "my-packages": "my-packages",
         "nixCats": "nixCats",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_4",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
+      }
+    },
+    "spring-boot-nvim": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2",
+        "spring-boot-nvim": "spring-boot-nvim_2"
+      },
+      "locked": {
+        "path": "./spring-boot-nvim",
+        "type": "path"
+      },
+      "original": {
+        "path": "./spring-boot-nvim",
+        "type": "path"
+      },
+      "parent": [
+        "my-packages"
+      ]
+    },
+    "spring-boot-nvim_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758298708,
+        "narHash": "sha256-WAgxEtVSAkFzDMNymuO/1p9Wz8bvSbY/oue+1Sl6Oio=",
+        "owner": "JavaHello",
+        "repo": "spring-boot.nvim",
+        "rev": "dff5fc9ff38dc60514caf95d57b0dbcd4da9028a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JavaHello",
+        "repo": "spring-boot.nvim",
+        "type": "github"
+      }
+    },
+    "spring-boot-tools": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3",
+        "spring-boot-tools": "spring-boot-tools_2"
+      },
+      "locked": {
+        "path": "./spring-boot-tools",
+        "type": "path"
+      },
+      "original": {
+        "path": "./spring-boot-tools",
+        "type": "path"
+      },
+      "parent": [
+        "my-packages"
+      ]
+    },
+    "spring-boot-tools_2": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Z+hahxCAKg2AMLOizi5IED2GMLGXwru6D7NsGmaRSTo=",
+        "type": "file",
+        "url": "https://github.com/spring-projects/spring-tools/releases/download/4.32.0.RELEASE/vscode-spring-boot-1.64.0-RC1.vsix"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/spring-projects/spring-tools/releases/download/4.32.0.RELEASE/vscode-spring-boot-1.64.0-RC1.vsix"
       }
     },
     "stylix": {
