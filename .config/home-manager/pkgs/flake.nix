@@ -14,10 +14,22 @@
   } @ inputs: let
     system = "x86_64-linux";
     _pkgs = import nixpkgs {inherit system;};
-  in {
-    packages.${system} = {
+    packages = builtins.mapAttrs (_: v: v.packages.${system}.default) {
       spring-boot-tools = inputs.spring-boot-tools;
+    };
+    vimPlugins = builtins.mapAttrs (_: v: v.packages.${system}.default) {
       spring-boot-nvim = inputs.spring-boot-nvim;
     };
+  in {
+    packages.${system} =
+      {
+        vimPlugins = vimPlugins;
+      }
+      // packages;
+    overlays.default = _: prev:
+      {
+        vimPlugins = prev.vimPlugins.extend (_: _: vimPlugins);
+      }
+      // packages;
   };
 }
