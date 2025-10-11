@@ -17,6 +17,7 @@
             rust-analyzer
             gopls
             jdt-language-server
+            spring-boot-tools
             clang-tools
             emmet-language-server
             typescript
@@ -80,6 +81,7 @@
           ];
           lsp = with pkgs.vimPlugins; [
             nvim-jdtls
+            spring-boot-nvim
             rustaceanvim
             crates-nvim
             typescript-tools-nvim
@@ -110,6 +112,7 @@
           lua = true;
           format = true;
           lint = true;
+          springJars = "${pkgs.spring-boot-tools}/share/vscode/extensions/extension/jars";
         };
       };
     };

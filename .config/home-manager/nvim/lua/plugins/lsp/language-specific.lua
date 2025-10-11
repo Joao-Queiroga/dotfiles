@@ -45,7 +45,10 @@ return {
   },
   {
     "nvim-jdtls",
-    lazy = true,
     on_require = "jdtls",
+  },
+  {
+    "spring-boot.nvim",
+    on_require = "spring_boot",
   },
 }
