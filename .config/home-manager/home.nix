@@ -28,6 +28,7 @@
     nerd-fonts.jetbrains-mono
     yadm
     dust
+    fd
     pfetch
     ripdrag
     uwsm
