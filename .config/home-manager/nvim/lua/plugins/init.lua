@@ -20,6 +20,7 @@ require("lze").load({
   { import = "plugins.formating" },
   { import = "plugins.lint" },
   { import = "plugins.utils" },
+  { import = "plugins.heirline" },
   { import = "plugins.ui" },
   { import = "plugins.mini" },
   { import = "plugins.snacks" },

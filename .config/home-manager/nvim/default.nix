@@ -66,8 +66,7 @@
             conform-nvim
             nvim-lint
             vim-startuptime
-            lualine-nvim
-            bufferline-nvim
+            heirline-nvim
             noice-nvim
             dropbar-nvim
             mini-nvim

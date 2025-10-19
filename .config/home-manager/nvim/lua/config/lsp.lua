@@ -16,21 +16,17 @@ local function lsp_keymaps(buf)
   vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts("Rename"))
 end
 
-local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-}
+vim.lsp.inlay_hint.enable()
 
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
-
-local config = {
+vim.diagnostic.config({
   virtual_text = true,
   signs = {
-    active = signs,
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.INFO] = " ",
+      [vim.diagnostic.severity.HINT] = " ",
+    },
   },
   update_in_insert = true,
   underline = true,
@@ -39,15 +35,10 @@ local config = {
     focusable = false,
     style = "minimal",
     border = "rounded",
-    source = "always",
     header = "",
     prefix = "",
   },
-}
-
-vim.lsp.inlay_hint.enable()
-
-vim.diagnostic.config(config)
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("my.lsp", {}),
