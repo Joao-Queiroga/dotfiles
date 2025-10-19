@@ -51,6 +51,7 @@
           general = with pkgs.vimPlugins; [
             lze
             lzextras
+            mini-nvim
             nvim-treesitter.withAllGrammars
             tokyonight-nvim
           ];
@@ -69,7 +70,6 @@
             heirline-nvim
             noice-nvim
             dropbar-nvim
-            mini-nvim
             snacks-nvim
             trouble-nvim
             vim-illuminate

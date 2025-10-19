@@ -10,10 +10,10 @@ return {
     end,
   },
   {
-    "vim-illuminate",
+    "mini.cursorword",
     event = "DeferredUIEnter",
-    config = function()
-      require("illuminate").configure()
+    after = function()
+      require("mini.cursorword").setup()
     end,
   },
   {
