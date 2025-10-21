@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }: {
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     package =
@@ -37,7 +42,7 @@
         blur.size = 3;
         rounding = 5;
       };
-      animations.animation = [ "workspaces, 0, 6, default" ];
+      animations.animation = ["workspaces, 0, 6, default"];
       master = {
         new_status = "inherit";
         new_on_top = true;
@@ -61,84 +66,87 @@
       "$mod" = "Super";
       "$term" = "uwsm app -- kitty -1";
       "$editor" = "$term nvim";
-      bind = [
-        "$mod_SHIFT, C, killactive, "
-        "$mod_SHIFT, Q, exec, uwsm stop "
-        "$mod, T, togglefloating, "
-        "$mod, R, exec, uwsm app -- ags toggle launcher"
-        "$mod, P, exec, uwsm app -- $(bemenu-run --binding vim)"
+      bind =
+        [
+          "$mod_SHIFT, C, killactive, "
+          "$mod_SHIFT, Q, exec, uwsm stop "
+          "$mod, T, togglefloating, "
+          "$mod, R, exec, uwsm app -- ags toggle launcher"
+          "$mod, P, exec, uwsm app -- $(bemenu-run --binding vim)"
 
-        # Launch keybindings
-        "$mod, Return, exec, $term"
-        "$mod_SHIFT, Return, exec, uwsm app -- thunar"
-        "$mod, B, exec, uwsm app -- zen"
-        "$mod_SHIFT, B, exec, [workspace special] uwsm app -- zen --private-window"
+          # Launch keybindings
+          "$mod, Return, exec, $term"
+          "$mod_SHIFT, Return, exec, uwsm app -- thunar"
+          "$mod, B, exec, uwsm app -- zen"
+          "$mod_SHIFT, B, exec, [workspace special] uwsm app -- zen --private-window"
 
-        # Reset ags
-        "$mod, q, exec, uwsm app -- ags quit; uwsm app ags run"
+          # Reset ags
+          "$mod, q, exec, uwsm app -- ags quit; uwsm app ags run"
 
-        # Move focus with mod + arrow keys
-        "$mod, left, movefocus, l"
-        "$mod, right, movefocus, r"
-        "$mod, up, movefocus, u"
-        "$mod, down, movefocus, d"
+          # Move focus with mod + arrow keys
+          "$mod, left, movefocus, l"
+          "$mod, right, movefocus, r"
+          "$mod, up, movefocus, u"
+          "$mod, down, movefocus, d"
 
-        # Swap window
-        "$mod_SHIFT, J, layoutmsg, swapnext"
-        "$mod_SHIFT, K, layoutmsg, swapprev"
+          # Swap window
+          "$mod_SHIFT, J, layoutmsg, swapnext"
+          "$mod_SHIFT, K, layoutmsg, swapprev"
 
-        # Focus or swap master
-        "$mod, m, layoutmsg, focusmaster"
-        "$mod_SHIFT, m, layoutmsg, swapwithmaster"
+          # Focus or swap master
+          "$mod, m, layoutmsg, focusmaster"
+          "$mod_SHIFT, m, layoutmsg, swapwithmaster"
 
-        # Add and remove masters
-        "$mod, I, layoutmsg, addmaster"
-        "$mod, D, layoutmsg, removemaster"
+          # Add and remove masters
+          "$mod, I, layoutmsg, addmaster"
+          "$mod, D, layoutmsg, removemaster"
 
-        # Enter FullscreenMode
-        "$mod, F, fullscreen"
+          # Enter FullscreenMode
+          "$mod, F, fullscreen"
 
-        # special workspace
-        "$mod, 0, togglespecialworkspace"
-        "$mod SHIFT, 0, movetoworkspacesilent, special"
+          # special workspace
+          "$mod, 0, togglespecialworkspace"
+          "$mod SHIFT, 0, movetoworkspacesilent, special"
 
-        # Hidden special workspace
-        "$mod , n, movetoworkspacesilent, special:hidden"
-        "$mod SHIFT, n, togglespecialworkspace, hidden"
+          # Hidden special workspace
+          "$mod , n, movetoworkspacesilent, special:hidden"
+          "$mod SHIFT, n, togglespecialworkspace, hidden"
 
-        # Monitors bindings
-        "$mod, period, focusmonitor, r"
-        "$mod, comma, focusmonitor, l"
+          # Monitors bindings
+          "$mod, period, focusmonitor, r"
+          "$mod, comma, focusmonitor, l"
 
-        # Move Windows throug monitors
-        "$mod SHIFT, period, movewindow, mon:r"
-        "$mod SHIFT, comma, movewindow, mon:l"
+          # Move Windows throug monitors
+          "$mod SHIFT, period, movewindow, mon:r"
+          "$mod SHIFT, comma, movewindow, mon:l"
 
-        # Open task manager
-        "CONTROL SHIFT, escape, exec, $term -e btop"
+          # Open task manager
+          "CONTROL SHIFT, escape, exec, $term -e btop"
 
-        # Disable left monitor
-        "$mod SHIFT, o, exec, hyprctl dispatch dpms off HDMI-A-1"
-        # Disable all monitors
-        "$mod CONTROL SHIFT, o, exec, hyprctl dispatch dpms off "
-        # Enable all monitors
-        "$mod CONTROL, o,exec, hyprctl dispatch dpms on"
+          # Disable left monitor
+          "$mod SHIFT, o, exec, hyprctl dispatch dpms off HDMI-A-1"
+          # Disable all monitors
+          "$mod CONTROL SHIFT, o, exec, hyprctl dispatch dpms off "
+          # Enable all monitors
+          "$mod CONTROL, o,exec, hyprctl dispatch dpms on"
 
-        # Multimedia Keys
-        ", XF86AudioPlay, exec, uwsm app -- playerctl play-pause"
-        ", XF86AudioNext, exec, uwsm app -- playerctl next"
-        ", XF86AudioPrev, exec, uwsm app -- playerctl previous"
-        ", XF86audiostop, exec, uwsm app -- playerctl stop"
-      ] ++ (builtins.concatLists (builtins.genList (i:
-        let ws = i + 1;
-        in [
-          "$mod, code:1${toString i}, focusworkspaceoncurrentmonitor, ${
-            toString ws
-          }"
-          "$mod SHIFT, code:1${toString i}, movetoworkspacesilent, ${
-            toString ws
-          }"
-        ]) 9));
+          # Multimedia Keys
+          ", XF86AudioPlay, exec, uwsm app -- playerctl play-pause"
+          ", XF86AudioNext, exec, uwsm app -- playerctl next"
+          ", XF86AudioPrev, exec, uwsm app -- playerctl previous"
+          ", XF86audiostop, exec, uwsm app -- playerctl stop"
+        ]
+        ++ (builtins.concatLists (builtins.genList (i: let
+            ws = i + 1;
+          in [
+            "$mod, code:1${toString i}, focusworkspaceoncurrentmonitor, ${
+              toString ws
+            }"
+            "$mod SHIFT, code:1${toString i}, movetoworkspacesilent, ${
+              toString ws
+            }"
+          ])
+          9));
       binde = [
         # Move focus with mod + JK
         "$mod, J, layoutmsg, cyclenext"
@@ -176,7 +184,7 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
-      bindl = [ ",switch:off:Lid Switch, exec, hyprlock --immediate" ];
+      bindl = [",switch:off:Lid Switch, exec, hyprlock --immediate"];
     };
   };
   xdg.configFile."uwsm/env-hyprland".text = ''
@@ -186,13 +194,15 @@
   '';
   services.hyprpaper = {
     enable = true;
+    systemdTarget = "hyprland-session.target";
     settings = {
-      preload = [ "~/.config/.background" ];
-      wallpaper = [ ", ~/.config/.background" ];
+      preload = ["~/.config/.background"];
+      wallpaper = [", ~/.config/.background"];
     };
   };
   services.hypridle = {
     enable = true;
+    systemdTarget = "hyprland-session.target";
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";
@@ -240,7 +250,6 @@
         vibrancy_darkness = 0.0;
       };
       input_field = {
-
         monitor = "";
         size = "200, 50";
         outline_thickness = 2;
