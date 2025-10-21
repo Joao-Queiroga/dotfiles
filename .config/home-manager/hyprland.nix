@@ -194,11 +194,13 @@
   '';
   services.hyprpaper = {
     enable = true;
-    systemdTarget = "hyprland-session.target";
     settings = {
       preload = ["~/.config/.background"];
       wallpaper = [", ~/.config/.background"];
     };
+  };
+  services.hyprpolkitagent = {
+    enable = true;
   };
   services.hypridle = {
     enable = true;
