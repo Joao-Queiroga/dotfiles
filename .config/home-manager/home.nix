@@ -24,6 +24,11 @@
     "$HOME/.local/bin"
   ];
 
+  xdg.autostart = {
+    enable = true;
+    entries = ["${pkgs.protonvpn-gui}/share/applications/protonvpn-app.desktop"];
+  };
+
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     yadm
@@ -46,6 +51,7 @@
     wl-clipboard
     gcc
     gnumake
+    protonvpn-gui
     python313Packages.weasyprint
   ];
 
