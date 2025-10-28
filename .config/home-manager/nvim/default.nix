@@ -70,6 +70,8 @@
             heirline-nvim
             noice-nvim
             dropbar-nvim
+            markview-nvim
+            vim-table-mode
             snacks-nvim
             trouble-nvim
             vim-illuminate
