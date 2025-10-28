@@ -170,7 +170,7 @@ local TabLineOffset = {
     local bufnr = vim.api.nvim_win_get_buf(win)
     self.winid = win
 
-    if vim.bo[bufnr].filetype == "neo-tree" then
+    if vim.bo[bufnr].filetype == "snacks_layout_box" then
       self.title = "File Explorer"
       return true
     end
