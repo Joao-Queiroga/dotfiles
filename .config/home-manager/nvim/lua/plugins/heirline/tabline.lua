@@ -45,6 +45,29 @@ local file_icon = {
   update = { "BufEnter", "BufLeave" },
 }
 
+local function stringdelimiter(str, maxChars)
+  local len = utils.count_chars(str)
+  if len <= maxChars then
+    return str
+  end
+
+  -- Encontra o último espaço antes do limite
+  local ultimoEspaco = 0
+  for i = 1, maxChars do
+    if str:sub(i, i) == " " then
+      ultimoEspaco = i
+    end
+  end
+
+  -- Se não houver espaço, corta no limite
+  if ultimoEspaco == 0 then
+    ultimoEspaco = maxChars
+  end
+
+  -- Retorna a string cortada até o último espaço com reticências
+  return str:sub(1, ultimoEspaco - 1) .. "…"
+end
+
 local function display_name(bufnr)
   local path = vim.api.nvim_buf_get_name(bufnr)
   local filename = vim.fn.fnamemodify(path, ":t")
@@ -59,16 +82,16 @@ local function display_name(bufnr)
 
   local result
   if count == 1 then
-    result = filename -- único, só o nome
+    result = stringdelimiter(filename, 18) -- único, só o nome
   else
     -- relativo ao cwd
     local rel = vim.fn.fnamemodify(path, ":.:")
     -- pega só o último diretório + arquivo
     local parts = vim.split(rel, "/", { plain = true })
     if #parts >= 2 then
-      result = parts[#parts - 1] .. "/" .. parts[#parts]
+      result = stringdelimiter(parts[#parts - 1], 15) .. "/" .. stringdelimiter(parts[#parts], 18)
     else
-      result = rel
+      result = stringdelimiter(rel, 18)
     end
   end
 
@@ -99,11 +122,7 @@ local tabline_filename_block = {
     end,
     name = "heirline_tabline_buffer_callback",
   },
-  {
-    provider = function(self)
-      return "%-" .. math.ceil(self.padding) .. "("
-    end,
-  },
+  { provider = "%-1(" },
   {
     provider = "▎",
     condition = function(self)
@@ -114,13 +133,8 @@ local tabline_filename_block = {
   { provider = "%)" },
   file_icon,
   tabline_file_name,
-  {
-    provider = function(self)
-      return "%" .. math.ceil(self.padding) .. "("
-    end,
-  },
   tabline_file_flags,
-  { provider = "%)" },
+  { provider = " " },
 }
 
 local get_bufs = function()
@@ -176,8 +190,8 @@ local bufferline = utils.make_buflist(
   {
     tabline_filename_block,
   },
-  { provider = "", hl = { fg = "gray" } }, -- left truncation, optional (defaults to "<")
-  { provider = "", hl = { fg = "gray" } }, -- right trunctation, also optional (defaults to ...... yep, ">")
+  { provider = "", hl = { fg = "gray" } }, -- left truncation
+  { provider = "", hl = { fg = "gray" } }, -- right trunctation
   function()
     return buflist_cache
   end,
