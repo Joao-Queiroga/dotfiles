@@ -26,7 +26,7 @@ return {
         },
         appearance = {
           nerd_font_variant = "normal",
-          -- kind_icons = vim.g.kind_icons,
+          kind_icons = vim.g.kind_icons,
         },
         cmdline = {
           keymap = { ["<CR>"] = { "fallback" } },
@@ -66,7 +66,7 @@ return {
   },
   {
     "colorful-menu.nvim",
-    dep_of = "blink.cmp",
+    on_require = "colorful-menu",
   },
   {
     "friendly-snippets",
