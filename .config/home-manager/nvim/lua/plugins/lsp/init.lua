@@ -40,4 +40,32 @@ return {
     end,
   },
   { import = "plugins.lsp.language-specific" },
+  {
+    "dropbar.nvim",
+    event = "LspAttach",
+    keys = {
+      {
+        "<leader>lo",
+        function()
+          require("dropbar.api").pick()
+        end,
+        desc = "Pick symbols in winbar",
+      },
+    },
+    after = function()
+      require("dropbar").setup({
+        icons = {
+          kinds = vim.g.kind_icons,
+          ui = {
+            bar = {
+              separator = " › ",
+            },
+            menu = {
+              separator = " › ",
+            },
+          },
+        },
+      })
+    end,
+  },
 }
