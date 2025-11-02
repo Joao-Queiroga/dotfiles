@@ -33,6 +33,7 @@ export default function Notifications() {
         <window
           gdkmonitor={monitor}
           name="notifications"
+          layer={Astal.Layer.OVERLAY}
           anchor={TOP | RIGHT}
           application={app}
           visible={notifications(n => n.length > 0)}

@@ -56,6 +56,7 @@ export default function AppLauncher() {
       exclusivity={Astal.Exclusivity.IGNORE}
       visible={false}
       anchor={TOP | LEFT | RIGHT | BOTTOM}
+      layer={Astal.Layer.OVERLAY}
       keymode={Astal.Keymode.EXCLUSIVE}
       application={app}
       onShow={() => {

@@ -29,6 +29,10 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Yazi plugin
     drag = {
@@ -55,6 +59,7 @@
       inherit pkgs;
       modules = [
         inputs.stylix.homeModules.stylix
+        inputs.niri.homeModules.niri
         ./home.nix
       ];
 

@@ -9,6 +9,7 @@
     inputs.ags.homeManagerModules.default
     ./shell.nix
     ./hyprland.nix
+    ./niri.nix
     ./dir_colors.nix
     ./yazi.nix
     ./nvim
