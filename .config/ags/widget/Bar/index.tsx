@@ -29,8 +29,12 @@ export default function Bar() {
         >
           <centerbox cssName="centerbox">
             <box $type="start">
-              <Workspaces />
-              <Client />
+              {GLib.getenv("XDG_SESSION_DESKTOP") === "Hyprland" && (
+                <>
+                  <Workspaces />
+                  <Client />
+                </>
+              )}
             </box>
             <menubutton $type="center" hexpand halign={Gtk.Align.CENTER}>
               <label class="time" label={time(t => t.format("  %a %d/%m/%Y %H:%M")!)} />
