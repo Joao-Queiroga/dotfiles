@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.shellAliases = {
     nvimconf = "nvim ~/.config/nvim/init.lua";
     ly = "lazygit --git-dir $HOME/.local/share/yadm/repo.git --work-tree $HOME";
@@ -37,6 +40,7 @@
       }
     ];
   };
+  programs.bash.enable = true;
   programs.zsh = {
     enable = true;
     autocd = true;

@@ -52,7 +52,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [inputs.my-packages.overlays.default];
+      overlays = [inputs.my-packages.overlays.default inputs.niri.overlays.niri];
     };
   in {
     homeConfigurations."joaoqueiroga" = home-manager.lib.homeManagerConfiguration {
