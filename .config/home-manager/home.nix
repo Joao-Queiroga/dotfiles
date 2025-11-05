@@ -29,6 +29,33 @@
     enable = true;
     entries = ["${pkgs.protonvpn-gui}/share/applications/protonvpn-app.desktop"];
   };
+  xdg.portal = {
+    enable = true;
+    config = {
+      common = {
+        default = ["gtk"];
+      };
+      niri = {
+        default = [
+          "gnome"
+          "gtk"
+        ];
+        "org.freedesktop.impl.portal.Secret" = [
+          "gnome-keyring"
+        ];
+      };
+      Hyprland = {
+        default = [
+          "hyprland"
+          "gtk"
+        ];
+      };
+    };
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+  };
 
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
