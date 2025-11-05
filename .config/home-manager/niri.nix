@@ -11,6 +11,15 @@
         enable = true;
         path = lib.getExe pkgs.xwayland-satellite-unstable;
       };
+      outputs = {
+        "DP-1" = {
+          mode = {
+            width = 1920;
+            height = 1080;
+          };
+          variable-refresh-rate = true;
+        };
+      };
       input = {
         keyboard = {
           xkb = {
@@ -23,6 +32,8 @@
       spawn-at-startup = [
         {argv = ["kitty" "--single-instance" "--start-as=hidden"];}
         {argv = ["ags" "run"];}
+        {argv = ["${pkgs.xdg-desktop-portal-gnome}/libexec/xdg-desktop-portal-gnome"];}
+        {argv = ["${pkgs.xdg-desktop-portal-gtk}/libexec/xdg-desktop-portal-gtk"];}
       ];
       binds = with config.lib.niri.actions; {
         "Mod+Shift+Slash".action = show-hotkey-overlay;
@@ -64,6 +75,9 @@
         "XF86MonBrightnessUp".action = spawn "brightnessctl" "--class=backlight" "set" "+10%";
         "XF86MonBrightnessDown".action = spawn "brightnessctl" "--class=backlight" "set" "10%-";
 
+        "Ctrl+Space".action = spawn "ags" "request" "clearLastNotification";
+        "Ctrl+Shift+Space".action = spawn "ags" "request" "clearAllNotifications";
+
         "Mod+O" = {
           repeat = false;
           action = toggle-overview;
@@ -79,8 +93,8 @@
         "Mod+Up".action = focus-window-up;
         "Mod+Right".action = focus-column-right;
         "Mod+H".action = focus-column-left;
-        "Mod+J".action = focus-window-down;
-        "Mod+K".action = focus-window-up;
+        "Mod+J".action = focus-workspace-down;
+        "Mod+K".action = focus-workspace-up;
         "Mod+L".action = focus-column-right;
 
         "Mod+Ctrl+Left".action = move-column-left;
@@ -88,8 +102,8 @@
         "Mod+Ctrl+Up".action = move-window-up;
         "Mod+Ctrl+Right".action = move-column-right;
         "Mod+Ctrl+H".action = move-column-left;
-        "Mod+Ctrl+J".action = move-window-down;
-        "Mod+Ctrl+K".action = move-window-up;
+        "Mod+Ctrl+J".action = move-workspace-down;
+        "Mod+Ctrl+K".action = move-workspace-up;
         "Mod+Ctrl+L".action = move-column-right;
 
         "Mod+Home".action = focus-column-first;
@@ -101,10 +115,10 @@
         "Mod+Shift+Down".action = focus-monitor-down;
         "Mod+Shift+Up".action = focus-monitor-up;
         "Mod+Shift+Right".action = focus-monitor-right;
-        "Mod+Shift+H".action = focus-monitor-left;
-        "Mod+Shift+J".action = focus-monitor-down;
-        "Mod+Shift+K".action = focus-monitor-up;
-        "Mod+Shift+L".action = focus-monitor-right;
+        "Mod+Shift+H".action = move-column-left;
+        "Mod+Shift+J".action = move-column-to-workspace-down;
+        "Mod+Shift+K".action = move-column-to-workspace-up;
+        "Mod+Shift+L".action = move-column-right;
 
         "Mod+Shift+Ctrl+Left".action = move-column-to-monitor-left;
         "Mod+Shift+Ctrl+Down".action = move-column-to-monitor-down;

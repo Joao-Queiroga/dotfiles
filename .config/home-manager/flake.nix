@@ -60,6 +60,7 @@
       modules = [
         inputs.stylix.homeModules.stylix
         inputs.niri.homeModules.niri
+        inputs.niri.homeModules.stylix
         ./home.nix
       ];
 
