@@ -32,8 +32,6 @@
       spawn-at-startup = [
         {argv = ["kitty" "--single-instance" "--start-as=hidden"];}
         {argv = ["ags" "run"];}
-        {argv = ["${pkgs.xdg-desktop-portal-gnome}/libexec/xdg-desktop-portal-gnome"];}
-        {argv = ["${pkgs.xdg-desktop-portal-gtk}/libexec/xdg-desktop-portal-gtk"];}
       ];
       binds = with config.lib.niri.actions; {
         "Mod+Shift+Slash".action = show-hotkey-overlay;

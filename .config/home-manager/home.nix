@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -29,33 +30,7 @@
     enable = true;
     entries = ["${pkgs.protonvpn-gui}/share/applications/protonvpn-app.desktop"];
   };
-  xdg.portal = {
-    enable = true;
-    config = {
-      common = {
-        default = ["gtk"];
-      };
-      niri = {
-        default = [
-          "gnome"
-          "gtk"
-        ];
-        "org.freedesktop.impl.portal.Secret" = [
-          "gnome-keyring"
-        ];
-      };
-      Hyprland = {
-        default = [
-          "hyprland"
-          "gtk"
-        ];
-      };
-    };
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-    ];
-  };
+  xdg.portal.enable = lib.mkForce false;
 
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
@@ -218,7 +193,7 @@
     MESA_SHADER_CACHE_DIR = "$HOME/.cache/mesa_shader_cache";
     MESA_SHADER_CACHE_MAX_SIZE = "12G";
     RADV_PERFTEST = "aco";
-
+    NIXOS_OZONE_WL = "1";
     XINITRC = "${config.xdg.configHome}/x11/xinitrc";
     _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=${config.xdg.configHome}/java";
     GOPATH = "${config.xdg.dataHome}/go";
