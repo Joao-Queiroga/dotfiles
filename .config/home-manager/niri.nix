@@ -27,6 +27,9 @@
           };
           numlock = true;
         };
+        touchpad = {
+          natural-scroll = false;
+        };
       };
       prefer-no-csd = true;
       spawn-at-startup = [
