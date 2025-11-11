@@ -217,8 +217,6 @@
         "Mod+V".action = toggle-window-floating;
         "Mod+Shift+V".action = switch-focus-between-floating-and-tiling;
 
-        "Mod+W".action = toggle-column-tabbed-display;
-
         "Print".action.screenshot = [];
         "Ctrl+Print".action.screenshot-screen = [];
         "Alt+Print".action.screenshot-window = [];
