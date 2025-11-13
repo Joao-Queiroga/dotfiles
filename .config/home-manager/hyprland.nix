@@ -1,15 +1,14 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
-    package =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    plugins = with pkgs.hyprlandPlugins; [
+      hyprsplit
+      hyprscrolling
+    ];
     settings = {
       monitor = [
         "eDP-1, preferred, auto, 1"
@@ -22,6 +21,12 @@
         "systemctl --user start wluma"
         "uwsm app -- kitty --single-instance --start-as=hidden"
       ];
+      plugin = {
+        hyprscrolling = {
+          fullscreen_on_one_column = true;
+          focus_fit_method = 1;
+        };
+      };
       input = {
         kb_layout = "br";
         follow_mouse = 1;
@@ -31,7 +36,7 @@
       general = {
         gaps_in = 5;
         gaps_out = 10;
-        layout = "master";
+        layout = "scrolling";
       };
       misc = {
         enable_anr_dialog = false;
@@ -89,10 +94,6 @@
           "$mod, up, movefocus, u"
           "$mod, down, movefocus, d"
 
-          # Swap window
-          "$mod_SHIFT, J, layoutmsg, swapnext"
-          "$mod_SHIFT, K, layoutmsg, swapprev"
-
           # Focus or swap master
           "$mod, m, layoutmsg, focusmaster"
           "$mod_SHIFT, m, layoutmsg, swapwithmaster"
@@ -102,7 +103,12 @@
           "$mod, D, layoutmsg, removemaster"
 
           # Enter FullscreenMode
-          "$mod, F, fullscreen"
+          "$mod SHIFT, F, fullscreen"
+
+          "$mod, F, layoutmsg, fit active"
+          "$mod, C, layoutmsg, colresize 0.5"
+          "$mod, minus, layoutmsg, colresize -0.1"
+          "$mod, equal, layoutmsg, colresize +0.1"
 
           # special workspace
           "$mod, 0, togglespecialworkspace"
@@ -139,22 +145,24 @@
         ++ (builtins.concatLists (builtins.genList (i: let
             ws = i + 1;
           in [
-            "$mod, code:1${toString i}, focusworkspaceoncurrentmonitor, ${
+            "$mod, code:1${toString i}, split:workspace, ${
               toString ws
             }"
-            "$mod SHIFT, code:1${toString i}, movetoworkspacesilent, ${
+            "$mod SHIFT, code:1${toString i}, split:movetoworkspacesilent, ${
               toString ws
             }"
           ])
           9));
       binde = [
         # Move focus with mod + JK
-        "$mod, J, layoutmsg, cyclenext"
-        "$mod, K, layoutmsg, cycleprev"
+        "$mod, J, split:workspace, +1"
+        "$mod, K, split:workspace, -1"
 
-        # Change splitratio whith mod + HL
-        "$mod, H, splitratio, -0.05"
-        "$mod, L, splitratio, +0.05"
+        # move column
+        "$mod, H, layoutmsg, focus l"
+        "$mod, L, layoutmsg, focus r"
+        "$mod SHIFT, H, layoutmsg, swapcol l"
+        "$mod SHIFT, L, layoutmsg, swapcol r"
 
         # Brightness Keys
         ", XF86MonBrightnessUp, exec, uwsm app -- brightnessctl set 10%+"
