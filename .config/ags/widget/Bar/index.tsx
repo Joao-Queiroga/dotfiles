@@ -31,7 +31,7 @@ export default function Bar() {
             <box $type="start">
               {GLib.getenv("XDG_SESSION_DESKTOP") === "Hyprland" && (
                 <>
-                  <Workspaces />
+                  <Workspaces gdkmonitor={monitor} />
                   <Client />
                 </>
               )}

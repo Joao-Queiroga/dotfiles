@@ -1,5 +1,5 @@
 import { createBinding, onCleanup, With } from "ags";
-import { Gtk } from "ags/gtk4";
+import { Gdk, Gtk } from "ags/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
 import { guessIcon, range } from "../lib/utils";
 
@@ -29,13 +29,16 @@ const Workspace = ({ id }: { id: number }) => (
   </button>
 );
 
-export const Workspaces = ({ monitor = 0 }) => (
-  <box class="workspaces">
-    {range(monitor * 10 + 1, 9).map(i => (
-      <Workspace id={i} />
-    ))}
-  </box>
-);
+export const Workspaces = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => {
+  const monitor = hypr.get_monitor_by_name(gdkmonitor.connector)!;
+  return (
+    <box class="workspaces">
+      {range(monitor.id * 10 + 1, 9).map(i => (
+        <Workspace id={i} />
+      ))}
+    </box>
+  );
+};
 
 export const Client = () => {
   const focused = createBinding(hypr, "focusedClient");
