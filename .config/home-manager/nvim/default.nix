@@ -64,8 +64,6 @@
             colorful-menu-nvim
             ultimate-autopair-nvim
             nvim-lspconfig
-            conform-nvim
-            nvim-lint
             vim-startuptime
             heirline-nvim
             noice-nvim
@@ -90,6 +88,12 @@
           lua = with pkgs.vimPlugins; [
             lazydev-nvim
             luvit-meta
+          ];
+          format = with pkgs.vimPlugins; [
+            conform-nvim
+          ];
+          lint = with pkgs.vimPlugins; [
+            nvim-lint
           ];
         };
       }
