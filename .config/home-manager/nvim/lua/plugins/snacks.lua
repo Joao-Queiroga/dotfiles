@@ -10,6 +10,7 @@ return {
       words = { enabled = true },
       indent = { enabled = true },
       scope = { enabled = true },
+      scroll = { enabled = true },
       image = { enabled = true },
       input = { enabled = true },
       picker = {
