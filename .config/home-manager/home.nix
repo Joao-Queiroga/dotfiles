@@ -102,6 +102,7 @@
         promptToReturnFromSubprocess = false;
       };
     };
+    quickshell.enable = true;
     btop = {
       enable = true;
       settings = {
