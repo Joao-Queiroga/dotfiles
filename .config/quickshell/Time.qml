@@ -5,8 +5,8 @@ import QtQuick
 
 Singleton {
   id: root
-  property string time: {
-    Qt.formatDateTime(clock.date, "  ddd d/MM/yyyy hh:mm");
+  readonly property string time: {
+    Qt.locale().toString(clock.date, "  ddd d/MM/yyyy hh:mm");
   }
 
   SystemClock {
