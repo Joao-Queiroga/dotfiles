@@ -1,4 +1,4 @@
-vim.lsp.enable({ "lua_ls", "nil_ls", "gopls", "emmet_language_server", "cssls", "jsonls", "yamlls" })
+vim.lsp.enable({ "lua_ls", "nil_ls", "gopls", "emmet_language_server", "cssls", "jsonls", "yamlls", "qmlls" })
 ---@type PluginList
 return {
   {

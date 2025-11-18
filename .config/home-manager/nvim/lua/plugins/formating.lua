@@ -17,6 +17,7 @@ return {
           html = { "prettierd" },
           css = { "prettierd" },
           scss = { "prettierd" },
+          qml = { "qmlformat" },
           sass = { "prettierd" },
           rust = { "rustfmt" },
           nix = { "alejandra" },

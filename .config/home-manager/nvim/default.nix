@@ -25,6 +25,7 @@
             vscode-css-languageserver
             yaml-language-server
             nil
+            kdePackages.qtdeclarative
           ];
           format = with pkgs; [
             stylua
