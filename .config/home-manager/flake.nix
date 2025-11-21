@@ -32,11 +32,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Yazi plugin
+    # Yazi plugins
     drag = {
       url = "github:Joao-Queiroga/drag.yazi";
       flake = false;
     };
+    gvfs-yazi = {
+      url = "github:Joao-Queiroga/gvfs.yazi";
+      flake = false;
+    };
+
     my-packages.url = "path:./pkgs";
     my-packages.inputs.nixpkgs.follows = "nixpkgs";
   };
