@@ -38,7 +38,7 @@
       flake = false;
     };
     gvfs-yazi = {
-      url = "github:Joao-Queiroga/gvfs.yazi";
+      url = "github:boydaihungst/gvfs.yazi";
       flake = false;
     };
 

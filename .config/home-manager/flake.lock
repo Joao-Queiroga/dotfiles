@@ -202,15 +202,15 @@
     "gvfs-yazi": {
       "flake": false,
       "locked": {
-        "lastModified": 1763751364,
-        "narHash": "sha256-07v+wxFrdxKl7LPJkD3phrWte+E4p2KqV5bzVqFMN8g=",
-        "owner": "Joao-Queiroga",
+        "lastModified": 1763769213,
+        "narHash": "sha256-6VNra6WUjDfBdGjCw/6VOAaAgZLF78/4Gj47BOh1Q/0=",
+        "owner": "boydaihungst",
         "repo": "gvfs.yazi",
-        "rev": "245dd90da513eea756b7d1f583113f15158cf30e",
+        "rev": "d4b8d83d37fcb10a53e1ca07f8ee011dff089c91",
         "type": "github"
       },
       "original": {
-        "owner": "Joao-Queiroga",
+        "owner": "boydaihungst",
         "repo": "gvfs.yazi",
         "type": "github"
       }
