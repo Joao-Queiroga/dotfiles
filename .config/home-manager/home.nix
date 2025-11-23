@@ -28,7 +28,7 @@
 
   xdg.autostart = {
     enable = true;
-    entries = ["${pkgs.protonvpn-gui}/share/applications/protonvpn-app.desktop"];
+    entries = ["${pkgs.protonvpn-gui}/share/applications/proton.vpn.app.gtk.desktop"];
   };
   xdg.portal.enable = lib.mkForce false;
 
@@ -44,6 +44,8 @@
     p7zip
     wluma
     filezilla
+    ns-usbloader
+    telegram-desktop
     rose-pine-hyprcursor
     nodePackages.nodejs
     rustup
