@@ -72,7 +72,7 @@
 
         "Mod+B" = {
           hotkey-overlay.title = "Open Browser";
-          action = spawn "zen";
+          action = spawn "brave";
         };
         "Mod+Q" = {
           hotkey-overlay.title = "Restart ags";

@@ -38,6 +38,7 @@
     dust
     fd
     pfetch
+    brave
     ripdrag
     uwsm
     git

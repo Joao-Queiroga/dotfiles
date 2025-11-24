@@ -82,8 +82,8 @@
           # Launch keybindings
           "$mod, Return, exec, $term"
           "$mod_SHIFT, Return, exec, uwsm app -- thunar"
-          "$mod, B, exec, uwsm app -- zen"
-          "$mod_SHIFT, B, exec, [workspace special] uwsm app -- zen --private-window"
+          "$mod, B, exec, uwsm app -- brave"
+          "$mod_SHIFT, B, exec, [workspace special] uwsm app -- brave --incognito"
 
           # Reset ags
           "$mod, q, exec, uwsm app -- ags quit; uwsm app ags run"
