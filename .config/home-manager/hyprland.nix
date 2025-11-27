@@ -9,6 +9,7 @@
       hyprsplit
       hyprscrolling
     ];
+    systemd.enable = false;
     settings = {
       monitor = [
         "eDP-1, preferred, auto, 1"
@@ -72,7 +73,7 @@
       bind =
         [
           "$mod_SHIFT, C, killactive, "
-          "$mod_SHIFT, Q, exec, uwsm stop "
+          "$mod_SHIFT, Q, exec, loginctl kill-session $XDG_SESSION_ID"
           "$mod, T, togglefloating, "
           "$mod, R, exec, ags toggle launcher"
           "$mod, P, exec, uwsm app -- $(bemenu-run --binding vim)"
