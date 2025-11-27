@@ -17,7 +17,6 @@
         ", highrr, auto, 1"
       ];
       exec-once = [
-        "uwsm app -- ags run"
         "uwsm app -- kitty --single-instance --start-as=hidden"
       ];
       plugin = {
@@ -75,7 +74,7 @@
           "$mod_SHIFT, C, killactive, "
           "$mod_SHIFT, Q, exec, uwsm stop "
           "$mod, T, togglefloating, "
-          "$mod, R, exec, uwsm app -- ags toggle launcher"
+          "$mod, R, exec, ags toggle launcher"
           "$mod, P, exec, uwsm app -- $(bemenu-run --binding vim)"
 
           # Launch keybindings
@@ -85,7 +84,7 @@
           "$mod_SHIFT, B, exec, [workspace special] uwsm app -- brave --incognito"
 
           # Reset ags
-          "$mod, q, exec, uwsm app -- ags quit; uwsm app ags run"
+          "$mod, q, exec, systemctl --user restart ags.service"
 
           # Move focus with mod + arrow keys
           "$mod, left, movefocus, l"
@@ -183,8 +182,8 @@
       ];
       bindn = [
         # Notifications
-        "CONTROL, Space, exec, uwsm app -- ags request clearLastNotification"
-        "CONTROL SHIFT, Space, exec, uwsm app -- ags request clearAllNotifications"
+        "CONTROL, Space, exec, ags request clearLastNotification"
+        "CONTROL SHIFT, Space, exec, ags request clearAllNotifications"
       ];
       bindm = [
         # Move/resize windows with mod + LMB/RMB and dragging

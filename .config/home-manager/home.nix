@@ -68,6 +68,7 @@
     };
     ags = {
       enable = true;
+      systemd.enable = true;
       extraPackages = with pkgs // inputs.astal.packages.${pkgs.system}; [
         brightnessctl
         apps

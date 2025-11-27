@@ -34,7 +34,6 @@
       prefer-no-csd = true;
       spawn-at-startup = [
         {argv = ["kitty" "--single-instance" "--start-as=hidden"];}
-        {argv = ["ags" "run"];}
       ];
       layout = {
         border = {
@@ -76,7 +75,7 @@
         };
         "Mod+Q" = {
           hotkey-overlay.title = "Restart ags";
-          action = spawn-sh "ags quit; ags run";
+          action = spawn "systemct" "--user" "restart" "ags.service";
         };
 
         "Super+Alt+L" = {
