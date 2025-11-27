@@ -45,6 +45,9 @@ const getKebabNormalizedAppName = (name: string): string =>
 
 export const guessIcon = (str: string): string => {
   if (!str || str.length === 0) return "image-missing";
+  str = str
+    .replace(/^\./, "") // remove ponto no início
+    .replace(/-wrapped$/, ""); // remove "wrapped" no final
 
   // Fuzzy nos desktop entries do sistema
   const results = apps.fuzzy_query(str);
