@@ -18,7 +18,6 @@
       ];
       exec-once = [
         "uwsm app -- ags run"
-        "systemctl --user start wluma"
         "uwsm app -- kitty --single-instance --start-as=hidden"
       ];
       plugin = {
