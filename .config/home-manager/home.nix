@@ -54,6 +54,7 @@
     hyprprop
     wl-clipboard
     gcc
+    w3m
     gnumake
     protonvpn-gui
     python313Packages.weasyprint
@@ -271,6 +272,7 @@
   };
 
   xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+  xdg.configFile."w3m/config".text = "inline_img_protocol 4";
 
   programs.home-manager.enable = true;
 }
