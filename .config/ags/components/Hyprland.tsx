@@ -1,4 +1,4 @@
-import { createBinding, onCleanup, With } from "ags";
+import { createBinding, createComputed, onCleanup, With } from "ags";
 import { Gdk, Gtk } from "ags/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
 import { guessIcon, range } from "../lib/utils";
@@ -40,20 +40,17 @@ export const Workspaces = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => {
   );
 };
 
-export const Client = () => {
-  const focused = createBinding(hypr, "focusedClient");
-  return (
-    <box visible={focused(Boolean)} class="client">
-      <With value={focused}>
-        {(client: AstalHyprland.Client) =>
-          client && (
-            <box spacing={4}>
-              <image icon_name={createBinding(client, "class").as(guessIcon)} />
-              <label label={createBinding(client, "title")(t => (t.length > 50 ? t.substring(0, 51) + "..." : t))} />
-            </box>
-          )
-        }
-      </With>
-    </box>
-  );
-};
+export const Client = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => (
+  <box visible={createBinding(hypr.get_monitor_by_name(gdkmonitor.connector)!, "focused")} class="client">
+    <With value={createBinding(hypr, "focused_client")}>
+      {(client: AstalHyprland.Client) =>
+        client && (
+          <box spacing={4}>
+            <image icon_name={createBinding(client, "class").as(guessIcon)} />
+            <label label={createBinding(client, "title").as(t => (t.length > 50 ? t.substring(0, 51) + "..." : t))} />
+          </box>
+        )
+      }
+    </With>
+  </box>
+);

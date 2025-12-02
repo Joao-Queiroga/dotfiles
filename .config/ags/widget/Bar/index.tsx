@@ -32,7 +32,7 @@ export default function Bar() {
               {GLib.getenv("XDG_SESSION_DESKTOP") === "Hyprland" && (
                 <>
                   <Workspaces gdkmonitor={monitor} />
-                  <Client />
+                  <Client gdkmonitor={monitor} />
                 </>
               )}
             </box>
