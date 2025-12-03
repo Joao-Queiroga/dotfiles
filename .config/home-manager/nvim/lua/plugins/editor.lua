@@ -7,4 +7,11 @@ return {
       require("ultimate-autopair").setup()
     end,
   },
+  {
+    "project.nvim",
+    event = "DeferredUIEnter",
+    after = function()
+      require("project").setup({})
+    end,
+  },
 }

@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  config,
+  inputs,
+  ...
+}: {
   imports = [inputs.nixCats.homeModule];
   nixCats = {
     enable = true;
@@ -59,6 +63,7 @@
         };
         optionalPlugins = {
           general = with pkgs.vimPlugins; [
+            project-nvim
             vim-tmux-navigator
             blink-cmp
             friendly-snippets
@@ -118,6 +123,8 @@
           lua = true;
           format = true;
           lint = true;
+        };
+        extra = {
           springJars = "${pkgs.spring-boot-tools}/share/vscode/extensions/extension/jars";
         };
       };

@@ -13,6 +13,6 @@ local config = {
   },
 }
 
-vim.list_extend(config.init_options.bundles, require("spring_boot").java_extensions(require("nixCats").cats.springJars))
+vim.list_extend(config.init_options.bundles, require("spring_boot").java_extensions(require("nixCats").springJars))
 
 require("jdtls").start_or_attach(config)

@@ -5,3 +5,5 @@ base = "lua51"
 any = true
 [Snacks]
 any = true
+[nixCats]
+any = true
