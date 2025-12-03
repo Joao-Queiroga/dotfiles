@@ -38,7 +38,6 @@
     dust
     fd
     pfetch
-    brave
     ripdrag
     git
     p7zip
@@ -46,6 +45,7 @@
     ns-usbloader
     telegram-desktop
     rose-pine-hyprcursor
+    ncpamixer
     nodePackages.nodejs
     rustup
     go
@@ -62,6 +62,10 @@
 
   programs = {
     zen-browser.enable = true;
+    chromium = {
+      enable = true;
+      package = pkgs.brave;
+    };
     bemenu.enable = true;
     helix = {
       enable = true;
@@ -122,6 +126,9 @@
         cpu_single_graph = true;
         mem_graphs = false;
       };
+    };
+    vesktop = {
+      enable = true;
     };
   };
 
@@ -190,6 +197,7 @@
 
   stylix = {
     enable = true;
+    enableReleaseChecks = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
     override = {
       base05 = "#c0caf5";
