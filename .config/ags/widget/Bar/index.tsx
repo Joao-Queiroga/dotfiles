@@ -8,6 +8,7 @@ import { Client, Workspaces } from "../../components/Hyprland";
 import { Tray } from "../../components/Tray";
 import { VolumeIcon } from "../../components/Volume";
 import { ControlMenu } from "../ControlMenu";
+import { NiriClient, NiriWorkspaces } from "../../components/Niri";
 
 const time = createPoll(GLib.DateTime.new_now_local(), 1000, () => GLib.DateTime.new_now_local());
 
@@ -33,6 +34,12 @@ export default function Bar() {
                 <>
                   <Workspaces gdkmonitor={monitor} />
                   <Client gdkmonitor={monitor} />
+                </>
+              )}
+              {GLib.getenv("XDG_SESSION_DESKTOP") === "niri" && (
+                <>
+                  <NiriWorkspaces gdkmonitor={monitor} />
+                  <NiriClient />
                 </>
               )}
             </box>

@@ -77,7 +77,7 @@
         };
         "Mod+Q" = {
           hotkey-overlay.title = "Restart ags";
-          action = spawn "systemct" "--user" "restart" "ags.service";
+          action = spawn "systemctl" "--user" "restart" "ags.service";
         };
 
         "Super+Alt+L" = {
