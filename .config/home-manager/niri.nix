@@ -6,6 +6,7 @@
 }: {
   programs.niri = {
     enable = true;
+    package = pkgs.niri;
     settings = {
       xwayland-satellite = {
         enable = true;
@@ -32,9 +33,6 @@
         };
       };
       prefer-no-csd = true;
-      spawn-at-startup = [
-        {argv = ["kitty" "--single-instance" "--start-as=hidden"];}
-      ];
       layout = {
         border = {
           width = 1;
@@ -57,6 +55,10 @@
         "Mod+Return" = {
           hotkey-overlay.title = "Open a Terminal: Kitty";
           action = spawn "kitty" "-1";
+        };
+        "Mod+Shift+Return" = {
+          hotkey-overlay.title = "Open a File Manager";
+          action = spawn "thunar";
         };
 
         "Mod+R" = {
