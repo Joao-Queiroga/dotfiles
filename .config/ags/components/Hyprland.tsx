@@ -41,8 +41,8 @@ export const Workspaces = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => {
 };
 
 export const Client = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => (
-  <box visible={createBinding(hypr.get_monitor_by_name(gdkmonitor.connector)!, "focused")} class="client">
-    <With value={createBinding(hypr, "focused_client")}>
+  <box class="client">
+    <With value={createBinding(hypr.get_monitor_by_name(gdkmonitor.connector)!, "active_workspace", "lastClient")}>
       {(client: AstalHyprland.Client) =>
         client && (
           <box spacing={4}>
