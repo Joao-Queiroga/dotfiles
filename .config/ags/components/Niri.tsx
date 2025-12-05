@@ -38,8 +38,11 @@ export const NiriWorkspaces = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => {
   );
 };
 
-export const NiriClient = () => (
-  <box class="client">
+export const NiriClient = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => (
+  <box
+    class="client"
+    visible={createBinding(niri, "focusedWindow", "workspace", "output").as(o => o === gdkmonitor.connector)}
+  >
     <With value={createBinding(niri, "focusedWindow")}>
       {(window: AstalNiri.Window) =>
         window && (

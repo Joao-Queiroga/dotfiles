@@ -39,7 +39,7 @@ export default function Bar() {
               {GLib.getenv("XDG_SESSION_DESKTOP") === "niri" && (
                 <>
                   <NiriWorkspaces gdkmonitor={monitor} />
-                  <NiriClient />
+                  <NiriClient gdkmonitor={monitor} />
                 </>
               )}
             </box>
