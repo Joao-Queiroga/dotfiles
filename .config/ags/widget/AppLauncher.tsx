@@ -45,7 +45,7 @@ export default function AppLauncher() {
   const [text, setText] = createState("");
   const list = text(text => apps.fuzzy_query(text));
   const onEnter = () => {
-    const app = apps.fuzzy_query(text.get())?.[0];
+    const app = apps.fuzzy_query(text.peek())?.[0];
     execAsync(["uwsm", "app", app.entry]);
     hide();
   };
@@ -97,6 +97,7 @@ export default function AppLauncher() {
           onActivate={onEnter}
           primaryIconName="system-search-symbolic"
           onNotifyText={self => setText(self.text)}
+          text={text}
           $={ref => (entry = ref)}
         />
         <box

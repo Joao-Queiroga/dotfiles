@@ -6,8 +6,8 @@ import { createBinding, createState, For, onCleanup } from "ags";
 
 const [notifications, setNotifications] = createState<AstalNotifd.Notification[]>([]);
 
-export const dismissLastNotification = () => notifications.get()[0].dismiss();
-export const dismissAllNotifications = () => notifications.get().forEach(n => n.dismiss);
+export const dismissLastNotification = () => notifications.peek()[0].dismiss();
+export const dismissAllNotifications = () => notifications.peek().forEach(n => n.dismiss);
 
 export default function Notifications() {
   const notifd = AstalNotifd.get_default();
