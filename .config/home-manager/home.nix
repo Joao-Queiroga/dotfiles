@@ -34,6 +34,7 @@
 
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    app2unit
     yadm
     dust
     fd

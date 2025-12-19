@@ -17,9 +17,6 @@
         "HDMI-A-1, preferred, auto-right, 1"
         ", highrr, auto, 1"
       ];
-      exec-once = [
-        "uwsm app -- kitty --single-instance --start-as=hidden"
-      ];
       plugin = {
         hyprscrolling = {
           fullscreen_on_one_column = true;
@@ -68,7 +65,7 @@
         "xray 0, gtk4-layer-shell"
       ];
       "$mod" = "Super";
-      "$term" = "uwsm app -- kitty -1";
+      "$term" = "app2unit -- kitty -1";
       "$editor" = "$term nvim";
       bind =
         [
@@ -76,13 +73,13 @@
           "$mod_SHIFT, Q, exec, loginctl kill-session $XDG_SESSION_ID"
           "$mod, T, togglefloating, "
           "$mod, R, exec, ags toggle launcher"
-          "$mod, P, exec, uwsm app -- $(bemenu-run --binding vim)"
+          "$mod, P, exec, app2unit -- $(bemenu-run --binding vim)"
 
           # Launch keybindings
           "$mod, Return, exec, $term"
-          "$mod_SHIFT, Return, exec, uwsm app -- thunar"
-          "$mod, B, exec, uwsm app -- brave"
-          "$mod_SHIFT, B, exec, [workspace special] uwsm app -- brave --incognito"
+          "$mod_SHIFT, Return, exec, app2unit -- thunar"
+          "$mod, B, exec, app2unit -- brave"
+          "$mod_SHIFT, B, exec, [workspace special] app2unit -- brave --incognito"
 
           # Reset ags
           "$mod, q, exec, systemctl --user restart ags.service"
@@ -136,10 +133,10 @@
           "$mod CONTROL, o,exec, hyprctl dispatch dpms on"
 
           # Multimedia Keys
-          ", XF86AudioPlay, exec, uwsm app -- playerctl play-pause"
-          ", XF86AudioNext, exec, uwsm app -- playerctl next"
-          ", XF86AudioPrev, exec, uwsm app -- playerctl previous"
-          ", XF86audiostop, exec, uwsm app -- playerctl stop"
+          ", XF86AudioPlay, exec, playerctl play-pause"
+          ", XF86AudioNext, exec, playerctl next"
+          ", XF86AudioPrev, exec, playerctl previous"
+          ", XF86audiostop, exec, playerctl stop"
         ]
         ++ (builtins.concatLists (builtins.genList (i: let
             ws = i + 1;
@@ -164,13 +161,13 @@
         "$mod SHIFT, L, layoutmsg, swapcol r"
 
         # Brightness Keys
-        ", XF86MonBrightnessUp, exec, uwsm app -- brightnessctl set 10%+"
-        ", XF86MonBrightnessDown, exec, uwsm app -- brightnessctl set 10%-"
+        ", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
 
         # Volume keys
-        ", XF86AudioLowerVolume, exec, uwsm app -- wpctl set-volume @DEFAULT_SINK@ 5%-"
-        ", XF86AudioRaiseVolume, exec, uwsm app -- wpctl set-volume @DEFAULT_SINK@ 5%+"
-        ", XF86AudioMute, exec, uwsm app -- wpctl set-mute @DEFAULT_SINK@ toggle"
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%-"
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%+"
+        ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
 
         #Print keys
         ", print, exec, grimblast save output"
@@ -191,7 +188,7 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
-      bindl = [",switch:off:Lid Switch, exec, hyprlock --immediate"];
+      bindl = [",switch:off:Lid Switch, exec, app2unit -- hyprlock --immediate"];
     };
   };
   xdg.configFile."uwsm/env-hyprland".text = ''
