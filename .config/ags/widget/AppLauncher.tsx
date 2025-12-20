@@ -1,10 +1,10 @@
+import { For, createState } from "ags";
 import { Astal, Gdk, Gtk } from "ags/gtk4";
 import app from "ags/gtk4/app";
+import { execAsync } from "ags/process";
 import AstalApps from "gi://AstalApps";
 import GLib from "gi://GLib";
-import { For, createState } from "ags";
 import Graphene from "gi://Graphene";
-import { execAsync } from "ags/process";
 
 const hide = () => app.get_window("launcher")!.hide();
 
@@ -15,7 +15,7 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
     class="AppButton"
     onClicked={() => {
       hide();
-      execAsync(["uwsm", "app", app.entry]);
+      execAsync(`app2unit -- ${app.executable.replace(/\s?%[fFcuUik]/g, "")}`).catch(e => print(e));
     }}
   >
     <box>

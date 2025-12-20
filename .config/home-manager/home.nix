@@ -77,6 +77,7 @@
       systemd.enable = true;
       extraPackages = with pkgs // inputs.astal.packages.${pkgs.system}; [
         brightnessctl
+        app2unit
         apps
         notifd
         battery
