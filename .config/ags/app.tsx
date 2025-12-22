@@ -5,14 +5,25 @@ import AppLauncher from "./widget/AppLauncher";
 import Bar from "./widget/Bar";
 import Notifications from "./widget/Notifications";
 import Powermenu from "./widget/PowerMenu";
+import { createBinding, For, This } from "gnim";
+import { Gdk } from "ags/gtk4";
 
 app.start({
   css: style,
   requestHandler: requestHandler,
   main() {
-    Bar();
-    Notifications();
+    const monitors = createBinding(app, "monitors");
     AppLauncher();
     Powermenu();
+    return (
+      <For each={monitors}>
+        {(monitor: Gdk.Monitor) => (
+          <This this={app}>
+            <Bar gdkmonitor={monitor} />
+            <Notifications gdkmonitor={monitor} />
+          </This>
+        )}
+      </For>
+    );
   },
 });

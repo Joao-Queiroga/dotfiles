@@ -9,7 +9,7 @@ const [notifications, setNotifications] = createState<AstalNotifd.Notification[]
 export const dismissLastNotification = () => notifications.peek()[0].dismiss();
 export const dismissAllNotifications = () => notifications.peek().forEach(n => n.dismiss);
 
-export default function Notifications() {
+export default function Notifications({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) {
   const notifd = AstalNotifd.get_default();
   const { TOP, RIGHT } = Astal.WindowAnchor;
   const notifiedHandler = notifd.connect("notified", (_, id, replaced) => {
@@ -28,22 +28,18 @@ export default function Notifications() {
     notifd.disconnect(resolvedHandler);
   });
   return (
-    <For each={createBinding(app, "monitors")} cleanup={win => (win as Gtk.Window).destroy()}>
-      {(monitor: Gdk.Monitor) => (
-        <window
-          gdkmonitor={monitor}
-          name="notifications"
-          layer={Astal.Layer.OVERLAY}
-          anchor={TOP | RIGHT}
-          application={app}
-          visible={notifications(n => n.length > 0)}
-          $={self => onCleanup(() => self.destroy())}
-        >
-          <box orientation={Gtk.Orientation.VERTICAL}>
-            <For each={notifications}>{n => <Notification notification={n} />}</For>
-          </box>
-        </window>
-      )}
-    </For>
+    <window
+      gdkmonitor={gdkmonitor}
+      name="notifications"
+      layer={Astal.Layer.OVERLAY}
+      anchor={TOP | RIGHT}
+      application={app}
+      visible={notifications(n => n.length > 0)}
+      $={self => onCleanup(() => self.destroy())}
+    >
+      <box orientation={Gtk.Orientation.VERTICAL}>
+        <For each={notifications}>{n => <Notification notification={n} />}</For>
+      </box>
+    </window>
   );
 }
