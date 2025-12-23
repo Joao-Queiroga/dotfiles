@@ -45,6 +45,7 @@ window#launcher {
       }
 
       label.description {
+        font-weight: normal;
         color: color.adjust($color: $fg, $alpha: 0.8);
       }
     }

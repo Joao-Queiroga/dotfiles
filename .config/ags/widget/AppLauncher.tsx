@@ -21,16 +21,8 @@ const AppButton = ({ app }: { app: AstalApps.Application }) => (
     <box>
       {(fileExists(app.icon_name) && <image file={app.icon_name} />) || <image icon_name={app.icon_name} />}
       <box orientation={Gtk.Orientation.VERTICAL}>
-        <label class="name" xalign={0} label={app.name} />
-        {app.description && (
-          <label
-            class="description"
-            maxWidthChars={50}
-            wrap
-            xalign={0}
-            label={app.description.length > 101 ? app.description.substring(0, 101) + "..." : app.description}
-          />
-        )}
+        <label class="name" xalign={0} maxWidthChars={40} wrap label={app.name} />
+        {app.description && <label class="description" maxWidthChars={40} wrap xalign={0} label={app.description} />}
       </box>
     </box>
   </button>
@@ -46,8 +38,8 @@ export default function AppLauncher() {
   const list = text(text => apps.fuzzy_query(text));
   const onEnter = () => {
     const app = apps.fuzzy_query(text.peek())?.[0];
-    execAsync(["uwsm", "app", app.entry]);
     hide();
+    execAsync(`app2unit -- ${app.executable.replace(/\s?%[fFcuUik]/g, "")}`).catch(e => print(e));
   };
 
   return (
@@ -109,8 +101,13 @@ export default function AppLauncher() {
           <image icon_name="system-search-symbolic" />
           <label label="No match found" />
         </box>
-        <scrolledwindow class="AppList" vexpand>
-          <box orientation={Gtk.Orientation.VERTICAL} spacing={6} visible={list(l => l.length > 0)}>
+        <scrolledwindow
+          class="AppList"
+          vexpand
+          hscrollbarPolicy={Gtk.PolicyType.NEVER}
+          visible={list(l => l.length > 0)}
+        >
+          <box orientation={Gtk.Orientation.VERTICAL} spacing={6}>
             <For each={list}>{app => <AppButton app={app} />}</For>
           </box>
         </scrolledwindow>
