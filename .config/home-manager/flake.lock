@@ -277,6 +277,22 @@
         "type": "github"
       }
     },
+    "hypr-plugins": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767304464,
+        "narHash": "sha256-HsdfmPf5291Y3yXScMoj53P/9SS1DK3KgbprBuR8A4k=",
+        "owner": "hyprwm",
+        "repo": "hyprland-plugins",
+        "rev": "7a8521112361997d071fd1fef06d6becc7e53240",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprland-plugins",
+        "type": "github"
+      }
+    },
     "hyprsplit": {
       "flake": false,
       "locked": {
@@ -481,6 +497,7 @@
         "drag": "drag",
         "gvfs-yazi": "gvfs-yazi",
         "home-manager": "home-manager",
+        "hypr-plugins": "hypr-plugins",
         "hyprsplit": "hyprsplit",
         "my-packages": "my-packages",
         "niri": "niri",

@@ -8,7 +8,7 @@
     enable = true;
     plugins = with pkgs.hyprlandPlugins; [
       (hyprsplit.overrideAttrs {src = inputs.hyprsplit;})
-      hyprscrolling
+      (hyprscrolling.overrideAttrs {src = "${inputs.hypr-plugins}/hyprscrolling";})
     ];
     systemd.enable = false;
     settings = {

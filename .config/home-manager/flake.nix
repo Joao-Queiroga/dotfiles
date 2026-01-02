@@ -39,6 +39,10 @@
       url = "github:shezdy/hyprsplit";
       flake = false;
     };
+    hypr-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      flake = false;
+    };
 
     # Yazi plugins
     drag = {
