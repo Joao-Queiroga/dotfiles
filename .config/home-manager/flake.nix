@@ -35,6 +35,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
+      flake = false;
+    };
 
     # Yazi plugins
     drag = {

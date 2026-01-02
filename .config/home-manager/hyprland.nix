@@ -1,12 +1,13 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = with pkgs.hyprlandPlugins; [
-      hyprsplit
+      (hyprsplit.overrideAttrs {src = inputs.hyprsplit;})
       hyprscrolling
     ];
     systemd.enable = false;
@@ -32,6 +33,7 @@
       general = {
         gaps_in = 5;
         gaps_out = 10;
+        float_gaps = 10;
         layout = "scrolling";
       };
       misc = {
@@ -49,20 +51,20 @@
         new_on_top = true;
         special_scale_factor = 0.99;
       };
-      windowrulev2 = [
-        "workspace 2 silent, class:^(zen.*)$"
-        "workspace 2 silent, class:(brave-browser)"
-        "workspace 6, class:(discord)"
-        "workspace 6, class:(WebCord)"
-        "workspace 7, class:(teams-for-linux)"
-        "noanim, class:^(.*ueberzug.*)$"
-        "idleinhibit focus, class:(info.cemu.Cemu)"
-        "workspace special, title:(Nova guia privada - Brave)"
+      windowrule = [
+        "match:class (brave-browser), workspace 2"
+        "match:class ^(zen.*)$, workspace 2"
+        "match:class (discord), workspace 6"
+        "match:class (WebCord), workspace 6"
+        "match:class (teams-for-linux), workspace 7"
+        "match:class ^(.*ueberzug.*)$, no_anim on"
+        "match:class (info.cemu.Cemu), idle_inhibit focus"
+        "match:title (Nova guia privada - Brave), workspace special"
       ];
       layerrule = [
-        "blur, gtk4-layer-shell"
-        "ignorezero, gtk4-layer-shell"
-        "xray 0, gtk4-layer-shell"
+        "match:namespace gtk4-layer-shell, blur on"
+        "match:namespace gtk4-layer-shell, ignore_alpha 0"
+        "match:namespace gtk4-layer-shell, xray 0"
       ];
       "$mod" = "Super";
       "$term" = "app2unit -- kitty -1";
