@@ -1,4 +1,4 @@
-import { createBinding, createComputed, onCleanup, With } from "ags";
+import { createBinding, onCleanup, With } from "ags";
 import { Gdk, Gtk } from "ags/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
 import { guessIcon, range } from "../lib/utils";
@@ -7,7 +7,7 @@ const hypr = AstalHyprland.get_default();
 
 const Workspace = ({ id }: { id: number }) => (
   <button
-    onClicked={() => hypr.dispatch("workspace", id.toString())}
+    onClicked={() => hypr.dispatch("focusworkspaceoncurrentmonitor", id.toString())}
     $={self => {
       const events = hypr.connect("event", () => {
         const workspace = hypr.get_workspace(id);
@@ -46,7 +46,7 @@ export const Client = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => (
       {(client: AstalHyprland.Client) =>
         client && (
           <box spacing={4}>
-            <image icon_name={createBinding(client, "class").as(guessIcon)} />
+            <image icon_name={createBinding(client, "class").as(c => guessIcon(!c ? client.title : c))} />
             <label label={createBinding(client, "title").as(t => (t.length > 50 ? t.substring(0, 51) + "..." : t))} />
           </box>
         )
