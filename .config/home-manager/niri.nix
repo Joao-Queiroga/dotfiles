@@ -10,7 +10,7 @@
     settings = {
       xwayland-satellite = {
         enable = true;
-        path = lib.getExe pkgs.xwayland-satellite-unstable;
+        path = lib.getExe pkgs.xwayland-satellite;
       };
       outputs = {
         "DP-1" = {
@@ -19,6 +19,7 @@
             height = 1080;
           };
           variable-refresh-rate = true;
+          focus-at-startup = true;
         };
       };
       input = {
@@ -40,6 +41,7 @@
       };
       window-rules = [
         {
+          open-maximized = false;
           clip-to-geometry = true;
           geometry-corner-radius = {
             top-left = 12.0;
