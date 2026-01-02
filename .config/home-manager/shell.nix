@@ -11,7 +11,6 @@
     cd = "z";
     grep = "rg";
     du = "${pkgs.dust}/bin/dust";
-    pandoc = "${pkgs.pandoc}/bin/pandoc --pdf-engine weasyprint --css ~/.config/pandoc/style.css";
   };
 
   programs.fish = {

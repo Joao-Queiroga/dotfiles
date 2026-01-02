@@ -58,7 +58,6 @@
     w3m
     gnumake
     protonvpn-gui
-    python313Packages.weasyprint
     jq
   ];
 
