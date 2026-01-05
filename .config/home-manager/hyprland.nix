@@ -201,8 +201,12 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["~/.config/.background"];
-      wallpaper = [", ~/.config/.background"];
+      wallpaper = [
+        {
+          monitor = "";
+          path = "~/.config/.background";
+        }
+      ];
     };
   };
   services.hyprpolkitagent = {
