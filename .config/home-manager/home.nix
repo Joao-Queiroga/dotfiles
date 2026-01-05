@@ -129,9 +129,6 @@
         mem_graphs = false;
       };
     };
-    vesktop = {
-      enable = true;
-    };
   };
 
   services = {
