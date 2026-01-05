@@ -2,9 +2,25 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
-  programs.niri = {
+  programs.niri = let
+    call = pkgs.lib.flip import {
+      inherit
+        inputs
+        kdl
+        docs
+        binds
+        settings
+        ;
+      inherit (pkgs) lib;
+    };
+    kdl = call "${inputs.niri}/kdl.nix";
+    binds = call "${inputs.niri}/parse-binds.nix";
+    docs = call "${inputs.niri}/generate-docs.nix";
+    settings = call "${inputs.niri}/settings.nix";
+  in {
     enable = true;
     package = pkgs.niri;
     settings = {
@@ -254,5 +270,12 @@
         "Mod+Shift+P".action.power-off-monitors = [];
       };
     };
+    config = with inputs.niri.lib.kdl;
+      (settings.render config.programs.niri.settings)
+      ++ [
+        (plain "window-rule" [
+          (leaf "open-maximized-to-edges" false)
+        ])
+      ];
   };
 }
