@@ -29,6 +29,7 @@
             vscode-css-languageserver
             yaml-language-server
             nil
+            nixd
             kdePackages.qtdeclarative
           ];
           format = with pkgs; [
