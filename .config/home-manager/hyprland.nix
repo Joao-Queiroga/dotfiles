@@ -6,9 +6,9 @@
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
-    plugins = with pkgs.hyprlandPlugins; [
-      (hyprsplit.overrideAttrs {src = inputs.hyprsplit;})
-      (hyprscrolling.overrideAttrs {src = "${inputs.hypr-plugins}/hyprscrolling";})
+    plugins = with inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}; [
+      hyprscrolling
+      inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
     ];
     systemd.enable = false;
     settings = {

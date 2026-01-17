@@ -35,13 +35,14 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland.url = "github:hyprwm/Hyprland";
     hyprsplit = {
       url = "github:shezdy/hyprsplit";
-      flake = false;
+      inputs.hyprland.follows = "hyprland";
     };
-    hypr-plugins = {
+    hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
-      flake = false;
+      inputs.hyprland.follows = "hyprland";
     };
 
     # Yazi plugins
