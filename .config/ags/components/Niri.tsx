@@ -47,7 +47,7 @@ export const NiriClient = ({ gdkmonitor }: { gdkmonitor: Gdk.Monitor }) => (
       {(window: AstalNiri.Window) =>
         window && (
           <box spacing={4}>
-            <image icon_name={createBinding(window, "app_id").as(guessIcon)} />
+            <image icon_name={createBinding(window, "app_id").as(w => guessIcon(!w ? window.title : w))} />
             <label label={createBinding(window, "title").as(t => (t.length > 50 ? t.substring(0, 51) + "..." : t))} />
           </box>
         )
