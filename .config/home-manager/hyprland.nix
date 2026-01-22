@@ -6,6 +6,8 @@
 }: {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     plugins = with inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}; [
       hyprscrolling
       inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit

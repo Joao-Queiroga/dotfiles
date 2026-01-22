@@ -48,6 +48,7 @@
         touchpad = {
           natural-scroll = false;
         };
+        focus-follows-mouse.enable = true;
       };
       prefer-no-csd = true;
       layout = {
