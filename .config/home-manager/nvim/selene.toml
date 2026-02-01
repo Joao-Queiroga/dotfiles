@@ -1,9 +1,0 @@
-[selene]
-base = "lua51"
-
-[vim]
-any = true
-[Snacks]
-any = true
-[nixCats]
-any = true

@@ -13,7 +13,6 @@
     ./niri.nix
     ./dir_colors.nix
     ./yazi.nix
-    ./nvim
   ];
   home.username = "joaoqueiroga";
   home.homeDirectory = "/home/joaoqueiroga";
@@ -33,6 +32,7 @@
   xdg.portal.enable = lib.mkForce false;
 
   home.packages = with pkgs; [
+    inputs.my-neovim.packages.${pkgs.stdenv.hostPlatform.system}.neovim
     nerd-fonts.jetbrains-mono
     app2unit
     yadm

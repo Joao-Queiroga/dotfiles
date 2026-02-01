@@ -2,9 +2,9 @@
   description = "Home Manager configuration of joaoqueiroga";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixCats.url = "github:BirdeeHub/nixCats-nvim";
+    my-neovim.url = "github:/Joao-Queiroga/nvim";
+    my-neovim.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,9 +54,6 @@
       url = "github:boydaihungst/gvfs.yazi";
       flake = false;
     };
-
-    my-packages.url = "path:./pkgs";
-    my-packages.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -68,7 +65,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [inputs.my-packages.overlays.default inputs.niri.overlays.niri];
+      overlays = [inputs.niri.overlays.niri];
     };
   in {
     homeConfigurations."joaoqueiroga" = home-manager.lib.homeManagerConfiguration {
