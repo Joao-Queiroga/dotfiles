@@ -18,16 +18,20 @@
     functions = {
       fish_greeting.body = "${pkgs.pfetch-rs}/bin/pfetch";
     };
-    shellInitLast = ''
-      set -U fish_color_command cyan
-      fish_vi_key_bindings
-      bind -M insert up _atuin_bind_up
-      bind -M default up _atuin_bind_up
-      bind -M insert ctrl-k _atuin_bind_up
-      bind -M default ctrl-k _atuin_bind_up
-      bind -M insert enter expand-abbr execute
-      bind -M default enter expand-abbr execute
-    '';
+    shellInitLast =
+      /*
+      fish
+      */
+      ''
+        set -U fish_color_command cyan
+        fish_vi_key_bindings
+        bind -M insert up _atuin_bind_up
+        bind -M default up _atuin_bind_up
+        bind -M insert ctrl-k _atuin_bind_up
+        bind -M default ctrl-k _atuin_bind_up
+        bind -M insert enter expand-abbr execute
+        bind -M default enter expand-abbr execute
+      '';
     plugins = with pkgs.fishPlugins; [
       {
         name = "fishbang";
@@ -116,14 +120,18 @@
       enable = true;
       escapeTime = 0;
       keyMode = "vi";
-      extraConfig = ''
-        set -gq allow-passthrough on
+      extraConfig =
+        /*
+        tmux
+        */
+        ''
+          set -gq allow-passthrough on
 
-        bind -n M-H previous-window
-        bind -n M-L next-window
+          bind -n M-H previous-window
+          bind -n M-L next-window
 
-        bind C-l send-keys 'C-l'
-      '';
+          bind C-l send-keys 'C-l'
+        '';
       plugins = with pkgs.tmuxPlugins; [
         yank
         vim-tmux-navigator
